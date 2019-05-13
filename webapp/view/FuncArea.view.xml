@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_PROFILER.view.FuncArea"
+	controllerName="one.labs.mem_profiler.view.FuncArea"
 	displayBlock="true"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:commons="sap.suite.ui.commons"

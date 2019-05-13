@@ -1,10 +1,10 @@
 // define a root UI component that exposes the main view
-jQuery.sap.declare("shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_PROFILER.Component");
+jQuery.sap.declare("one.labs.mem_profiler.Component");
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("sap.ui.core.routing.History");
 jQuery.sap.require("sap.m.routing.RouteMatchedHandler");
 
-sap.ui.core.UIComponent.extend("shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_PROFILER.Component", {
+sap.ui.core.UIComponent.extend("one.labs.mem_profiler.Component", {
 	metadata: {
 		"name": "lower_version",
 		"version": "1.1.0-SNAPSHOT",
@@ -17,7 +17,7 @@ sap.ui.core.UIComponent.extend("shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_P
 		"config": {
 			resourceBundle: "i18n/messageBundle.properties",
 			serviceConfig: {
-				name: "/IWBEP/GWSAMPLE_BASIC",
+				name: "mainODataService",
 				serviceUrl: "/shell/app/local-dd3/NLTMI0/MEMORY_PROFILER/MEM_PROFILER/webapp/odata/MEM_PROFILER.xsodata/",
 					parameters: {select: "INDEX,SNAPSHOT_PERIOD,TOTAL_MEMORY_PEAK, ALLOCATION_LIMIT, FUNCTIONAL_MEMORY_SIZE"}
 //$select=USER_NAME,ACCESSED_VS_TOTAL,RESTRICTED_VS_TOTAL,CLASSIFICATION					
@@ -28,7 +28,7 @@ sap.ui.core.UIComponent.extend("shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_P
 			// The default values for routes
 			config: {
 				"viewType": "XML",
-				"viewPath": "shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_PROFILER.view",
+				"viewPath": "one.labs.mem_profiler.view",
 				"targetControl": "fioriContent", // This is the control in which new views are placed
 				"targetAggregation": "pages", // This is the aggregation in which the new views will be placed
 				"clearTarget": false
@@ -56,7 +56,7 @@ sap.ui.core.UIComponent.extend("shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_P
 		};
 
 		return sap.ui.view({
-			viewName: "shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_PROFILER.view.Main",
+			viewName: "one.labs.mem_profiler.view.Main",
 			type: sap.ui.core.mvc.ViewType.XML,
 			viewData: oViewData
 		});
@@ -69,7 +69,7 @@ sap.ui.core.UIComponent.extend("shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_P
 
 		// always use absolute paths relative to our own component
 		// (relative paths will fail if running in the Fiori Launchpad)
-		var sRootPath = jQuery.sap.getModulePath("shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_PROFILER");
+		var sRootPath = jQuery.sap.getModulePath("one.labs.mem_profiler");
 
 		// The service URL for the oData model 
 		var oServiceConfig = this.getMetadata().getConfig().serviceConfig;
@@ -109,7 +109,7 @@ sap.ui.core.UIComponent.extend("shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_P
 
 	// creation and setup of the oData model
 	_initODataModel: function(sServiceUrl) {
-		jQuery.sap.require("shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_PROFILER.util.messages");
+		jQuery.sap.require("one.labs.mem_profiler.util.messages");
 		var oConfig = {
 			metadataUrlParams: { //"select": "USER_NAME, RESTRICTED_VS_TOTAL, ACCESSED_VS_TOTAL, CLASSIFICATION"
 				},
@@ -122,7 +122,7 @@ sap.ui.core.UIComponent.extend("shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_P
 		console.log('sServiceUrl = ' + sServiceUrl);
 		var oModel = new sap.ui.model.odata.v2.ODataModel(sServiceUrl, oConfig);
 		console.log('before msg');
-		//oModel.attachRequestFailed(null, shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_PROFILER.util.messages.showErrorMessage);
+		//oModel.attachRequestFailed(null, one.labs.mem_profiler.util.messages.showErrorMessage);
 		console.log('after msg (to be updated');
 		this.setModel(oModel);
 	}

@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_PROFILER.view.Master"
+	controllerName="one.labs.mem_profiler.view.Master"
 	displayBlock="true"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:commons="sap.suite.ui.commons"
@@ -87,12 +87,12 @@
                      <IconTabFilter
                      icon="sap-icon://it-system"
                      text="Platform">
-                     <mvc:XMLView viewName="shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_PROFILER.view.Platform"/>
+                     <mvc:XMLView viewName="one.labs.mem_profiler.view.Platform"/>
                      </IconTabFilter>
                      <IconTabFilter
                      icon="sap-icon://dimension"
                      text="Business">
-                     <mvc:XMLView viewName="shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_PROFILER.view.FuncArea"/>
+                     <mvc:XMLView viewName="one.labs.mem_profiler.view.FuncArea"/>
                      </IconTabFilter>
                      
                      </items>

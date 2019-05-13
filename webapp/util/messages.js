@@ -11,7 +11,7 @@ MEM_PROFILER.util.messages = {};
  * @return {void}
  * @public
  */
-MEM_PROFILER.util.messages.showErrorMessage = function(oParameter) {
+MEM_PROFILER.util.messages.showErrorMessage = function (oParameter) {
 	var oErrorDetails = MEM_PROFILER.util.messages._parseError(oParameter);
 	var oMsgBox = sap.ca.ui.message.showMessageBox({
 		type: sap.ca.ui.message.Type.ERROR,
@@ -23,11 +23,11 @@ MEM_PROFILER.util.messages.showErrorMessage = function(oParameter) {
 	}
 };
 
-MEM_PROFILER.util.messages.getErrorContent = function(oParameter) {
+MEM_PROFILER.util.messages.getErrorContent = function (oParameter) {
 	return MEM_PROFILER.util.messages._parseError(oParameter).sMessage;
 };
 
-MEM_PROFILER.util.messages._parseError = function(oParameter) {
+MEM_PROFILER.util.messages._parseError = function (oParameter) {
 	var sMessage = "",
 		sDetails = "",
 		oEvent = null,
