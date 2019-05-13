@@ -1,0 +1,40 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+		confirm="handleConfirm"> 
+		<sortItems>
+			<ViewSettingsItem text="User Name" key="USER_NAME_CUSTOM" selected="true" />
+			<ViewSettingsItem text="Classification" key="CLASSIFICATION_MEASURE" />
+			<ViewSettingsItem text="Total Restrictions" key="NUMBER_OF_RESTRICTIONS" />
+			<ViewSettingsItem text="Total Datasets" key="NUMBER_OF_DATASETS" />
+		</sortItems>
+		<groupItems>
+			<ViewSettingsItem text="Total Restrictions" key="NUMBER_OF_RESTRICTIONS" />
+			<ViewSettingsItem text="Total Datasets" key="NUMBER_OF_DATASETS" />
+		</groupItems>
+		<filterItems>
+			<ViewSettingsFilterItem
+				text="Classification"
+				key="CLASSIFICATION_MEASURE"
+				multiSelect="false">
+				<items>
+					<ViewSettingsItem text="Top" key="CLASSIFICATION_MEASURE___EQ___1___X" />
+					<ViewSettingsItem text="Normal" key="CLASSIFICATION_MEASURE___EQ___2___X" />
+					<ViewSettingsItem text="Bottom" key="CLASSIFICATION_MEASURE___EQ___3___X" />
+					<ViewSettingsItem text="Non" key="CLASSIFICATION_MEASURE___EQ___0___X" />
+				</items>
+			</ViewSettingsFilterItem>
+			<ViewSettingsFilterItem
+				text="Number of Datasets"
+				key="NUMBER_OF_DATASETS"
+				multiSelect="false">
+				<items>
+					<ViewSettingsItem text="No Datasets" key="NUMBER_OF_DATASETS___EQ___0___X" />
+					<ViewSettingsItem text="Between 1 and 5" key="NUMBER_OF_DATASETS___BT___1___5" />
+					<ViewSettingsItem text="More Than 5" key="NUMBER_OF_DATASETS___GT___5___X" />
+				</items>
+			</ViewSettingsFilterItem>
+		</filterItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

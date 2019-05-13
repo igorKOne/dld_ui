@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html><head>
+                <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+                <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+                
+                <title>MVC with XmlView</title>
+                
+                <!-- Load UI5, select gold reflection theme and the "commons" control library -->
+                <script id='sap-ui-bootstrap' type='text/javascript'
+                               src='https://sapui5.hana.ondemand.com/resources/sap-ui-core.js'
+                                data-sap-ui-theme='sap_bluecrystal'
+                               data-sap-ui-libs='sap.m,sap.suite.ui.microchart'
+                               data-sap-ui-xx-bindingSyntax="complex">
+                </script>
+
+                <!-- Table definition -->
+                <script id="view1" type="sapui5/xmlview">     
+                               <core:View controllerName="test" xmlns="sap.suite.ui.microchart" xmlns:core="sap.ui.core" xmlns:m="sap.m">
+                               
+                                               <m:Table items="{/items}">
+                                                               <m:columns>
+                                                                              <m:Column demandPopin="true" minScreenWidth="Tablet">
+                                                                                              <m:Text text="Chart" />
+                                                                              </m:Column>
+                                                               </m:columns>
+                                               
+                                                               <m:items>
+                                                                              <m:ColumnListItem>
+                                                                                              <m:cells>
+                                                                                                              <m:FlexBox height="100px" width="100px">
+                                                                                                                             <ComparisonMicroChart id="chart" scale="M" press="press" isResponsive="true" data="{data}">
+                                                                                                                                             <data>
+                                                                                                                                                             <ComparisonMicroChartData title="{title}" value="{value}" color="{color}" />
+                                                                                                                                             </data>
+                                                                                                                             </ComparisonMicroChart>
+                                                                                                              </m:FlexBox>
+                                                                                              </m:cells>
+                                                                              </m:ColumnListItem>
+                                                               </m:items>
+                                               </m:Table>
+                               </core:View>
+                </script>
+
+                <script>
+                               // define a new (simple) Controller type
+                               sap.ui.controller("test", {
+                                   onInit: function () {
+                                                               var data = {
+                                                                              items : [ {
+                                                                                              text : "otto",
+                                                                                              AltText : "{AltText}",
+                                                                                              data : [{
+                                                                                                              title: "America",
+                                                                                                              value : 10,
+                                                                                                              color : "Good"
+                                                                                              }, {
+                                                                                                              title: "EMEA",
+                                                                                                              value : 50,
+                                                                                                              color : "Good"
+                                                                                              },{
+                                                                                                              title: "APAC",
+                                                                                                              value : -20,
+                                                                                                              color : "Error"
+                                                                                              }]
+                                                                              }]
+                                                                              
+                                                               };
+                                                               var oModel = new sap.ui.model.json.JSONModel(data);
+                                                               this.getView().setModel(oModel);
+                                   }
+                               });
+
+                               
+                               // instantiate the View
+                               sap.ui.xmlview({viewContent:jQuery('#view1').html() }).placeAt('content');
+                               
+                </script>
+                
+                </head>
+                <body class='sapUiBody'>
+                               <div id='content'></div>
+                </body>
+</html>

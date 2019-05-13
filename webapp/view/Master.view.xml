@@ -1,0 +1,104 @@
+<mvc:View
+	controllerName="shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_PROFILER.view.Master"
+	displayBlock="true"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:commons="sap.suite.ui.commons"
+	xmlns:semantic="sap.m.semantic"
+	xmlns:table="sap.ui.table"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:tnt="sap.tnt"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:viz="sap.viz.ui5.controls"
+	xmlns="sap.m"
+	xmlns:micro="sap.suite.ui.microchart">
+
+	<Page id="productListPage" title="In-Memory Profiler" showNavButton="true" navButtonPress="onNavBack">
+		<content>
+		
+<IconTabBar
+              id="idIconTabBarMulti"
+              expanded="{device>/isNoPhone}"
+              class="sapUiResponsiveContentPadding">
+              <items>
+                     <IconTabFilter
+                     icon="sap-icon://area-chart"
+                     text="Overview">
+<Panel width="auto" class="sapUiResponsiveMargin">
+
+				<Title text="Overview of 2016 (in GB)"/>
+				
+				
+				<!--Below is the setting panel -->
+        <l:Grid defaultSpan="L4 M6 S6" class="sapUiSmallMarginTop">
+		<l:content>
+            <Panel id='settingsPanel' class="panelStyle" expandable="true" expanded="true" headerText="Settings" width="auto">
+                <content>
+                    <HBox class='settingsHBox'>
+                    <VBox width="200px">
+                        <Label text = 'Include/exclude from chart' design="Bold" class='settingsLabel'></Label>
+                        <CheckBox id = "checkbox1" text="Allocation Limit" selected="true" select="onSelectAllocation"/>
+                        <CheckBox id = "checkbox2" text="Licensed Space" selected="true" select="onSelectLicensed"/>
+                        <CheckBox id = "checkbox3" text="ColumnStore Data" selected="true" select="onSelectCS"/>
+                        <CheckBox id = "checkbox4" text="RowStore Data" selected="true" select="onSelectRS"/>
+                        <CheckBox id = "checkbox5" text="Peak Memory Usage" selected="true" select="onSelectPeak"/>
+                    </VBox>
+                    </HBox>
+                </content>
+            </Panel>
+        </l:content>
+	</l:Grid>
+				
+							
+<content>
+
+<commons:ChartContainer
+		id="chartContainer"
+		showFullScreen="true"
+		autoAdjustHeight="true"
+		showLegend="true"
+		contentChange="attachContentChange"
+		>
+ 
+		
+ 
+		<commons:content>
+			<commons:ChartContainerContent
+				icon = "sap-icon://vertical-bar-chart"
+				title = "Column Chart">
+				<commons:content>
+				<viz:Popover id="idPopOver"></viz:Popover>
+					<viz:VizFrame id="vizFrame" height="450px" width="100%" uiConfig="{applicationSet:'fiori'}"></viz:VizFrame>
+				</commons:content>
+			</commons:ChartContainerContent>
+		</commons:content>
+		
+		
+	</commons:ChartContainer>		
+			
+			</content>
+			 </Panel>  
+			</IconTabFilter>     
+                     
+       
+                     
+                     
+                     <IconTabFilter
+                     icon="sap-icon://it-system"
+                     text="Platform">
+                     <mvc:XMLView viewName="shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_PROFILER.view.Platform"/>
+                     </IconTabFilter>
+                     <IconTabFilter
+                     icon="sap-icon://dimension"
+                     text="Business">
+                     <mvc:XMLView viewName="shell.app.local-dd3.NLTMI0.MEMORY_PROFILER.MEM_PROFILER.view.FuncArea"/>
+                     </IconTabFilter>
+                     
+                     </items>
+       </IconTabBar>
+                     </content>
+       
+		<footer></footer>
+	</Page>
+	</mvc:View>

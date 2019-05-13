@@ -1,0 +1,281 @@
+.navTableControlLayout {
+    padding: 1rem 2rem 0 2rem;
+}
+.sap-tablet .navTableControlLayout {
+    padding: 1rem 1rem 1rem 1rem;
+}
+.sap-phone .navTableControlLayout {
+    padding: 0 0 0 0;
+}
+.navTableItemLayout {
+    min-height: 5rem;
+    padding: 1rem 0 1rem 0;
+}
+.idIconTabBarMulti.sapMITBHead{
+	color: #111111;
+}
+
+.sapMITBHead {
+    display: block;
+    font-size: 0.75rem;
+    margin: 1rem 2rem 0 2rem;
+    overflow: hidden;
+    padding: 1px 1px 0 1px;
+    position: relative;
+    white-space: nowrap;
+}
+
+.sap-desktop ::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+    background-color: darkgray;
+}
+
+div#__xmlview1--idIconTabBarMulti--header-head {
+    background-color: black;
+}
+div#__xmlview1--tableToolbar {
+    background-color: black;
+}
+
+div#__xmlview1--catalogTable {
+    background-color: black;
+}
+
+div#__xmlview1--idIconTabBarMulti-content {
+    background-color: gray;
+}
+
+tbody#__xmlview1--ReportTable-tblBody {
+    background-color: darkgray;
+}
+
+tbody#__xmlview1--UserTable-tblBody {
+    background-color: darkgray;
+}
+
+div#__xmlview1--idIconTabBarMulti--header {
+    background-color: darkgrey;
+}
+
+div#__xmlview1--idIconTabBarMulti--header {
+    background-color: darkgray;
+}
+
+div#__xmlview1--productListPage-intHeader-BarLeft {
+    background-color: gray;
+}
+
+.sapMShellGlobalOuterBackground>.sapMGlobalBackgroundImage {
+    display: block;
+    background-color: darkgray;
+}
+
+.sapUiHiddenPlaceholder + section {
+    top: 3rem;
+    background-color: grey;
+}
+.sapMShellBrandingBar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 4px;
+    z-index: 1;
+    background-color: gray;
+}
+
+.sapMPageHeader::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 0;
+    border-top: gray;
+    z-index: 7;
+}
+
+.sapUiSizeCompact .sapMPageWithHeader>section {
+    top: 2.5rem;
+    background-color: gray;
+}
+
+.sapMITBFilterIcon {
+    display: inline-block;
+    line-height: 2.75rem;
+    overflow: hidden;
+    font-size: 1.5rem;
+    background: #ffffff;
+    -moz-border-radius: 3rem;
+    border-top-left-radius: 3rem;
+    border-top-right-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+    border-bottom-left-radius: 3rem;
+    border: 1px solid #333333;
+    width: 3rem;
+    height: 3rem;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+div#__xmlview1--idIconTabBarMulti--header-head {
+    background-color: gray;
+}
+
+.sapMITBSelected .sapMITBFilterDefault {
+    background: grey;
+    color: #FFFFFF;
+}
+.sapMITBFilterDefault {
+    color: GREY;
+}
+
+.sapMITBSelected>.sapMITBContentArrow {
+    border-bottom-color: GRAY;
+}
+
+div#__xmlview1--idIconTabBarMulti--header {
+    background-color: gray;
+}
+
+
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+Inherited from div#__xmlview1--idIconTabBarMulti.sapMITB.sapMITBBackgroundDesignSolid.sapUiResponsiveContentPadding
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+Inherited from section#__xmlview1--productListPage-cont
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+Inherited from div#__xmlview1--productListPage.sapMPage.sapMPageBgStandard.sapMPageBusyCoversAll.sapMPageWithHeader
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+Inherited from div#__xmlview1.sapMNavItem.sapUiView.sapUiViewDisplayBlock.sapUiXMLView
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+Inherited from div#__xmlview0--fioriContent.sapMApp.sapMNav.sapUiGlobalBackgroundColor
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+Inherited from div#__xmlview0.sapUiSizeCompact.sapUiView.sapUiViewDisplayBlock.sapUiXMLView
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+Inherited from div#__container0-uiarea
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+Inherited from div#__container0.sapUiComponentContainer
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+Inherited from section#__shell0-content.sapMShellContent.sapMShellGlobalInnerBackground
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+Inherited from div.sapMShellCentralBox
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+Inherited from div#__shell0.sapMShell.sapMShellAppWidthLimited.sapMShellGlobalOuterBackground
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+Inherited from body#content.sapUiBody
+.sapUiBody {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #ffffff;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 1rem;
+}
+.sapUiBody {
+    background-color: #f2f2f2;
+    color: #000000;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 16px;
+    -webkit-tap-highlight-color: transparent;
+}
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+Inherited from html.sap-desktop.sapUiTheme-sap_bluecrystal.sapUiMedia-Std-Desktop.sapUiMedia-StdExt-LargeDesktop
+html.sapUiTheme-sap_bluecrystal {
+    font-size: 16px;
+}
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+Pseudo ::scrollbar element
+html.sap-desktop ::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+    background-color: gold;
+}
+.sap-desktop ::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+    background-color: gold;
+}
+Pseudo ::scrollbar-corner element
+html.sap-desktop ::-webkit-scrollbar-corner {
+    background-color: gold;
+}
+.sapMITH {
+    box-shadow: inset 0 -0.25rem 0 -0.125rem gray;
+}
