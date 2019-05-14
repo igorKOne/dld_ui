@@ -6,13 +6,13 @@ sap.ui.define([
        'sap/ui/model/Filter',
        'sap/ui/model/Sorter',
        'sap/ui/model/json/JSONModel',
-       './Formatter',
+       '../model/Formatter',
 ], function (jQuery, Fragment, Controller, Filter, Sorter, JSONModel, Formatter) {
        "use strict";
 
 
 
-       sap.ui.core.mvc.Controller.extend("one.labs.mem_profiler.view.Platform", {
+       Controller.extend("one.labs.mem_profiler.view.Platform", {
 
 
 
@@ -126,7 +126,7 @@ sap.ui.define([
                      // start concept
                      var oDatasetModel; //new sap.ui.model.json.JSONModel(microData);
                      var oDatasetView = this.getView();
-                     jQuery.sap.log.info('!!!!!!     PLATFORM MODEL Binding')
+                     jQuery.sap.log.info('!!!!!!     PLATFORM MODEL Binding');
                      var xsjsUrl = '/MEM_PROFILER/webapp/view/Platform.xsjs';
                      //'/shell/app/local-dd3/NLTMI0/MEMORY_PROFILER/MEM_PROFILER/webapp/view/test2.xsjs';
                      var microData = jQuery.ajax({
@@ -220,7 +220,7 @@ sap.ui.define([
                      return new sap.ui.core.Item({
                             key: key,
                             text: text
-                     })
+                     });
               },
               /**
               * Calls update icon method for each of the passed custom icons.
@@ -970,7 +970,7 @@ sap.ui.define([
                      oBinding.filter(aFilter);
                      oBinding2.filter(aFilter2);
                      oBinding3.filter(aFilter3);
-                     jQuery.sap.log.info("check user filter:")
+                     jQuery.sap.log.info("check user filter:");
                      jQuery.sap.log.info(aFilter3);
 
                      var aSorters = [];

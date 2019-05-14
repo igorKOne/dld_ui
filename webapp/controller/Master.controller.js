@@ -6,18 +6,22 @@ sap.ui.define([
     'sap/ui/model/Filter',
     'sap/ui/model/Sorter',
     'sap/ui/model/json/JSONModel',
-    './Formatter'
+    '../model/Formatter'
 ], function (jQuery, Fragment, Controller, Filter, Sorter, JSONModel, Formatter) {
     "use strict";
 
 
 
-    sap.ui.core.mvc.Controller.extend("one.labs.mem_profiler.view.Master", {
+    Controller.extend("one.labs.mem_profiler.view.Master", {
 
 
+
+
+        _oDialog: null,
+        onInit: function () {
 
         //chart stuff
-        _constants: {
+        this._constants = {
             sampleName: "one.labs.mem_profiler",
             chartContainerId: "chartContainer",
             contentSwitchButtonId: "customIcon1",
@@ -242,7 +246,7 @@ sap.ui.define([
             //
 
 
-        },
+        };
         //end chart stuff
 
         /**
@@ -255,16 +259,14 @@ sap.ui.define([
         * @property {Object} content.chart Chart container content chart object
         * @property {Object} content.table Chart container content table object
         */
-        _state: {
+        this._state = {
             chartContainer: null,
             content: {
                 chart: null,
                 table: null
             }
-        },
-
-        _oDialog: null,
-        onInit: function () {
+        };
+        	
             jQuery.sap.log.info('in init master controller');
             /*              var oModel = new sap.ui.model.json.JSONModel(this.settingsModel);
                           oModel.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
@@ -347,7 +349,7 @@ sap.ui.define([
                        */
 
             // start concept
-            jQuery.sap.log.info('start concept ---------------------<<<<<<<<<<<<')
+            jQuery.sap.log.info('start concept ---------------------<<<<<<<<<<<<');
             var xsjsUrl = '/shell/app/local-dd3/NLTMI0/MEMORY_PROFILER/MEM_PROFILER/webapp/view/test2.xsjs';
             var microData = jQuery.ajax({
                 url: xsjsUrl,
@@ -435,7 +437,7 @@ sap.ui.define([
             return new sap.ui.core.Item({
                 key: key,
                 text: text
-            })
+            });
         },
         /**
         * Calls update icon method for each of the passed custom icons.
@@ -1186,7 +1188,7 @@ sap.ui.define([
             oBinding.filter(aFilter);
             oBinding2.filter(aFilter2);
             oBinding3.filter(aFilter3);
-            jQuery.sap.log.info("check user filter:")
+            jQuery.sap.log.info("check user filter:");
             jQuery.sap.log.info(aFilter3);
 
             var aSorters = [];

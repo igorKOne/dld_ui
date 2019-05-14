@@ -72,5 +72,5 @@ sap.ui.define([
             };
             Format.numericFormatter(chartFormatter);
         }
-    }
+    };
 });

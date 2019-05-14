@@ -5,7 +5,7 @@ sap.ui.define(function() {
  
 		classificationString :  function (fValue) {
 			try {
-				fValue = parseDecimal(fValue/1000000000000);
+				//fValue = parseDecimal(fValue/1000000000000);
 				return fValue;
 			} catch (err) {
 				return "0";
