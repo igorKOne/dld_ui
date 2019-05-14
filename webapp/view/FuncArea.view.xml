@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="one.labs.mem_profiler.view.FuncArea"
+	controllerName="one.labs.mem_profiler.controller.FuncArea"
 	displayBlock="true"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:commons="sap.suite.ui.commons"

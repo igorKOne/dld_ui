@@ -3,7 +3,6 @@ jQuery.sap.declare("one.labs.mem_profiler.Component");
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("sap.ui.core.routing.History");
 jQuery.sap.require("sap.m.routing.RouteMatchedHandler");
-
 sap.ui.core.UIComponent.extend("one.labs.mem_profiler.Component", {
 	metadata: {
 		"name": "lower_version",
@@ -11,17 +10,20 @@ sap.ui.core.UIComponent.extend("one.labs.mem_profiler.Component", {
 		"library": "lower",
 		"includes": ["css/style.css"],
 		"dependencies": {
-			"libs": ["sap.m", "sap.ui.layout"],
+			"libs": [
+				"sap.m",
+				"sap.ui.layout"
+			],
 			"components": []
 		},
 		"config": {
-			resourceBundle: "i18n/messageBundle.properties",
-			serviceConfig: {
-				name: "mainODataService",
-				serviceUrl: "../../../service/MEM_PROFILER.xsodata/",
-				parameters: { select: "INDEX,SNAPSHOT_PERIOD,TOTAL_MEMORY_PEAK, ALLOCATION_LIMIT, FUNCTIONAL_MEMORY_SIZE" }
-				//$select=USER_NAME,ACCESSED_VS_TOTAL,RESTRICTED_VS_TOTAL,CLASSIFICATION					
-				//					         /shell/app/local-dd3/NLTMI0/OL_AUTH_APP/OL_AUTH/webapp/odata/OL_AUTH.xsodata/$metadata					
+			"resourceBundle": "i18n/messageBundle.properties",
+			"serviceConfig": {
+				"name": "MEM_PROFILER.xsodata",
+				"serviceUrl": "/one/one/labs/mem_prof/app/service/MEM_PROFILER.xsodata/",
+				"parameters": {
+					"select": "INDEX,SNAPSHOT_PERIOD,TOTAL_MEMORY_PEAK, ALLOCATION_LIMIT, FUNCTIONAL_MEMORY_SIZE"
+				}
 			}
 		},
 		routing: {
@@ -29,8 +31,10 @@ sap.ui.core.UIComponent.extend("one.labs.mem_profiler.Component", {
 			config: {
 				"viewType": "XML",
 				"viewPath": "one.labs.mem_profiler.view",
-				"targetControl": "fioriContent", // This is the control in which new views are placed
-				"targetAggregation": "pages", // This is the aggregation in which the new views will be placed
+				"targetControl": "fioriContent",
+				// This is the control in which new views are placed
+				"targetAggregation": "pages",
+				// This is the aggregation in which the new views will be placed
 				"clearTarget": false
 			},
 			routes: [{
@@ -44,7 +48,6 @@ sap.ui.core.UIComponent.extend("one.labs.mem_profiler.Component", {
 			}]
 		}
 	},
-
 	/**
 	 * Initialize the application
 	 * 
@@ -54,51 +57,45 @@ sap.ui.core.UIComponent.extend("one.labs.mem_profiler.Component", {
 		var oViewData = {
 			component: this
 		};
-
 		return sap.ui.view({
 			viewName: "one.labs.mem_profiler.view.Main",
 			type: sap.ui.core.mvc.ViewType.XML,
 			viewData: oViewData
 		});
 	},
-
 	init: function () {
-		console.log('super init');
+		jQuery.sap.log.info("super init");
 		// call super init (will call function "create content")
 		sap.ui.core.UIComponent.prototype.init.apply(this, arguments);
-
 		// always use absolute paths relative to our own component
 		// (relative paths will fail if running in the Fiori Launchpad)
 		var sRootPath = jQuery.sap.getModulePath("one.labs.mem_profiler");
-
 		// The service URL for the oData model 
 		var oServiceConfig = this.getMetadata().getConfig().serviceConfig;
-		console.log(oServiceConfig);
+		jQuery.sap.log.info(oServiceConfig);
 		var sServiceUrl = oServiceConfig.serviceUrl;
 		//		sServiceUrl = sServiceUrl + 'AUTH_PROFILER/?$select=USER_NAME,CLASSIFICATION,ACCESSED_VS_TOTAL,UNRESTRICTED_VS_TOTAL';
-		console.log(sServiceUrl);
+		jQuery.sap.log.info(sServiceUrl);
 		// the metadata is read to get the location of the i18n language files later
 		var mConfig = this.getMetadata().getConfig();
 		this._routeMatchedHandler = new sap.m.routing.RouteMatchedHandler(this.getRouter(), this._bRouterCloseDialogs);
-
 		// create oData model
 		this._initODataModel(sServiceUrl);
-
 		// set i18n model
 		var i18nModel = new sap.ui.model.resource.ResourceModel({
-			bundleUrl: [sRootPath, mConfig.resourceBundle].join("/")
+			bundleUrl: [
+				sRootPath,
+				mConfig.resourceBundle
+			].join("/")
 		});
 		this.setModel(i18nModel, "i18n");
-
 		// initialize router and navigate to the first page
 		this.getRouter().initialize();
-		console.log('end super init');
+		jQuery.sap.log.info("end super init");
 	},
-
 	exit: function () {
 		this._routeMatchedHandler.destroy();
 	},
-
 	// This method lets the app can decide if a navigation closes all open dialogs
 	setRouterSetCloseDialogs: function (bCloseDialogs) {
 		this._bRouterCloseDialogs = bCloseDialogs;
@@ -106,12 +103,12 @@ sap.ui.core.UIComponent.extend("one.labs.mem_profiler.Component", {
 			this._routeMatchedHandler.setCloseDialogs(bCloseDialogs);
 		}
 	},
-
 	// creation and setup of the oData model
 	_initODataModel: function (sServiceUrl) {
 		jQuery.sap.require("one.labs.mem_profiler.util.messages");
 		var oConfig = {
-			metadataUrlParams: { //"select": "USER_NAME, RESTRICTED_VS_TOTAL, ACCESSED_VS_TOTAL, CLASSIFICATION"
+			metadataUrlParams: {
+				//"select": "USER_NAME, RESTRICTED_VS_TOTAL, ACCESSED_VS_TOTAL, CLASSIFICATION"
 			},
 			json: true,
 			loadMetadataAsync: true,
@@ -119,13 +116,11 @@ sap.ui.core.UIComponent.extend("one.labs.mem_profiler.Component", {
 			defaultCountMode: "Inline",
 			useBatch: true
 		};
-		console.log('sServiceUrl = ' + sServiceUrl);
+		jQuery.sap.log.info("sServiceUrl = " + sServiceUrl);
 		var oModel = new sap.ui.model.odata.v2.ODataModel(sServiceUrl, oConfig);
-		console.log('before msg');
+		jQuery.sap.log.info("before msg");
 		//oModel.attachRequestFailed(null, one.labs.mem_profiler.util.messages.showErrorMessage);
-		console.log('after msg (to be updated');
+		jQuery.sap.log.info("after msg (to be updated");
 		this.setModel(oModel);
 	}
 });
-
-

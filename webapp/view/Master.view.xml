@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="one.labs.mem_profiler.view.Master"
+	controllerName="one.labs.mem_profiler.controller.Master"
 	displayBlock="true"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:commons="sap.suite.ui.commons"

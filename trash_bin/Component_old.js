@@ -63,7 +63,7 @@ sap.ui.core.UIComponent.extend("one.labs.mem_profiler.Component", {
 	},
 
 	init: function() {
-		console.log('super init');
+		jQuery.sap.log.info('super init');
 		// call super init (will call function "create content")
 		sap.ui.core.UIComponent.prototype.init.apply(this, arguments);
 
@@ -73,10 +73,10 @@ sap.ui.core.UIComponent.extend("one.labs.mem_profiler.Component", {
 
 		// The service URL for the oData model 
 		var oServiceConfig = this.getMetadata().getConfig().serviceConfig;
-		console.log(oServiceConfig);
+		jQuery.sap.log.info(oServiceConfig);
 		var sServiceUrl = oServiceConfig.serviceUrl;
 //		sServiceUrl = sServiceUrl + 'AUTH_PROFILER/?$select=USER_NAME,CLASSIFICATION,ACCESSED_VS_TOTAL,UNRESTRICTED_VS_TOTAL';
-		console.log(sServiceUrl);
+		jQuery.sap.log.info(sServiceUrl);
 		// the metadata is read to get the location of the i18n language files later
 		var mConfig = this.getMetadata().getConfig();
 		this._routeMatchedHandler = new sap.m.routing.RouteMatchedHandler(this.getRouter(), this._bRouterCloseDialogs);
@@ -92,7 +92,7 @@ sap.ui.core.UIComponent.extend("one.labs.mem_profiler.Component", {
 
 		// initialize router and navigate to the first page
 		this.getRouter().initialize();
-		console.log('end super init');
+		jQuery.sap.log.info('end super init');
 	},
 
 	exit: function() {
@@ -119,11 +119,11 @@ sap.ui.core.UIComponent.extend("one.labs.mem_profiler.Component", {
 			defaultCountMode: "Inline",
 			useBatch: true
 		};
-		console.log('sServiceUrl = ' + sServiceUrl);
+		jQuery.sap.log.info('sServiceUrl = ' + sServiceUrl);
 		var oModel = new sap.ui.model.odata.v2.ODataModel(sServiceUrl, oConfig);
-		console.log('before msg');
+		jQuery.sap.log.info('before msg');
 		//oModel.attachRequestFailed(null, one.labs.mem_profiler.util.messages.showErrorMessage);
-		console.log('after msg (to be updated');
+		jQuery.sap.log.info('after msg (to be updated');
 		this.setModel(oModel);
 	}
 });

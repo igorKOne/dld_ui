@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="one.labs.mem_profiler.view.Platform"
+	controllerName="one.labs.mem_profiler.controller.Platform"
 	displayBlock="true"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
