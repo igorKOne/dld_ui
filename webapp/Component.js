@@ -97,6 +97,11 @@ sap.ui.define([
 		// this._initODataModel(sServiceUrl);
 
 
+	},
+	
+	getServiceURLfromManifest: function(sDataSource){
+		var sServiceUrl = this.getMetadata().getManifestEntry("sap.app").dataSources[sDataSource].uri;
+		return sServiceUrl ;
 	}
 	// exit: function () {
 	// 	this._routeMatchedHandler.destroy();

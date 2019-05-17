@@ -27,7 +27,7 @@
                      text="Overview">
 <Panel width="auto" class="sapUiResponsiveMargin">
 
-				<Title text="Overview of 2016 (in GB)"/>
+				<Title text="Overview (in GB)"/>
 				
 				
 				<!--Below is the setting panel -->

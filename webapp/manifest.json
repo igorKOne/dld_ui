@@ -1,5 +1,5 @@
 {
-	"_version": "1.12.0",
+	"_version": "1.4.0",
 	"sap.app": {
 		"id": "one.labs.mem_profiler",
 		"type": "application",
@@ -20,8 +20,19 @@
 				"settings": {
 					"localUri": "localService/metadata.xml"
 				}
-			}
-		}
+			},
+			"Platform": {
+				"uri": "/one/one/labs/mem_prof/app/service/Platform.xsjs",
+				"type": "JSON"
+			},
+			"Business": {
+				"uri": "/one/one/labs/mem_prof/app/service/Business.xsjs",
+				"type": "JSON"
+			},
+			"Business3": {
+				"uri": "/one/one/labs/mem_prof/app/service/Business3.xsjs",
+				"type": "JSON"
+			}		}
 	},
 	"sap.ui": {
 		"technology": "UI5",
@@ -48,7 +59,7 @@
 			"id": "App"
 		},
 		"dependencies": {
-			"minUI5Version": "1.44.1",
+			"minUI5Version": "1.38.8",
 			"libs": {
 				"sap.ui.layout": {},
 				"sap.ui.core": {},

@@ -12,82 +12,84 @@ sap.ui.define([
 
 
 
-       Controller.extend("one.labs.mem_profiler.view.FuncArea", {
+       return Controller.extend("one.labs.mem_profiler.view.FuncArea", {
 
 
-
-              //chart stuff
-              _constants: {
-                     sampleName: "one.labs.mem_profiler",
-
-
-
-                     customIcons: [{
-                            id: "customIcon1",
-                            src: "sap-icon://table-chart",
-                            tooltip: "Custom Table Content",
-                            pressMessage: "custom-table custom icon pressed: "
-                     }, {
-                            id: "customIcon2",
-                            src: "sap-icon://accept",
-                            tooltip: "Accept",
-                            pressMessage: "accept custom icon pressed: "
-                     }, {
-                            id: "customIcon3",
-                            src: "sap-icon://activity-items",
-                            tooltip: "Activity Items",
-                            pressMessage: "activity-items custom icon pressed: "
-                     }],
-
-                     //
-                     platformData: {
-                            id: "platformData",
-                            modulePath: this._getModulePath(),//"/odata/MEM_PROFILER.xsodata",
-
-
-                            items: {
-
-                                   dataset: {
-                                          dimensions: [{
-                                                 title: 'Staging',
-                                                 value: "{STG_PERC}"
-                                          }, {
-                                                 title: 'Reporting',
-                                                 value: "{REP_PERC}"
-                                          }],
-
-                                          data: { path: "/PLATFORM_OVERVIEW" }
-                                   }
-
-                            }
-                     }
-                     //
-
-
-              },
-              //end chart stuff
-
-              /**
-              * Changeable properties depending on the app's state.
-              *
-              * @private
-              * @property {String[]} chartContainerId Id of the chart container
-              * @property {sap.suite.ui.commons.ChartContainer} chartContainer Chart container object
-              * @property {Object} content Chart container content object
-              * @property {Object} content.chart Chart container content chart object
-              * @property {Object} content.table Chart container content table object
-              */
-              _state: {
-                     chartContainer: null,
-                     content: {
-                            chart: null,
-                            table: null
-                     }
-              },
 
               _oDialog: null,
               onInit: function () {
                      jQuery.sap.log.info('in init platform controller');
+                     
+		              //chart stuff
+		              this._constants = {
+		                     sampleName: "one.labs.mem_profiler",
+		
+		
+		
+		                     customIcons: [{
+		                            id: "customIcon1",
+		                            src: "sap-icon://table-chart",
+		                            tooltip: "Custom Table Content",
+		                            pressMessage: "custom-table custom icon pressed: "
+		                     }, {
+		                            id: "customIcon2",
+		                            src: "sap-icon://accept",
+		                            tooltip: "Accept",
+		                            pressMessage: "accept custom icon pressed: "
+		                     }, {
+		                            id: "customIcon3",
+		                            src: "sap-icon://activity-items",
+		                            tooltip: "Activity Items",
+		                            pressMessage: "activity-items custom icon pressed: "
+		                     }],
+		
+		                     //
+		                     platformData: {
+		                            id: "platformData",
+		                            modulePath: this._getModulePath(),//"/odata/MEM_PROFILER.xsodata",
+		
+		
+		                            items: {
+		
+		                                   dataset: {
+		                                          dimensions: [{
+		                                                 title: 'Staging',
+		                                                 value: "{STG_PERC}"
+		                                          }, {
+		                                                 title: 'Reporting',
+		                                                 value: "{REP_PERC}"
+		                                          }],
+		
+		                                          data: { path: "/PLATFORM_OVERVIEW" }
+		                                   }
+		
+		                            }
+		                     }
+		                     //
+		
+		
+		              };
+		              //end chart stuff
+		
+		              /**
+		              * Changeable properties depending on the app's state.
+		              *
+		              * @private
+		              * @property {String[]} chartContainerId Id of the chart container
+		              * @property {sap.suite.ui.commons.ChartContainer} chartContainer Chart container object
+		              * @property {Object} content Chart container content object
+		              * @property {Object} content.chart Chart container content chart object
+		              * @property {Object} content.table Chart container content table object
+		              */
+		              this._state = {
+		                     chartContainer: null,
+		                     content: {
+		                            chart: null,
+		                            table: null
+		                     }
+		              };
+                     
+                     
                      /*              var oModel = new sap.ui.model.json.JSONModel(this.settingsModel);
                                    oModel.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
                                    this.getView().setModel(oModel);
@@ -127,7 +129,7 @@ sap.ui.define([
                      var oDatasetModel; //new sap.ui.model.json.JSONModel(microData);
                      var oDatasetView = this.getView();
                      jQuery.sap.log.info('!!!!!!     FuncArea MODEL Binding');
-                     var xsjsUrl = '/MEM_PROFILER/webapp/view/Business3.xsjs';
+                     var xsjsUrl = this.getBusiness3ServiceURL(); //'/MEM_PROFILER/webapp/view/Business3.xsjs';
                      var microData = jQuery.ajax({
                             url: xsjsUrl,
                             method: 'GET',
@@ -160,7 +162,7 @@ sap.ui.define([
               * @private
               */
               _createContent: function () {
-                     var oVizFramePath = jQuery.sap.getModulePath(this._constants.sampleName, this._constants.table.modulePath);
+                     var oVizFramePath = this._constants.table.modulePath + "/MEM_OVERVIEW";//jQuery.sap.getModulePath(this._constants.sampleName, this._constants.table.modulePath);
                      var oVizFrameModel = new sap.ui.model.json.JSONModel(oVizFramePath);
                      var oTableConfig = this._constants.table;
                      var oTable = new sap.m.Table({
@@ -173,7 +175,10 @@ sap.ui.define([
                             cells: this._createLabels(oTableConfig.templateCellLabelTexts)
                      });
 
-                     oTable.bindItems(oTableConfig.itemBindingPath, oTableItemTemplate, null, null);
+                     oTable.bindItems({
+                     	path: oTableConfig.itemBindingPath, 
+                     	template: oTableItemTemplate, 
+                     	templateShareable:true});
                      oTable.setModel(oVizFrameModel);
 
                      return new sap.suite.ui.commons.ChartContainerContent({
@@ -328,7 +333,7 @@ sap.ui.define([
 
                      var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
                      //console.log
-                     var oVizFramePath = jQuery.sap.getModulePath(this._constants.sampleName, oVizFrame.modulePath);
+                     var oVizFramePath = oVizFrame.modulePath;
                      jQuery.sap.log.info(oVizFramePath);
                      //            var oModel = new sap.ui.model.json.JSONModel(oVizFramePath);
                      var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);

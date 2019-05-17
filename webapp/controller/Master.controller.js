@@ -12,9 +12,7 @@ sap.ui.define([
 
 
 
-    Controller.extend("one.labs.mem_profiler.view.Master", {
-
-
+    return Controller.extend("one.labs.mem_profiler.view.Master", {
 
 
         _oDialog: null,
@@ -301,9 +299,9 @@ sap.ui.define([
             jQuery.sap.log.info('chartcontainer_id ' + this.getView().byId(this._constants.chartContainerId));
             jQuery.sap.log.info('Masterviewname ' + this.getView().byId('Master'));
             jQuery.sap.log.info(this._state.chartContainer);
-            this._state.chartContainer = this.getView().byId(this._constants.chartContainerId);//(this._constants.chartContainerId);
-            jQuery.sap.log.info(this._state.chartContainer);
-            this._state.content.table = this._createContent();
+            // this._state.chartContainer = this.getView().byId(this._constants.chartContainerId);//(this._constants.chartContainerId);
+            // jQuery.sap.log.info(this._state.chartContainer);
+            // this._state.content.table = this._createContent();
 
             //            jQuery.sap.log.info(this._state.content.table);
             //            jQuery.sap.log.info(this._addDimensionSelectorItems);
@@ -349,16 +347,16 @@ sap.ui.define([
                        */
 
             // start concept
-            jQuery.sap.log.info('start concept ---------------------<<<<<<<<<<<<');
-            var xsjsUrl = '/shell/app/local-dd3/NLTMI0/MEMORY_PROFILER/MEM_PROFILER/webapp/view/test2.xsjs';
-            var microData = jQuery.ajax({
-                url: xsjsUrl,
-                method: 'GET',
-                dataType: 'json'
-            });
-            jQuery.sap.log.info(microData);
-            var oPlatformDataset = this.getView().byId('');
-            var oDatasetModel = new sap.ui.model.json.JSONModel(microData);
+            // jQuery.sap.log.info('start concept ---------------------<<<<<<<<<<<<');
+            // var xsjsUrl = '/shell/app/local-dd3/NLTMI0/MEMORY_PROFILER/MEM_PROFILER/webapp/view/test2.xsjs';
+            // var microData = jQuery.ajax({
+            //     url: xsjsUrl,
+            //     method: 'GET',
+            //     dataType: 'json'
+            // });
+            // jQuery.sap.log.info(microData);
+            // var oPlatformDataset = this.getView().byId('');
+            // var oDatasetModel = new sap.ui.model.json.JSONModel(microData);
             //              oPlatformDataset.setModel(oDatasetModel);
             //var microChart = this.getView().byId('microChart');
             //microChart.bindData(microData);
@@ -378,7 +376,7 @@ sap.ui.define([
         * @private
         */
         _createContent: function () {
-            var oVizFramePath = jQuery.sap.getModulePath(this._constants.sampleName, this._constants.table.modulePath);
+            var oVizFramePath = this._constants.table.modulePath + this._constants.table.modulePat;//jQuery.sap.getModulePath(this._constants.sampleName, this._constants.table.modulePath);
             var oVizFrameModel = new sap.ui.model.json.JSONModel(oVizFramePath);
             var oTableConfig = this._constants.table;
             var oTable = new sap.m.Table({
@@ -391,7 +389,11 @@ sap.ui.define([
                 cells: this._createLabels(oTableConfig.templateCellLabelTexts)
             });
 
-            oTable.bindItems(oTableConfig.itemBindingPath, oTableItemTemplate, null, null);
+            oTable.bindItems({
+            	path:oTableConfig.itemBindingPath, 
+            	template:oTableItemTemplate,
+            	templateShareable:false
+            });
             oTable.setModel(oVizFrameModel);
 
             return new sap.suite.ui.commons.ChartContainerContent({
@@ -547,7 +549,7 @@ sap.ui.define([
 
             var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
             //console.log
-            var oVizFramePath = jQuery.sap.getModulePath(this._constants.sampleName, oVizFrame.modulePath);
+            var oVizFramePath = oVizFrame.modulePath;
             jQuery.sap.log.info(oVizFramePath);
             //            var oModel = new sap.ui.model.json.JSONModel(oVizFramePath);
             var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);
@@ -1288,7 +1290,7 @@ sap.ui.define([
          * @param {sap.viz.ui5.controls.VizFrame} vizFrame Viz Frame to update
          */
         _updateVizFrame2: function (vizFrame) {
-            jQuery.sap.log.info('updateVizFrame2222222222222222222222222222222222222');
+            jQuery.sap.log.info('updateVizFrame2');
             var oVizFrame = this._constants.vizFrame;
             var checkbox1 = this.getView().byId("checkbox1").getSelected();
             var checkbox2 = this.getView().byId("checkbox2").getSelected();
@@ -2535,7 +2537,7 @@ sap.ui.define([
             jQuery.sap.log.info('start dataset');
             jQuery.sap.log.info(oDataset);
             jQuery.sap.log.info('end dataset');
-            var oVizFramePath = jQuery.sap.getModulePath(this._constants.sampleName, oVizFrame.modulePath);
+            var oVizFramePath = oVizFrame.modulePath;
             jQuery.sap.log.info(oVizFramePath);
             //             var oModel = new sap.ui.model.json.JSONModel(oVizFramePath);
             var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);
@@ -2714,7 +2716,7 @@ sap.ui.define([
             jQuery.sap.log.info('start dataset');
             jQuery.sap.log.info(oDataset);
             jQuery.sap.log.info('end dataset');
-            var oVizFramePath = jQuery.sap.getModulePath(this._constants.sampleName, oVizFrame.modulePath);
+            var oVizFramePath = oVizFrame.modulePath;
             jQuery.sap.log.info(oVizFramePath);
             //              var oModel = new sap.ui.model.json.JSONModel(oVizFramePath);
             var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);

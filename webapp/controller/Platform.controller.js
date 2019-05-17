@@ -12,12 +12,16 @@ sap.ui.define([
 
 
 
-       Controller.extend("one.labs.mem_profiler.view.Platform", {
+       return Controller.extend("one.labs.mem_profiler.view.Platform", {
+
+              _oDialog: null,
+              onInit: function () {
+                     jQuery.sap.log.info('in init platform controller');
 
 
 
               //chart stuff
-              _constants: {
+              this._constants = {
                      sampleName: "one.labs.mem_profiler",
 
 
@@ -64,7 +68,7 @@ sap.ui.define([
                      //
 
 
-              },
+              };
               //end chart stuff
 
               /**
@@ -77,17 +81,15 @@ sap.ui.define([
               * @property {Object} content.chart Chart container content chart object
               * @property {Object} content.table Chart container content table object
               */
-              _state: {
+              this._state = {
                      chartContainer: null,
                      content: {
                             chart: null,
                             table: null
                      }
-              },
-
-              _oDialog: null,
-              onInit: function () {
-                     jQuery.sap.log.info('in init platform controller');
+              };
+                     
+                     
                      /*              var oModel = new sap.ui.model.json.JSONModel(this.settingsModel);
                                    oModel.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
                                    this.getView().setModel(oModel);
@@ -127,7 +129,7 @@ sap.ui.define([
                      var oDatasetModel; //new sap.ui.model.json.JSONModel(microData);
                      var oDatasetView = this.getView();
                      jQuery.sap.log.info('!!!!!!     PLATFORM MODEL Binding');
-                     var xsjsUrl = '/MEM_PROFILER/webapp/view/Platform.xsjs';
+                     var xsjsUrl = this.getPlatformServiceURL();//'/MEM_PROFILER/webapp/view/Platform.xsjs';
                      //'/shell/app/local-dd3/NLTMI0/MEMORY_PROFILER/MEM_PROFILER/webapp/view/test2.xsjs';
                      var microData = jQuery.ajax({
                             url: xsjsUrl,
@@ -161,7 +163,7 @@ sap.ui.define([
               * @private
               */
               _createContent: function () {
-                     var oVizFramePath = jQuery.sap.getModulePath(this._constants.sampleName, this._constants.table.modulePath);
+                     var oVizFramePath = this._constants.table.modulePat + "/MEM_OVERVIEW";//jQuery.sap.getModulePath(this._constants.sampleName, this._constants.table.modulePath);
                      var oVizFrameModel = new sap.ui.model.json.JSONModel(oVizFramePath);
                      var oTableConfig = this._constants.table;
                      var oTable = new sap.m.Table({
@@ -174,7 +176,11 @@ sap.ui.define([
                             cells: this._createLabels(oTableConfig.templateCellLabelTexts)
                      });
 
-                     oTable.bindItems(oTableConfig.itemBindingPath, oTableItemTemplate, null, null);
+                     oTable.bindItems({
+                     	path:oTableConfig.itemBindingPath, 
+                    	template: oTableItemTemplate,
+                    	templateShareable:true
+                     });
                      oTable.setModel(oVizFrameModel);
 
                      return new sap.suite.ui.commons.ChartContainerContent({
@@ -329,7 +335,7 @@ sap.ui.define([
 
                      var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
                      //console.log
-                     var oVizFramePath = jQuery.sap.getModulePath(this._constants.sampleName, oVizFrame.modulePath);
+                     var oVizFramePath = oVizFrame.modulePath;
                      jQuery.sap.log.info(oVizFramePath);
                      //            var oModel = new sap.ui.model.json.JSONModel(oVizFramePath);
                      var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);

@@ -62,7 +62,14 @@ sap.ui.define([
 		},
 		
 		_getModulePath: function(){
-			return this.getOwnerComponent().getModel().getURL();
+			return this.getOwnerComponent().getModel().sServiceUrl;
+		},
+		
+		getPlatformServiceURL: function(){
+			return this.getOwnerComponent().getServiceURLfromManifest("Platform");
+		},
+		getBusiness3ServiceURL: function(){
+			return this.getOwnerComponent().getServiceURLfromManifest("Business3");
 		}
 		
 	});

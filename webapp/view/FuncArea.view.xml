@@ -64,7 +64,7 @@
 					</Column>
 					
 				</columns>
-				<ColumnListItem id="funcAreaColumnListItem" vAlign="Middle"  selectionMode="Multi" >
+				<ColumnListItem id="funcAreaColumnListItem" vAlign="Middle"  >
 					<cells id="funcAreaColumnListItem_cells">
 						<Text id="funcAreaColumnListItem_cell_1" text="{func_area}" maxLines="2"></Text>
 						
@@ -76,8 +76,7 @@
 						
 						<FlexBox height="100px" width="170px">
 						<micro:ColumnMicroChart  isResponsive="true" 
-							   columns="{years}"
-							   templateShareable = "true">
+							   columns="{years}">
 							   <micro:rightBottomLabel>
 							<micro:ColumnMicroChartLabel label="% Volume per Year" />
 						</micro:rightBottomLabel>
@@ -94,8 +93,7 @@
 						
 						
 						<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" 
-							   data="{data}"
-							   templateShareable = "true">
+							   data="{data}">
 								<micro:data>
 									<micro:ComparisonMicroChartData title="{title}" value="{value}" color="{color}" />
 								</micro:data>
@@ -104,8 +102,7 @@
 						
 						<FlexBox height="100px" width="170px">
 						<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" 
-							   data="{RSCS}"
-							   templateShareable = "true">
+							   data="{RSCS}">
 								<micro:data>
 									<micro:ComparisonMicroChartData title="{title}" value="{value}" color="{color}" />
 								</micro:data>
