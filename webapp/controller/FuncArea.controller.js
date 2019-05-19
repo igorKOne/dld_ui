@@ -6,13 +6,13 @@ sap.ui.define([
        'sap/ui/model/Filter',
        'sap/ui/model/Sorter',
        'sap/ui/model/json/JSONModel',
-       '../model/Formatter',
-], function (jQuery, Formatter, Fragment, Controller, Filter, Sorter, JSONModel) {
+       '../model/Formatter'
+], function (jQuery, Fragment, Controller, Filter, Sorter, JSONModel,Formatter) {
        "use strict";
 
 
 
-       return Controller.extend("one.labs.mem_profiler.view.FuncArea", {
+       return Controller.extend("one.labs.mem_profiler.controller.FuncArea", {
 
 
 

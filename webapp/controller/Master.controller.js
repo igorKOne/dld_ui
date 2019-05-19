@@ -12,7 +12,7 @@ sap.ui.define([
 
 
 
-    return Controller.extend("one.labs.mem_profiler.view.Master", {
+    return Controller.extend("one.labs.mem_profiler.controller.Master", {
 
 
         _oDialog: null,

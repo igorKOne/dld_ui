@@ -93,7 +93,7 @@
 						
 						
 						<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" 
-							   data="{data}">
+							   data="{data}"  maxValue="100" width="10rem" >
 								<micro:data>
 									<micro:ComparisonMicroChartData title="{title}" value="{value}" color="{color}" />
 								</micro:data>
