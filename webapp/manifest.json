@@ -47,7 +47,6 @@
 		}
 	},
 	"sap.ui5": {
-		"flexEnabled": false,
 		"rootView": {
 			"viewName": "one.labs.mem_profiler.view.App",
 			"type": "XML",

@@ -265,7 +265,7 @@ sap.ui.define([
             }
         };
         	
-            jQuery.sap.log.info('in init master controller');
+            
             /*              var oModel = new sap.ui.model.json.JSONModel(this.settingsModel);
                           oModel.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
                           this.getView().setModel(oModel);
@@ -281,80 +281,80 @@ sap.ui.define([
             this._oRouter = this._oComponent.getRouter();
 
             this._initViewPropertiesModel();
-            jQuery.sap.log.info(this);
+            
             var oModel = this._oComponent.getModel();
-            jQuery.sap.log.info(oModel);
+            
 
 
-            jQuery.sap.log.info('end first part init master controller');
+            
 
             var oVizFrameConstants = this._constants.vizFrame;
-            jQuery.sap.log.info(oVizFrameConstants);
+            
             //              var oAnalysisObject = new sap.viz.ui5.controls.common.feeds.AnalysisObject(oVizFrameConstants.analysisObjectProps);
-            //              jQuery.sap.log.info(oAnalysisObject);
+            //              
             //              oVizFrameConstants.feedItems[1].values.push(oAnalysisObject);
-            //              jQuery.sap.log.info(oVizFrameConstants);
+            //              
             // store chart container in the state property and create table content
-            jQuery.sap.log.info(this._constants.chartContainerId);
-            jQuery.sap.log.info('chartcontainer_id ' + this.getView().byId(this._constants.chartContainerId));
-            jQuery.sap.log.info('Masterviewname ' + this.getView().byId('Master'));
-            jQuery.sap.log.info(this._state.chartContainer);
+            
+            
+            
+            
             // this._state.chartContainer = this.getView().byId(this._constants.chartContainerId);//(this._constants.chartContainerId);
-            // jQuery.sap.log.info(this._state.chartContainer);
+            // 
             // this._state.content.table = this._createContent();
 
-            //            jQuery.sap.log.info(this._state.content.table);
-            //            jQuery.sap.log.info(this._addDimensionSelectorItems);
-            //            jQuery.sap.log.info(this._constants.dimensionSelectors);
+            //            
+            //            
+            //            
             //            this._addDimensionSelectorItems(this._constants.dimensionSelectors);
-            //            jQuery.sap.log.info('after adddimensionselectoritems');
+            //            
 
             //this._updateCustomIcons(this._constants.customIcons);
 
-            jQuery.sap.log.info('after updatecustomeicons');
+            
             var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
             //oVizFrame.setVizProperties(this._constants.vizProperties);
-            jQuery.sap.log.info(oVizFrame.getVizType());
+            
 
-            jQuery.sap.log.info(oVizFrame.getVizType());
-            jQuery.sap.log.info(oVizFrame);
+            
+            
             this._updateVizFrame(oVizFrame);
-            jQuery.sap.log.info('end master controller');
-            jQuery.sap.log.info(oVizFrame.getVizType());
+            
+            
 
             var platformChart = this.getView().byId('platformMicroChart');
-            jQuery.sap.log.info('--->>>' + platformChart);
+            
             //              platformChart.bindData('/odata/MEM_PROFILER.xsodata/PLATFORM_OVERVIEW');
-            jQuery.sap.log.info('--->>>' + platformChart);
+            
 
             var oPopOver = this.getView().byId("idPopOver");
             oPopOver.connect(oVizFrame.getVizUid());
-            jQuery.sap.log.info(oPopOver);
+            
             //oPopOver.setFormatString(CustomerFormat.FIORI_LABEL_FORMAT_2);
 
             /*              var oPlatformDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.platformData.dataset);
                           //console.log
                           var oDataPath = jQuery.sap.getModulePath(this._constants.sampleName,this._constants.platformData.modulePath);
-                          jQuery.sap.log.info(oDataPath);
+                          
                           var oPlatformModel = new sap.ui.model.odata.ODataModel(oDataPath);
-                          jQuery.sap.log.info(oPlatformModel);
-                          jQuery.sap.log.info('--->>>>>>');
-                          //jQuery.sap.log.info(oDataset);
+                          
+                          
+                          //
                           platformChart.bindData(oPlatformDataset);
                           platformChart.setModel(oPlatformModel);
-                          jQuery.sap.log.info(platformChart);
-                          jQuery.sap.log.info('<<<<<---');
+                          
+                          
                        */
 
             // start concept
-            // jQuery.sap.log.info('start concept ---------------------<<<<<<<<<<<<');
+            // 
             // var xsjsUrl = '/shell/app/local-dd3/NLTMI0/MEMORY_PROFILER/MEM_PROFILER/webapp/view/test2.xsjs';
             // var microData = jQuery.ajax({
             //     url: xsjsUrl,
             //     method: 'GET',
             //     dataType: 'json'
             // });
-            // jQuery.sap.log.info(microData);
+            // 
             // var oPlatformDataset = this.getView().byId('');
             // var oDatasetModel = new sap.ui.model.json.JSONModel(microData);
             //              oPlatformDataset.setModel(oDatasetModel);
@@ -515,7 +515,7 @@ sap.ui.define([
         * @param {sap.viz.ui5.controls.VizFrame} vizFrame Viz Frame to update
         */
         _updateVizFrame: function (vizFrame) {
-            jQuery.sap.log.info('updateVizFrame');
+            
             var oVizFrame = this._constants.vizFrame;
 
             vizFrame.setVizProperties({
@@ -550,18 +550,18 @@ sap.ui.define([
             var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
             //console.log
             var oVizFramePath = oVizFrame.modulePath;
-            jQuery.sap.log.info(oVizFramePath);
+            
             //            var oModel = new sap.ui.model.json.JSONModel(oVizFramePath);
             var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);
-            jQuery.sap.log.info(oModel);
-            jQuery.sap.log.info('--->>>>>>');
-            jQuery.sap.log.info(oDataset);
-            jQuery.sap.log.info('<<<<<---');
+            
+            
+            
+            
             vizFrame.setDataset(oDataset);
 
             vizFrame.setModel(oModel);
-            jQuery.sap.log.info('feed:');
-            jQuery.sap.log.info(oVizFrame.feedItems);
+            
+            
             this._addFeedItems(vizFrame, oVizFrame.feedItems);
 
             //vizFrame.setVizType(oVizFrame.type);
@@ -633,7 +633,7 @@ sap.ui.define([
         // alternative of getting each view element by its ID and setting the values directly because a JSon model is more
         // robust if the customer removes view elements (see extensibility).
         _initViewPropertiesModel: function () {
-            jQuery.sap.log.info('in _initViewPropertiesModel');
+            
             var oViewElemProperties = {};
             if (sap.ui.Device.system.phone) {
                 oViewElemProperties.availabilityColumnWidth = "80%";
@@ -664,7 +664,7 @@ sap.ui.define([
 
 
         handleViewSettingsDialogButtonPressed: function (oEvent) {
-            jQuery.sap.log.info(oEvent.getId());
+            
             if (!this._oDialog) {
                 this._oDialog = sap.ui.xmlfragment("one.labs.mem_profiler.view.UserSettingDialog", this);
             }
@@ -674,7 +674,7 @@ sap.ui.define([
         },
 
         handleReportViewSettingsDialogButtonPressed: function (oEvent) {
-            jQuery.sap.log.info(oEvent.getId());
+            
             if (!this._oDialog) {
                 this._oDialog = sap.ui.xmlfragment("one.labs.mem_profiler.view.UserReportSettingDialog", this);
             }
@@ -684,7 +684,7 @@ sap.ui.define([
         },
 
         handleDatasetViewSettingsDialogButtonPressed: function (oEvent) {
-            jQuery.sap.log.info(oEvent.getId());
+            
             if (!this._oDialog) {
                 this._oDialog = sap.ui.xmlfragment("one.labs.mem_profiler.view.DatasetSettingDialog", this);
             }
@@ -694,42 +694,42 @@ sap.ui.define([
         },
 
         handleConfirmDataset: function (oEvent) {
-            jQuery.sap.log.info("in confirm report");
+            
             var oView = this.getView();
-            jQuery.sap.log.info(oView);
-            jQuery.sap.log.info('hierboven oView');
+            
+            
             var oTable = oView.byId("datasetTable");
             var oBinding = this.byId("datasetTable").getBinding("items");
             //var oModel = this.getModel();
-            jQuery.sap.log.info(oTable);
-            jQuery.sap.log.info(oTable + 'oTable');
+            
+            
 
             var oComponent = sap.ui.component(sap.ui.core.Component.getOwnerIdFor(this._oView));
             var oModel = this._oComponent.getModel();
             //this.oRouter = this.oComponent.getRouter();          
-            jQuery.sap.log.info(oModel);
-            jQuery.sap.log.info(oTable);
-            jQuery.sap.log.info(oTable + 'oTable');
+            
+            
+            
 
             var mParams = oEvent.getParameters();
             //var oBinding = oTable.getBinding("items");
-            jQuery.sap.log.info(oBinding + 'obinding');
-            jQuery.sap.log.info(oBinding);
+            
+            
             var testFilter = oBinding.aFilters;
-            jQuery.sap.log.info('testFilter:');
-            jQuery.sap.log.info(testFilter);
-            jQuery.sap.log.info('event:');
-            jQuery.sap.log.info(oEvent);
-            jQuery.sap.log.info('mParams');
-            jQuery.sap.log.info(mParams);
+            
+            
+            
+            
+            
+            
             for (var i = 0; i < testFilter.length; i++) {
-                jQuery.sap.log.info(testFilter[i]);
+                
                 var localPath = testFilter[i].sPath;
-                jQuery.sap.log.info("localPath");
-                jQuery.sap.log.info(localPath);
-                jQuery.sap.log.info(testFilter[i].oValue1);
-                jQuery.sap.log.info(testFilter[i].oValue2);
-                jQuery.sap.log.info(testFilter[i].sOperator);
+                
+                
+                
+                
+                
             }
 
             // apply sorter to binding
@@ -737,26 +737,26 @@ sap.ui.define([
             var aSorters = [];
             if (mParams.groupItem) {
                 var sPath = mParams.groupItem.getKey();
-                jQuery.sap.log.info(sPath + 'spath');
+                
                 var bDescending = mParams.groupDescending;
-                jQuery.sap.log.info(bDescending + 'bDescending');
+                
                 var vGroup = this.mGroupFunctions[sPath];
-                jQuery.sap.log.info(vGroup + 'vGroup');
+                
                 aSorters.push(new sap.ui.model.Sorter(sPath, bDescending, vGroup));
             }
             var sPath = mParams.sortItem.getKey();
-            jQuery.sap.log.info(sPath + 'sPath');
-            jQuery.sap.log.info(mParams);
+            
+            
             var bDescending = mParams.sortDescending;
-            jQuery.sap.log.info(bDescending + 'bDescending');
-            jQuery.sap.log.info(aSorters);
+            
+            
             aSorters.push(new sap.ui.model.Sorter(sPath, bDescending));
-            jQuery.sap.log.info(aSorters);
-            jQuery.sap.log.info('oBinding:');
-            jQuery.sap.log.info(oBinding);
+            
+            
+            
             oBinding.sort(aSorters);
-            jQuery.sap.log.info(oBinding);
-            jQuery.sap.log.info('no sort');
+            
+            
             // apply filters to binding
             var aFilters = [];
             jQuery.each(mParams.filterItems, function (i, oItem) {
@@ -765,14 +765,14 @@ sap.ui.define([
                 var sOperator = aSplit[1];
                 var sValue1 = aSplit[2];
                 var sValue2 = aSplit[3];
-                jQuery.sap.log.info('filtertest');
-                jQuery.sap.log.info(sPath);
-                jQuery.sap.log.info(sOperator);
-                jQuery.sap.log.info(sValue1);
-                jQuery.sap.log.info(sValue2);
-                jQuery.sap.log.info(oFilter);
+                
+                
+                
+                
+                
+                
 
-                jQuery.sap.log.info(aFilters);
+                
 
                 var oFilter = new sap.ui.model.Filter(sPath,
 
@@ -789,71 +789,71 @@ sap.ui.define([
             //     var sFilter = new sap.ui.model.Filter("USER_NAME_CUSTOM",sap.ui.model.FilterOperator.EQ, sUserName);
             //     aFilters.push(sFilter);
             //}
-            jQuery.sap.log.info(aFilters);
+            
             oBinding.filter(aFilters);
-            jQuery.sap.log.info(oBinding);
-            jQuery.sap.log.info('no jquery');
+            
+            
             // update filter bar
             oView.byId("vsdDatasetFilterBar").setVisible(aFilters.length > 0);
-            jQuery.sap.log.info('na vsdFilterBar');
+            
             oView.byId("vsdDatasetFilterLabel").setText(mParams.filterString);
-            jQuery.sap.log.info('na vsdFilterLabel');
+            
 
 
         },
 
         handleConfirmReport: function (oEvent) {
-            jQuery.sap.log.info("in confirm report");
+            
             var oView = this.getView();
-            jQuery.sap.log.info(oView);
-            jQuery.sap.log.info('hierboven oView');
+            
+            
             var oTable = oView.byId("ReportTable");
             var oBinding = this.byId("ReportTable").getBinding("items");
             //var oModel = this.getModel();
-            jQuery.sap.log.info(oTable);
-            jQuery.sap.log.info(oTable + 'oTable');
+            
+            
 
             var oComponent = sap.ui.component(sap.ui.core.Component.getOwnerIdFor(this._oView));
             var oModel = this._oComponent.getModel();
             //this.oRouter = this.oComponent.getRouter();          
-            jQuery.sap.log.info(oModel);
-            jQuery.sap.log.info(oTable);
-            jQuery.sap.log.info(oTable + 'oTable');
+            
+            
+            
 
             var mParams = oEvent.getParameters();
             //var oBinding = oTable.getBinding("items");
-            jQuery.sap.log.info(oBinding + 'obinding');
-            jQuery.sap.log.info(oBinding);
-            jQuery.sap.log.info('event:');
-            jQuery.sap.log.info(oEvent);
-            jQuery.sap.log.info('mParams');
-            jQuery.sap.log.info(mParams);
+            
+            
+            
+            
+            
+            
 
             // apply sorter to binding
             // (grouping comes before sorting)
             var aSorters = [];
             if (mParams.groupItem) {
                 var sPath = mParams.groupItem.getKey();
-                jQuery.sap.log.info(sPath + 'spath');
+                
                 var bDescending = mParams.groupDescending;
-                jQuery.sap.log.info(bDescending + 'bDescending');
+                
                 var vGroup = this.mGroupFunctions[sPath];
-                jQuery.sap.log.info(vGroup + 'vGroup');
+                
                 aSorters.push(new sap.ui.model.Sorter(sPath, bDescending, vGroup));
             }
             var sPath = mParams.sortItem.getKey();
-            jQuery.sap.log.info(sPath + 'sPath');
-            jQuery.sap.log.info(mParams);
+            
+            
             var bDescending = mParams.sortDescending;
-            jQuery.sap.log.info(bDescending + 'bDescending');
-            jQuery.sap.log.info(aSorters);
+            
+            
             aSorters.push(new sap.ui.model.Sorter(sPath, bDescending));
-            jQuery.sap.log.info(aSorters);
-            jQuery.sap.log.info('oBinding:');
-            jQuery.sap.log.info(oBinding);
+            
+            
+            
             oBinding.sort(aSorters);
-            jQuery.sap.log.info(oBinding);
-            jQuery.sap.log.info('no sort');
+            
+            
             // apply filters to binding
             var aFilters = [];
             jQuery.each(mParams.filterItems, function (i, oItem) {
@@ -862,14 +862,14 @@ sap.ui.define([
                 var sOperator = aSplit[1];
                 var sValue1 = aSplit[2];
                 var sValue2 = aSplit[3];
-                jQuery.sap.log.info('filtertest');
-                jQuery.sap.log.info(sPath);
-                jQuery.sap.log.info(sOperator);
-                jQuery.sap.log.info(sValue1);
-                jQuery.sap.log.info(sValue2);
-                jQuery.sap.log.info(oFilter);
+                
+                
+                
+                
+                
+                
 
-                jQuery.sap.log.info(aFilters);
+                
 
                 var oFilter = new sap.ui.model.Filter(sPath,
 
@@ -886,15 +886,15 @@ sap.ui.define([
             //     var sFilter = new sap.ui.model.Filter("USER_NAME_CUSTOM",sap.ui.model.FilterOperator.EQ, sUserName);
             //     aFilters.push(sFilter);
             //}
-            jQuery.sap.log.info(aFilters);
+            
             oBinding.filter(aFilters);
-            jQuery.sap.log.info(oBinding);
-            jQuery.sap.log.info('no jquery');
+            
+            
             // update filter bar
             oView.byId("vsdReportFilterBar").setVisible(aFilters.length > 0);
-            jQuery.sap.log.info('na vsdFilterBar');
+            
             oView.byId("vsdReportFilterLabel").setText(mParams.filterString);
-            jQuery.sap.log.info('na vsdFilterLabel');
+            
 
 
         },
@@ -902,67 +902,53 @@ sap.ui.define([
         handleConfirm: function (oEvent) {
 
             var oView = this.getView();
-            jQuery.sap.log.info(oView);
-            jQuery.sap.log.info('hierboven oView');
+            
+            
             var oTable = oView.byId("catalogTable");
             var oBinding = this.byId("catalogTable").getBinding("items");
             //var oModel = this.getModel();
-            jQuery.sap.log.info(oTable);
-            jQuery.sap.log.info(oTable + 'oTable');
+            
+            
 
             var oComponent = sap.ui.component(sap.ui.core.Component.getOwnerIdFor(this._oView));
             var oModel = this._oComponent.getModel();
             //this.oRouter = this.oComponent.getRouter();          
-            jQuery.sap.log.info(oModel);
-            jQuery.sap.log.info(oTable);
-            jQuery.sap.log.info(oTable + 'oTable');
-            /*jQuery.sap.log.info(oModel.read("/MEMORY_PROFILER_PROFILER/?$SELECT=USER_NAME",  
-              undefined,  
-              undefined,  
-              false,  
-              function _OnSuccess(oData, response) {  
-                     window.ojson = oData;  
-                 },  
-              function _OnError(oError){                                  
-                 }                               ));
             
-            */
-
 
             var mParams = oEvent.getParameters();
             //var oBinding = oTable.getBinding("items");
-            jQuery.sap.log.info(oBinding + 'obinding');
-            jQuery.sap.log.info(oBinding);
-            jQuery.sap.log.info('event:');
-            jQuery.sap.log.info(oEvent);
-            jQuery.sap.log.info('mParams');
-            jQuery.sap.log.info(mParams);
+            
+            
+            
+            
+            
+            
 
             // apply sorter to binding
             // (grouping comes before sorting)
             var aSorters = [];
             if (mParams.groupItem) {
                 var sPath = mParams.groupItem.getKey();
-                jQuery.sap.log.info(sPath + 'spath');
+                
                 var bDescending = mParams.groupDescending;
-                jQuery.sap.log.info(bDescending + 'bDescending');
+                
                 var vGroup = this.mGroupFunctions[sPath];
-                jQuery.sap.log.info(vGroup + 'vGroup');
+                
                 aSorters.push(new sap.ui.model.Sorter(sPath, bDescending, vGroup));
             }
             var sPath = mParams.sortItem.getKey();
-            jQuery.sap.log.info(sPath + 'sPath');
-            jQuery.sap.log.info(mParams);
+            
+            
             var bDescending = mParams.sortDescending;
-            jQuery.sap.log.info(bDescending + 'bDescending');
-            jQuery.sap.log.info(aSorters);
+            
+            
             aSorters.push(new sap.ui.model.Sorter(sPath, bDescending));
-            jQuery.sap.log.info(aSorters);
-            jQuery.sap.log.info('oBinding:');
-            jQuery.sap.log.info(oBinding);
+            
+            
+            
             oBinding.sort(aSorters);
-            jQuery.sap.log.info(oBinding);
-            jQuery.sap.log.info('no sort');
+            
+            
             // apply filters to binding
             var aFilters = [];
             jQuery.each(mParams.filterItems, function (i, oItem) {
@@ -973,15 +959,15 @@ sap.ui.define([
                 var sValue2 = aSplit[3];
                 //var oFilter = new Filter(sPath, sOperator, sValue1, sValue2);
                 //var oFilter = new sap.ui.model.Filter("CLASSIFICATION_MEASURE",       sap.ui.model.FilterOperator.EQ, sValue1);
-                jQuery.sap.log.info('filtertest');
-                jQuery.sap.log.info(sPath);
-                jQuery.sap.log.info(sOperator);
-                jQuery.sap.log.info(sValue1);
-                jQuery.sap.log.info(sValue2);
-                jQuery.sap.log.info(oFilter);
+                
+                
+                
+                
+                
+                
 
-                jQuery.sap.log.info(aFilters);
-                //jQuery.sap.log.info(oValue);
+                
+                //
 
                 var oFilter = new sap.ui.model.Filter(sPath,
                     //var oFilter = new Filter(sPath,
@@ -994,13 +980,13 @@ sap.ui.define([
                                            */
                 /*                   var oFilter = new sap.ui.model.Filter({path: sPath, test: function(oValue){
                                            if (sOperator == 'EQ'){
-                                                  jQuery.sap.log.info('EQ selected');
+                                                  
                                                   if (oValue == sValue1){
-                                                         jQuery.sap.log.info('true selected');
+                                                         
                                                          return true;
                                                          }
                                                   else{
-                                                         jQuery.sap.log.info('false selected');
+                                                         
                                                          return false;
                                                   }
                                            }
@@ -1009,18 +995,18 @@ sap.ui.define([
                 aFilters.push(oFilter);
                 //oBinding.filter([oFilter]);
             });
-            //jQuery.sap.log.info(sap.ui.model.FilterOperator.EQ);
-            //jQuery.sap.log.info(sap.ui.model.FilterOperator.Equals);
-            //     jQuery.sap.log.info(oFilter);
+            //
+            //
+            //     
             //Set filter values chosen by user-clicks (user_name, report_name, dataset):
             var sUserName = this.byId("USER_NAME_FILTER").getValue();
             if (sUserName != '') {
                 var sFilter = new sap.ui.model.Filter("USER_NAME_CUSTOM", sap.ui.model.FilterOperator.EQ, sUserName);
                 aFilters.push(sFilter);
             }
-            jQuery.sap.log.info(aFilters);
+            
             oBinding.filter(aFilters);
-            jQuery.sap.log.info(oBinding);
+            
             //--
             //var oFilter = new sap.ui.model.Filter("USER_NAME",
             //            sap.ui.model.FilterOperator.Contains, sValue);
@@ -1028,12 +1014,12 @@ sap.ui.define([
             //     oBinding.filter([oFilter]);
             //--
 
-            jQuery.sap.log.info('no jquery');
+            
             // update filter bar
             oView.byId("vsdFilterBar").setVisible(aFilters.length > 0);
-            jQuery.sap.log.info('na vsdFilterBar');
+            
             oView.byId("vsdFilterLabel").setText(mParams.filterString);
-            jQuery.sap.log.info('na vsdFilterLabel');
+            
 
 
 
@@ -1048,7 +1034,7 @@ sap.ui.define([
         // Handler method for the table search.
         onSearchPressed: function () {
             var sValue = this.byId("searchField").getValue();
-            jQuery.sap.log.info("searchfield " + sValue);
+            
             var aFilter = [];
             var oBinding = this.byId("catalogTable").getBinding("items");
             if (sValue != "") {
@@ -1060,13 +1046,13 @@ sap.ui.define([
                 var oFilter = new sap.ui.model.Filter("USER_NAME_CUSTOM", //"VIEW_NAME",
                     sap.ui.model.FilterOperator.NE, sValue);
                 aFilter.push(oFilter);
-                jQuery.sap.log.info(oFilter);
+                
             }
             oBinding.filter(aFilter);
         },
         onSearchReportPressed: function () {
             var sValue = this.byId("searchReports").getValue();
-            jQuery.sap.log.info("searchfield " + sValue);
+            
             var aFilter = [];
             var oBinding = this.byId("ReportTable").getBinding("items");
             if (sValue != "") {
@@ -1078,7 +1064,7 @@ sap.ui.define([
                 var oFilter = new sap.ui.model.Filter("VIEW_NAME_1", //"VIEW_NAME",
                     sap.ui.model.FilterOperator.NE, sValue);
                 aFilter.push(oFilter);
-                jQuery.sap.log.info(oFilter);
+                
             }
             oBinding.filter(aFilter);
 
@@ -1087,23 +1073,23 @@ sap.ui.define([
         },
         onSearchDatasetPressed: function () {
             var sValue = this.byId("searchDatasets").getValue();
-            jQuery.sap.log.info("searchfield " + sValue);
+            
             var aFilter = [];
             var oBinding = this.byId("datasetTable").getBinding("items");
-            jQuery.sap.log.info(oBinding);
+            
             if (sValue != "") {
                 var oFilter = new sap.ui.model.Filter("CUSTOM_DESCRIPTION", //"VIEW_NAME",
                     sap.ui.model.FilterOperator.Contains, sValue);
                 aFilter.push(oFilter);
-                jQuery.sap.log.info(oFilter);
+                
             }
             if (sValue == "") {
                 var oFilter = new sap.ui.model.Filter("CUSTOM_DESCRIPTION", //"VIEW_NAME",
                     sap.ui.model.FilterOperator.NE, sValue);
                 aFilter.push(oFilter);
-                jQuery.sap.log.info(oFilter);
+                
             }
-            jQuery.sap.log.info(aFilter);
+            
             oBinding.filter(aFilter);
 
 
@@ -1120,7 +1106,7 @@ sap.ui.define([
             var oBinding3 = this.byId("catalogTable").getBinding("items");
             var testFilter = oBinding.aFilters;
             for (var i = 0; i < testFilter.length; i++) {
-                jQuery.sap.log.info(testFilter[i]);
+                
                 var localPath = testFilter[i].sPath;
                 if (localPath != "DATASET") {
                     var oFilter = new sap.ui.model.Filter(localPath, testFilter[i].sOperator, testFilter[i].oValue1, testFilter[i].oValue2);
@@ -1129,7 +1115,7 @@ sap.ui.define([
             }
             testFilter = oBinding2.aFilters;
             for (var i = 0; i < testFilter.length; i++) {
-                jQuery.sap.log.info(testFilter[i]);
+                
                 var localPath = testFilter[i].sPath;
                 if (localPath != "DATASET") {
                     var oFilter = new sap.ui.model.Filter(localPath, testFilter[i].sOperator, testFilter[i].oValue1, testFilter[i].oValue2);
@@ -1138,7 +1124,7 @@ sap.ui.define([
             }
             testFilter = oBinding3.aFilters;
             for (var i = 0; i < testFilter.length; i++) {
-                jQuery.sap.log.info(testFilter[i]);
+                
                 var localPath = testFilter[i].sPath;
                 if (localPath != "DATASET") {
                     var oFilter = new sap.ui.model.Filter(localPath, testFilter[i].sOperator, testFilter[i].oValue1, testFilter[i].oValue2);
@@ -1147,7 +1133,7 @@ sap.ui.define([
             }
             var oTable = this.getView().byId("datasetTable");
             var idx = oTable.indexOfItem(oTable.getSelectedItem());
-            jQuery.sap.log.info(idx);
+            
             if (idx > -1) {
                 var oItems = oTable.getSelectedItems();
                 var counter = 0;
@@ -1156,20 +1142,20 @@ sap.ui.define([
                     var doContinue = true;
                     testFilter = oBinding.aFilters;
                     for (var j = 0; j < testFilter.length; j++) {
-                        jQuery.sap.log.info(testFilter[j]);
+                        
                         var localPath = testFilter[j].sPath;
                         if (testFilter[j].oValue1 == decodeURI(oItems[j].getBindingContext().getObject().DATASET)) {
                             doContinue = false;
                         }
                     }
                     if (doContinue == true) {
-                        jQuery.sap.log.info((oItems[i].getBindingContext().getObject()));
-                        jQuery.sap.log.info(oItems[i].getBindingContext().getPath());
-                        jQuery.sap.log.info(oItems[i].getBindingContext().getObject().DATASET);
+                        
+                        
+                        
                         var str = oItems[i].getBindingContext().getPath();
                         str = str.replace("/MEMORY_PROFILER_DATASETS('", "");
                         str = str.replace("')", "");
-                        jQuery.sap.log.info(str);
+                        
                         str = decodeURI(str);
                         var oFilter = new sap.ui.model.Filter("DATASET", sap.ui.model.FilterOperator.EQ, decodeURI(oItems[i].getBindingContext().getObject().DATASET));
                         aFilter.push(oFilter);
@@ -1186,21 +1172,21 @@ sap.ui.define([
             }
             else
                 this.byId("deselectDataset").setProperty("visible", false);
-            jQuery.sap.log.info(aFilter);
+            
             oBinding.filter(aFilter);
             oBinding2.filter(aFilter2);
             oBinding3.filter(aFilter3);
-            jQuery.sap.log.info("check user filter:");
-            jQuery.sap.log.info(aFilter3);
+            
+            
 
             var aSorters = [];
             var vGroup = this.mGroupFunctions['USER_NAME_CUSTOM'];
-            jQuery.sap.log.info(vGroup + 'vGroup');
+            
             aSorters.push(new sap.ui.model.Sorter('USER_NAME_CUSTOM', '', vGroup));
 
-            jQuery.sap.log.info(aSorters);
-            jQuery.sap.log.info('oBinding:');
-            jQuery.sap.log.info(oBinding);
+            
+            
+            
             oBinding3.sort(aSorters);
         },
 
@@ -1212,42 +1198,42 @@ sap.ui.define([
 
             var testFilter = oBinding.aFilters;
             for (var i = 0; i < testFilter.length; i++) {
-                jQuery.sap.log.info(testFilter[i]);
+                
                 var localPath = testFilter[i].sPath;
                 if (localPath != "DATASET") {
                     var oFilter = new sap.ui.model.Filter(localPath, testFilter[i].sOperator, testFilter[i].oValue1, testFilter[i].oValue2);
                     aFilter.push(oFilter);
                 }
             }
-            jQuery.sap.log.info(aFilter);
+            
             oBinding.filter(aFilter);
 
             // do the same for USER table
             oBinding = this.byId("catalogTable").getBinding("items");
             testFilter = oBinding.aFilters;
             for (var i = 0; i < testFilter.length; i++) {
-                jQuery.sap.log.info(testFilter[i]);
+                
                 var localPath = testFilter[i].sPath;
                 if (localPath != "DATASET") {
                     var oFilter = new sap.ui.model.Filter(localPath, testFilter[i].sOperator, testFilter[i].oValue1, testFilter[i].oValue2);
                     aFilter.push(oFilter);
                 }
             }
-            jQuery.sap.log.info(aFilter);
+            
             oBinding.filter(aFilter);
 
             // do the same for REPORT table
             oBinding = this.byId("ReportTable").getBinding("items");
             testFilter = oBinding.aFilters;
             for (var i = 0; i < testFilter.length; i++) {
-                jQuery.sap.log.info(testFilter[i]);
+                
                 var localPath = testFilter[i].sPath;
                 if (localPath != "DATASET") {
                     var oFilter = new sap.ui.model.Filter(localPath, testFilter[i].sOperator, testFilter[i].oValue1, testFilter[i].oValue2);
                     aFilter.push(oFilter);
                 }
             }
-            jQuery.sap.log.info(aFilter);
+            
             oBinding.filter(aFilter);
         },
 
@@ -1290,19 +1276,19 @@ sap.ui.define([
          * @param {sap.viz.ui5.controls.VizFrame} vizFrame Viz Frame to update
          */
         _updateVizFrame2: function (vizFrame) {
-            jQuery.sap.log.info('updateVizFrame2');
+            
             var oVizFrame = this._constants.vizFrame;
             var checkbox1 = this.getView().byId("checkbox1").getSelected();
             var checkbox2 = this.getView().byId("checkbox2").getSelected();
             var checkbox3 = this.getView().byId("checkbox3").getSelected();
             var checkbox4 = this.getView().byId("checkbox4").getSelected();
             var checkbox5 = this.getView().byId("checkbox5").getSelected();
-            jQuery.sap.log.info('checkboxes');
-            jQuery.sap.log.info(checkbox1);
-            jQuery.sap.log.info(checkbox2);
-            jQuery.sap.log.info(checkbox3);
-            jQuery.sap.log.info(checkbox4);
-            jQuery.sap.log.info(checkbox5);
+            
+            
+            
+            
+            
+            
 
             //this.byId
             if (checkbox1 == false && checkbox2 == true && checkbox3 == true && checkbox4 == true && checkbox5 == true) {
@@ -2462,7 +2448,7 @@ sap.ui.define([
                 });
 
                 var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-                jQuery.sap.log.info('zitten we in juiste check??????????????');
+                
                 var feeds = [
                     new FeedItem({
                         'uid': "primaryValues",
@@ -2534,22 +2520,22 @@ sap.ui.define([
 
 
             var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
-            jQuery.sap.log.info('start dataset');
-            jQuery.sap.log.info(oDataset);
-            jQuery.sap.log.info('end dataset');
+            
+            
+            
             var oVizFramePath = oVizFrame.modulePath;
-            jQuery.sap.log.info(oVizFramePath);
+            
             //             var oModel = new sap.ui.model.json.JSONModel(oVizFramePath);
             var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);
-            jQuery.sap.log.info(oModel);
-            jQuery.sap.log.info('--->>>>>>');
-            jQuery.sap.log.info(oDataset);
-            jQuery.sap.log.info('<<<<<---');
+            
+            
+            
+            
             //vizFrame.setDataset(oDataset);
 
             //vizFrame.setModel(oModel);
-            jQuery.sap.log.info('feed:');
-            jQuery.sap.log.info(oVizFrame.feedItems);
+            
+            
             //this._addFeedItems(vizFrame, oVizFrame.feedItems);
 
             vizFrame.destroyDataset();
@@ -2580,7 +2566,7 @@ sap.ui.define([
             }
             if ((checkbox1 == false && checkbox2 == false && checkbox3 == true && checkbox4 == true && checkbox5 == false)
             ) {
-                jQuery.sap.log.info('false false true true false');
+                
                 vizFrame.setVizType('stacked_column');
             }
             vizFrame.setVisible(true);
@@ -2603,14 +2589,14 @@ sap.ui.define([
          * @param {sap.viz.ui5.controls.VizFrame} vizFrame Viz Frame to update
          */
         _updateVizFrame3: function (vizFrame) {
-            jQuery.sap.log.info('updateVizFrame3333333333333333');
+            
             var oVizFrame = this._constants.vizFrame;
             var checkbox1 = this.getView().byId("checkbox1").getSelected();
             var checkbox2 = this.getView().byId("checkbox2").getSelected();
             var checkbox3 = this.getView().byId("checkbox3").getSelected();
             var checkbox4 = this.getView().byId("checkbox4").getSelected();
             var checkbox5 = this.getView().byId("checkbox5").getSelected();
-            jQuery.sap.log.info(checkbox1);
+            
             //this.byId
             if (checkbox1 == false &&
                 checkbox2 == false && checkbox3 == true && checkbox4 == true && checkbox5 == true) {
@@ -2713,22 +2699,22 @@ sap.ui.define([
 
 
             var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
-            jQuery.sap.log.info('start dataset');
-            jQuery.sap.log.info(oDataset);
-            jQuery.sap.log.info('end dataset');
+            
+            
+            
             var oVizFramePath = oVizFrame.modulePath;
-            jQuery.sap.log.info(oVizFramePath);
+            
             //              var oModel = new sap.ui.model.json.JSONModel(oVizFramePath);
             var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);
-            jQuery.sap.log.info(oModel);
-            jQuery.sap.log.info('--->>>>>>');
-            jQuery.sap.log.info(oDataset);
-            jQuery.sap.log.info('<<<<<---');
+            
+            
+            
+            
             //vizFrame.setDataset(oDataset);
 
             //vizFrame.setModel(oModel);
-            jQuery.sap.log.info('feed:');
-            jQuery.sap.log.info(oVizFrame.feedItems);
+            
+            
             //this._addFeedItems(vizFrame, oVizFrame.feedItems);
 
             vizFrame.destroyDataset();
@@ -2751,58 +2737,58 @@ sap.ui.define([
 
         // checkbox events for tab1 (chart layout)
         onSelectAllocation: function (oEvent) {
-            jQuery.sap.log.info('In checkbox event');
+            
             //this._state.chartContainer.removeContent();
             var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
             //oVizFrame.setVizProperties(this._constants.vizProperties);
-            jQuery.sap.log.info(oVizFrame.getVizType());
+            
 
-            jQuery.sap.log.info(oVizFrame.getVizType());
-            jQuery.sap.log.info(oVizFrame);
+            
+            
             this._updateVizFrame2(oVizFrame);
 
         },
         onSelectLicensed: function (oEvent) {
-            jQuery.sap.log.info('In checkbox event');
+            
             var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
             //oVizFrame.setVizProperties(this._constants.vizProperties);
-            jQuery.sap.log.info(oVizFrame.getVizType());
+            
 
-            jQuery.sap.log.info(oVizFrame.getVizType());
-            jQuery.sap.log.info(oVizFrame);
+            
+            
             this._updateVizFrame2(oVizFrame);
         },
         onSelectCS: function (oEvent) {
-            jQuery.sap.log.info('In checkbox event');
+            
             //this._state.chartContainer.removeContent();
             var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
             //oVizFrame.setVizProperties(this._constants.vizProperties);
-            jQuery.sap.log.info(oVizFrame.getVizType());
+            
 
-            jQuery.sap.log.info(oVizFrame.getVizType());
-            jQuery.sap.log.info(oVizFrame);
+            
+            
             this._updateVizFrame2(oVizFrame);
         },
         onSelectRS: function (oEvent) {
-            jQuery.sap.log.info('In checkbox event');
+            
             //this._state.chartContainer.removeContent();
             var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
             //oVizFrame.setVizProperties(this._constants.vizProperties);
-            jQuery.sap.log.info(oVizFrame.getVizType());
+            
 
-            jQuery.sap.log.info(oVizFrame.getVizType());
-            jQuery.sap.log.info(oVizFrame);
+            
+            
             this._updateVizFrame2(oVizFrame);
         },
         onSelectPeak: function (oEvent) {
-            jQuery.sap.log.info('In checkbox event');
+            
             //this._state.chartContainer.removeContent();
             var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
             //oVizFrame.setVizProperties(this._constants.vizProperties);
-            jQuery.sap.log.info(oVizFrame.getVizType());
+            
 
-            jQuery.sap.log.info(oVizFrame.getVizType());
-            jQuery.sap.log.info(oVizFrame);
+            
+            
             this._updateVizFrame2(oVizFrame);
         },
 

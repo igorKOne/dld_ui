@@ -126,11 +126,11 @@ sap.ui.define([
 // 			defaultCountMode: "Inline",
 // 			useBatch: true
 // 		};
-// 		jQuery.sap.log.info("sServiceUrl = " + sServiceUrl);
+// 		
 // 		var oModel = new sap.ui.model.odata.v2.ODataModel(sServiceUrl, oConfig);
-// 		jQuery.sap.log.info("before msg");
+// 		
 // 		//oModel.attachRequestFailed(null, one.labs.mem_profiler.util.messages.showErrorMessage);
-// 		jQuery.sap.log.info("after msg (to be updated");
+// 		
 // 		this.setModel(oModel);
 // 	}
 });
