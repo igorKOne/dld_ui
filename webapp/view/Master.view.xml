@@ -17,11 +17,11 @@
 											<HBox class='settingsHBox'>
 												<VBox width="200px">
 													<Label text='Include/exclude from chart' design="Bold" class='settingsLabel'></Label>
-													<CheckBox id="checkbox1" text="Allocation Limit" selected="true" select="onSelectAllocation"/>
-													<CheckBox id="checkbox2" text="Licensed Space" selected="true" select="onSelectLicensed"/>
-													<CheckBox id="checkbox3" text="ColumnStore Data" selected="true" select="onSelectCS"/>
-													<CheckBox id="checkbox4" text="RowStore Data" selected="true" select="onSelectRS"/>
-													<CheckBox id="checkbox5" text="Peak Memory Usage" selected="true" select="onSelectPeak"/>
+													<CheckBox id="checkbox1" text="Allocation Limit" selected="true" select="onSelectMeasure"/>
+													<CheckBox id="checkbox2" text="Licensed Space" selected="true" select="onSelectMeasure"/>
+													<CheckBox id="checkbox3" text="ColumnStore Data" selected="true" select="onSelectMeasure"/>
+													<CheckBox id="checkbox4" text="RowStore Data" selected="true" select="onSelectMeasure"/>
+													<CheckBox id="checkbox5" text="Peak Memory Usage" selected="true" select="onSelectMeasure"/>
 												</VBox>
 											</HBox>
 										</content>

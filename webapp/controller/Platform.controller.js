@@ -328,7 +328,7 @@ sap.ui.define([
                             },
                             title: {
                                    visible: false,
-                                   text: 'Revenue by City and Store Name'
+                                   text: 'HANA Memory Usage'
                             }
                      });
 
@@ -438,7 +438,7 @@ sap.ui.define([
                      }
                      this._oViewProperties = new sap.ui.model.json.JSONModel(oViewElemProperties);
                      this._oView.setModel(this._oViewProperties, "viewProperties");
-              },
+              }
 
               //onNavBack: function () {
               //       window.history.go(-1);

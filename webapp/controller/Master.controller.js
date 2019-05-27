@@ -6,8 +6,9 @@ sap.ui.define([
     'sap/ui/model/Filter',
     'sap/ui/model/Sorter',
     'sap/ui/model/json/JSONModel',
+    "sap/viz/ui5/controls/common/feeds/FeedItem",
     '../model/Formatter'
-], function (jQuery, Fragment, Controller, Filter, Sorter, JSONModel, Formatter) {
+], function (jQuery, Fragment, Controller, Filter, Sorter, JSONModel, FeedItem, Formatter) {
     "use strict";
 
 
@@ -41,7 +42,7 @@ sap.ui.define([
                             tooltip: {
                                 visible: true,
 
-                                bodyDimensionLabel: "Stroe Name",
+                                bodyDimensionLabel: "Store Name",
                                 bodyDimensionValue: "Store Name"
                             }
                         }
@@ -282,13 +283,13 @@ sap.ui.define([
 
             this._initViewPropertiesModel();
             
-            var oModel = this._oComponent.getModel();
+            // var oModel = this._oComponent.getModel();
             
 
 
             
 
-            var oVizFrameConstants = this._constants.vizFrame;
+            // var oVizFrameConstants = this._constants.vizFrame;
             
             //              var oAnalysisObject = new sap.viz.ui5.controls.common.feeds.AnalysisObject(oVizFrameConstants.analysisObjectProps);
             //              
@@ -322,7 +323,7 @@ sap.ui.define([
             
             
 
-            var platformChart = this.getView().byId('platformMicroChart');
+            // var platformChart = this.getView().byId('platformMicroChart');
             
             //              platformChart.bindData('/odata/MEM_PROFILER.xsodata/PLATFORM_OVERVIEW');
             
@@ -542,17 +543,17 @@ sap.ui.define([
                 },
                 title: {
                     visible: false,
-                    text: 'Revenue by City and Store Name'
+                    text: ""
                 }
             });
 
 
             var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
             //console.log
-            var oVizFramePath = oVizFrame.modulePath;
+            // var oVizFramePath = oVizFrame.modulePath;
             
-            //            var oModel = new sap.ui.model.json.JSONModel(oVizFramePath);
-            var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);
+            //var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);
+            let oModel = this.getOwnerComponent().getModel();                                   
             
             
             
@@ -1285,22 +1286,36 @@ sap.ui.define([
             var checkbox5 = this.getView().byId("checkbox5").getSelected();
             
             
+            let aMeasures = [
+            	{
+            		name: "Allocation Limit",
+            		selected: checkbox1,
+            		axis: "line"
+            	}, {
+            		name: "Licensed Space",
+            		selected: checkbox2,
+            		axis: "line"
+            		
+            	} ,{
+            		name:"RowStore Data",
+            		selected: checkbox3,
+            		axis: "bar"
+            		
+            	}, {
+            		name: "ColumnStore Data",
+            		selected: checkbox4,
+            		axis: "bar"
+            		
+            	},{
+            		name: "Peak Memory Usage",
+            		selected: checkbox5,
+            		axis: "line"
+            		
+            	}];
             
+            let aSelectedMeasures = aMeasures.filter(elem=>{return elem.selected;}); // get selected measures
             
-            
-            
-
-            //this.byId
-            if (checkbox1 == false && checkbox2 == true && checkbox3 == true && checkbox4 == true && checkbox5 == true) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["line", "bar", "bar", "line"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
+            let oCommonVizProperties = {
                     valueAxis: {
                         label: {
                             visible: true
@@ -1316,1217 +1331,1216 @@ sap.ui.define([
                     },
                     title: {
                         visible: false,
-                        text: 'Revenue by City and Store Name'
+                        text: 'HANA Memory Usage'
+                    }            
+            };
+//                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            vizFrame.setVizProperties(Object.assign({
+                plotArea: {
+
+                    dataShape: {
+                        primaryAxis: aSelectedMeasures.map((elem)=>{return elem.axis;}), // all filtered axises
+                        secondaryAxis: ["bar"]
                     }
-                });
+                }
 
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+            }, oCommonVizProperties));
 
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': [ //"Allocation Limit",
-                            "Licensed Space",
 
-                            "RowStore Data",
-                            "ColumnStore Data",
-                            "Peak Memory Usage"]
-                    }),
-                    new FeedItem({
+            let aFeeds = [
+                new FeedItem({
+                    'uid': "primaryValues",
+                    'type': "Measure",
+                    'values': aSelectedMeasures.map((elem)=>{return elem.name;}) //all filtered names
+                }),
+                new FeedItem({
                         'uid': "axisLabels",
                         'type': "Dimension",
                         'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-
-            if (checkbox1 == true && checkbox2 == true && checkbox3 == false && checkbox4 == false && checkbox5 == false) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["line", "line"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': ["Allocation Limit",
-                            "Licensed Space"//,
-                            //"ColumnStore Data",
-                            //"RowStore Data",
-                            //"Peak Memory Usage"
-                        ]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-            if (checkbox1 == true && checkbox2 == true && checkbox3 == false && checkbox4 == false && checkbox5 == true) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["line", "line", "line"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': ["Allocation Limit",
-                            "Licensed Space",
-                            //"ColumnStore Data",
-                            //"RowStore Data",
-                            "Peak Memory Usage"
-                        ]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-            if (checkbox1 == false && checkbox2 == true && checkbox3 == false && checkbox4 == false && checkbox5 == true) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["line", "line"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': [ //"Allocation Limit",
-                            "Licensed Space",
-                            //"ColumnStore Data",
-                            //"RowStore Data",
-                            "Peak Memory Usage"
-                        ]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-
-            if (checkbox1 == false && checkbox2 == true && checkbox3 == false && checkbox4 == false && checkbox5 == false) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["line", "line"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': [ //"Allocation Limit",
-                            "Licensed Space"//,
-                            //"ColumnStore Data",
-                            //"RowStore Data",
-                            //"Peak Memory Usage"
-                        ]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-
-            if (checkbox1 == false &&
-                checkbox2 == false && checkbox3 == true && checkbox4 == true && checkbox5 == true) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["bar", "bar", "line"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': [ //"Allocation Limit",
-                            //"Licensed Space",
-                            "ColumnStore Data",
-                            "RowStore Data",
-                            "Peak Memory Usage"]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-            if (checkbox1 == true &&
-                checkbox2 == false && checkbox3 == true && checkbox4 == true && checkbox5 == true) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["line", "bar", "bar", "line"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': ["Allocation Limit",
-                            //"Licensed Space",
-                            "ColumnStore Data",
-                            "RowStore Data",
-                            "Peak Memory Usage"]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-
-            if (checkbox1 == true &&
-                checkbox2 == false && checkbox3 == false && checkbox4 == true && checkbox5 == true) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["line", "bar", "line"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': ["Allocation Limit",
-                            //"Licensed Space",
-                            //"ColumnStore Data",
-                            "RowStore Data",
-                            "Peak Memory Usage"]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-            if (checkbox1 == true &&
-                checkbox2 == false && checkbox3 == false && checkbox4 == false && checkbox5 == true) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["line", "line"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': ["Allocation Limit",
-                            //"Licensed Space",
-                            //"ColumnStore Data",
-                            //"RowStore Data",
-                            "Peak Memory Usage"]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-            if (checkbox1 == true &&
-                checkbox2 == false && checkbox3 == false && checkbox4 == false && checkbox5 == false) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["line", "line"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': ["Allocation Limit"
-                            //"Licensed Space",
-                            //"ColumnStore Data",
-                            //"RowStore Data",
-                            //"Peak Memory Usage"
-                        ]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-            if (checkbox1 == false &&
-                checkbox2 == false && checkbox3 == false && checkbox4 == true && checkbox5 == true) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["bar", "line"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': [ //"Allocation Limit",
-                            //"Licensed Space",
-                            //"ColumnStore Data",
-                            "RowStore Data",
-                            "Peak Memory Usage"]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-            if (checkbox1 == false &&
-                checkbox2 == false && checkbox3 == false && checkbox4 == false && checkbox5 == true) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["line"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': [ //"Allocation Limit",
-                            //"Licensed Space",
-                            //"ColumnStore Data",
-                            //"RowStore Data",
-                            "Peak Memory Usage"]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-            if (checkbox1 == false &&
-                checkbox2 == false && checkbox3 == false && checkbox4 == false && checkbox5 == false) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["line"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': [ //"Allocation Limit",
-                            //"Licensed Space",
-                            //"ColumnStore Data",
-                            //"RowStore Data",
-                            //"Peak Memory Usage"
-                        ]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-            if (checkbox1 == true && checkbox2 == true && checkbox3 == false && checkbox4 == true && checkbox5 == true) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["line", "line", "bar", "line"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': ["Allocation Limit",
-                            "Licensed Space",
-                            //"ColumnStore Data",
-                            "RowStore Data",
-                            "Peak Memory Usage"]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-            if (checkbox1 == true && checkbox2 == true && checkbox3 == true && checkbox4 == false && checkbox5 == true) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["line", "line", "bar", "line"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': ["Allocation Limit",
-                            "Licensed Space",
-                            "ColumnStore Data",
-                            //"RowStore Data",
-                            "Peak Memory Usage"]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-            if (checkbox1 == true && checkbox2 == true && checkbox3 == true && checkbox4 == true && checkbox5 == false) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["line", "line", "bar", "bar"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': ["Allocation Limit",
-                            "Licensed Space",
-                            "ColumnStore Data",
-                            "RowStore Data"//,
-                            //"Peak Memory Usage"
-                        ]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-            if (checkbox1 == true && checkbox2 == false && checkbox3 == true && checkbox4 == false && checkbox5 == false) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["line", "bar"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': ["Allocation Limit",
-                            //"Licensed Space",
-                            "ColumnStore Data"//,
-                            //"RowStore Data",
-                            //"Peak Memory Usage"
-                        ]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-            if (checkbox1 == true && checkbox2 == false && checkbox3 == true && checkbox4 == true && checkbox5 == false) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["line", "bar", "bar"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': ["Allocation Limit",
-                            //"Licensed Space",
-                            "ColumnStore Data",
-                            "RowStore Data",
-                            //"Peak Memory Usage"
-                        ]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-            if (checkbox1 == true && checkbox2 == false && checkbox3 == true && checkbox4 == false && checkbox5 == true) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["line", "bar", "line"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': ["Allocation Limit",
-                            //"Licensed Space",
-                            "ColumnStore Data",
-                            //"RowStore Data",
-                            "Peak Memory Usage"
-                        ]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-            if (checkbox1 == false && checkbox2 == false && checkbox3 == true && checkbox4 == false && checkbox5 == false) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["bar"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': [ //"Allocation Limit",
-                            //"Licensed Space",
-                            "ColumnStore Data"//,
-                            //"RowStore Data",
-                            //"Peak Memory Usage"
-                        ]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-            if (checkbox1 == false && checkbox2 == false && checkbox3 == false && checkbox4 == true && checkbox5 == false) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["bar"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-
-
-
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': [ //"Allocation Limit",
-                            //"Licensed Space",
-                            //"ColumnStore Data"//,
-                            "RowStore Data"//,
-                            //"Peak Memory Usage"
-                        ]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-            if (checkbox1 == true && checkbox2 == true && checkbox3 == true && checkbox4 == true && checkbox5 == true) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["line", "line", "bar", "bar"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
-
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': ["Allocation Limit",
-                            "Licensed Space",
-                            "ColumnStore Data",
-                            "RowStore Data",
-                            "Peak Memory Usage"]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
-
-
-            if (checkbox1 == false && checkbox2 == false && checkbox3 == true && checkbox4 == true && checkbox5 == false) {
-                vizFrame.setVizProperties({
-                    plotArea: {
-
-                        dataShape: {
-                            primaryAxis: ["bar", "bar"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
-
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
-
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+                })
+            ];
+
+            // //this.byId
+            // if (checkbox1 == false && checkbox2 == true && checkbox3 == true && checkbox4 == true && checkbox5 == true) {
+            //     vizFrame.setVizProperties(Object.assign({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["line", "bar", "bar", "line"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         }
+
+            //     }, oCommonVizProperties));
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': [ //"Allocation Limit",
+            //                 "Licensed Space",
+
+            //                 "RowStore Data",
+            //                 "ColumnStore Data",
+            //                 "Peak Memory Usage"]
+            //         }),
+            //         oMonthFeedItem
+            //     ];
+            // }
+
+
+
+            // if (checkbox1 == true && checkbox2 == true && checkbox3 == false && checkbox4 == false && checkbox5 == false) {
+            //     vizFrame.setVizProperties(Object.assign({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["line", "line"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         }
+
+            //     },oCommonVizProperties));
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': ["Allocation Limit",
+            //                 "Licensed Space"//,
+            //                 //"ColumnStore Data",
+            //                 //"RowStore Data",
+            //                 //"Peak Memory Usage"
+            //             ]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+            // if (checkbox1 == true && checkbox2 == true && checkbox3 == false && checkbox4 == false && checkbox5 == true) {
+            //     vizFrame.setVizProperties(Object.assign({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["line", "line", "line"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         }
+
+            //     },oCommonVizProperties));
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': ["Allocation Limit",
+            //                 "Licensed Space",
+            //                 //"ColumnStore Data",
+            //                 //"RowStore Data",
+            //                 "Peak Memory Usage"
+            //             ]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+            // if (checkbox1 == false && checkbox2 == true && checkbox3 == false && checkbox4 == false && checkbox5 == true) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["line", "line"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': [ //"Allocation Limit",
+            //                 "Licensed Space",
+            //                 //"ColumnStore Data",
+            //                 //"RowStore Data",
+            //                 "Peak Memory Usage"
+            //             ]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+
+            // if (checkbox1 == false && checkbox2 == true && checkbox3 == false && checkbox4 == false && checkbox5 == false) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["line", "line"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': [ //"Allocation Limit",
+            //                 "Licensed Space"//,
+            //                 //"ColumnStore Data",
+            //                 //"RowStore Data",
+            //                 //"Peak Memory Usage"
+            //             ]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+
+            // if (checkbox1 == false &&
+            //     checkbox2 == false && checkbox3 == true && checkbox4 == true && checkbox5 == true) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["bar", "bar", "line"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': [ //"Allocation Limit",
+            //                 //"Licensed Space",
+            //                 "ColumnStore Data",
+            //                 "RowStore Data",
+            //                 "Peak Memory Usage"]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+            // if (checkbox1 == true &&
+            //     checkbox2 == false && checkbox3 == true && checkbox4 == true && checkbox5 == true) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["line", "bar", "bar", "line"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': ["Allocation Limit",
+            //                 //"Licensed Space",
+            //                 "ColumnStore Data",
+            //                 "RowStore Data",
+            //                 "Peak Memory Usage"]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+
+            // if (checkbox1 == true &&
+            //     checkbox2 == false && checkbox3 == false && checkbox4 == true && checkbox5 == true) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["line", "bar", "line"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': ["Allocation Limit",
+            //                 //"Licensed Space",
+            //                 //"ColumnStore Data",
+            //                 "RowStore Data",
+            //                 "Peak Memory Usage"]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+            // if (checkbox1 == true &&
+            //     checkbox2 == false && checkbox3 == false && checkbox4 == false && checkbox5 == true) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["line", "line"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': ["Allocation Limit",
+            //                 //"Licensed Space",
+            //                 //"ColumnStore Data",
+            //                 //"RowStore Data",
+            //                 "Peak Memory Usage"]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+            // if (checkbox1 == true &&
+            //     checkbox2 == false && checkbox3 == false && checkbox4 == false && checkbox5 == false) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["line", "line"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': ["Allocation Limit"
+            //                 //"Licensed Space",
+            //                 //"ColumnStore Data",
+            //                 //"RowStore Data",
+            //                 //"Peak Memory Usage"
+            //             ]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+            // if (checkbox1 == false &&
+            //     checkbox2 == false && checkbox3 == false && checkbox4 == true && checkbox5 == true) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["bar", "line"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': [ //"Allocation Limit",
+            //                 //"Licensed Space",
+            //                 //"ColumnStore Data",
+            //                 "RowStore Data",
+            //                 "Peak Memory Usage"]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+            // if (checkbox1 == false &&
+            //     checkbox2 == false && checkbox3 == false && checkbox4 == false && checkbox5 == true) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["line"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': [ //"Allocation Limit",
+            //                 //"Licensed Space",
+            //                 //"ColumnStore Data",
+            //                 //"RowStore Data",
+            //                 "Peak Memory Usage"]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+            // if (checkbox1 == false &&
+            //     checkbox2 == false && checkbox3 == false && checkbox4 == false && checkbox5 == false) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["line"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': [ //"Allocation Limit",
+            //                 //"Licensed Space",
+            //                 //"ColumnStore Data",
+            //                 //"RowStore Data",
+            //                 //"Peak Memory Usage"
+            //             ]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+            // if (checkbox1 == true && checkbox2 == true && checkbox3 == false && checkbox4 == true && checkbox5 == true) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["line", "line", "bar", "line"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': ["Allocation Limit",
+            //                 "Licensed Space",
+            //                 //"ColumnStore Data",
+            //                 "RowStore Data",
+            //                 "Peak Memory Usage"]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+            // if (checkbox1 == true && checkbox2 == true && checkbox3 == true && checkbox4 == false && checkbox5 == true) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["line", "line", "bar", "line"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': ["Allocation Limit",
+            //                 "Licensed Space",
+            //                 "ColumnStore Data",
+            //                 //"RowStore Data",
+            //                 "Peak Memory Usage"]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+            // if (checkbox1 == true && checkbox2 == true && checkbox3 == true && checkbox4 == true && checkbox5 == false) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["line", "line", "bar", "bar"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': ["Allocation Limit",
+            //                 "Licensed Space",
+            //                 "ColumnStore Data",
+            //                 "RowStore Data"//,
+            //                 //"Peak Memory Usage"
+            //             ]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+            // if (checkbox1 == true && checkbox2 == false && checkbox3 == true && checkbox4 == false && checkbox5 == false) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["line", "bar"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': ["Allocation Limit",
+            //                 //"Licensed Space",
+            //                 "ColumnStore Data"//,
+            //                 //"RowStore Data",
+            //                 //"Peak Memory Usage"
+            //             ]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+            // if (checkbox1 == true && checkbox2 == false && checkbox3 == true && checkbox4 == true && checkbox5 == false) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["line", "bar", "bar"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': ["Allocation Limit",
+            //                 //"Licensed Space",
+            //                 "ColumnStore Data",
+            //                 "RowStore Data"
+            //                 //"Peak Memory Usage"
+            //             ]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+            // if (checkbox1 == true && checkbox2 == false && checkbox3 == true && checkbox4 == false && checkbox5 == true) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["line", "bar", "line"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': ["Allocation Limit",
+            //                 //"Licensed Space",
+            //                 "ColumnStore Data",
+            //                 //"RowStore Data",
+            //                 "Peak Memory Usage"
+            //             ]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+            // if (checkbox1 == false && checkbox2 == false && checkbox3 == true && checkbox4 == false && checkbox5 == false) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["bar"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': [ //"Allocation Limit",
+            //                 //"Licensed Space",
+            //                 "ColumnStore Data"//,
+            //                 //"RowStore Data",
+            //                 //"Peak Memory Usage"
+            //             ]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+            // if (checkbox1 == false && checkbox2 == false && checkbox3 == false && checkbox4 == true && checkbox5 == false) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["bar"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+
+
+
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': [ //"Allocation Limit",
+            //                 //"Licensed Space",
+            //                 //"ColumnStore Data"//,
+            //                 "RowStore Data"//,
+            //                 //"Peak Memory Usage"
+            //             ]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+            // if (checkbox1 == true && checkbox2 == true && checkbox3 == true && checkbox4 == true && checkbox5 == true) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["line", "line", "bar", "bar"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': ["Allocation Limit",
+            //                 "Licensed Space",
+            //                 "ColumnStore Data",
+            //                 "RowStore Data",
+            //                 "Peak Memory Usage"]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
+
+
+            // if (checkbox1 == false && checkbox2 == false && checkbox3 == true && checkbox4 == true && checkbox5 == false) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
+
+            //             dataShape: {
+            //                 primaryAxis: ["bar", "bar"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
+
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
+
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
                 
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': [ //"Allocation Limit",
-                            //	"Licensed Space",
-                            "ColumnStore Data",
-                            "RowStore Data"
-                            //"Peak Memory Usage"
-                        ]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': [ //"Allocation Limit",
+            //                 //	"Licensed Space",
+            //                 "ColumnStore Data",
+            //                 "RowStore Data"
+            //                 //"Peak Memory Usage"
+            //             ]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
 
 
-            if (checkbox1 == false && checkbox2 == false && checkbox3 == true && checkbox4 == false && checkbox5 == true) {
-                vizFrame.setVizProperties({
-                    plotArea: {
+            // if (checkbox1 == false && checkbox2 == false && checkbox3 == true && checkbox4 == false && checkbox5 == true) {
+            //     vizFrame.setVizProperties({
+            //         plotArea: {
 
-                        dataShape: {
-                            primaryAxis: ["bar", "line"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
+            //             dataShape: {
+            //                 primaryAxis: ["bar", "line"],
+            //                 secondaryAxis: ["bar"]
+            //             }
+            //         },
 
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
+            //         valueAxis: {
+            //             label: {
+            //                 visible: true
+            //             },
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         categoryAxis: {
+            //             title: {
+            //                 visible: false
+            //             }
+            //         },
+            //         title: {
+            //             visible: false,
+            //             text: 'HANA Memory Usage'
+            //         }
+            //     });
 
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+            //     var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
 
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': [ //"Allocation Limit",
-                            //	"Licensed Space",
-                            "ColumnStore Data",
-                            //"RowStore Data",
-                            "Peak Memory Usage"]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
+            //     var feeds = [
+            //         new FeedItem({
+            //             'uid': "primaryValues",
+            //             'type': "Measure",
+            //             'values': [ //"Allocation Limit",
+            //                 //	"Licensed Space",
+            //                 "ColumnStore Data",
+            //                 //"RowStore Data",
+            //                 "Peak Memory Usage"]
+            //         }),
+            //         new FeedItem({
+            //             'uid': "axisLabels",
+            //             'type': "Dimension",
+            //             'values': ["MONTH_STRING"]
+            //         })
+            //     ];
+            // }
 
 
             var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
             
             
             
-            var oVizFramePath = oVizFrame.modulePath;
+            // var oVizFramePath = oVizFrame.modulePath;
             
             //             var oModel = new sap.ui.model.json.JSONModel(oVizFramePath);
-            var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);
+            // var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);
             
             
             
@@ -2545,7 +2559,7 @@ sap.ui.define([
                 //'properties' : properties,
                 //'scales' : scales,
                 //'customizations' : customizations,
-                'feeds': feeds
+                'feeds': aFeeds
             });
 
             //        vizFrame.setModel(oModel);
@@ -2581,162 +2595,160 @@ sap.ui.define([
             //vizFrame.setVizType('column');
         },
 
-        // update 3
-        /**
-         * Updates the Viz Frame with the necessary data and properties.
-         *
-         * @private
-         * @param {sap.viz.ui5.controls.VizFrame} vizFrame Viz Frame to update
-         */
-        _updateVizFrame3: function (vizFrame) {
+        // // update 3
+        // /**
+        //  * Updates the Viz Frame with the necessary data and properties.
+        //  *
+        //  * @private
+        //  * @param {sap.viz.ui5.controls.VizFrame} vizFrame Viz Frame to update
+        //  */
+        // _updateVizFrame3: function (vizFrame) {
             
-            var oVizFrame = this._constants.vizFrame;
-            var checkbox1 = this.getView().byId("checkbox1").getSelected();
-            var checkbox2 = this.getView().byId("checkbox2").getSelected();
-            var checkbox3 = this.getView().byId("checkbox3").getSelected();
-            var checkbox4 = this.getView().byId("checkbox4").getSelected();
-            var checkbox5 = this.getView().byId("checkbox5").getSelected();
+        //     var oVizFrame = this._constants.vizFrame;
+        //     var checkbox1 = this.getView().byId("checkbox1").getSelected();
+        //     var checkbox2 = this.getView().byId("checkbox2").getSelected();
+        //     var checkbox3 = this.getView().byId("checkbox3").getSelected();
+        //     var checkbox4 = this.getView().byId("checkbox4").getSelected();
+        //     var checkbox5 = this.getView().byId("checkbox5").getSelected();
             
-            //this.byId
-            if (checkbox1 == false &&
-                checkbox2 == false && checkbox3 == true && checkbox4 == true && checkbox5 == true) {
-                vizFrame.setVizProperties({
-                    plotArea: {
+        //     //this.byId
+        //     if (checkbox1 == false &&
+        //         checkbox2 == false && checkbox3 == true && checkbox4 == true && checkbox5 == true) {
+        //         vizFrame.setVizProperties({
+        //             plotArea: {
 
-                        dataShape: {
-                            primaryAxis: ["bar", "bar", "line"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
+        //                 dataShape: {
+        //                     primaryAxis: ["bar", "bar", "line"],
+        //                     secondaryAxis: ["bar"]
+        //                 }
+        //             },
 
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
+        //             valueAxis: {
+        //                 label: {
+        //                     visible: true
+        //                 },
+        //                 title: {
+        //                     visible: false
+        //                 }
+        //             },
+        //             categoryAxis: {
+        //                 title: {
+        //                     visible: false
+        //                 }
+        //             },
+        //             title: {
+        //                 visible: false,
+        //                 text: 'HANA Memory Usage'
+        //             }
+        //         });
 
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+        //         var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
 
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': [ //"Allocation Limit",
-                            //"Licensed Space",
-                            "ColumnStore Data",
-                            "RowStore Data",
-                            "Peak Memory Usage"]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
+        //         var feeds = [
+        //             new FeedItem({
+        //                 'uid': "primaryValues",
+        //                 'type': "Measure",
+        //                 'values': [ //"Allocation Limit",
+        //                     //"Licensed Space",
+        //                     "ColumnStore Data",
+        //                     "RowStore Data",
+        //                     "Peak Memory Usage"]
+        //             }),
+        //             new FeedItem({
+        //                 'uid': "axisLabels",
+        //                 'type': "Dimension",
+        //                 'values': ["MONTH_STRING"]
+        //             })
+        //         ];
+        //     }
 
-            if (checkbox1 == true && checkbox2 == true && checkbox3 == true && checkbox4 == true && checkbox5 == true) {
-                vizFrame.setVizProperties({
-                    plotArea: {
+        //     if (checkbox1 == true && checkbox2 == true && checkbox3 == true && checkbox4 == true && checkbox5 == true) {
+        //         vizFrame.setVizProperties({
+        //             plotArea: {
 
-                        dataShape: {
-                            primaryAxis: ["line", "line", "bar", "bar"],
-                            secondaryAxis: ["bar"]
-                        }
-                    },
+        //                 dataShape: {
+        //                     primaryAxis: ["line", "line", "bar", "bar"],
+        //                     secondaryAxis: ["bar"]
+        //                 }
+        //             },
 
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'Revenue by City and Store Name'
-                    }
-                });
+        //             valueAxis: {
+        //                 label: {
+        //                     visible: true
+        //                 },
+        //                 title: {
+        //                     visible: false
+        //                 }
+        //             },
+        //             categoryAxis: {
+        //                 title: {
+        //                     visible: false
+        //                 }
+        //             },
+        //             title: {
+        //                 visible: false,
+        //                 text: 'HANA Memory Usage'
+        //             }
+        //         });
 
-                var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
+        //         var FeedItem = sap.viz.ui5.controls.common.feeds.FeedItem;
 
-                var feeds = [
-                    new FeedItem({
-                        'uid': "primaryValues",
-                        'type': "Measure",
-                        'values': ["Allocation Limit",
-                            "Licensed Space",
-                            "ColumnStore Data",
-                            "RowStore Data",
-                            "Peak Memory Usage"]
-                    }),
-                    new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                    })
-                ];
-            }
+        //         var feeds = [
+        //             new FeedItem({
+        //                 'uid': "primaryValues",
+        //                 'type': "Measure",
+        //                 'values': ["Allocation Limit",
+        //                     "Licensed Space",
+        //                     "ColumnStore Data",
+        //                     "RowStore Data",
+        //                     "Peak Memory Usage"]
+        //             }),
+        //             new FeedItem({
+        //                 'uid': "axisLabels",
+        //                 'type': "Dimension",
+        //                 'values': ["MONTH_STRING"]
+        //             })
+        //         ];
+        //     }
 
 
-            var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
-            
-            
-            
-            var oVizFramePath = oVizFrame.modulePath;
-            
-            //              var oModel = new sap.ui.model.json.JSONModel(oVizFramePath);
-            var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);
+        //     var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
             
             
             
+        //     var oVizFramePath = oVizFrame.modulePath;
             
-            //vizFrame.setDataset(oDataset);
-
-            //vizFrame.setModel(oModel);
+        //     //              var oModel = new sap.ui.model.json.JSONModel(oVizFramePath);
+        //     var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);
             
             
-            //this._addFeedItems(vizFrame, oVizFrame.feedItems);
+            
+            
+        //     //vizFrame.setDataset(oDataset);
 
-            vizFrame.destroyDataset();
-            vizFrame.removeAllFeeds();
-            vizFrame.vizUpdate({
-                'data': oDataset,
-                //'properties' : properties,
-                //'scales' : scales,
-                //'customizations' : customizations,
-                'feeds': feeds
-            });
+        //     //vizFrame.setModel(oModel);
+            
+            
+        //     //this._addFeedItems(vizFrame, oVizFrame.feedItems);
 
-            //        vizFrame.setModel(oModel);
-            //vizFrame.setVizType(oVizFrame.type);
-            vizFrame.setVizType('stacked_combination'); //('stacked_combination'); 
-            //vizFrame.setVizType('combination'); //dual_combination is not supported in this version of UI5
-            //vizFrame.setVizType('column');
-        },
+        //     vizFrame.destroyDataset();
+        //     vizFrame.removeAllFeeds();
+        //     vizFrame.vizUpdate({
+        //         'data': oDataset,
+        //         //'properties' : properties,
+        //         //'scales' : scales,
+        //         //'customizations' : customizations,
+        //         'feeds': feeds
+        //     });
 
+        //     //        vizFrame.setModel(oModel);
+        //     //vizFrame.setVizType(oVizFrame.type);
+        //     vizFrame.setVizType('stacked_combination'); //('stacked_combination'); 
+        //     //vizFrame.setVizType('combination'); //dual_combination is not supported in this version of UI5
+        //     //vizFrame.setVizType('column');
+        // },
 
-        // checkbox events for tab1 (chart layout)
-        onSelectAllocation: function (oEvent) {
+        onSelectMeasure: function (oEvent) {
             
             //this._state.chartContainer.removeContent();
             var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
@@ -2746,57 +2758,71 @@ sap.ui.define([
             
             
             this._updateVizFrame2(oVizFrame);
-
-        },
-        onSelectLicensed: function (oEvent) {
-            
-            var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
-            //oVizFrame.setVizProperties(this._constants.vizProperties);
-            
-
-            
-            
-            this._updateVizFrame2(oVizFrame);
-        },
-        onSelectCS: function (oEvent) {
-            
-            //this._state.chartContainer.removeContent();
-            var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
-            //oVizFrame.setVizProperties(this._constants.vizProperties);
-            
-
-            
-            
-            this._updateVizFrame2(oVizFrame);
-        },
-        onSelectRS: function (oEvent) {
-            
-            //this._state.chartContainer.removeContent();
-            var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
-            //oVizFrame.setVizProperties(this._constants.vizProperties);
-            
-
-            
-            
-            this._updateVizFrame2(oVizFrame);
-        },
-        onSelectPeak: function (oEvent) {
-            
-            //this._state.chartContainer.removeContent();
-            var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
-            //oVizFrame.setVizProperties(this._constants.vizProperties);
-            
-
-            
-            
-            this._updateVizFrame2(oVizFrame);
-        },
-
-
-        // --- Navigation
-        onLineItemPressed: function (oEvent) {
 
         }
+
+        // // checkbox events for tab1 (chart layout)
+        // onSelectAllocation: function (oEvent) {
+            
+        //     //this._state.chartContainer.removeContent();
+        //     var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
+        //     //oVizFrame.setVizProperties(this._constants.vizProperties);
+            
+
+            
+            
+        //     this._updateVizFrame2(oVizFrame);
+
+        // },
+        // onSelectLicensed: function (oEvent) {
+            
+        //     var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
+        //     //oVizFrame.setVizProperties(this._constants.vizProperties);
+            
+
+            
+            
+        //     this._updateVizFrame2(oVizFrame);
+        // },
+        // onSelectCS: function (oEvent) {
+            
+        //     //this._state.chartContainer.removeContent();
+        //     var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
+        //     //oVizFrame.setVizProperties(this._constants.vizProperties);
+            
+
+            
+            
+        //     this._updateVizFrame2(oVizFrame);
+        // },
+        // onSelectRS: function (oEvent) {
+            
+        //     //this._state.chartContainer.removeContent();
+        //     var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
+        //     //oVizFrame.setVizProperties(this._constants.vizProperties);
+            
+
+            
+            
+        //     this._updateVizFrame2(oVizFrame);
+        // },
+        // onSelectPeak: function (oEvent) {
+            
+        //     //this._state.chartContainer.removeContent();
+        //     var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
+        //     //oVizFrame.setVizProperties(this._constants.vizProperties);
+            
+
+            
+            
+        //     this._updateVizFrame2(oVizFrame);
+        // },
+
+
+        // // --- Navigation
+        // onLineItemPressed: function (oEvent) {
+
+        // }
 
     });
 
