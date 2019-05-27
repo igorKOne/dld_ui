@@ -14,7 +14,7 @@
 			"version": "0.0.0"
 		},
 		"dataSources": {
-			"memprof.xsodata": {
+			"mainService": {
 				"uri": "/one/one/labs/mem_prof/app/service/MEM_PROFILER.xsodata/",
 				"type": "OData",
 				"settings": {
@@ -23,10 +23,6 @@
 			},
 			"Platform": {
 				"uri": "/one/one/labs/mem_prof/app/service/Platform.xsjs",
-				"type": "JSON"
-			},
-			"Business": {
-				"uri": "/one/one/labs/mem_prof/app/service/Business.xsjs",
 				"type": "JSON"
 			},
 			"Business3": {
@@ -84,7 +80,7 @@
 					"defaultBindingMode": "OneWay",
 					"defaultCountMode": "Request"
 				},
-				"dataSource": "memprof.xsodata",
+				"dataSource": "mainService",
 				"preload": true
 			},
 			"appData": {
