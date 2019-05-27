@@ -20,14 +20,14 @@ sap.ui.define([
 		 * @param {object} [oOptionsParameter] init parameters for the mockserver
 		 * @returns{Promise} a promise that is resolved when the mock server has been started
 		 */
-		init : function (oOptionsParameter) {
+		init: function (oOptionsParameter) {
 			var oOptions = oOptionsParameter || {};
 
-			return new Promise(function(fnResolve, fnReject) {
+			return new Promise(function (fnResolve, fnReject) {
 				var sManifestUrl = sap.ui.require.toUrl(_sAppPath + "manifest.json"),
 					oManifestModel = new JSONModel(sManifestUrl);
 
-				oManifestModel.attachRequestCompleted(function ()  {
+				oManifestModel.attachRequestCompleted(function () {
 					var oUriParameters = new UriParameters(window.location.href),
 						// parse manifest for local metatadata URI
 						sJsonFilesUrl = sap.ui.require.toUrl(_sJsonFilesPath),
@@ -47,22 +47,53 @@ sap.ui.define([
 
 					// configure mock server with the given options or a default delay of 0.5s
 					MockServer.config({
-						autoRespond : true,
-						autoRespondAfter : (oOptions.delay || oUriParameters.get("serverDelay") || 500)
+						autoRespond: true,
+						autoRespondAfter: (oOptions.delay || oUriParameters.get("serverDelay") || 500)
 					});
 
 					// simulate all requests using mock data
 					oMockServer.simulate(sMetadataUrl, {
-						sMockdataBaseUrl : sJsonFilesUrl,
-						bGenerateMissingMockData : true
+						sMockdataBaseUrl: sJsonFilesUrl,
+						bGenerateMissingMockData: true
 					});
 
 					var aRequests = oMockServer.getRequests();
 
+					// simulate requests to .xsjs services
+					
+					var oPlatformModel = new JSONModel(sJsonFilesUrl + "/Platform.json");
+					var oBusinessModel = new JSONModel(sJsonFilesUrl + "/Business.json");
+
+					function fnResponsePlatform(oXHR) {
+						Log.debug("Incoming requests to Platform XSJS service");
+						oXHR.respondJSON(200,{},JSON.stringify(oPlatformModel.getData()));
+
+					}
+
+					function fnResponseBusiness(oXHR) {
+						Log.debug("Incoming requests to Business XSJS service");
+						oXHR.respondJSON(200,{},JSON.stringify(oBusinessModel.getData()));
+
+					}
+
+					aRequests.push({
+						method: "GET",
+						path: new RegExp("Platform(.*)"),
+						response: fnResponsePlatform
+					});
+
+					aRequests.push({
+						method: "GET",
+						path: new RegExp("Business3(.*)"),
+						response: fnResponseBusiness
+					});
+
 					// compose an error response for each request
 					var fnResponse = function (iErrCode, sMessage, aRequest) {
-						aRequest.response = function(oXhr){
-							oXhr.respond(iErrCode, {"Content-Type": "text/plain;charset=utf-8"}, sMessage);
+						aRequest.response = function (oXhr) {
+							oXhr.respond(iErrCode, {
+								"Content-Type": "text/plain;charset=utf-8"
+							}, sMessage);
 						};
 					};
 
@@ -107,7 +138,7 @@ sap.ui.define([
 		 * @public returns the mockserver of the app, should be used in integration tests
 		 * @returns {sap.ui.core.util.MockServer} the mockserver instance
 		 */
-		getMockServer : function () {
+		getMockServer: function () {
 			return oMockServer;
 		}
 	};

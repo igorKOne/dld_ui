@@ -1,119 +1,69 @@
-<mvc:View
-	controllerName="one.labs.mem_profiler.controller.FuncArea"
-	displayBlock="true"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:commons="sap.suite.ui.commons"
-	xmlns:semantic="sap.m.semantic"
-	xmlns:table="sap.ui.table"
-	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
-	xmlns:smartTable="sap.ui.comp.smarttable"
-	xmlns:tnt="sap.tnt"
-	xmlns:core="sap.ui.core"
-	xmlns:l="sap.ui.layout"
-	xmlns:viz="sap.viz.ui5.controls"
-	xmlns="sap.m"
-	xmlns:micro="sap.suite.ui.microchart">
-	
-<Panel width="auto" class="sapUiResponsiveMargin">
-			
-				<Title text="In-Memory Detail by Business"/>
-			
-			
-			<content>
-				<Table id="funcAreaTable" 
-                   ariaLabelledBy="title" 
-                   items="{/results}" 
-                   growing="true"
-                   visible="true">
-                   
-                
-
+<mvc:View controllerName="one.labs.mem_profiler.controller.FuncArea" displayBlock="true" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:commons="sap.suite.ui.commons" xmlns:semantic="sap.m.semantic" xmlns:table="sap.ui.table"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:tnt="sap.tnt" xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls" xmlns="sap.m" xmlns:micro="sap.suite.ui.microchart">
+	<Panel width="auto" class="sapUiResponsiveMargin">
+		<Title text="In-Memory Detail by Business"/>
+		<content>
+			<Table id="funcAreaTable" ariaLabelledBy="title" items="{/results}" growing="true" visible="true">
 				<columns id="funcAreaTable_columns">
-					<Column id="funcAreaTable_col1" >
+					<Column id="funcAreaTable_col1">
 						<header id="funcAreaTable_col1_header">
 							<Label id="funcAreaTable_col1_label" text="Business Area"/>
 						</header>
 					</Column>
-					<Column id="funcAreaTable_col2" >
+					<Column id="funcAreaTable_col2">
 						<header id="funcAreaTable_col2_header">
 							<Label id="funcAreaTable_col2_label" text="Size in GB"/>
 						</header>
 					</Column>
-					
-					
-					
-					
-					
-					<Column id="funcAreaTable_col6" >
+					<Column id="funcAreaTable_col6">
 						<header id="funcAreaTable_col6_header">
 							<Label id="funcAreaTable_col6_label" text="Data Aging"/>
 						</header>
 					</Column>
-
-					
-					<Column id="funcAreaTable_col8" >
+					<Column id="funcAreaTable_col8">
 						<header id="funcAreaTable_col8header">
 							<Label id="funcAreaTable_col8_label" text="Data Purpose"/>
 						</header>
 					</Column>
-					
-					<Column id="funcAreaTable_col9" >
+					<Column id="funcAreaTable_col9">
 						<header id="funcAreaTable_col9header">
 							<Label id="funcAreaTable_col9_label" text="Row/Column Store"/>
 						</header>
 					</Column>
-					
 				</columns>
-				<ColumnListItem id="funcAreaColumnListItem" vAlign="Middle"  >
+				<ColumnListItem id="funcAreaColumnListItem" vAlign="Middle">
 					<cells id="funcAreaColumnListItem_cells">
 						<Text id="funcAreaColumnListItem_cell_1" text="{func_area}" maxLines="2"></Text>
-						
-					<Text id="funcAreaColumnListItem_cell_2" text="{func_size_per_tb}" maxLines="2"></Text>
-						
-					
-						
-						
-						
+						<Text id="funcAreaColumnListItem_cell_2" text="{func_size_per_tb}" maxLines="2"></Text>
 						<FlexBox height="100px" width="170px">
-						<micro:ColumnMicroChart  isResponsive="true" 
-							   columns="{years}">
-							   <micro:rightBottomLabel>
-							<micro:ColumnMicroChartLabel label="% Volume per Year" />
-						</micro:rightBottomLabel>
-						
+							<micro:ColumnMicroChart isResponsive="true" columns="{years}">
+								<micro:rightBottomLabel>
+									<micro:ColumnMicroChartLabel label="% Volume per Year"/>
+								</micro:rightBottomLabel>
 								<micro:columns>
-									<micro:ColumnMicroChartData label="{title}"  value="{value}" color="{color}" />
+									<micro:ColumnMicroChartData label="{title}" value="{value}" color="{color}"/>
 								</micro:columns>
 							</micro:ColumnMicroChart>
 						</FlexBox>
-
-						
 						<FlexBox height="100px" width="170px">
-						
-						
-						
-						<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" 
-							   data="{data}"  maxValue="100" width="10rem" >
+							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{data}" maxValue="100" width="10rem">
 								<micro:data>
-									<micro:ComparisonMicroChartData title="{title}" value="{value}" color="{color}" />
+									<micro:ComparisonMicroChartData title="{title}" value="{value}" color="{color}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
 						</FlexBox>
-						
 						<FlexBox height="100px" width="170px">
-						<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" 
-							   data="{RSCS}">
+							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{RSCS}">
 								<micro:data>
-									<micro:ComparisonMicroChartData title="{title}" value="{value}" color="{color}" />
+									<micro:ComparisonMicroChartData title="{title}" value="{value}" color="{color}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
 						</FlexBox>
-						
 					</cells>
 				</ColumnListItem>
 			</Table>
-			</content>
-			
-			</Panel>
-			
-			</mvc:View>
+		</content>
+	</Panel>
+</mvc:View>
