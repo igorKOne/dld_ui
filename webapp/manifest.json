@@ -21,6 +21,10 @@
 					"localUri": "localService/metadata.xml"
 				}
 			},
+			"xsServicesRoot": {
+				"uri": "/one/one/labs/mem_prof/app/service/",
+				"type": "JSON"
+			},
 			"Platform": {
 				"uri": "/one/one/labs/mem_prof/app/service/Platform.xsjs",
 				"type": "JSON"
