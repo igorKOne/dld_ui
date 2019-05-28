@@ -59,7 +59,7 @@ sap.ui.define([
                     });
                     return dateFormatter.format(value);
                 });
-            };
+            }
             var patterns = {
                 "month_s1": "M", "month_s2": "MM", "month_s3": "MMM", "month_s4": "MMMM",
                 "month_day_s1": 'MM/dd', "month_day_s5": 'MMM d', "month_day_s6": 'MMMM d',
@@ -69,7 +69,7 @@ sap.ui.define([
                 if (patterns.hasOwnProperty(key)) {
                     registerTime(key, patterns[key]);
                 }
-            };
+            }
             Format.numericFormatter(chartFormatter);
         }
     };
