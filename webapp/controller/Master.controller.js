@@ -15,7 +15,7 @@ sap.ui.define([
 
     return Controller.extend("one.labs.mem_profiler.controller.Master", {
 
-
+		formatter: Formatter,
         _oDialog: null,
         onInit: function () {
 
@@ -38,7 +38,7 @@ sap.ui.define([
                     measures: [
                         {
                             name: 'Allocation Limit',
-                            value: '{ALLOCATION_LIMIT}',
+                            value: '{= ${ALLOCATION_LIMIT} * 1024}',
                             tooltip: {
                                 visible: true,
 
@@ -50,25 +50,25 @@ sap.ui.define([
 
                         {
                             name: 'Licensed Space',
-                            value: '{PRODUCT_LIMIT}'
+                            value: '{= ${PRODUCT_LIMIT} * 1024}'
                         }
                         ,
 
                         {
                             name: 'Peak Memory Usage',
-                            value: '{TOTAL_MEMORY_PEAK}'
+                            value: '{= ${TOTAL_MEMORY_PEAK} / Math.pow(1024,3)}'
                         }
                         ,
 
                         {
                             name: 'RowStore Data',
-                            value: '{RS_SIZE}'
+                            value: '{= ${RS_SIZE} * 1024}'
                         }
                         ,
 
                         {
                             name: 'ColumnStore Data',
-                            value: '{CS_SIZE}'
+                            value: '{= ${CS_SIZE} * 1024}'
                         }
 
                     ],
@@ -1298,12 +1298,12 @@ sap.ui.define([
             		
             	} ,{
             		name:"RowStore Data",
-            		selected: checkbox3,
+            		selected: checkbox4,
             		axis: "bar"
             		
             	}, {
             		name: "ColumnStore Data",
-            		selected: checkbox4,
+            		selected: checkbox3,
             		axis: "bar"
             		
             	},{
