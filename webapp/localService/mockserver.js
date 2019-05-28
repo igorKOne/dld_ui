@@ -9,6 +9,8 @@ sap.ui.define([
 	var oMockServer,
 		_sAppPath = "one/labs/mem_profiler/",
 		_sJsonFilesPath = _sAppPath + "localService/mockdata";
+	
+	var oMockServerXS;
 
 	var oMockServerInterface = {
 
@@ -59,34 +61,6 @@ sap.ui.define([
 
 					var aRequests = oMockServer.getRequests();
 
-					// simulate requests to .xsjs services
-					
-					var oPlatformModel = new JSONModel(sJsonFilesUrl + "/Platform.json");
-					var oBusinessModel = new JSONModel(sJsonFilesUrl + "/Business.json");
-
-					function fnResponsePlatform(oXHR) {
-						Log.debug("Incoming requests to Platform XSJS service");
-						oXHR.respondJSON(200,{},JSON.stringify(oPlatformModel.getData()));
-
-					}
-
-					function fnResponseBusiness(oXHR) {
-						Log.debug("Incoming requests to Business XSJS service");
-						oXHR.respondJSON(200,{},JSON.stringify(oBusinessModel.getData()));
-
-					}
-
-					aRequests.push({
-						method: "GET",
-						path: new RegExp("Platform(.*)"),
-						response: fnResponsePlatform
-					});
-
-					aRequests.push({
-						method: "GET",
-						path: new RegExp("Business3(.*)"),
-						response: fnResponseBusiness
-					});
 
 					// compose an error response for each request
 					var fnResponse = function (iErrCode, sMessage, aRequest) {
@@ -120,6 +94,54 @@ sap.ui.define([
 					// set requests and start the server
 					oMockServer.setRequests(aRequests);
 					oMockServer.start();
+					
+					// simulate requests to .xsjs services
+					function _initMockServerXS (sJsonFilesUrl) {
+						// create a mock server instance or stop the existing one to reinitialize
+						// ensure there is a trailing slash
+						//let sMockServerUrl = /.*\/$/.test(oMainDataSource.uri) ? oMainDataSource.uri : oMainDataSource.uri + "/";
+						let sMockServerUrl = "/one/one/labs/mem_prof/app/service/";
+	
+	
+						
+						var oPlatformModel = new JSONModel(sJsonFilesUrl + "/Platform.json");
+						var oBusinessModel = new JSONModel(sJsonFilesUrl + "/Business.json");
+	
+						function fnResponsePlatform(oXHR) {
+							Log.debug("Incoming requests to Platform XSJS service");
+							oXHR.respondJSON(200,{},JSON.stringify(oPlatformModel.getData()));
+	
+						}
+	
+						function fnResponseBusiness(oXHR) {
+							Log.debug("Incoming requests to Business XSJS service");
+							oXHR.respondJSON(200,{},JSON.stringify(oBusinessModel.getData()));
+	
+						}
+	
+						let aRequests = [{
+							method: "GET",
+							path: new RegExp("Platform(.*)"),
+							response: fnResponsePlatform
+						},{
+							method: "GET",
+							path: new RegExp("Business3(.*)"),
+							response: fnResponseBusiness
+						}];
+	
+						if (!oMockServerXS) {
+							oMockServerXS = new MockServer({
+								rootUri: sMockServerUrl,
+								requests: aRequests
+							});
+						} else {
+							oMockServerXS.stop();
+						}
+						
+						oMockServerXS.start();
+			}					
+					_initMockServerXS(sJsonFilesUrl);
+
 
 					Log.info("Running the app with mock data");
 					fnResolve();
@@ -141,6 +163,7 @@ sap.ui.define([
 		getMockServer: function () {
 			return oMockServer;
 		}
+
 	};
 
 	return oMockServerInterface;
