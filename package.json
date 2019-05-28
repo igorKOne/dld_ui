@@ -12,5 +12,8 @@
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/igvladkuz/mem_profiler#readme"
+  "homepage": "https://bitbucket.org/igvladkuz/mem_profiler#readme",
+  "devDependencies": {
+    "@sap/grunt-sapui5-bestpractice-build": "1.3.65"
+  }
 }
