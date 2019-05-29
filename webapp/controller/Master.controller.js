@@ -38,7 +38,7 @@ sap.ui.define([
                     measures: [
                         {
                             name: 'Allocation Limit',
-                            value: '{= ${ALLOCATION_LIMIT} * 1024}',
+                            value: '{ALLOCATION_LIMIT}',
                             tooltip: {
                                 visible: true,
 
@@ -50,25 +50,25 @@ sap.ui.define([
 
                         {
                             name: 'Licensed Space',
-                            value: '{= ${PRODUCT_LIMIT} * 1024}'
+                            value: '{PRODUCT_LIMIT}'
                         }
                         ,
 
                         {
                             name: 'Peak Memory Usage',
-                            value: '{= ${TOTAL_MEMORY_PEAK} / Math.pow(1024,3)}'
+                            value: '{TOTAL_MEMORY_USED_SIZE}'
                         }
                         ,
 
                         {
                             name: 'RowStore Data',
-                            value: '{= ${RS_SIZE} * 1024}'
+                            value: '{RS_SIZE}'
                         }
                         ,
 
                         {
                             name: 'ColumnStore Data',
-                            value: '{= ${CS_SIZE} * 1024}'
+                            value: '{CS_SIZE}'
                         }
 
                     ],
@@ -156,7 +156,7 @@ sap.ui.define([
                 //                     {
                 //                           'uid' : "secondaryValues",
                 //                           'type' : "Measure",
-                //                          'values' : [ "TOTAL_MEMORY_PEAK"
+                //                          'values' : [ "TOTAL_MEMORY_USED_SIZE"
                 //                          ]
                 //                     },
                 {
@@ -177,7 +177,7 @@ sap.ui.define([
                 //                   {
                 //                         'uid' : "secondaryValues",
                 //                         'type' : "Measure",
-                //                        'values' : [ "TOTAL_MEMORY_PEAK"
+                //                        'values' : [ "TOTAL_MEMORY_USED_SIZE"
                 //                        ]
                 //                   },
                 {
@@ -192,8 +192,8 @@ sap.ui.define([
                 title: "Table",
                 modulePath:this._getModulePath(), //"/odata/MEM_PROFILER.xsodata",
                 itemBindingPath: "/MEM_OVERVIEW",
-                columnLabelTexts: ["MONTH_STRING", "TOTAL_MEMORY_PEAK", "ALLOCATION_LIMIT"],
-                templateCellLabelTexts: ["{MONTH_STRING}", "{TOTAL_MEMORY_PEAK}", "{ALLOCATION_LIMIT}"]
+                columnLabelTexts: ["MONTH_STRING", "TOTAL_MEMORY_USED_SIZE", "ALLOCATION_LIMIT"],
+                templateCellLabelTexts: ["{MONTH_STRING}", "{TOTAL_MEMORY_USED_SIZE}", "{ALLOCATION_LIMIT}"]
             },
 
             dimensionSelectors: [{
@@ -282,7 +282,7 @@ sap.ui.define([
             this._oRouter = this._oComponent.getRouter();
 
             this._initViewPropertiesModel();
-            
+            this._initChartPersonalizationModel();
             // var oModel = this._oComponent.getModel();
             
 
@@ -364,6 +364,17 @@ sap.ui.define([
 
             // end concept
 
+        },
+        
+        _initChartPersonalizationModel: function() {
+        	let PersModel = new JSONModel({
+        		showAllocationLimit: true,
+        		showLicensedSpace: true,
+        		showColumnStoreData: true,
+        		showRowStoreData: true,
+        		showPeakMemoryUsage: true
+        	});
+        	this.getView().setModel(PersModel,"chartPersonalization");
         },
 
 
