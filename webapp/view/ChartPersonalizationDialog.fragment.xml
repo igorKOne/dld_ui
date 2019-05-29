@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" 
+   xmlns:l="sap.ui.layout">
+	<Dialog id="chartPersonalizationDialog" title="Chart Personalization">
+
+		<VBox class="sapUiSmallMargin">
+			<Label text='Include/exclude from chart' design="Bold" class='settingsLabel'></Label>
+			<CheckBox id="checkbox1" text="Allocation Limit" selected="{chartPersonalization>/showAllocationLimit}" select="onSelectMeasure"/>
+			<CheckBox id="checkbox2" text="Licensed Space" selected="{chartPersonalization>/showLicensedSpace}" select="onSelectMeasure"/>
+			<CheckBox id="checkbox3" text="ColumnStore Data" selected="{chartPersonalization>/showColumnStoreData}" select="onSelectMeasure"/>
+			<CheckBox id="checkbox4" text="RowStore Data" selected="{chartPersonalization>/showRowStoreData}" select="onSelectMeasure"/>
+			<CheckBox id="checkbox5" text="Peak Memory Usage" selected="{chartPersonalization>/showPeakMemoryUsage}" select="onSelectMeasure"/>
+		</VBox>
+		<buttons>
+			<Button text="Close" press="onPressCloseChartPersonalizationDialog"></Button>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
