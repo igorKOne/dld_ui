@@ -5,7 +5,7 @@
 	<Panel width="auto" class="sapUiResponsiveMargin">
 		<Title text="In-Memory Data Profile (Summary)"/>
 		<content>
-			<Table id="platformTable" items="{/results}" visible="true">
+			<Table id="platformTable" items="{platform>/results}" visible="true">
 				<columns id="datasetTable_columns">
 					<Column id="datasetTable_col8">
 						<header id="datasetTable_col8_header">
@@ -31,33 +31,33 @@
 				<ColumnListItem id="datasetColumnListItem" vAlign="Middle">
 					<cells id="datasetColumnListItem_cells">
 						<FlexBox height="150px" width="170px">
-							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{business}">
+							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{platform>business}">
 								<micro:data>
-									<micro:ComparisonMicroChartData title="{title}" value="{value}" color="{color}"/>
+									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" color="{platform>color}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
 						</FlexBox>
 						<FlexBox height="100px" width="170px">
-							<micro:ColumnMicroChart isResponsive="true" columns="{years}">
+							<micro:ColumnMicroChart isResponsive="true" columns="{platform>years}">
 								<micro:rightBottomLabel>
 									<micro:ColumnMicroChartLabel label="% Volume per Year"/>
 								</micro:rightBottomLabel>
 								<micro:columns>
-									<micro:ColumnMicroChartData label="{title}" value="{value}" color="{color}"/>
+									<micro:ColumnMicroChartData label="{platform>title}" value="{platform>value}" color="{platform>color}"/>
 								</micro:columns>
 							</micro:ColumnMicroChart>
 						</FlexBox>
 						<FlexBox height="100px" width="170px">
-							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{data}" maxValue="100" width="10rem">
+							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{platform>data}" maxValue="100" width="10rem">
 								<micro:data>
-									<micro:ComparisonMicroChartData title="{title}" value="{value}" color="{color}"/>
+									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" color="{platform>color}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
 						</FlexBox>
 						<FlexBox height="100px" width="170px">
-							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{RSCS}">
+							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{platform>RSCS}">
 								<micro:data>
-									<micro:ComparisonMicroChartData title="{title}" value="{value}" color="{color}"/>
+									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" color="{platform>color}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
 						</FlexBox>

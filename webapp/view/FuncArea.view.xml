@@ -5,7 +5,7 @@
 	<Panel width="auto" class="sapUiResponsiveMargin">
 		<Title text="In-Memory Detail by Business"/>
 		<content>
-			<Table id="funcAreaTable" ariaLabelledBy="title" items="{/results}" growing="true" visible="true">
+			<Table id="funcAreaTable" ariaLabelledBy="title" items="{funcArea>/results}" growing="true" visible="true">
 				<columns id="funcAreaTable_columns">
 					<Column id="funcAreaTable_col1">
 						<header id="funcAreaTable_col1_header">
@@ -35,29 +35,29 @@
 				</columns>
 				<ColumnListItem id="funcAreaColumnListItem" vAlign="Middle">
 					<cells id="funcAreaColumnListItem_cells">
-						<Text id="funcAreaColumnListItem_cell_1" text="{func_area}" maxLines="2"></Text>
-						<Text id="funcAreaColumnListItem_cell_2" text="{func_size_per_tb}" maxLines="2"></Text>
+						<Text id="funcAreaColumnListItem_cell_1" text="{funcArea>func_area}" maxLines="2"></Text>
+						<Text id="funcAreaColumnListItem_cell_2" text="{funcArea>func_size_per_tb}" maxLines="2"></Text>
 						<FlexBox height="100px" width="170px">
-							<micro:ColumnMicroChart isResponsive="true" columns="{years}">
+							<micro:ColumnMicroChart isResponsive="true" columns="{funcArea>years}">
 								<micro:rightBottomLabel>
 									<micro:ColumnMicroChartLabel label="% Volume per Year"/>
 								</micro:rightBottomLabel>
 								<micro:columns>
-									<micro:ColumnMicroChartData label="{title}" value="{value}" color="{color}"/>
+									<micro:ColumnMicroChartData label="{funcArea>title}" value="{funcArea>value}" color="{funcArea>color}"/>
 								</micro:columns>
 							</micro:ColumnMicroChart>
 						</FlexBox>
 						<FlexBox height="100px" width="170px">
-							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{data}" maxValue="100" width="10rem">
+							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{funcArea>data}" maxValue="100" width="10rem">
 								<micro:data>
-									<micro:ComparisonMicroChartData title="{title}" value="{value}" color="{color}"/>
+									<micro:ComparisonMicroChartData title="{funcArea>title}" value="{funcArea>value}" color="{funcArea>color}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
 						</FlexBox>
 						<FlexBox height="100px" width="170px">
-							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{RSCS}">
+							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{funcArea>RSCS}">
 								<micro:data>
-									<micro:ComparisonMicroChartData title="{title}" value="{value}" color="{color}"/>
+									<micro:ComparisonMicroChartData title="{funcArea>title}" value="{funcArea>value}" color="{funcArea>color}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
 						</FlexBox>
