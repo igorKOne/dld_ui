@@ -114,16 +114,15 @@ sap.ui.define([
 
 
                      // start concept
-                     var oDatasetModel; //new sap.ui.model.json.JSONModel(microData);
-                     var oDatasetView = this.getView();
                      var xsjsUrl = this.getBusiness3ServiceURL(); //'/MEM_PROFILER/webapp/view/Business3.xsjs';
+                     let oView = this._oView;
                      var microData = jQuery.ajax({
                             url: xsjsUrl,
                             method: 'GET',
                             dataType: 'json',
                             success: function (data) {
-                                   oDatasetModel = new sap.ui.model.json.JSONModel(data);
-                                   oDatasetView.setModel(oDatasetModel);
+                                   let oDatasetModel = new JSONModel(data);
+                                   oView.setModel(oDatasetModel,"funcArea");
                             }
                      });
                      // end concept

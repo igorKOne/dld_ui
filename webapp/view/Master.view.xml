@@ -10,32 +10,34 @@
 						<Panel width="auto" class="sapUiResponsiveMargin">
 							<Title text="Overview (in GB)"/>
 							<!--Below is the setting panel -->
-							<l:Grid defaultSpan="L4 M6 S6" class="sapUiSmallMarginTop">
-								<l:content>
-									<Panel id='settingsPanel' class="panelStyle" expandable="true" expanded="true" headerText="Settings" width="auto">
-										<content>
-											<HBox class='settingsHBox'>
-												<VBox width="200px">
-													<Label text='Include/exclude from chart' design="Bold" class='settingsLabel'></Label>
-													<CheckBox id="checkbox1" text="Allocation Limit" selected="true" select="onSelectMeasure"/>
-													<CheckBox id="checkbox2" text="Licensed Space" selected="true" select="onSelectMeasure"/>
-													<CheckBox id="checkbox3" text="ColumnStore Data" selected="true" select="onSelectMeasure"/>
-													<CheckBox id="checkbox4" text="RowStore Data" selected="true" select="onSelectMeasure"/>
-													<CheckBox id="checkbox5" text="Peak Memory Usage" selected="true" select="onSelectMeasure"/>
-												</VBox>
-											</HBox>
-										</content>
-									</Panel>
-								</l:content>
-							</l:Grid>
+							<!--<l:Grid defaultSpan="L4 M6 S6" class="sapUiSmallMarginTop">-->
+							<!--	<l:content>-->
+							<!--		<Panel id='settingsPanel' class="panelStyle" expandable="true" expanded="true" headerText="Settings" width="auto">-->
+							<!--			<content>-->
+							<!--				<HBox class='settingsHBox'>-->
+							<!--					<VBox width="200px">-->
+							<!--						<Label text='Include/exclude from chart' design="Bold" class='settingsLabel'></Label>-->
+							<!--						<CheckBox id="checkbox1" text="Allocation Limit" selected="{chartPersonalization>/showAllocationLimit}" select="onSelectMeasure"/>-->
+							<!--						<CheckBox id="checkbox2" text="Licensed Space" selected="{chartPersonalization>/showLicensedSpace}" select="onSelectMeasure"/>-->
+							<!--						<CheckBox id="checkbox3" text="ColumnStore Data" selected="{chartPersonalization>/showColumnStoreData}" select="onSelectMeasure"/>-->
+							<!--						<CheckBox id="checkbox4" text="RowStore Data" selected="{chartPersonalization>/showRowStoreData}" select="onSelectMeasure"/>-->
+							<!--						<CheckBox id="checkbox5" text="Peak Memory Usage" selected="{chartPersonalization>/showPeakMemoryUsage}" select="onSelectMeasure"/>-->
+							<!--					</VBox>-->
+							<!--				</HBox>-->
+							<!--			</content>-->
+							<!--		</Panel>-->
+							<!--	</l:content>-->
+							<!--</l:Grid>-->
 							<content>
-								<commons:ChartContainer id="chartContainer" showFullScreen="true" autoAdjustHeight="true" showLegend="true"
-									contentChange="attachContentChange">
+								<commons:ChartContainer id="chartContainer" showFullScreen="true" autoAdjustHeight="true" showLegend="true" showPersonalization="true"
+									contentChange="attachContentChange" personalizationPress="onChartPersonalizationPress">
 									<commons:content>
 										<commons:ChartContainerContent icon="sap-icon://vertical-bar-chart" title="Column Chart">
 											<commons:content>
 												<viz:Popover id="idPopOver"></viz:Popover>
-												<viz:VizFrame id="vizFrame" height="450px" width="100%" uiConfig="{applicationSet:'fiori'}"></viz:VizFrame>
+												<viz:VizFrame id="vizFrame" height="450px" width="100%" uiConfig="{applicationSet:'fiori'}">
+													
+												</viz:VizFrame>
 											</commons:content>
 										</commons:ChartContainerContent>
 									</commons:content>

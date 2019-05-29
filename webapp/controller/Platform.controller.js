@@ -127,7 +127,7 @@ sap.ui.define([
 
                      // start concept
                      var oDatasetModel; //new sap.ui.model.json.JSONModel(microData);
-                     var oDatasetView = this.getView();
+                     var oView = this.getView();
                      
                      var xsjsUrl = this.getPlatformServiceURL();//'/MEM_PROFILER/webapp/view/Platform.xsjs';
                      //'/shell/app/local-dd3/NLTMI0/MEMORY_PROFILER/MEM_PROFILER/webapp/view/test2.xsjs';
@@ -138,7 +138,7 @@ sap.ui.define([
                             success: function (data) {
                                    
                                    oDatasetModel = new sap.ui.model.json.JSONModel(data);
-                                   oDatasetView.setModel(oDatasetModel);
+                                   oView.setModel(oDatasetModel,"platform");
                             }
                      });
                      
