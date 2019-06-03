@@ -36,7 +36,8 @@
 				"uri": "/one/one/labs/mem_prof/app/service/Business3.xsjs",
 				"_uri": "../../service/Business3.xsjs",
 				"type": "JSON"
-			}		}
+			}
+		}
 	},
 	"sap.ui": {
 		"technology": "UI5",
@@ -97,9 +98,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -111,11 +114,15 @@
 				"controlId": "app",
 				"clearControlAggregation": false
 			},
-			"routes": [{
-				"name": "Master",
-				"pattern": "",
-				"target": ["Master"]
-			}],
+			"routes": [
+				{
+					"name": "Master",
+					"pattern": "",
+					"target": [
+						"Master"
+					]
+				}
+			],
 			"targets": {
 				"Master": {
 					"viewType": "XML",
@@ -126,6 +133,18 @@
 				"NotFound": {
 					"viewType": "XML",
 					"viewName": "NotFound"
+				},
+				"FuncAreaObject": {
+					"viewType": "XML",
+					"viewName": "FuncAreaObject"
+				},
+				"PlatformObject": {
+					"viewType": "XML",
+					"viewName": "PlatformObject"
+				},
+				"MemoryOverview": {
+					"viewType": "XML",
+					"viewName": "MemoryOverview"
 				}
 			}
 		}
