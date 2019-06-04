@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:chart="sap.chart"
+	xmlns:data="sap.chart.data">
+	<chart:Chart id="chartDataAging" width='100%'
+		vizProperties="{title: {text: 'Distribution by years', visible:true }, plotArea: {dataLabel: { visible: true, type: 'value', hideWhenOverlap: true } } }"
+		visibleDimensions="id" visibleMeasures="value" chartType="column" selectionMode="Single" uiConfig="{applicationSet:'fiori'}">
+		<chart:dimensions>
+			<data:Dimension name="id" label="Year" role="category" textProperty="title"/>
+		</chart:dimensions>
+		<chart:measures>
+			<!--<data:Measure name="jobs_count" label="Number Of Jobs" role="axis2"/>-->
+			<data:Measure name="value" label="Size" role="axis2"/>
+		</chart:measures>
+	</chart:Chart>
+</core:FragmentDefinition>

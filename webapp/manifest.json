@@ -98,11 +98,9 @@
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		},
 		"routing": {
 			"config": {
@@ -114,15 +112,23 @@
 				"controlId": "app",
 				"clearControlAggregation": false
 			},
-			"routes": [
-				{
-					"name": "Master",
-					"pattern": "",
-					"target": [
-						"Master"
-					]
-				}
-			],
+			"routes": [{
+				"name": "Master",
+				"pattern": "",
+				"target": ["Master"]
+			}, {
+				"name": "FuncAreaObject",
+				"pattern": "area/{areaId}",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["FuncAreaObject"]
+			}, {
+				"name": "PlatformObject",
+				"pattern": "platform/{platformId}",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["PlatformObject"]
+			}],
 			"targets": {
 				"Master": {
 					"viewType": "XML",
@@ -136,11 +142,13 @@
 				},
 				"FuncAreaObject": {
 					"viewType": "XML",
-					"viewName": "FuncAreaObject"
+					"viewName": "FuncAreaObject",
+					"title": "{i18n>FuncAreaObjectTitle}"
 				},
 				"PlatformObject": {
 					"viewType": "XML",
-					"viewName": "PlatformObject"
+					"viewName": "PlatformObject",
+					"title": "{i18n>PlatformObjectTitle}"
 				},
 				"MemoryOverview": {
 					"viewType": "XML",

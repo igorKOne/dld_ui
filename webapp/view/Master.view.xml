@@ -1,30 +1,12 @@
 <mvc:View controllerName="one.labs.mem_profiler.controller.Master" displayBlock="true" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:commons="sap.suite.ui.commons" xmlns:semantic="sap.m.semantic" xmlns:table="sap.ui.table"
-	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:tnt="sap.tnt" xmlns:core="sap.ui.core"
+	xmlns:commons="sap.suite.ui.commons"
+	xmlns:core="sap.ui.core"
 	xmlns:l="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls" xmlns="sap.m" xmlns:micro="sap.suite.ui.microchart">
-	<Page id="productListPage" title="In-Memory Profiler" showNavButton="true" navButtonPress="onNavBack">
+	<Page id="MasterPage" title="In-Memory Profiler" showNavButton="true" navButtonPress="onNavBack">
 		<content>
 			<IconTabBar id="idIconTabBarMulti" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
 				<items>
 					<IconTabFilter icon="sap-icon://area-chart" text="Overview">
-						<!--<Panel width="auto" class="sapUiResponsiveMargin">-->
-						<!--	<Title text="Memory Overview (in GB)"/>-->
-						<!--	<content>-->
-						<!--		<commons:ChartContainer id="chartContainer" showFullScreen="true" autoAdjustHeight="true" showLegend="true" showPersonalization="true"-->
-						<!--			contentChange="attachContentChange" personalizationPress="onChartPersonalizationPress">-->
-						<!--			<commons:content>-->
-						<!--				<commons:ChartContainerContent icon="sap-icon://vertical-bar-chart" title="Column Chart">-->
-						<!--					<commons:content>-->
-						<!--						<viz:Popover id="idPopOver"></viz:Popover>-->
-						<!--						<viz:VizFrame id="vizFrame" height="450px" width="100%" uiConfig="{applicationSet:'fiori'}">-->
-													
-						<!--						</viz:VizFrame>-->
-						<!--					</commons:content>-->
-						<!--				</commons:ChartContainerContent>-->
-						<!--			</commons:content>-->
-						<!--		</commons:ChartContainer>-->
-						<!--	</content>-->
-						<!--</Panel>-->
 						<mvc:XMLView viewName="one.labs.mem_profiler.view.MemoryOverview"/>
 					</IconTabFilter>
 					<IconTabFilter icon="sap-icon://it-system" text="Platform">

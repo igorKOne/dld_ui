@@ -28,7 +28,7 @@
 						</header>
 					</Column>
 				</columns>
-				<ColumnListItem id="datasetColumnListItem" vAlign="Middle">
+				<ColumnListItem id="datasetColumnListItem" vAlign="Middle"  type="Navigation" press=".onColumnListItemPress">
 					<cells id="datasetColumnListItem_cells">
 						<FlexBox height="150px" width="170px">
 							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{platform>business}">
@@ -48,7 +48,7 @@
 							</micro:ColumnMicroChart>
 						</FlexBox>
 						<FlexBox height="100px" width="170px">
-							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{platform>data}" maxValue="100" width="10rem">
+							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{platform>data}" maxValue="100">
 								<micro:data>
 									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" color="{platform>color}"/>
 								</micro:data>

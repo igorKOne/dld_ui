@@ -2,7 +2,7 @@ sap.ui.define([
        'jquery.sap.global',
        'sap/ui/core/Fragment',
        //'sap/ui/core/mvc/Controller',
-          "./BaseController",
+       "./BaseController",
        'sap/ui/model/Filter',
        'sap/ui/model/Sorter',
        'sap/ui/model/json/JSONModel',
@@ -106,7 +106,7 @@ sap.ui.define([
 
                      this._initViewPropertiesModel();
                      
-                     var oModel = this._oComponent.getModel();
+                     //var oModel = this._oComponent.getModel();
                      
 
 
@@ -117,7 +117,7 @@ sap.ui.define([
 
                      
 
-                     var platformChart = this.getView().byId('platformMicroChart');
+                     //var platformChart = this.getView().byId('platformMicroChart');
                      
                      //              platformChart.bindData('/odata/MEM_PROFILER.xsodata/PLATFORM_OVERVIEW');
                      
@@ -152,7 +152,16 @@ sap.ui.define([
 
               },
 
-
+              // Navigates to the object view for the given Functional area
+              // func_area property serves as a key
+              onColumnListItemPress: function(oEvent){
+              	let oControl = oEvent.getSource();
+              	let oCtx = oControl.getBindingContext("platform");
+              	let oRouter = this.getRouter();
+              	oRouter.navTo("PlatformObject",{platformId: oCtx.getProperty("id")});
+              	
+              },
+              
               //new
               /* ============================================================ */
               /* Helper Methods                                               */
