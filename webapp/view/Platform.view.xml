@@ -7,37 +7,35 @@
 		<content>
 			<Table id="platformTable" items="{platform>/results}" visible="true">
 				<columns id="datasetTable_columns">
-					<Column id="datasetTable_col8">
+					<Column id="datasetTable_col8" demandPopin="true" minScreenWidth="Tablet">
 						<header id="datasetTable_col8_header">
 							<Label id="datasetTable_col8_label" text="Largest Business Areas"/>
 						</header>
 					</Column>
-					<Column id="datasetTable_col4">
+					<Column id="datasetTable_col4" demandPopin="true" minScreenWidth="Tablet">
 						<header id="datasetTable_col4_header">
 							<Label id="datasetTable_col4_label" text="Data Aging"/>
 						</header>
 					</Column>
-					<Column id="datasetTable_col7">
+					<Column id="datasetTable_col7" demandPopin="true" minScreenWidth="Tablet">
 						<header id="datasetTable_col7_header">
 							<Label id="datasetTable_col7_label" text="Purpose of Data"/>
 						</header>
 					</Column>
-					<Column id="datasetTable_col6">
+					<Column id="datasetTable_col6" demandPopin="true" minScreenWidth="Tablet">
 						<header id="datasetTable_col6_header">
 							<Label id="datasetTable_col6_label" text="Row/Column Store"/>
 						</header>
 					</Column>
 				</columns>
-				<ColumnListItem id="datasetColumnListItem" vAlign="Middle"  type="Navigation" press=".onColumnListItemPress">
+				<ColumnListItem id="datasetColumnListItem" vAlign="Middle" type="Navigation" press=".onColumnListItemPress">
 					<cells id="datasetColumnListItem_cells">
-						<FlexBox height="150px" width="170px">
-							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{platform>business}">
+							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{platform>business}" >
 								<micro:data>
 									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" color="{platform>color}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
-						</FlexBox>
-						<FlexBox height="100px" width="170px">
+						<FlexBox height="100px" renderType="Bare">
 							<micro:ColumnMicroChart isResponsive="true" columns="{platform>years}">
 								<micro:rightBottomLabel>
 									<micro:ColumnMicroChartLabel label="% Volume per Year"/>
@@ -47,20 +45,16 @@
 								</micro:columns>
 							</micro:ColumnMicroChart>
 						</FlexBox>
-						<FlexBox height="100px" width="170px">
 							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{platform>data}" maxValue="100">
 								<micro:data>
 									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" color="{platform>color}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
-						</FlexBox>
-						<FlexBox height="100px" width="170px">
 							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{platform>RSCS}">
 								<micro:data>
 									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" color="{platform>color}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
-						</FlexBox>
 					</cells>
 				</ColumnListItem>
 			</Table>

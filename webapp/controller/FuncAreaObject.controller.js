@@ -22,6 +22,8 @@ sap.ui.define([
 			this._dataAgingChart = this.byId("chartDataAging");
 			this._dataPurposeChart = this.byId("chartDataPurpose");
 			this._rowColumStoreChart = this.byId("chartRowColumnStore");
+			
+			this._tableOverviewTable = this.byId("smartTableTableOverview");
 		},
 
 		_onPatternMatched: function (oEvent) {
@@ -29,9 +31,12 @@ sap.ui.define([
 			let oDataAgingChart = this._dataAgingChart;
 			let oDataPurposeChart = this._dataPurposeChart;
 			let oRowColumStoreChart = this._rowColumStoreChart;
+			let oTableOverview = this._tableOverviewTable;
 			
 			//let sAreaId = oEvent.getParameter("areaId");
 			let sAreaId = oEvent.getParameter("arguments").areaId;
+			
+			this._currentAreaId = sAreaId;
 
 			let serviceUrl = this.getBusiness3ServiceURL();
 
@@ -73,6 +78,9 @@ sap.ui.define([
 					model: "funcArea"					
 				});
 				
+				
+				// oTableOverview.setEntitySet("TableMemoryOverview");
+				oTableOverview.rebindTable();
 			});
 
 			oLoadPromise.catch(oError => {
@@ -80,6 +88,11 @@ sap.ui.define([
 			});
 
 
+		},
+		onBeforeRebindTable: function(oSource){
+		    var binding = oSource.getParameter("bindingParams");
+		    var oFilter = new sap.ui.model.Filter("FUNC_AREA", sap.ui.model.FilterOperator.EQ, this._currentAreaId);
+		    binding.filters.push(oFilter);
 		},
 		
 		onNavBack: function() {
