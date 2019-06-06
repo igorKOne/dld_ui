@@ -1,0 +1,21 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" 
+xmlns:commons="sap.suite.ui.commons"
+xmlns:viz="sap.viz.ui5.controls" 
+	controllerName="one.labs.mem_profiler.controller.MemoryOverview">
+	<Panel width="auto" class="sapUiResponsiveMargin">
+		<Title text="Memory Overview (in GB)"/>
+		<content>
+			<commons:ChartContainer id="chartContainer" showFullScreen="true" autoAdjustHeight="true" showLegend="true" showPersonalization="true"
+				contentChange="attachContentChange" personalizationPress="onChartPersonalizationPress">
+				<commons:content>
+					<commons:ChartContainerContent icon="sap-icon://vertical-bar-chart" title="Memory Overview">
+						<commons:content>
+							<viz:Popover id="idPopOver"></viz:Popover>
+							<viz:VizFrame id="vizFrame" height="450px" width="100%" uiConfig="{applicationSet:'fiori'}"></viz:VizFrame>
+						</commons:content>
+					</commons:ChartContainerContent>
+				</commons:content>
+			</commons:ChartContainer>
+		</content>
+	</Panel>
+</mvc:View>

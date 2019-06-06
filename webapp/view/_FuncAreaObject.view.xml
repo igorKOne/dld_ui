@@ -1,0 +1,55 @@
+<mvc:View xmlns:core="sap.ui.core" 
+xmlns:mvc="sap.ui.core.mvc" 
+xmlns="sap.m" 
+xmlns:html="http://www.w3.org/1999/xhtml" 
+xmlns:f="sap.f"
+xmlns:layout = "sap.ui.layout"
+controllerName="one.labs.mem_profiler.controller.FuncAreaObject">
+		<f:DynamicPage id="pageFuncAreaObject" headerExpanded="true" toggleHeaderOnTitleClick="true">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="{funcArea>func_area}"/>
+					</f:heading>
+				</f:DynamicPageTitle>
+			</f:title>
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader pinnable="false">
+					<layout:HorizontalLayout allowWrapping="true">
+						<!--<layout:VerticalLayout class="sapUiMediumMarginEnd">-->
+						<!--	<ObjectAttribute title="Area" text="{funcArea>func_area}"/>-->
+						<!--</layout:VerticalLayout>-->
+
+						<layout:VerticalLayout>
+							<ObjectAttribute title="Size"/>
+							<ObjectNumber number="{funcArea>func_size_per_tb}" unit="GB"/>
+							<!--<ObjectStatus text="In Stock" state="Success" />-->
+						</layout:VerticalLayout>
+					</layout:HorizontalLayout>
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+				<Panel width="auto" expandable="true" expanded="true" id="panel0" headerText="Data Aging">
+					<content>
+						<core:Fragment fragmentName="one.labs.mem_profiler.view.DataAging" type="XML"/>
+					</content>			
+				</Panel>
+				<Panel width="auto" expandable="true" expanded="true" id="panel1" headerText="Data Purpose">
+					<content>
+						<core:Fragment fragmentName="one.labs.mem_profiler.view.DataPurpose" type="XML"/>
+					</content>						
+				</Panel>			
+				<Panel width="auto" expandable="true" expanded="true" id="panel2" headerText="Row/Column Storage">
+					<content>
+						<core:Fragment fragmentName="one.labs.mem_profiler.view.RowColumnStore" type="XML"/>
+					</content>						
+				</Panel>
+				</f:content>
+			<!-- DynamicPage Footer -->
+			<f:footer>
+
+			</f:footer>
+		</f:DynamicPage>
+</mvc:View>

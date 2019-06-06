@@ -7,7 +7,7 @@ sap.ui.define([
     'sap/ui/model/Sorter',
     'sap/ui/model/json/JSONModel',
     "sap/viz/ui5/controls/common/feeds/FeedItem",
-    '../model/Formatter'
+    "../model/Formatter"
 ], function (jQuery, Fragment, Controller, Filter, Sorter, JSONModel, FeedItem, Formatter) {
     "use strict";
 
@@ -18,361 +18,300 @@ sap.ui.define([
 		formatter: Formatter,
         _oDialog: null,
         onInit: function () {
+        },
 
-        //chart stuff
-        this._constants = {
-            sampleName: "one.labs.mem_profiler",
-            chartContainerId: "chartContainer",
-            contentSwitchButtonId: "customIcon1",
-            vizFrame: {
-                id: "vizFrame",
-                modulePath: this._getModulePath(),//"/odata/MEM_PROFILER.xsodata",
-                dataset: {
-                    dimensions: [{
-                        name: 'MONTH_STRING',
-                        value: "{MONTH_STRING}"
-                        //},{
-                        //name : 'Index',
-                        //value : "{INDEX}"  
-                    }],
-                    measures: [
-                        {
-                            name: 'Allocation Limit',
-                            value: '{ALLOCATION_LIMIT}',
-                            tooltip: {
-                                visible: true
-                            }
-                        }
-                        ,
+        // _onInit: function () {
+        // //chart stuff
+        // this._constants = this.getOverviewChartConstant();
+        // // this._constants = {
+        // //     sampleName: "one.labs.mem_profiler",
+        // //     chartContainerId: "chartContainer",
+        // //     contentSwitchButtonId: "customIcon1",
+        // //     vizFrame: {
+        // //         id: "vizFrame",
+        // //         modulePath: this._getModulePath(),//"/odata/MEM_PROFILER.xsodata",
+        // //         dataset: {
+        // //             dimensions: [{
+        // //                 name: 'MONTH_STRING',
+        // //                 value: "{MONTH_STRING}"
+        // //                 //},{
+        // //                 //name : 'Index',
+        // //                 //value : "{INDEX}"  
+        // //             }],
+        // //             measures: [
+        // //                 {
+        // //                     name: 'Allocation Limit',
+        // //                     value: '{ALLOCATION_LIMIT}',
+        // //                     tooltip: {
+        // //                         visible: true
+        // //                     }
+        // //                 }
+        // //                 ,
 
-                        {
-                            name: 'Licensed Space',
-                            value: '{PRODUCT_LIMIT}'
-                        }
-                        ,
+        // //                 {
+        // //                     name: 'Licensed Space',
+        // //                     value: '{PRODUCT_LIMIT}'
+        // //                 }
+        // //                 ,
 
-                        {
-                            name: 'Peak Memory Usage',
-                            value: '{TOTAL_MEMORY_USED_SIZE}'
-                        }
-                        ,
+        // //                 {
+        // //                     name: 'Peak Memory Usage',
+        // //                     value: '{TOTAL_MEMORY_USED_SIZE}'
+        // //                 }
+        // //                 ,
 
-                        {
-                            name: 'RowStore Data',
-                            value: '{RS_SIZE}'
-                        }
-                        ,
+        // //                 {
+        // //                     name: 'RowStore Data',
+        // //                     value: '{RS_SIZE}'
+        // //                 }
+        // //                 ,
 
-                        {
-                            name: 'ColumnStore Data',
-                            value: '{CS_SIZE}'
-                        }
+        // //                 {
+        // //                     name: 'ColumnStore Data',
+        // //                     value: '{CS_SIZE}'
+        // //                 }
 
-                    ],
+        // //             ],
 
-                    data: {
-                        path: "/MEM_OVERVIEW"
-                    }//,
-                    //
-                    // vizProperties: {
-                    //     plotArea: {
-                    //         isFixedDataPointSize: false,
-                    //         window: {
-                    //             start: null,
-                    //             end: null
-                    //         },
-                    //         dataLabel: {
-                    //             //formatString:CustomerFormat.FIORI_LABEL_SHORTFORMAT_2,
-                    //             visible: true
-                    //         },
-                    //         dataShape: {
-                    //             primaryAxis: ["bar", "bar", "bar", "line", "line"]
-                    //         }
-                    //     },
-                    //     valueAxis: {
-                    //         visible: true,
-                    //         label: {
-                    //             //formatString:CustomerFormat.FIORI_LABEL_SHORTFORMAT_10
-                    //         },
-                    //         title: {
-                    //             visible: false
-                    //         }
-                    //     },
-                    //     valueAxis2: {
-                    //         visible: true,
-                    //         label: {
-                    //             //formatString:CustomerFormat.FIORI_LABEL_SHORTFORMAT_10
-                    //         },
-                    //         title: {
-                    //             visible: false
-                    //         }
-                    //     },
-                    //     valueAxis3: {
-                    //         visible: true,
-                    //         label: {
-                    //             //formatString:CustomerFormat.FIORI_LABEL_SHORTFORMAT_10
-                    //         },
-                    //         title: {
-                    //             visible: false
-                    //         }
-                    //     },
-                    //     timeAxis: {
-                    //         title: {
-                    //             visible: false
-                    //         },
-                    //         interval: {
-                    //             unit: ''
-                    //         }
-                    //     },
-                    //     title: {
-                    //         visible: false
-                    //     },
-                    //     interaction: {
-                    //         syncValueAxis: false
-                    //     }
-                    // }
+        // //             data: {
+        // //                 path: "/MEM_OVERVIEW"
+        // //             }
+        // //         },
 
-                    //
-                },
-                /*analysisObjectProps : {
-                      uid : "MONTH_STRING",
-                      type : "Dimension",
-                      name : "MONTH_STRING"
-                },
-                */
-                type: "dual_combination",
-                feedItems: [{
-                    'uid': "primaryValues",
-                    'type': "Measure",
-                    'values': ["Allocation Limit",
-                        "Licensed Space",
-                        "RowStore Data",
-                        "ColumnStore Data",
-                        "Peak Memory Usage"]
-                },
-                //                     {
-                //                           'uid' : "secondaryValues",
-                //                           'type' : "Measure",
-                //                          'values' : [ "TOTAL_MEMORY_USED_SIZE"
-                //                          ]
-                //                     },
-                {
-                    'uid': "axisLabels",
-                    'type': "Dimension",
-                    'values': ["MONTH_STRING"
-                    ]
-                }],
-                feedItems2: [{
-                    'uid': "primaryValues",
-                    'type': "Measure",
-                    'values': [
-                        "Licensed Space",
-                        "RowStore Data",
-                        "ColumnStore Data",
-                        "Peak Memory Usage"]
-                },
-                //                   {
-                //                         'uid' : "secondaryValues",
-                //                         'type' : "Measure",
-                //                        'values' : [ "TOTAL_MEMORY_USED_SIZE"
-                //                        ]
-                //                   },
-                {
-                    'uid': "axisLabels",
-                    'type': "Dimension",
-                    'values': ["MONTH_STRING"
-                    ]
-                }]
-            },
-            table: {
-                icon: "sap-icon://table-chart",
-                title: "Table",
-                modulePath:this._getModulePath(), //"/odata/MEM_PROFILER.xsodata",
-                itemBindingPath: "/MEM_OVERVIEW",
-                columnLabelTexts: ["MONTH_STRING", "TOTAL_MEMORY_USED_SIZE", "ALLOCATION_LIMIT"],
-                templateCellLabelTexts: ["{MONTH_STRING}", "{TOTAL_MEMORY_USED_SIZE}", "{ALLOCATION_LIMIT}"]
-            },
+        // //         type: "dual_combination",
+        // //         feedItems: [{
+        // //             'uid': "primaryValues",
+        // //             'type': "Measure",
+        // //             'values': ["Allocation Limit",
+        // //                 "Licensed Space",
+        // //                 "RowStore Data",
+        // //                 "ColumnStore Data",
+        // //                 "Peak Memory Usage"]
+        // //         },
+        // //         //                     {
+        // //         //                           'uid' : "secondaryValues",
+        // //         //                           'type' : "Measure",
+        // //         //                          'values' : [ "TOTAL_MEMORY_USED_SIZE"
+        // //         //                          ]
+        // //         //                     },
+        // //         {
+        // //             'uid': "axisLabels",
+        // //             'type': "Dimension",
+        // //             'values': ["MONTH_STRING"
+        // //             ]
+        // //         }],
+        // //         feedItems2: [{
+        // //             'uid': "primaryValues",
+        // //             'type': "Measure",
+        // //             'values': [
+        // //                 "Licensed Space",
+        // //                 "RowStore Data",
+        // //                 "ColumnStore Data",
+        // //                 "Peak Memory Usage"]
+        // //         },
+        // //         //                   {
+        // //         //                         'uid' : "secondaryValues",
+        // //         //                         'type' : "Measure",
+        // //         //                        'values' : [ "TOTAL_MEMORY_USED_SIZE"
+        // //         //                        ]
+        // //         //                   },
+        // //         {
+        // //             'uid': "axisLabels",
+        // //             'type': "Dimension",
+        // //             'values': ["MONTH_STRING"
+        // //             ]
+        // //         }]
+        // //     },
+        // //     table: {
+        // //         icon: "sap-icon://table-chart",
+        // //         title: "Table",
+        // //         modulePath:this._getModulePath(),
+        // //         itemBindingPath: "/MEM_OVERVIEW",
+        // //         columnLabelTexts: ["MONTH_STRING", "TOTAL_MEMORY_USED_SIZE", "ALLOCATION_LIMIT"],
+        // //         templateCellLabelTexts: ["{MONTH_STRING}", "{TOTAL_MEMORY_USED_SIZE}", "{ALLOCATION_LIMIT}"]
+        // //     },
 
-            dimensionSelectors: [{
-                id: "dimensionSelector1",
-                items: ["item 0", "item 1"]
-            }, {
-                id: "dimensionSelector2",
-                items: ["item A", "item B"]
-            }],
-            customIcons: [{
-                id: "customIcon1",
-                src: "sap-icon://table-chart",
-                tooltip: "Custom Table Content",
-                pressMessage: "custom-table custom icon pressed: "
-            }, {
-                id: "customIcon2",
-                src: "sap-icon://accept",
-                tooltip: "Accept",
-                pressMessage: "accept custom icon pressed: "
-            }, {
-                id: "customIcon3",
-                src: "sap-icon://activity-items",
-                tooltip: "Activity Items",
-                pressMessage: "activity-items custom icon pressed: "
-            }],
+        // //     dimensionSelectors: [{
+        // //         id: "dimensionSelector1",
+        // //         items: ["item 0", "item 1"]
+        // //     }, {
+        // //         id: "dimensionSelector2",
+        // //         items: ["item A", "item B"]
+        // //     }],
+        // //     customIcons: [{
+        // //         id: "customIcon1",
+        // //         src: "sap-icon://table-chart",
+        // //         tooltip: "Custom Table Content",
+        // //         pressMessage: "custom-table custom icon pressed: "
+        // //     }, {
+        // //         id: "customIcon2",
+        // //         src: "sap-icon://accept",
+        // //         tooltip: "Accept",
+        // //         pressMessage: "accept custom icon pressed: "
+        // //     }, {
+        // //         id: "customIcon3",
+        // //         src: "sap-icon://activity-items",
+        // //         tooltip: "Activity Items",
+        // //         pressMessage: "activity-items custom icon pressed: "
+        // //     }],
 
-            //
-            platformData: {
-                id: "platformData",
-                modulePath: this._getModulePath(), //"/odata/MEM_PROFILER.xsodata",
+        // //     //
+        // //     platformData: {
+        // //         id: "platformData",
+        // //         modulePath: this._getModulePath(), //"/odata/MEM_PROFILER.xsodata",
 
 
-                items: {
+        // //         items: {
 
-                    dataset: {
-                        dimensions: [{
-                            title: 'Staging',
-                            value: "{STG_PERC}"
-                        }, {
-                            title: 'Reporting',
-                            value: "{REP_PERC}"
-                        }],
+        // //             dataset: {
+        // //                 dimensions: [{
+        // //                     title: 'Staging',
+        // //                     value: "{STG_PERC}"
+        // //                 }, {
+        // //                     title: 'Reporting',
+        // //                     value: "{REP_PERC}"
+        // //                 }],
 
-                        data: { path: "/PLATFORM_OVERVIEW" }
-                    }
+        // //                 data: { path: "/PLATFORM_OVERVIEW" }
+        // //             }
 
-                }
-            }
-            //
+        // //         }
+        // //     }
+        // //     //
 
 
-        };
-        //end chart stuff
+        // // };
+        // //end chart stuff
 
-        /**
-        * Changeable properties depending on the app's state.
-        *
-        * @private
-        * @property {String[]} chartContainerId Id of the chart container
-        * @property {sap.suite.ui.commons.ChartContainer} chartContainer Chart container object
-        * @property {Object} content Chart container content object
-        * @property {Object} content.chart Chart container content chart object
-        * @property {Object} content.table Chart container content table object
-        */
-        this._state = {
-            chartContainer: null,
-            content: {
-                chart: null,
-                table: null
-            }
-        };
+        // /**
+        // * Changeable properties depending on the app's state.
+        // *
+        // * @private
+        // * @property {String[]} chartContainerId Id of the chart container
+        // * @property {sap.suite.ui.commons.ChartContainer} chartContainer Chart container object
+        // * @property {Object} content Chart container content object
+        // * @property {Object} content.chart Chart container content chart object
+        // * @property {Object} content.table Chart container content table object
+        // */
+        // this._state = this.getOverviewState();
+        // // this._state = {
+        // //     chartContainer: null,
+        // //     content: {
+        // //         chart: null,
+        // //         table: null
+        // //     }
+        // // };
         	
             
-            /*              var oModel = new sap.ui.model.json.JSONModel(this.settingsModel);
-                          oModel.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
-                          this.getView().setModel(oModel);
+        //     /*              var oModel = new sap.ui.model.json.JSONModel(this.settingsModel);
+        //                   oModel.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
+        //                   this.getView().setModel(oModel);
                           
-                          var oVizFrame = this.oVizFrame = this.getView().byId("vizFrame");
-                          var dataModel = new sap.ui.model.json.JSONModel(this.dataPath + "/odata/MEM_PROFILER.xsodata");
-                          oVizFrame.setModel(dataModel);
-            */
+        //                   var oVizFrame = this.oVizFrame = this.getView().byId("vizFrame");
+        //                   var dataModel = new sap.ui.model.json.JSONModel(this.dataPath + "/odata/MEM_PROFILER.xsodata");
+        //                   oVizFrame.setModel(dataModel);
+        //     */
 
-            this._oView = this.getView();
-            this._oComponent = sap.ui.component(sap.ui.core.Component.getOwnerIdFor(this._oView));
-            this._oResourceBundle = this._oComponent.getModel("i18n").getResourceBundle();
-            this._oRouter = this._oComponent.getRouter();
-
-            this._initViewPropertiesModel();
-            this._initChartPersonalizationModel();
-            // var oModel = this._oComponent.getModel();
-            
-
-
+        //     this._oView = this.getView();
+        //     this._oComponent = sap.ui.component(sap.ui.core.Component.getOwnerIdFor(this._oView));
+        //     this._oResourceBundle = this._oComponent.getModel("i18n").getResourceBundle();
+        //     this._oRouter = this._oComponent.getRouter();
+        //     this._initViewPropertiesModel();
+        //     this._initChartPersonalizationModel();
+        //     // var oModel = this._oComponent.getModel();
             
 
-            // var oVizFrameConstants = this._constants.vizFrame;
-            
-            //              var oAnalysisObject = new sap.viz.ui5.controls.common.feeds.AnalysisObject(oVizFrameConstants.analysisObjectProps);
-            //              
-            //              oVizFrameConstants.feedItems[1].values.push(oAnalysisObject);
-            //              
-            // store chart container in the state property and create table content
-            
-            
-            
-            
-            // this._state.chartContainer = this.getView().byId(this._constants.chartContainerId);//(this._constants.chartContainerId);
-            // 
-            // this._state.content.table = this._createContent();
-
-            //            
-            //            
-            //            
-            //            this._addDimensionSelectorItems(this._constants.dimensionSelectors);
-            //            
-
-            //this._updateCustomIcons(this._constants.customIcons);
 
             
-            var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
-            //oVizFrame.setVizProperties(this._constants.vizProperties);
+
+        //     // var oVizFrameConstants = this._constants.vizFrame;
+            
+        //     //              var oAnalysisObject = new sap.viz.ui5.controls.common.feeds.AnalysisObject(oVizFrameConstants.analysisObjectProps);
+        //     //              
+        //     //              oVizFrameConstants.feedItems[1].values.push(oAnalysisObject);
+
+        //     //              
+        //     // store chart container in the state property and create table content
+            
+            
+            
+            
+        //     // this._state.chartContainer = this.getView().byId(this._constants.chartContainerId);//(this._constants.chartContainerId);
+        //     // 
+        //     // this._state.content.table = this._createContent();
+
+        //     //            
+        //     //            
+        //     //            
+        //     //            this._addDimensionSelectorItems(this._constants.dimensionSelectors);
+        //     //            
+
+        //     //this._updateCustomIcons(this._constants.customIcons);
+
+            
+        //     var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
+        //     //oVizFrame.setVizProperties(this._constants.vizProperties);
             
 
             
             
-            this._updateVizFrame(oVizFrame);
+        //     this._updateVizFrame(oVizFrame);
             
             
 
-            // var platformChart = this.getView().byId('platformMicroChart');
+        //     // var platformChart = this.getView().byId('platformMicroChart');
             
-            //              platformChart.bindData('/odata/MEM_PROFILER.xsodata/PLATFORM_OVERVIEW');
+        //     //              platformChart.bindData('/odata/MEM_PROFILER.xsodata/PLATFORM_OVERVIEW');
             
 
-            var oPopOver = this.getView().byId("idPopOver");
-            oPopOver.connect(oVizFrame.getVizUid());
+        //     var oPopOver = this.getView().byId("idPopOver");
+        //     oPopOver.connect(oVizFrame.getVizUid());
             
-            //oPopOver.setFormatString(CustomerFormat.FIORI_LABEL_FORMAT_2);
+        //     //oPopOver.setFormatString(CustomerFormat.FIORI_LABEL_FORMAT_2);
 
-            /*              var oPlatformDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.platformData.dataset);
-                          //console.log
-                          var oDataPath = jQuery.sap.getModulePath(this._constants.sampleName,this._constants.platformData.modulePath);
+        //     /*              var oPlatformDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.platformData.dataset);
+        //                   //console.log
+        //                   var oDataPath = jQuery.sap.getModulePath(this._constants.sampleName,this._constants.platformData.modulePath);
                           
-                          var oPlatformModel = new sap.ui.model.odata.ODataModel(oDataPath);
-                          
-                          
-                          //
-                          platformChart.bindData(oPlatformDataset);
-                          platformChart.setModel(oPlatformModel);
+        //                   var oPlatformModel = new sap.ui.model.odata.ODataModel(oDataPath);
                           
                           
-                       */
+        //                   //
+        //                   platformChart.bindData(oPlatformDataset);
+        //                   platformChart.setModel(oPlatformModel);
+                          
+                          
+        //               */
 
-            // start concept
-            // 
-            // var xsjsUrl = '/shell/app/local-dd3/NLTMI0/MEMORY_PROFILER/MEM_PROFILER/webapp/view/test2.xsjs';
-            // var microData = jQuery.ajax({
-            //     url: xsjsUrl,
-            //     method: 'GET',
-            //     dataType: 'json'
-            // });
-            // 
-            // var oPlatformDataset = this.getView().byId('');
-            // var oDatasetModel = new sap.ui.model.json.JSONModel(microData);
-            //              oPlatformDataset.setModel(oDatasetModel);
-            //var microChart = this.getView().byId('microChart');
-            //microChart.bindData(microData);
+        //     // start concept
+        //     // 
+        //     // var xsjsUrl = '/shell/app/local-dd3/NLTMI0/MEMORY_PROFILER/MEM_PROFILER/webapp/view/test2.xsjs';
+        //     // var microData = jQuery.ajax({
+        //     //     url: xsjsUrl,
+        //     //     method: 'GET',
+        //     //     dataType: 'json'
+        //     // });
+        //     // 
+        //     // var oPlatformDataset = this.getView().byId('');
+        //     // var oDatasetModel = new sap.ui.model.json.JSONModel(microData);
+        //     //              oPlatformDataset.setModel(oDatasetModel);
+        //     //var microChart = this.getView().byId('microChart');
+        //     //microChart.bindData(microData);
 
-            // end concept
+        //     // end concept
 
-        },
+        // },
         
-        _initChartPersonalizationModel: function() {
-        	let PersModel = new JSONModel({
-        		showAllocationLimit: true,
-        		showLicensedSpace: true,
-        		showColumnStoreData: true,
-        		showRowStoreData: true,
-        		showPeakMemoryUsage: true
-        	});
-        	this.getView().setModel(PersModel,"chartPersonalization");
-        },
+        // _initChartPersonalizationModel: function() {
+        // 	let PersModel = new JSONModel({
+        // 		showAllocationLimit: true,
+        // 		showLicensedSpace: true,
+        // 		showColumnStoreData: true,
+        // 		showRowStoreData: true,
+        // 		showPeakMemoryUsage: true
+        // 	});
+        // 	this.getView().setModel(PersModel,"chartPersonalization");
+        // },
 
 
         // //new
@@ -517,79 +456,79 @@ sap.ui.define([
         //         this._state.chartContainer.switchChart(this._state.content.table);
         //     }
         // },
-        /**
-        * Updates the Viz Frame with the necessary data and properties.
-        *
-        * @private
-        * @param {sap.viz.ui5.controls.VizFrame} vizFrame Viz Frame to update
-        */
-        _updateVizFrame: function (vizFrame) {
+        // /**
+        // * Updates the Viz Frame with the necessary data and properties.
+        // *
+        // * @private
+        // * @param {sap.viz.ui5.controls.VizFrame} vizFrame Viz Frame to update
+        // */
+        // _updateVizFrame: function (vizFrame) {
             
-            var oVizFrame = this._constants.vizFrame;
+        //     var oVizFrame = this._constants.vizFrame;
 
-            vizFrame.setVizProperties({
-                plotArea: {
+        //     vizFrame.setVizProperties({
+        //         plotArea: {
 
-                    dataShape: {
-                        primaryAxis: ["line", "line", "bar", "bar"],
-                        secondaryAxis: ["bar"]
-                    }
-                },
+        //             dataShape: {
+        //                 primaryAxis: ["line", "line", "bar", "bar"],
+        //                 secondaryAxis: ["bar"]
+        //             }
+        //         },
 
-                valueAxis: {
-                    label: {
-                        visible: true
-                    },
-                    title: {
-                        visible: false
-                    }
-                },
-                categoryAxis: {
-                    title: {
-                        visible: false
-                    }
-                },
-                title: {
-                    visible: false,
-                    text: ""
-                }
-            });
+        //         valueAxis: {
+        //             label: {
+        //                 visible: true
+        //             },
+        //             title: {
+        //                 visible: false
+        //             }
+        //         },
+        //         categoryAxis: {
+        //             title: {
+        //                 visible: false
+        //             }
+        //         },
+        //         title: {
+        //             visible: false,
+        //             text: ""
+        //         }
+        //     });
 
 
-            var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
-            //console.log
-            // var oVizFramePath = oVizFrame.modulePath;
+        //     var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
+        //     //console.log
+        //     // var oVizFramePath = oVizFrame.modulePath;
             
-            //var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);
-            let oModel = this.getOwnerComponent().getModel();                                   
-            
-            
+        //     //var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);
+        //     let oModel = this.getOwnerComponent().getModel();                                   
             
             
-            vizFrame.setDataset(oDataset);
+            
+            
+        //     vizFrame.setDataset(oDataset);
 
-            vizFrame.setModel(oModel);
+        //     vizFrame.setModel(oModel);
             
             
-            this._addFeedItems(vizFrame, oVizFrame.feedItems);
+        //     this._addFeedItems(vizFrame, oVizFrame.feedItems);
 
-            //vizFrame.setVizType(oVizFrame.type);
-            vizFrame.setVizType('stacked_combination'); //('stacked_combination'); 
-            //vizFrame.setVizType('combination'); //dual_combination is not supported in this version of UI5
-            //vizFrame.setVizType('column');
-        },
-        /**
-        * Adds the passed feed items to the passed Viz Frame.
-        *
-        * @private
-        * @param {sap.viz.ui5.controls.VizFrame} vizFrame Viz Frame to add feed items to
-        * @param {Object[]} feedItems Feed items to add
-        */
-        _addFeedItems: function (vizFrame, feedItems) {
-            for (var i = 0; i < feedItems.length; i++) {
-                vizFrame.addFeed(new sap.viz.ui5.controls.common.feeds.FeedItem(feedItems[i]));
-            }
-        },
+        //     //vizFrame.setVizType(oVizFrame.type);
+        //     vizFrame.setVizType('stacked_combination'); //('stacked_combination'); 
+        //     //vizFrame.setVizType('combination'); //dual_combination is not supported in this version of UI5
+        //     //vizFrame.setVizType('column');
+        // },
+        // /**
+        // * Adds the passed feed items to the passed Viz Frame.
+        // *
+        // * @private
+        // * @param {sap.viz.ui5.controls.VizFrame} vizFrame Viz Frame to add feed items to
+        // * @param {Object[]} feedItems Feed items to add
+        // */
+        // _addFeedItems: function (vizFrame, feedItems) {
+        //     for (var i = 0; i < feedItems.length; i++) {
+        //         vizFrame.addFeed(new sap.viz.ui5.controls.common.feeds.FeedItem(feedItems[i]));
+        //     }
+        // },
         // /**
         // * Creates table columns with labels as headers.
         // *
@@ -637,35 +576,35 @@ sap.ui.define([
 
 
 
-        // The model created here is used to set values or view element properties that cannot be bound
-        // directly to the OData service. Setting view element attributes by binding them to a model is preferable to the
-        // alternative of getting each view element by its ID and setting the values directly because a JSon model is more
-        // robust if the customer removes view elements (see extensibility).
-        _initViewPropertiesModel: function () {
+        // // The model created here is used to set values or view element properties that cannot be bound
+        // // directly to the OData service. Setting view element attributes by binding them to a model is preferable to the
+        // // alternative of getting each view element by its ID and setting the values directly because a JSon model is more
+        // // robust if the customer removes view elements (see extensibility).
+        // _initViewPropertiesModel: function () {
             
-            var oViewElemProperties = {};
-            if (sap.ui.Device.system.phone) {
-                oViewElemProperties.availabilityColumnWidth = "80%";
-                oViewElemProperties.pictureColumnWidth = "5rem";
-                oViewElemProperties.btnColHeaderVisible = true;
-                oViewElemProperties.searchFieldWidth = "100%";
-                oViewElemProperties.catalogTitleVisible = false;
-                // in phone mode the spacer is removed in order to increase the size of the search field
-                this.byId("tableToolbar").removeContent(this.byId("toolbarSpacer"));
-            } else {
-                oViewElemProperties.availabilityColumnWidth = "18%";
-                oViewElemProperties.pictureColumnWidth = "9%";
-                oViewElemProperties.btnColHeaderVisible = false;
-                oViewElemProperties.searchFieldWidth = "30%";
-                oViewElemProperties.catalogTitleVisible = true;
-            }
-            this._oViewProperties = new sap.ui.model.json.JSONModel(oViewElemProperties);
-            this._oView.setModel(this._oViewProperties, "viewProperties");
-        },
+        //     var oViewElemProperties = {};
+        //     if (sap.ui.Device.system.phone) {
+        //         oViewElemProperties.availabilityColumnWidth = "80%";
+        //         oViewElemProperties.pictureColumnWidth = "5rem";
+        //         oViewElemProperties.btnColHeaderVisible = true;
+        //         oViewElemProperties.searchFieldWidth = "100%";
+        //         oViewElemProperties.catalogTitleVisible = false;
+        //         // in phone mode the spacer is removed in order to increase the size of the search field
+        //         this.byId("tableToolbar").removeContent(this.byId("toolbarSpacer"));
+        //     } else {
+        //         oViewElemProperties.availabilityColumnWidth = "18%";
+        //         oViewElemProperties.pictureColumnWidth = "9%";
+        //         oViewElemProperties.btnColHeaderVisible = false;
+        //         oViewElemProperties.searchFieldWidth = "30%";
+        //         oViewElemProperties.catalogTitleVisible = true;
+        //     }
+        //     this._oViewProperties = new sap.ui.model.json.JSONModel(oViewElemProperties);
+        //     this._oView.setModel(this._oViewProperties, "viewProperties");
+        // },
 
         onNavBack: function () {
             window.history.go(-1);
-        },
+        }
 
 
         // Dialog sorting, grouping 
@@ -1278,181 +1217,181 @@ sap.ui.define([
         // },
         // <- open/close the panels  
 
-        /**
-         * Updates the Viz Frame with the necessary data and properties.
-         *
-         * @private
-         * @param {sap.viz.ui5.controls.VizFrame} vizFrame Viz Frame to update
-         */
-        _updateVizFrame2: function (vizFrame) {
+    //     /**
+    //      * Updates the Viz Frame with the necessary data and properties.
+    //      *
+    //      * @private
+    //      * @param {sap.viz.ui5.controls.VizFrame} vizFrame Viz Frame to update
+    //      */
+    //     _updateVizFrame2: function (vizFrame) {
             
-            var oVizFrame = this._constants.vizFrame;
-            let oChartPersModel = this.getView().getModel("chartPersonalization");
-            let checkbox1 = oChartPersModel.getProperty("/showAllocationLimit");
-            let checkbox2 = oChartPersModel.getProperty("/showLicensedSpace");
-            let checkbox3 = oChartPersModel.getProperty("/showColumnStoreData");
-            let checkbox4 = oChartPersModel.getProperty("/showRowStoreData");
-            let checkbox5 = oChartPersModel.getProperty("/showPeakMemoryUsage");
+    //         var oVizFrame = this._constants.vizFrame;
+    //         let oChartPersModel = this.getView().getModel("chartPersonalization");
+    //         let checkbox1 = oChartPersModel.getProperty("/showAllocationLimit");
+    //         let checkbox2 = oChartPersModel.getProperty("/showLicensedSpace");
+    //         let checkbox3 = oChartPersModel.getProperty("/showColumnStoreData");
+    //         let checkbox4 = oChartPersModel.getProperty("/showRowStoreData");
+    //         let checkbox5 = oChartPersModel.getProperty("/showPeakMemoryUsage");
             
             
-            let aMeasures = [
-            	{
-            		name: "Allocation Limit",
-            		selected: checkbox1,
-            		axis: "line"
-            	}, {
-            		name: "Licensed Space",
-            		selected: checkbox2,
-            		axis: "line"
+    //         let aMeasures = [
+    //         	{
+    //         		name: "Allocation Limit",
+    //         		selected: checkbox1,
+    //         		axis: "line"
+    //         	}, {
+    //         		name: "Licensed Space",
+    //         		selected: checkbox2,
+    //         		axis: "line"
             		
-            	} ,{
-            		name:"RowStore Data",
-            		selected: checkbox4,
-            		axis: "bar"
+    //         	} ,{
+    //         		name:"RowStore Data",
+    //         		selected: checkbox4,
+    //         		axis: "bar"
             		
-            	}, {
-            		name: "ColumnStore Data",
-            		selected: checkbox3,
-            		axis: "bar"
+    //         	}, {
+    //         		name: "ColumnStore Data",
+    //         		selected: checkbox3,
+    //         		axis: "bar"
             		
-            	},{
-            		name: "Peak Memory Usage",
-            		selected: checkbox5,
-            		axis: "line"
+    //         	},{
+    //         		name: "Peak Memory Usage",
+    //         		selected: checkbox5,
+    //         		axis: "line"
             		
-            	}];
+    //         	}];
             
-            let aSelectedMeasures = aMeasures.filter(elem=>{return elem.selected;}); // get selected measures
+    //         let aSelectedMeasures = aMeasures.filter(elem=>{return elem.selected;}); // get selected measures
             
-            let oCommonVizProperties = {
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'HANA Memory Usage'
-                    }            
-            };
+    //         let oCommonVizProperties = {
+    //                 valueAxis: {
+    //                     label: {
+    //                         visible: true
+    //                     },
+    //                     title: {
+    //                         visible: false
+    //                     }
+    //                 },
+    //                 categoryAxis: {
+    //                     title: {
+    //                         visible: false
+    //                     }
+    //                 },
+    //                 title: {
+    //                     visible: false,
+    //                     text: 'HANA Memory Usage'
+    //                 }            
+    //         };
 
-            vizFrame.setVizProperties(Object.assign({
-                plotArea: {
+    //         vizFrame.setVizProperties(Object.assign({
+    //             plotArea: {
 
-                    dataShape: {
-                        primaryAxis: aSelectedMeasures.map((elem)=>{return elem.axis;}), // all filtered axises
-                        secondaryAxis: ["bar"]
-                    }
-                }
+    //                 dataShape: {
+    //                     primaryAxis: aSelectedMeasures.map((elem)=>{return elem.axis;}), // all filtered axises
+    //                     secondaryAxis: ["bar"]
+    //                 }
+    //             }
 
-            }, oCommonVizProperties));
-
-
-            let aFeeds = [
-                new FeedItem({
-                    'uid': "primaryValues",
-                    'type': "Measure",
-                    'values': aSelectedMeasures.map((elem)=>{return elem.name;}) //all filtered names
-                }),
-                new FeedItem({
-                        'uid': "axisLabels",
-                        'type': "Dimension",
-                        'values': ["MONTH_STRING"]
-                })
-            ];
+    //         }, oCommonVizProperties));
 
 
-            var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
+    //         let aFeeds = [
+    //             new FeedItem({
+    //                 'uid': "primaryValues",
+    //                 'type': "Measure",
+    //                 'values': aSelectedMeasures.map((elem)=>{return elem.name;}) //all filtered names
+    //             }),
+    //             new FeedItem({
+    //                     'uid': "axisLabels",
+    //                     'type': "Dimension",
+    //                     'values': ["MONTH_STRING"]
+    //             })
+    //         ];
+
+
+    //         var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
             
     
 
-            vizFrame.destroyDataset();
-            vizFrame.removeAllFeeds();
-            vizFrame.vizUpdate({
-                'data': oDataset,
-                //'properties' : properties,
-                //'scales' : scales,
-                //'customizations' : customizations,
-                'feeds': aFeeds
-            });
+    //         vizFrame.destroyDataset();
+    //         vizFrame.removeAllFeeds();
+    //         vizFrame.vizUpdate({
+    //             'data': oDataset,
+    //             //'properties' : properties,
+    //             //'scales' : scales,
+    //             //'customizations' : customizations,
+    //             'feeds': aFeeds
+    //         });
 
 
-            vizFrame.setVizType('stacked_combination'); //('stacked_combination');
-            if ((checkbox1 == false &&
-                checkbox2 == false && checkbox3 == false && checkbox4 == false && checkbox5 == true)
-                ||
-                (checkbox1 == true &&
-                    checkbox2 == false && checkbox3 == false && checkbox4 == false && checkbox5 == false)
-                ||
-                (checkbox1 == false && checkbox2 == true && checkbox3 == false && checkbox4 == false && checkbox5 == false)) {
-                vizFrame.setVizType('line'); //('stacked_combination');   
-            }
-            if ((checkbox1 == false && checkbox2 == false && checkbox3 == false && checkbox4 == true && checkbox5 == false)
-                || (checkbox1 == false && checkbox2 == false && checkbox3 == true && checkbox4 == false && checkbox5 == false)) {
-                vizFrame.setVizType('column');
-            }
-            if ((checkbox1 == false && checkbox2 == false && checkbox3 == true && checkbox4 == true && checkbox5 == false)
-            ) {
+    //         vizFrame.setVizType('stacked_combination'); //('stacked_combination');
+    //         if ((checkbox1 == false &&
+    //             checkbox2 == false && checkbox3 == false && checkbox4 == false && checkbox5 == true)
+    //             ||
+    //             (checkbox1 == true &&
+    //                 checkbox2 == false && checkbox3 == false && checkbox4 == false && checkbox5 == false)
+    //             ||
+    //             (checkbox1 == false && checkbox2 == true && checkbox3 == false && checkbox4 == false && checkbox5 == false)) {
+    //             vizFrame.setVizType('line'); //('stacked_combination');   
+    //         }
+    //         if ((checkbox1 == false && checkbox2 == false && checkbox3 == false && checkbox4 == true && checkbox5 == false)
+    //             || (checkbox1 == false && checkbox2 == false && checkbox3 == true && checkbox4 == false && checkbox5 == false)) {
+    //             vizFrame.setVizType('column');
+    //         }
+    //         if ((checkbox1 == false && checkbox2 == false && checkbox3 == true && checkbox4 == true && checkbox5 == false)
+    //         ) {
                 
-                vizFrame.setVizType('stacked_column');
-            }
-            vizFrame.setVisible(true);
-            if (checkbox1 == false &&
-                checkbox2 == false && checkbox3 == false && checkbox4 == false && checkbox5 == false) {
-                vizFrame.destroyDataset();
-                vizFrame.removeAllFeeds();
-                vizFrame.destroyFeeds();
-                vizFrame.setVisible(false);
-            }
-            //vizFrame.setVizType('combination'); //dual_combination is not supported in this version of UI5
-            //vizFrame.setVizType('column');
-        },
+    //             vizFrame.setVizType('stacked_column');
+    //         }
+    //         vizFrame.setVisible(true);
+    //         if (checkbox1 == false &&
+    //             checkbox2 == false && checkbox3 == false && checkbox4 == false && checkbox5 == false) {
+    //             vizFrame.destroyDataset();
+    //             vizFrame.removeAllFeeds();
+    //             vizFrame.destroyFeeds();
+    //             vizFrame.setVisible(false);
+    //         }
+    //         //vizFrame.setVizType('combination'); //dual_combination is not supported in this version of UI5
+    //         //vizFrame.setVizType('column');
+    //     },
 
-        onSelectMeasure: function (oEvent) {
+    //     onSelectMeasure: function (oEvent) {
             
-            //this._state.chartContainer.removeContent();
-            var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
-            //oVizFrame.setVizProperties(this._constants.vizProperties);
+    //         //this._state.chartContainer.removeContent();
+    //         var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
+    //         //oVizFrame.setVizProperties(this._constants.vizProperties);
             
 
             
             
-            this._updateVizFrame2(oVizFrame);
+    //         this._updateVizFrame2(oVizFrame);
 
-        },
+    //     },
         
-        onChartPersonalizationPress: function(oEvent){
-        	var oView = this.getView();
-        	if(!this.byId("chartPersonalizationDialog")){
-        	//if(!this._oChartPersonalizationDialog){
-	        	Fragment.load({type: "XML", 
-	        				id: oView.getId(),
-	        				name: "one.labs.mem_profiler.view.ChartPersonalizationDialog",
-	        				controller: this
-	        	}).then((oDialog)=>{
-					oView.addDependent(oDialog);
-					oDialog.open();
-					//this._oChartPersonalizationDialog = oDialog;
-				});	
-	        } else {
-	        	//this._oChartPersonalizationDialog.open();
-	        	this.byId("chartPersonalizationDialog").open();
-	        }
-        },
+    //     onChartPersonalizationPress: function(oEvent){
+    //     	var oView = this.getView();
+    //     	if(!this.byId("chartPersonalizationDialog")){
+    //     	//if(!this._oChartPersonalizationDialog){
+	   //     	Fragment.load({type: "XML", 
+	   //     				id: oView.getId(),
+	   //     				name: "one.labs.mem_profiler.view.ChartPersonalizationDialog",
+	   //     				controller: this
+	   //     	}).then((oDialog)=>{
+				// 	oView.addDependent(oDialog);
+				// 	oDialog.open();
+				// 	//this._oChartPersonalizationDialog = oDialog;
+				// });	
+	   //     } else {
+	   //     	//this._oChartPersonalizationDialog.open();
+	   //     	this.byId("chartPersonalizationDialog").open();
+	   //     }
+    //     },
         
-        onPressCloseChartPersonalizationDialog: function(oEvent) {
-        	//this._oChartPersonalizationDialog.close();
-        	this.byId("chartPersonalizationDialog").close();
-            //this._updateVizFrame2(this.getView().byId(this._constants.vizFrame.id));
-        }
+    //     onPressCloseChartPersonalizationDialog: function(oEvent) {
+    //     	//this._oChartPersonalizationDialog.close();
+    //     	this.byId("chartPersonalizationDialog").close();
+    //         //this._updateVizFrame2(this.getView().byId(this._constants.vizFrame.id));
+    //     }
 
         // // --- Navigation
         // onLineItemPressed: function (oEvent) {

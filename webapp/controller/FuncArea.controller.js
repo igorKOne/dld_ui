@@ -2,7 +2,7 @@ sap.ui.define([
        'jquery.sap.global',
        'sap/ui/core/Fragment',
        //'sap/ui/core/mvc/Controller',
-          "./BaseController",
+       "./BaseController",
        'sap/ui/model/Filter',
        'sap/ui/model/Sorter',
        'sap/ui/model/json/JSONModel',
@@ -105,10 +105,10 @@ sap.ui.define([
                      this._oRouter = this._oComponent.getRouter();
 
                      this._initViewPropertiesModel();
-                     var oModel = this._oComponent.getModel();
+                     //var oModel = this._oComponent.getModel();
 
                      //              this._updateCustomIcons(this._constants.customIcons);
-                     var platformChart = this.getView().byId('platformMicroChart');
+                     //var platformChart = this.getView().byId('platformMicroChart');
 
 
 
@@ -128,7 +128,16 @@ sap.ui.define([
                      // end concept
 
               },
-
+              
+              // Navigates to the object view for the given Functional area
+              // func_area property serves as a key
+              onFuncAreaColumnListItemPress: function(oEvent){
+              	let oControl = oEvent.getSource();
+              	let oCtx = oControl.getBindingContext("funcArea");
+              	let oRouter = this.getRouter();
+              	oRouter.navTo("FuncAreaObject",{areaId: oCtx.getProperty("func_area")});
+              	
+              },
 
               //new
               /* ============================================================ */
