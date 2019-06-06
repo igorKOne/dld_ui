@@ -1,0 +1,75 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="one.labs.mem_profiler.controller.Startpage"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:layout="sap.ui.layout" xmlns:mc="sap.suite.ui.microchart">
+	<Page title="{i18n>title}">
+		<layout:VerticalLayout class="sapUiResponsiveMargin">
+			<Title titleStyle="H2" text="{i18n>startpageTilesGroupTitle}" class="sapUiTinyMarginBegin"/>
+			<layout:HorizontalLayout allowWrapping="true">
+				
+				<GenericTile
+					class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+					header="{i18n>startpageMemoryUseHistoryTileTitle}"
+					subheader="{i18n>startpageMemoryUseHistoryTileSubTitle}"
+					press=".onNavToMemoryUseHistory">
+					<tileContent>
+						<TileContent>
+							<content>
+								<mc:LineMicroChart
+									showPoints="true"
+									size="Responsive"
+									lines="{
+										path: 'overview>/history',
+										templateShareable: 'true'
+									}">
+									<mc:lines>
+										<mc:LineMicroChartLine
+												points="{
+														path: 'overview>points',
+														templateShareable: true
+													}">
+											<mc:LineMicroChartPoint x="{overview>period}" y="{overview>value}"/>
+										</mc:LineMicroChartLine>
+									</mc:lines>
+								</mc:LineMicroChart>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>				
+				<GenericTile
+					class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+					header="{i18n>startpagePlatformTileTitle}"
+					subheader="{i18n>startpagePlatformTileSubTitle}"
+					press=".onNavToPlatform">
+					<tileContent>
+						<TileContent>
+							<content>
+		
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+				<GenericTile
+					class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+					header="{i18n>startpageBusinessTileTitle}"
+					subheader="{i18n>startpageBusinessTileSubTitle}"
+					press=".onNavToFuncArea">
+					<tileContent>
+						<TileContent>
+							<content>
+								<!--<mc:ComparisonMicroChart scale="GB" size="Responsive" data="{platform>/results/0/business}" >-->
+								<!--<mc:data>-->
+								<!--	<mc:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" color="{platform>color}"/>-->
+								<!--</mc:data>-->
+								<!--</mc:ComparisonMicroChart>-->
+								<mc:ComparisonMicroChart scale="GB" size="Responsive" data="{overview>/funcAreas}" >
+								<mc:data>
+									<mc:ComparisonMicroChartData title="{overview>title}" value="{overview>value}" color="{overview>color}"/>
+								</mc:data>
+								</mc:ComparisonMicroChart>							
+								</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+				</layout:HorizontalLayout>
+		</layout:VerticalLayout>
+	</Page>
+</mvc:View>
