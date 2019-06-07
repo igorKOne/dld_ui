@@ -13,6 +13,7 @@ sap.ui.define([
 	return Controller.extend("one.labs.mem_profiler.controller.FuncArea", {
 
 		_oDialog: null,
+		formatter : Formatter,
 		onInit: function () {
 
 			//chart stuff
@@ -361,7 +362,7 @@ sap.ui.define([
 				oViewElemProperties.searchFieldWidth = "100%";
 				oViewElemProperties.catalogTitleVisible = false;
 				// in phone mode the spacer is removed in order to increase the size of the search field
-				this.byId("tableToolbar").removeContent(this.byId("toolbarSpacer"));
+				// this.byId("tableToolbar").removeContent(this.byId("toolbarSpacer"));
 			} else {
 				oViewElemProperties.availabilityColumnWidth = "18%";
 				oViewElemProperties.pictureColumnWidth = "9%";

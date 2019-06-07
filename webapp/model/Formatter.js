@@ -10,6 +10,14 @@ sap.ui.define(function() {
 			} catch (err) {
 				return "0";
 			}
+		},
+		
+		numberValue: function(Val){
+			if(!Val){
+				return 0;
+			} else {
+				return parseFloat(Val);
+			}
 		}
 	};
  

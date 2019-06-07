@@ -39,11 +39,20 @@
 						<Text id="funcAreaColumnListItem_cell_2" text="{funcArea>func_size_per_tb}" maxLines="2"></Text>
 						<FlexBox height="100px" renderType="Bare">
 							<micro:ColumnMicroChart size="Responsive" columns="{funcArea>years}">
+								<!--<micro:leftTopLabel>-->
+								<!--	<micro:ColumnMicroChartLabel label="{funcArea>years/0/title}"/>-->
+								<!--</micro:leftTopLabel>-->
+								<!--<micro:rightTopLabel>-->
+								<!--	<micro:ColumnMicroChartLabel label="{funcArea>years/3/title}"/>-->
+								<!--</micro:rightTopLabel>-->
+								<!--<micro:leftBottomLabel>-->
+								<!--</micro:leftBottomLabel>-->
 								<micro:rightBottomLabel>
-									<micro:ColumnMicroChartLabel label="% Volume per Year"/>
+									<micro:ColumnMicroChartLabel label="{i18n>funcAreaColumnMicrochartLabel}"/>
 								</micro:rightBottomLabel>
 								<micro:columns>
-									<micro:ColumnMicroChartData label="{funcArea>title}" value="{funcArea>value}" color="{funcArea>color}"/>
+									<micro:ColumnMicroChartData label="{funcArea>title}" value="{path: 'funcArea>value', formatter: '.formatter.numberValue'}" 
+									color="{funcArea>color}"/>
 								</micro:columns>
 							</micro:ColumnMicroChart>
 						</FlexBox>

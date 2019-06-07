@@ -11,6 +11,7 @@ sap.ui.define([
 	return BaseController.extend("one.labs.mem_profiler.controller.MemoryOverview", {
 
 		formatter: Formatter,
+		
 		/**
 		 * Called when a controller is instantiated and its View controls (if available) are already created.
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
@@ -25,6 +26,28 @@ sap.ui.define([
             this._oComponent = sap.ui.component(sap.ui.core.Component.getOwnerIdFor(this._oView));
             this._oResourceBundle = this._oComponent.getModel("i18n").getResourceBundle();
             this._oRouter = this._oComponent.getRouter();
+            
+	        this._oCommonVizProperties = {
+                    valueAxis: {
+                        label: {
+                            visible: true
+                        },
+                        title: {
+                            visible: false
+                        }
+                    },
+                    categoryAxis: {
+                        title: {
+                            visible: false
+                        }
+                    },
+                    title: {
+                        visible: true,
+                        text: this._oResourceBundle.getText("memoryUsageHistoryChartTitle")
+                    }            
+        	};
+
+
             this._initViewPropertiesModel();
             this._initChartPersonalizationModel();
 
@@ -53,11 +76,6 @@ sap.ui.define([
             
             //this._state.chartContainer.removeContent();
             var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
-            //oVizFrame.setVizProperties(this._constants.vizProperties);
-            
-
-            
-            
             this._updateVizFrame2(oVizFrame);
 
         },
@@ -158,26 +176,6 @@ sap.ui.define([
             
             let aSelectedMeasures = aMeasures.filter(elem=>{return elem.selected;}); // get selected measures
             
-            let oCommonVizProperties = {
-                    valueAxis: {
-                        label: {
-                            visible: true
-                        },
-                        title: {
-                            visible: false
-                        }
-                    },
-                    categoryAxis: {
-                        title: {
-                            visible: false
-                        }
-                    },
-                    title: {
-                        visible: false,
-                        text: 'HANA Memory Usage'
-                    }            
-            };
-
             vizFrame.setVizProperties(Object.assign({
                 plotArea: {
 
@@ -187,7 +185,7 @@ sap.ui.define([
                     }
                 }
 
-            }, oCommonVizProperties));
+            }, this._oCommonVizProperties));
 
 
             let aFeeds = [
@@ -259,33 +257,15 @@ sap.ui.define([
             
             var oVizFrame = this._constants.vizFrame;
 
-            vizFrame.setVizProperties({
+            vizFrame.setVizProperties(Object.assign({
                 plotArea: {
 
                     dataShape: {
                         primaryAxis: ["line", "line", "bar", "bar"],
                         secondaryAxis: ["bar"]
                     }
-                },
-
-                valueAxis: {
-                    label: {
-                        visible: true
-                    },
-                    title: {
-                        visible: false
-                    }
-                },
-                categoryAxis: {
-                    title: {
-                        visible: false
-                    }
-                },
-                title: {
-                    visible: false,
-                    text: ""
                 }
-            });
+            },this._oCommonVizProperties));
 
 
             var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
