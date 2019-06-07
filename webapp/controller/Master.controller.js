@@ -18,6 +18,7 @@ sap.ui.define([
 		formatter: Formatter,
         _oDialog: null,
         onInit: function () {
+        	this.getOwnerComponent().getModel("appData").setProperty("/nestedViewMode", true);
         },
 
         // _onInit: function () {

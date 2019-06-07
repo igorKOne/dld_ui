@@ -11,7 +11,7 @@ sap.ui.define([
 		 * @memberOf one.labs.mem_profiler.view.Startpage
 		 */
 		onInit: function () {
-
+        	this.getOwnerComponent().getModel("appData").setProperty("/nestedViewMode", false);
 		},
 		
 		onNavToMemoryUseHistory: function(){
@@ -25,7 +25,6 @@ sap.ui.define([
 		onNavToFuncArea: function(){
 			this.getRouter().navTo("FuncAreas");
 		}
-
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 		 * (NOT before the first rendering! onInit() is used for that one!).

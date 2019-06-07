@@ -65,6 +65,7 @@ sap.ui.define([
 		onNavBack: function() {
 			window.history.go(-1);
 		},
+
 		
 		_getModulePath: function(){
 			return this.getOwnerComponent().getModel().sServiceUrl;

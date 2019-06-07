@@ -2,7 +2,7 @@
 	xmlns:commons="sap.suite.ui.commons" xmlns:semantic="sap.m.semantic" xmlns:table="sap.ui.table"
 	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:tnt="sap.tnt" xmlns:core="sap.ui.core"
 	xmlns:l="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls" xmlns="sap.m" xmlns:micro="sap.suite.ui.microchart">
-		<Panel width="auto" class="sapUiResponsiveMargin" headerText="{i18n>pageFuncAreaTitle}">
+		<Panel width="auto" class="sapUiResponsiveMargin" headerText="{= ${appData>/nestedViewMode} ? ${i18n>pageFuncAreaTitle} : ''}">
 		<!--<Title text="{i18n>pageFuncAreaTitle}"/>-->
 		<!--<content>-->
 			<Table id="funcAreaTable" ariaLabelledBy="title" items="{funcArea>/results}" growing="true" visible="true">

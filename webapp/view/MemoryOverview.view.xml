@@ -1,7 +1,7 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:commons="sap.suite.ui.commons"
 	xmlns:viz="sap.viz.ui5.controls" controllerName="one.labs.mem_profiler.controller.MemoryOverview">
 	<!--<Page id="pageMemoryOverview" showNavButton="true" navButtonPress=".onNavBack" title="{i18n>pageMemoryOverviewTitle}">-->
-	<Panel class="sapUiResponsiveMargin" headerText="{i18n>pageMemoryOverviewTitle}">
+	<Panel class="sapUiResponsiveMargin" headerText="{= (${appData>/nestedViewMode}) ? ${i18n>pageMemoryOverviewTitle} : ''}">
 		<!--<Title text="{i18n>pageMemoryOverviewTitle}"/>-->
 		<!--<content>-->
 			<commons:ChartContainer id="chartContainer" showFullScreen="true" autoAdjustHeight="true" showLegend="true" showPersonalization="true"
@@ -10,7 +10,8 @@
 					<commons:ChartContainerContent icon="sap-icon://vertical-bar-chart" title="Memory Usage by Month">
 						<commons:content>
 							<viz:Popover id="idPopOver"></viz:Popover>
-							<viz:VizFrame id="vizFrame" uiConfig="{applicationSet:'fiori'}"></viz:VizFrame>
+							<viz:VizFrame id="vizFrame" uiConfig="{applicationSet:'fiori'}">
+							</viz:VizFrame>
 						</commons:content>
 					</commons:ChartContainerContent>
 				</commons:content>

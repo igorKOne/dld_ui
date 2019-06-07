@@ -16,6 +16,9 @@
 								<mc:LineMicroChart
 									showPoints="true"
 									size="Responsive"
+									threshold="{overview>/history/0/threshold}"
+									leftBottomLabel="{overview>/history/0/leftBottomLabel}"
+									rightBottomLabel="{overview>/history/0/rightBottomLabel}"
 									lines="{
 										path: 'overview>/history',
 										templateShareable: 'true'
@@ -42,7 +45,17 @@
 					<tileContent>
 						<TileContent>
 							<content>
-		
+							<mc:ColumnMicroChart isResponsive="true" columns="{overview>/dataAges}">
+								<mc:leftBottomLabel>
+									<mc:ColumnMicroChartLabel label="{overview>/dataAges/0/title}"/>
+								</mc:leftBottomLabel>
+								<mc:rightBottomLabel>
+									<mc:ColumnMicroChartLabel label="{overview>/dataAges/3/title}"/>
+								</mc:rightBottomLabel>
+								<mc:columns>
+									<mc:ColumnMicroChartData label="{overview>title}" value="{overview>value}" color="{overview>color}"/>
+								</mc:columns>
+							</mc:ColumnMicroChart>
 							</content>
 						</TileContent>
 					</tileContent>
