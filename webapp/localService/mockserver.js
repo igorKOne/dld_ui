@@ -105,6 +105,7 @@ sap.ui.define([
 						// Files are loaded to JSON Models. For now, only getData() will be used
 						let oPlatformModel = new JSONModel(sJsonFilesUrl + "/Platform.json");
 						let oBusinessModel = new JSONModel(sJsonFilesUrl + "/Business.json");
+						let oOverviewModel = new JSONModel(sJsonFilesUrl + "/Overview.json");
 
 						function fnResponsePlatform(oXHR) {
 							Log.debug("Incoming requests to Platform XSJS service");
@@ -118,6 +119,12 @@ sap.ui.define([
 
 						}
 
+						function fnResponseOverview(oXHR) {
+							Log.debug("Incoming requests to Overview XSJS service");
+							oXHR.respondJSON(200, {}, JSON.stringify(oOverviewModel.getData()));
+
+						}
+
 						let aRequests = [{
 							method: "GET",
 							path: new RegExp("Platform(.*)"),
@@ -126,6 +133,10 @@ sap.ui.define([
 							method: "GET",
 							path: new RegExp("Business3(.*)"),
 							response: fnResponseBusiness
+						},{
+							method: "GET",
+							path: new RegExp("Overview(.*)"),
+							response: fnResponseOverview							
 						}];
 
 						// create a mock server instance or stop the existing one to reinitialize
