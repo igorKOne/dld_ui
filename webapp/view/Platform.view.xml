@@ -30,21 +30,22 @@
 				</columns>
 				<ColumnListItem id="datasetColumnListItem" vAlign="Middle" type="Navigation" press=".onColumnListItemPress">
 					<cells id="datasetColumnListItem_cells">
-							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{platform>business}" >
+							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{platform>business}">
 								<micro:data>
 									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" color="{platform>color}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
-						<FlexBox height="100px" renderType="Bare">
-							<micro:ColumnMicroChart isResponsive="true" columns="{platform>years}">
-								<micro:rightBottomLabel>
-									<micro:ColumnMicroChartLabel label="% Volume per Year"/>
-								</micro:rightBottomLabel>
+						<VBox height="100px" renderType="Bare">
+							<micro:ColumnMicroChart isResponsive="true" columns="{platform>years}"  allowColumnLabels="true">
+								<!--<micro:rightBottomLabel>-->
+								<!--	<micro:ColumnMicroChartLabel label="{i18n>platformColumnMicrochartLabel}"/>-->
+								<!--</micro:rightBottomLabel>-->
 								<micro:columns>
 									<micro:ColumnMicroChartData label="{platform>title}" value="{platform>value}" color="{platform>color}"/>
 								</micro:columns>
 							</micro:ColumnMicroChart>
-						</FlexBox>
+							<Text textAlign="End" text="{i18n>platformColumnMicrochartLabel}"/>
+						</VBox>
 							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{platform>data}" maxValue="100">
 								<micro:data>
 									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" color="{platform>color}"/>

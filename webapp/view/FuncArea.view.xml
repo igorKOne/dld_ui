@@ -37,8 +37,8 @@
 					<cells id="funcAreaColumnListItem_cells">
 						<Text id="funcAreaColumnListItem_cell_1" text="{funcArea>func_area}" maxLines="2"></Text>
 						<Text id="funcAreaColumnListItem_cell_2" text="{funcArea>func_size_per_tb}" maxLines="2"></Text>
-						<FlexBox height="100px" renderType="Bare">
-							<micro:ColumnMicroChart size="Responsive" columns="{funcArea>years}">
+						<VBox height="100px" renderType="Bare">
+							<micro:ColumnMicroChart size="Responsive" columns="{funcArea>years}" allowColumnLabels="true">
 								<!--<micro:leftTopLabel>-->
 								<!--	<micro:ColumnMicroChartLabel label="{funcArea>years/0/title}"/>-->
 								<!--</micro:leftTopLabel>-->
@@ -47,15 +47,16 @@
 								<!--</micro:rightTopLabel>-->
 								<!--<micro:leftBottomLabel>-->
 								<!--</micro:leftBottomLabel>-->
-								<micro:rightBottomLabel>
-									<micro:ColumnMicroChartLabel label="{i18n>funcAreaColumnMicrochartLabel}"/>
-								</micro:rightBottomLabel>
+								<!--<micro:rightBottomLabel>-->
+								<!--	<micro:ColumnMicroChartLabel label="{i18n>funcAreaColumnMicrochartLabel}"/>-->
+								<!--</micro:rightBottomLabel>-->
 								<micro:columns>
 									<micro:ColumnMicroChartData label="{funcArea>title}" value="{path: 'funcArea>value', formatter: '.formatter.numberValue'}" 
 									color="{funcArea>color}"/>
 								</micro:columns>
 							</micro:ColumnMicroChart>
-						</FlexBox>
+							<Text textAlign="End" text="{i18n>funcAreaColumnMicrochartLabel}"/>
+						</VBox>
 							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{funcArea>data}" maxValue="100">
 								<micro:data>
 									<micro:ComparisonMicroChartData title="{funcArea>title}" value="{funcArea>value}" color="{funcArea>color}"/>
