@@ -4,11 +4,11 @@ sap.ui.define([
     "sap/viz/ui5/controls/common/feeds/FeedItem",
     "sap/ui/model/json/JSONModel",
     '../model/Formatter'
-], function (BaseController,Fragment,FeedItem,JSONModel,Formatter) {
+], function (Controller,Fragment,FeedItem,JSONModel,Formatter) {
 	"use strict";
 	
 
-	return BaseController.extend("one.labs.mem_profiler.controller.MemoryOverview", {
+	return Controller.extend("one.labs.mem_profiler.controller.MemoryOverview", {
 
 		formatter: Formatter,
 		
@@ -19,7 +19,7 @@ sap.ui.define([
 		 */
 		onInit: function () {
 	        this._constants = this.getOverviewChartConstant();
-	        this._state = this.getOverviewState();
+	        // this._state = this.getOverviewState();
 
 
             this._oView = this.getView();
@@ -52,7 +52,7 @@ sap.ui.define([
             this._initChartPersonalizationModel();
 
 			// update the VizFrame control
-            var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
+            var oVizFrame = this.getView().byId("vizFrame");
             this._updateVizFrame(oVizFrame);
             
             //connect the popover
@@ -75,7 +75,7 @@ sap.ui.define([
         onSelectMeasure: function (oEvent) {
             
             //this._state.chartContainer.removeContent();
-            var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
+            var oVizFrame = this.getView().byId("vizFrame");
             this._updateVizFrame2(oVizFrame);
 
         },
@@ -83,7 +83,6 @@ sap.ui.define([
         onChartPersonalizationPress: function(oEvent){
         	var oView = this.getView();
         	if(!this.byId("chartPersonalizationDialog")){
-        	//if(!this._oChartPersonalizationDialog){
 	        	Fragment.load({type: "XML", 
 	        				id: oView.getId(),
 	        				name: "one.labs.mem_profiler.view.ChartPersonalizationDialog",
@@ -94,15 +93,12 @@ sap.ui.define([
 					//this._oChartPersonalizationDialog = oDialog;
 				});	
 	        } else {
-	        	//this._oChartPersonalizationDialog.open();
 	        	this.byId("chartPersonalizationDialog").open();
 	        }
         },
         
         onPressCloseChartPersonalizationDialog: function(oEvent) {
-        	//this._oChartPersonalizationDialog.close();
         	this.byId("chartPersonalizationDialog").close();
-            //this._updateVizFrame2(this.getView().byId(this._constants.vizFrame.id));
         },
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
@@ -136,9 +132,10 @@ sap.ui.define([
          * @private
          * @param {sap.viz.ui5.controls.VizFrame} vizFrame Viz Frame to update
          */
-        _updateVizFrame2: function (vizFrame) {
+        _updateVizFrame2: function (oVizFrame) {
+        	
+        	let oVizFrameConf = this._constants.vizFrame;
             
-            // var oVizFrame = this._constants.vizFrame;
             let oChartPersModel = this.getView().getModel("chartPersonalization");
             let showAllocationLimit = oChartPersModel.getProperty("/showAllocationLimit");
             let showLicensedSpace = oChartPersModel.getProperty("/showLicensedSpace");
@@ -176,7 +173,7 @@ sap.ui.define([
             
             let aSelectedMeasures = aMeasures.filter(elem=>{return elem.selected;}); // get selected measures
             
-            vizFrame.setVizProperties(Object.assign({
+            oVizFrame.setVizProperties(Object.assign({
                 plotArea: {
 
                     dataShape: {
@@ -199,16 +196,15 @@ sap.ui.define([
                         'type': "Dimension",
                         'values': ["MONTH_STRING"]
                 })
-            ];
+            ]; 
 
 
-            var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
+            var oDataset = new sap.viz.ui5.data.FlattenedDataset(oVizFrameConf.dataset);
             
     
-
-            vizFrame.destroyDataset();
-            vizFrame.removeAllFeeds();
-            vizFrame.vizUpdate({
+            oVizFrame.destroyDataset();
+            oVizFrame.removeAllFeeds();
+            oVizFrame.vizUpdate({
                 'data': oDataset,
                 //'properties' : properties,
                 //'scales' : scales,
@@ -217,7 +213,7 @@ sap.ui.define([
             });
 
 
-            vizFrame.setVizType('stacked_combination'); //('stacked_combination');
+            oVizFrame.setVizType('stacked_combination'); //('stacked_combination');
             if ((!showAllocationLimit &&
                 !showLicensedSpace && !showColumnStoreData && !showRowStoreData && showPeakMemoryUsage)
                 ||
@@ -225,27 +221,27 @@ sap.ui.define([
                     !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showPeakMemoryUsage)
                 ||
                 (!showAllocationLimit && showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showPeakMemoryUsage)) {
-                vizFrame.setVizType('line'); //('stacked_combination');   
+                oVizFrame.setVizType('line'); //('stacked_combination');   
             }
             if ((!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && showRowStoreData && !showPeakMemoryUsage)
                 || (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && !showRowStoreData && !showPeakMemoryUsage)) {
-                vizFrame.setVizType('column');
+                oVizFrame.setVizType('column');
             }
             if ((!showAllocationLimit && !showLicensedSpace && showColumnStoreData && showRowStoreData && !showPeakMemoryUsage)
             ) {
                 
-                vizFrame.setVizType('stacked_column');
+                oVizFrame.setVizType('stacked_column');
             }
-            vizFrame.setVisible(true);
+            oVizFrame.setVisible(true);
             if (!showAllocationLimit &&
                 !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showPeakMemoryUsage) {
-                vizFrame.destroyDataset();
-                vizFrame.removeAllFeeds();
-                vizFrame.destroyFeeds();
-                vizFrame.setVisible(false);
+                oVizFrame.destroyDataset();
+                oVizFrame.removeAllFeeds();
+                oVizFrame.destroyFeeds();
+                oVizFrame.setVisible(false);
             }
-            //vizFrame.setVizType('combination'); //dual_combination is not supported in this version of UI5
-            //vizFrame.setVizType('column');
+            //oVizFrame.setVizType('combination'); //dual_combination is not supported in this version of UI5
+            //oVizFrame.setVizType('column');
         },
         /**
         * Updates the Viz Frame with the necessary data and properties.
@@ -253,11 +249,11 @@ sap.ui.define([
         * @private
         * @param {sap.viz.ui5.controls.VizFrame} vizFrame Viz Frame to update
         */
-        _updateVizFrame: function (vizFrame) {
+        _updateVizFrame: function (oVizFrame) {
             
-            var oVizFrame = this._constants.vizFrame;
+            let oVizFrameConf = this._constants.vizFrame;
 
-            vizFrame.setVizProperties(Object.assign({
+            oVizFrame.setVizProperties(Object.assign({
                 plotArea: {
 
                     dataShape: {
@@ -268,40 +264,24 @@ sap.ui.define([
             },this._oCommonVizProperties));
 
 
-            var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
+            var oDataset = new sap.viz.ui5.data.FlattenedDataset(oVizFrameConf.dataset);
             //console.log
-            // var oVizFramePath = oVizFrame.modulePath;
+            // var oVizFramePath = oVizFrameConf.modulePath;
             
             //var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);
             let oModel = this.getOwnerComponent().getModel();                                   
             
-            
-            
-            
-            vizFrame.setDataset(oDataset);
+            oVizFrame.setDataset(oDataset);
 
-            vizFrame.setModel(oModel);
+            oVizFrame.setModel(oModel);
             
-            
-            this._addFeedItems(vizFrame, oVizFrame.feedItems);
-
-            //vizFrame.setVizType(oVizFrame.type);
-            vizFrame.setVizType('stacked_combination'); //('stacked_combination'); 
-            //vizFrame.setVizType('combination'); //dual_combination is not supported in this version of UI5
-            //vizFrame.setVizType('column');
+            oVizFrameConf.feedItems.forEach( oItem => {
+                oVizFrame.addFeed(new FeedItem(oItem));
+            });
+            //oVizFrame.setVizType(oVizFrameConf.type);
+            oVizFrame.setVizType('stacked_combination'); //('stacked_combination'); 
         },
-        /**
-        * Adds the passed feed items to the passed Viz Frame.
-        *
-        * @private
-        * @param {sap.viz.ui5.controls.VizFrame} vizFrame Viz Frame to add feed items to
-        * @param {Object[]} feedItems Feed items to add
-        */
-        _addFeedItems: function (vizFrame, feedItems) {
-            for (var i = 0; i < feedItems.length; i++) {
-                vizFrame.addFeed(new sap.viz.ui5.controls.common.feeds.FeedItem(feedItems[i]));
-            }
-        },        
+      
         _initViewPropertiesModel: function () {
 
 		}

@@ -250,7 +250,7 @@ sap.ui.define([
         //     //this._updateCustomIcons(this._constants.customIcons);
 
             
-        //     var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
+        //     var oVizFrame = this.getView().byId("vizFrame");
         //     //oVizFrame.setVizProperties(this._constants.vizProperties);
             
 
@@ -1359,7 +1359,7 @@ sap.ui.define([
     //     onSelectMeasure: function (oEvent) {
             
     //         //this._state.chartContainer.removeContent();
-    //         var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
+    //         var oVizFrame = this.getView().byId("vizFrame");
     //         //oVizFrame.setVizProperties(this._constants.vizProperties);
             
 
@@ -1391,7 +1391,7 @@ sap.ui.define([
     //     onPressCloseChartPersonalizationDialog: function(oEvent) {
     //     	//this._oChartPersonalizationDialog.close();
     //     	this.byId("chartPersonalizationDialog").close();
-    //         //this._updateVizFrame2(this.getView().byId(this._constants.vizFrame.id));
+    //         //this._updateVizFrame2(this.getView().byId("vizFrame"));
     //     }
 
         // // --- Navigation

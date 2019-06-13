@@ -40,7 +40,7 @@ sap.ui.define([
 				//
 				platformData: {
 					id: "platformData",
-					modulePath: this._getModulePath(), //"/odata/MEM_PROFILER.xsodata",
+					// modulePath: this._getModulePath(), //"/odata/MEM_PROFILER.xsodata",
 
 					items: {
 
@@ -244,54 +244,54 @@ sap.ui.define([
 		 * @private
 		 * @param {sap.viz.ui5.controls.VizFrame} vizFrame Viz Frame to update
 		 */
-		_updateVizFrame: function (vizFrame) {
-			var oVizFrame = this._constants.vizFrame;
+		// _updateVizFrame: function (vizFrame) {
+		// 	var oVizFrame = this._constants.vizFrame;
 
-			vizFrame.setVizProperties({
-				plotArea: {
+		// 	vizFrame.setVizProperties({
+		// 		plotArea: {
 
-					dataShape: {
-						primaryAxis: ["line", "line", "bar", "bar"]
-					}
-				},
+		// 			dataShape: {
+		// 				primaryAxis: ["line", "line", "bar", "bar"]
+		// 			}
+		// 		},
 
-				valueAxis: {
-					label: {
-						visible: true
-					},
-					title: {
-						visible: false
-					}
-				},
-				categoryAxis: {
-					title: {
-						visible: false
-					}
-				},
-				title: {
-					visible: false,
-					text: 'HANA Memory Usage'
-				}
-			});
+		// 		valueAxis: {
+		// 			label: {
+		// 				visible: true
+		// 			},
+		// 			title: {
+		// 				visible: false
+		// 			}
+		// 		},
+		// 		categoryAxis: {
+		// 			title: {
+		// 				visible: false
+		// 			}
+		// 		},
+		// 		title: {
+		// 			visible: false,
+		// 			text: 'HANA Memory Usage'
+		// 		}
+		// 	});
 
-			var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
-			//console.log
-			var oVizFramePath = oVizFrame.modulePath;
+		// 	var oDataset = new sap.viz.ui5.data.FlattenedDataset(this._constants.vizFrame.dataset);
+		// 	//console.log
+		// 	var oVizFramePath = oVizFrame.modulePath;
 
-			//            var oModel = new sap.ui.model.json.JSONModel(oVizFramePath);
-			var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);
+		// 	//            var oModel = new sap.ui.model.json.JSONModel(oVizFramePath);
+		// 	var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);
 
-			vizFrame.setDataset(oDataset);
+		// 	vizFrame.setDataset(oDataset);
 
-			vizFrame.setModel(oModel);
+		// 	vizFrame.setModel(oModel);
 
-			this._addFeedItems(vizFrame, oVizFrame.feedItems);
+		// 	this._addFeedItems(vizFrame, oVizFrame.feedItems);
 
-			//vizFrame.setVizType(oVizFrame.type);
-			vizFrame.setVizType('stacked_combination');
-			//vizFrame.setVizType('combination'); //dual_combination is not supported in this version of UI5
-			//vizFrame.setVizType('column');
-		},
+		// 	//vizFrame.setVizType(oVizFrame.type);
+		// 	vizFrame.setVizType('stacked_combination');
+		// 	//vizFrame.setVizType('combination'); //dual_combination is not supported in this version of UI5
+		// 	//vizFrame.setVizType('column');
+		// },
 		/**
 		 * Adds the passed feed items to the passed Viz Frame.
 		 *
@@ -299,11 +299,11 @@ sap.ui.define([
 		 * @param {sap.viz.ui5.controls.VizFrame} vizFrame Viz Frame to add feed items to
 		 * @param {Object[]} feedItems Feed items to add
 		 */
-		_addFeedItems: function (vizFrame, feedItems) {
-			for (var i = 0; i < feedItems.length; i++) {
-				vizFrame.addFeed(new sap.viz.ui5.controls.common.feeds.FeedItem(feedItems[i]));
-			}
-		},
+		// _addFeedItems: function (vizFrame, feedItems) {
+		// 	for (var i = 0; i < feedItems.length; i++) {
+		// 		vizFrame.addFeed(new sap.viz.ui5.controls.common.feeds.FeedItem(feedItems[i]));
+		// 	}
+		// },
 		///**
 		//* Creates table columns with labels as headers.
 		//*

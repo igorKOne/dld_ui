@@ -1,22 +1,32 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:commons="sap.suite.ui.commons"
-	xmlns:viz="sap.viz.ui5.controls" controllerName="one.labs.mem_profiler.controller.MemoryOverview">
-	<!--<Page id="pageMemoryOverview" showNavButton="true" navButtonPress=".onNavBack" title="{i18n>pageMemoryOverviewTitle}">-->
-	<Panel  headerText="{= (${appData>/nestedViewMode}) ? ${i18n>pageMemoryOverviewTitle} : ''}">
+	xmlns:viz="sap.viz.ui5.controls" 
+	xmlns:layout="sap.ui.layout"
+	height="100%"
+	controllerName="one.labs.mem_profiler.controller.MemoryOverview">
+	<!--<Panel  headerText="{= (${appData>/nestedViewMode}) ? ${i18n>pageMemoryOverviewTitle} : ''}" >-->
 		<!--<Title text="{i18n>pageMemoryOverviewTitle}"/>-->
-		<content>
-			<commons:ChartContainer id="chartContainer" showFullScreen="true" autoAdjustHeight="true" showLegend="true" showPersonalization="true"
+		<!--<content>-->
+			<layout:FixFlex>
+				<!--<layout:fixContent>-->
+					<!--<Text text="Fixed Content"></m:Text>-->
+				<!--</layout:fixContent>-->
+				<layout:flexContent>			
+			<commons:ChartContainer id="chartContainer" 
+			class="sapUiResponsiveContentPadding"
+			showFullScreen="true" autoAdjustHeight="true" showLegend="true" showPersonalization="true"
 				contentChange="attachContentChange" personalizationPress="onChartPersonalizationPress" >
 				<commons:content>
 					<commons:ChartContainerContent icon="sap-icon://vertical-bar-chart" title="Memory Usage by Month">
 						<commons:content>
 							<viz:Popover id="idPopOver"></viz:Popover>
-							<viz:VizFrame id="vizFrame" uiConfig="{applicationSet:'fiori'}">
+							<viz:VizFrame id="vizFrame" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%">
 							</viz:VizFrame>
 						</commons:content>
 					</commons:ChartContainerContent>
 				</commons:content>
 			</commons:ChartContainer>
-		</content>
-	</Panel>
-	<!--</Page>-->
+				</layout:flexContent>			
+			</layout:FixFlex>
+		<!--</content>-->
+	<!--</Panel>-->
 </mvc:View>

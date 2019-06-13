@@ -2,10 +2,10 @@ sap.ui.define([
 	"./BaseController",
 	"sap/ui/model/json/JSONModel",
 	"sap/m/MessageBox"
-], function (BaseController, JSONModel, MessageBox) {
+], function (Controller, JSONModel, MessageBox) {
 	"use strict";
 
-	return BaseController.extend("one.labs.mem_profiler.controller.PlatformObject", {
+	return Controller.extend("one.labs.mem_profiler.controller.PlatformObject", {
 
 		/**
 		 * Called when a controller is instantiated and its View controls (if available) are already created.
