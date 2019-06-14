@@ -9,22 +9,22 @@
 				<columns id="datasetTable_columns">
 					<Column id="datasetTable_col8" demandPopin="true" minScreenWidth="Tablet">
 						<header id="datasetTable_col8_header">
-							<Label id="datasetTable_col8_label" text="Largest Business Areas"/>
+							<Label id="datasetTable_col8_label" text="{i18n>platformTableCol1}"/>
 						</header>
 					</Column>
 					<Column id="datasetTable_col4" demandPopin="true" minScreenWidth="Tablet">
 						<header id="datasetTable_col4_header">
-							<Label id="datasetTable_col4_label" text="Data Aging"/>
+							<Label id="datasetTable_col4_label" text="{i18n>platformTableCol2}"/>
 						</header>
 					</Column>
 					<Column id="datasetTable_col7" demandPopin="true" minScreenWidth="Tablet">
 						<header id="datasetTable_col7_header">
-							<Label id="datasetTable_col7_label" text="Purpose of Data"/>
+							<Label id="datasetTable_col7_label" text="{i18n>platformTableCol3}"/>
 						</header>
 					</Column>
 					<Column id="datasetTable_col6" demandPopin="true" minScreenWidth="Tablet">
 						<header id="datasetTable_col6_header">
-							<Label id="datasetTable_col6_label" text="Row/Column Store"/>
+							<Label id="datasetTable_col6_label" text="{i18n>platformTableCol4}"/>
 						</header>
 					</Column>
 				</columns>

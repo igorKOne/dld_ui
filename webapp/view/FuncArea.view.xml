@@ -9,34 +9,36 @@
 				<columns id="funcAreaTable_columns">
 					<Column id="funcAreaTable_col1" demandPopin="true" minScreenWidth="Tablet">
 						<header id="funcAreaTable_col1_header">
-							<Label id="funcAreaTable_col1_label" text="Business Area"/>
+							<Label id="funcAreaTable_col1_label" text="{i18n>funcAreaTableCol1}"/>
 						</header>
 					</Column>
 					<Column id="funcAreaTable_col2" demandPopin="true" minScreenWidth="Tablet">
 						<header id="funcAreaTable_col2_header">
-							<Label id="funcAreaTable_col2_label" text="Size in GB"/>
+							<Label id="funcAreaTable_col2_label" text="{i18n>funcAreaTableCol2}"/>
 						</header>
 					</Column>
 					<Column id="funcAreaTable_col6" demandPopin="true" minScreenWidth="Tablet">
 						<header id="funcAreaTable_col6_header">
-							<Label id="funcAreaTable_col6_label" text="Data Aging"/>
+							<Label id="funcAreaTable_col6_label" text="{i18n>funcAraeTableCol3}"/>
 						</header>
 					</Column>
 					<Column id="funcAreaTable_col8" demandPopin="true" minScreenWidth="Tablet">
 						<header id="funcAreaTable_col8header">
-							<Label id="funcAreaTable_col8_label" text="Data Purpose"/>
+							<Label id="funcAreaTable_col8_label" text="{i18n>funcAreaTableCol4}"/>
 						</header>
 					</Column>
 					<Column id="funcAreaTable_col9" demandPopin="true" minScreenWidth="Tablet">
 						<header id="funcAreaTable_col9header">
-							<Label id="funcAreaTable_col9_label" text="Row/Column Store"/>
+							<Label id="funcAreaTable_col9_label" text="{i18n>funcAreaTableCol5}"/>
 						</header>
 					</Column>
 				</columns>
 				<ColumnListItem id="funcAreaColumnListItem" vAlign="Middle" type="Navigation" press=".onFuncAreaColumnListItemPress">
 					<cells id="funcAreaColumnListItem_cells">
-						<Text id="funcAreaColumnListItem_cell_1" text="{funcArea>func_area}" maxLines="2"></Text>
-						<Text id="funcAreaColumnListItem_cell_2" text="{funcArea>func_size_per_tb}" maxLines="2"></Text>
+						<ObjectIdentifier title="{funcArea>func_area}"/>
+						<!--<Text id="funcAreaColumnListItem_cell_1" text="{funcArea>func_area}" maxLines="2"></Text>-->
+						<!--<Text id="funcAreaColumnListItem_cell_2" text="{funcArea>func_size_per_tb}" maxLines="2"></Text>-->
+						<ObjectNumber unit="GB" number="{funcArea>func_size_per_tb}"/>
 						<VBox height="100px" renderType="Bare" justifyContent="Center">
 							<micro:ColumnMicroChart size="Responsive" columns="{funcArea>years}" allowColumnLabels="true"
 							visible="{path:'funcArea>years', formatter:'.formatter.agingDataVisible'}">
