@@ -12,6 +12,6 @@
 		enableAutoBinding="true"
 		beforeRebindTable=".onBeforeRebindTable"
 		entitySet="TableMemoryOverview"
-		initiallyVisibleFields="TABLE_NAME,SCHEMA_NAME,CS_SIZE,RS_SIZE,STG_VOLUME,REP_VOLUME">
+		initiallyVisibleFields="TABLE_NAME,SCHEMA_NAME,CS_SIZE,RS_SIZE,STG_VOLUME,REP_VOLUME,PREV_YEARS_VOL">
 	</smartTable:SmartTable>
 </core:FragmentDefinition>

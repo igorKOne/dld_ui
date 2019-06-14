@@ -36,8 +36,9 @@
 									color="{path:'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
-						<VBox height="100px" renderType="Bare">
-							<micro:ColumnMicroChart isResponsive="true" columns="{platform>years}"  allowColumnLabels="true">
+						<VBox height="100px" renderType="Bare" >
+							<micro:ColumnMicroChart isResponsive="true" columns="{platform>years}"  allowColumnLabels="true"
+							visible="{path:'platform>years', formatter: '.formatter.agingDataVisible'}" >
 								<!--<micro:rightBottomLabel>-->
 								<!--	<micro:ColumnMicroChartLabel label="{i18n>platformColumnMicrochartLabel}"/>-->
 								<!--</micro:rightBottomLabel>-->
@@ -48,7 +49,6 @@
 									color="Neutral"/>
 								</micro:columns>
 							</micro:ColumnMicroChart>
-							<!--<Text textAlign="End" text="{i18n>platformColumnMicrochartLabel}"/>-->
 						</VBox>
 							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{platform>data}" maxValue="100">
 								<micro:data>

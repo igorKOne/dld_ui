@@ -1,7 +1,10 @@
 sap.ui.define(function() {
 	"use strict";
+
+	self = this;
  
 	var Formatter = {
+		
  
 		classificationString :  function (fValue) {
 			try {
@@ -36,6 +39,26 @@ sap.ui.define(function() {
 		
 		percentage: function(Val){
 			return '' + parseFloat(Val) + '%';
+		},
+		
+		noAgingDataVisible: function(aYears) {
+			
+			if(aYears && Array.isArray(aYears) && aYears.length){
+				//let TotVal = aYears.reduce( (total, oElem) => total + oElem.value);
+				return false;	
+			} else {
+				return true;
+			}			
+		},
+		
+		agingDataVisible: function(aYears) {
+			
+			if(aYears && Array.isArray(aYears) && aYears.length){
+				//let TotVal = aYears.reduce( (total, oElem) => total + oElem.value);
+				return true;	
+			} else {
+				return false;
+			}			
 		}
 	};
  
