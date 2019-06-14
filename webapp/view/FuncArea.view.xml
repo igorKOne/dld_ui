@@ -51,20 +51,22 @@
 								<!--	<micro:ColumnMicroChartLabel label="{i18n>funcAreaColumnMicrochartLabel}"/>-->
 								<!--</micro:rightBottomLabel>-->
 								<micro:columns>
-									<micro:ColumnMicroChartData label="{funcArea>title}" value="{path: 'funcArea>value', formatter: '.formatter.numberValue'}" 
-									color="{funcArea>color}"/>
+									<micro:ColumnMicroChartData label="{funcArea>title}" 
+									value="{path: 'funcArea>value', formatter: '.formatter.numberValue'}" 
+									displayValue="{path: 'funcArea>value', formatter: '.formatter.percentage'}"
+									color="Neutral"/>
 								</micro:columns>
 							</micro:ColumnMicroChart>
-							<Text textAlign="End" text="{i18n>funcAreaColumnMicrochartLabel}"/>
+							<!--<Text textAlign="End" text="{i18n>funcAreaColumnMicrochartLabel}"/>-->
 						</VBox>
 							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{funcArea>data}" maxValue="100">
 								<micro:data>
-									<micro:ComparisonMicroChartData title="{funcArea>title}" value="{funcArea>value}" color="{funcArea>color}"/>
+									<micro:ComparisonMicroChartData title="{funcArea>title}" value="{funcArea>value}" color="{path:'funcArea>color', formatter: '.formatter.fourSeriesColour'}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
 							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{funcArea>RSCS}">
 								<micro:data>
-									<micro:ComparisonMicroChartData title="{funcArea>title}" value="{funcArea>value}" color="{funcArea>color}"/>
+									<micro:ComparisonMicroChartData title="{funcArea>title}" value="{funcArea>value}" color="{path:'funcArea>color', formatter: '.formatter.fourSeriesColour'}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
 					</cells>

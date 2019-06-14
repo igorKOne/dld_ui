@@ -1,9 +1,12 @@
 sap.ui.define([
-	"./BaseController"
-], function (BaseController) {
+	"./BaseController",
+	"../model/Formatter"
+], function (Controller,Formatter) {
 	"use strict";
 
-	return BaseController.extend("one.labs.mem_profiler.controller.Startpage", {
+	return Controller.extend("one.labs.mem_profiler.controller.Startpage", {
+		
+		formatter: Formatter,
 
 		/**
 		 * Called when a controller is instantiated and its View controls (if available) are already created.

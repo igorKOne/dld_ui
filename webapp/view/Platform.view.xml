@@ -32,7 +32,8 @@
 					<cells id="datasetColumnListItem_cells">
 							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{platform>business}">
 								<micro:data>
-									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" color="{platform>color}"/>
+									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
+									color="{path:'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
 						<VBox height="100px" renderType="Bare">
@@ -41,19 +42,24 @@
 								<!--	<micro:ColumnMicroChartLabel label="{i18n>platformColumnMicrochartLabel}"/>-->
 								<!--</micro:rightBottomLabel>-->
 								<micro:columns>
-									<micro:ColumnMicroChartData label="{platform>title}" value="{platform>value}" color="{platform>color}"/>
+									<micro:ColumnMicroChartData label="{platform>title}" 
+									value="{platform>value}" 
+									displayValue="{path: 'platform>value', formatter: '.formatter.percentage'}"
+									color="Neutral"/>
 								</micro:columns>
 							</micro:ColumnMicroChart>
-							<Text textAlign="End" text="{i18n>platformColumnMicrochartLabel}"/>
+							<!--<Text textAlign="End" text="{i18n>platformColumnMicrochartLabel}"/>-->
 						</VBox>
 							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{platform>data}" maxValue="100">
 								<micro:data>
-									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" color="{platform>color}"/>
+									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
+									color="{path:'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
 							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{platform>RSCS}">
 								<micro:data>
-									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" color="{platform>color}"/>
+									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
+									color="{path: 'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
 					</cells>

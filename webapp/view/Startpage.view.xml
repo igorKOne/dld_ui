@@ -53,7 +53,8 @@
 									<mc:ColumnMicroChartLabel label="{overview>/dataAges/3/title}"/>
 								</mc:rightBottomLabel>
 								<mc:columns>
-									<mc:ColumnMicroChartData label="{overview>title}" value="{overview>value}" color="{overview>color}"/>
+									<mc:ColumnMicroChartData label="{overview>title}" value="{overview>value}" 
+									color="{path:'overview>color', formatter: '.formatter.fourSeriesColour'}"/>
 								</mc:columns>
 							</mc:ColumnMicroChart>
 							</content>
@@ -75,7 +76,8 @@
 								<!--</mc:ComparisonMicroChart>-->
 								<mc:ComparisonMicroChart scale="GB" size="Responsive" data="{overview>/funcAreas}" >
 								<mc:data>
-									<mc:ComparisonMicroChartData title="{overview>title}" value="{overview>value}" color="{overview>color}"/>
+									<mc:ComparisonMicroChartData title="{overview>title}" value="{overview>value}" 
+									color="{path:'overview>color', formatter: '.formatter.fourSeriesColour'}"/>
 								</mc:data>
 								</mc:ComparisonMicroChart>							
 								</content>
