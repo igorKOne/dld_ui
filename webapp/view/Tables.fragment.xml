@@ -1,5 +1,4 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout"
-	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
 	xmlns:smartTable="sap.ui.comp.smarttable">
 	<smartTable:SmartTable
 		id="smartTableTableOverview"
@@ -13,6 +12,6 @@
 		enableAutoBinding="true"
 		beforeRebindTable=".onBeforeRebindTable"
 		entitySet="TableMemoryOverview"
-		initiallyVisibleFields="TABLE_NAME,SCHEMA_NAME,CS_SIZE,RS_SIZE,STG_VOLUME,REP_VOLUME">
+		initiallyVisibleFields="TABLE_NAME,SCHEMA_NAME,CS_SIZE,RS_SIZE,STG_VOLUME,REP_VOLUME,PREV_YEARS_VOL">
 	</smartTable:SmartTable>
 </core:FragmentDefinition>

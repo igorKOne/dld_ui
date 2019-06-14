@@ -6,7 +6,8 @@
 		alwaysShowContentHeader="false"
 		preserveHeaderStateOnScroll="false"
 		headerContentPinnable="true"
-		isChildPage="true">
+		isChildPage="true"
+		enableLazyLoading="true">
 		<ux:headerTitle>
 			<!--<ux:ObjectPageHeader objectTitle="{platform>platform}" objectSubtitle="Platform"/>-->
 			<ux:ObjectPageDynamicHeaderTitle>

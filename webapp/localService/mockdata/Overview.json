@@ -1,0 +1,117 @@
+{
+    "history": [
+        {
+            "points": [
+                {
+                    "id": 1,
+                    "period": 1,
+                    "title": "Oct'18",
+                    "value": 650.134
+                },
+                {
+                    "id": 2,
+                    "period": 2,
+                    "title": "Nov'18",
+                    "value": 496.735
+                },
+                {
+                    "id": 3,
+                    "period": 3,
+                    "title": "Jan'19",
+                    "value": 388.595
+                },
+                {
+                    "id": 4,
+                    "period": 4,
+                    "title": "Feb'19",
+                    "value": 431.156
+                },
+                {
+                    "id": 5,
+                    "period": 5,
+                    "title": "Mar'19",
+                    "value": 475.281
+                },
+                {
+                    "id": 6,
+                    "period": 6,
+                    "title": "Apr'19",
+                    "value": 454.11
+                },
+                {
+                    "id": 7,
+                    "period": 7,
+                    "title": "May'19",
+                    "value": 508.336
+                },
+                {
+                    "id": 8,
+                    "period": 8,
+                    "title": "Jun'19",
+                    "value": 488.867
+                }
+            ],
+            "threshold": 966.83,
+            "leftBottomLabel": "Oct'18",
+            "rightBottomLabel": "Jun'19"
+        }
+    ],
+    "funcAreas": [
+        {
+            "id": 1,
+            "title": "Shared",
+            "value": 92.399,
+            "color": "Good"
+        },
+        {
+            "id": 2,
+            "title": "BW",
+            "value": 77.07,
+            "color": "Good"
+        },
+        {
+            "id": 3,
+            "title": "System",
+            "value": 8.165,
+            "color": "Good"
+        },
+        {
+            "id": 4,
+            "title": null,
+            "value": 0.332,
+            "color": "Good"
+        },
+        {
+            "id": 5,
+            "title": "Retail",
+            "value": 0.152,
+            "color": "Good"
+        }
+    ],
+    "dataAges": [
+        {
+            "id": 1,
+            "title": "<2017",
+            "value": 11,
+            "color": "Error"
+        },
+        {
+            "id": 2,
+            "title": "2017",
+            "value": 48,
+            "color": "Critical"
+        },
+        {
+            "id": 3,
+            "title": "2018",
+            "value": 30,
+            "color": "Neutral"
+        },
+        {
+            "id": 4,
+            "title": "2019",
+            "value": 11,
+            "color": "Good"
+        }
+    ]
+}

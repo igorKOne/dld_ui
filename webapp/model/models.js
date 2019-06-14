@@ -21,8 +21,9 @@ sap.ui.define([
 			
 			oAppModel.setData({
 				keyDate: new Date(),
-				fromDate: addDays(new Date(),-30),
-				selectedStatus: undefined
+				nestedViewMode: false,
+				busyLoading: false
+
 			});
 		}
 

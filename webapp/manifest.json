@@ -36,6 +36,11 @@
 				"uri": "/one/one/labs/mem_prof/app/service/Business3.xsjs",
 				"_uri": "../../service/Business3.xsjs",
 				"type": "JSON"
+			},
+			"Overview": {
+				"uri": "/one/one/labs/mem_prof/app/service/Overview.xsjs",
+				"_uri": "../../service/Overview.xsjs",
+				"type": "JSON"
 			}
 		}
 	},
@@ -95,6 +100,24 @@
 				"type": "sap.ui.model.json.JSONModel",
 				"settings": {},
 				"preload": false
+			},
+			"funcArea": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"dataSource": "Business3",
+				"preload": false
+			},
+			"platform": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"dataSource": "Platform",
+				"preload": false
+			},
+			"overview": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"dataSource": "Overview",
+				"preload": false				
 			}
 		},
 		"resources": {
@@ -113,9 +136,21 @@
 				"clearControlAggregation": false
 			},
 			"routes": [{
-				"name": "Master",
+				"name": "Startpage",
 				"pattern": "",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["Startpage"]
+			}, {
+				"name": "Master",
+				"pattern": "master",
 				"target": ["Master"]
+			}, {
+				"name": "MemoryUsageHistory",
+				"pattern": "history",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["MemoryUsageHistory"]
 			}, {
 				"name": "FuncAreaObject",
 				"pattern": "area/{areaId}",
@@ -123,17 +158,29 @@
 				"greedy": false,
 				"target": ["FuncAreaObject"]
 			}, {
+				"name": "FuncAreas",
+				"pattern": "areas",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["FuncAreas"]
+			}, {
 				"name": "PlatformObject",
 				"pattern": "platform/{platformId}",
 				"titleTarget": "",
 				"greedy": false,
 				"target": ["PlatformObject"]
+			}, {
+				"name": "Platforms",
+				"pattern": "platforms",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["Platforms"]
 			}],
 			"targets": {
 				"Master": {
 					"viewType": "XML",
 					"viewName": "Master",
-					"title": "{i18n>mainDashbTitle}",
+					"title": "{i18n>masterTitle}",
 					"viewLevel": 1
 				},
 				"NotFound": {
@@ -150,9 +197,35 @@
 					"viewName": "PlatformObject",
 					"title": "{i18n>PlatformObjectTitle}"
 				},
-				"MemoryOverview": {
+				"Startpage": {
 					"viewType": "XML",
-					"viewName": "MemoryOverview"
+					"viewName": "Startpage"
+				},
+				"FuncArea": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewName": "FuncArea",
+					"title": "{i18n>FuncAreaTitle}"
+				},
+				"Platform": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewName": "Platform",
+					"title": "{i18n>PlatformTitle}"
+				},
+				"MemoryUsageHistory": {
+					"viewType": "XML",
+					"viewName": "MemoryUsageHistory"
+				},
+				"Platforms": {
+					"viewType": "XML",
+					"viewName": "Platforms"
+				},
+				"FuncAreas": {
+					"viewType": "XML",
+					"viewName": "FuncAreas"
 				}
 			}
 		}

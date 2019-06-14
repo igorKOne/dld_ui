@@ -2,10 +2,10 @@ sap.ui.define([
 	"./BaseController",
 	"sap/ui/model/json/JSONModel",
 	"sap/m/MessageBox"
-], function (BaseController, JSONModel, MessageBox) {
+], function (Controller, JSONModel, MessageBox) {
 	"use strict";
 
-	return BaseController.extend("one.labs.mem_profiler.controller.FuncAreaObject", {
+	return Controller.extend("one.labs.mem_profiler.controller.FuncAreaObject", {
 
 		/**
 		 * Called when a controller is instantiated and its View controls (if available) are already created.
@@ -93,6 +93,7 @@ sap.ui.define([
 		    var binding = oSource.getParameter("bindingParams");
 		    var oFilter = new sap.ui.model.Filter("FUNC_AREA", sap.ui.model.FilterOperator.EQ, this._currentAreaId);
 		    binding.filters.push(oFilter);
+		    binding.sorter=[new sap.ui.model.Sorter("AVG_VOLUME", true)];
 		},
 		
 		onNavBack: function() {

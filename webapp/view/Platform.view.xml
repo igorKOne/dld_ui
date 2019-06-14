@@ -2,9 +2,9 @@
 	xmlns:commons="sap.suite.ui.commons" xmlns:semantic="sap.m.semantic" xmlns:table="sap.ui.table"
 	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:tnt="sap.tnt" xmlns:core="sap.ui.core"
 	xmlns:l="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls" xmlns:micro="sap.suite.ui.microchart">
-	<Panel width="auto" class="sapUiResponsiveMargin">
-		<Title text="In-Memory Data Profile (Summary)"/>
-		<content>
+		<Panel width="auto" class="sapUiResponsiveMargin" headerText="{= ${appData>/nestedViewMode} ? ${i18n>pagePlatformTitle} : ''}">
+		<!--<Title text="{i18n>pagePlatformTitle}"/>-->
+		<!--<content>-->
 			<Table id="platformTable" items="{platform>/results}" visible="true">
 				<columns id="datasetTable_columns">
 					<Column id="datasetTable_col8" demandPopin="true" minScreenWidth="Tablet">
@@ -30,34 +30,41 @@
 				</columns>
 				<ColumnListItem id="datasetColumnListItem" vAlign="Middle" type="Navigation" press=".onColumnListItemPress">
 					<cells id="datasetColumnListItem_cells">
-							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{platform>business}" >
+							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{platform>business}">
 								<micro:data>
-									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" color="{platform>color}"/>
+									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
+									color="{path:'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
-						<FlexBox height="100px" renderType="Bare">
-							<micro:ColumnMicroChart isResponsive="true" columns="{platform>years}">
-								<micro:rightBottomLabel>
-									<micro:ColumnMicroChartLabel label="% Volume per Year"/>
-								</micro:rightBottomLabel>
+						<VBox height="100px" renderType="Bare" >
+							<micro:ColumnMicroChart isResponsive="true" columns="{platform>years}"  allowColumnLabels="true"
+							visible="{path:'platform>years', formatter: '.formatter.agingDataVisible'}" >
+								<!--<micro:rightBottomLabel>-->
+								<!--	<micro:ColumnMicroChartLabel label="{i18n>platformColumnMicrochartLabel}"/>-->
+								<!--</micro:rightBottomLabel>-->
 								<micro:columns>
-									<micro:ColumnMicroChartData label="{platform>title}" value="{platform>value}" color="{platform>color}"/>
+									<micro:ColumnMicroChartData label="{platform>title}" 
+									value="{platform>value}" 
+									displayValue="{path: 'platform>value', formatter: '.formatter.percentage'}"
+									color="Neutral"/>
 								</micro:columns>
 							</micro:ColumnMicroChart>
-						</FlexBox>
+						</VBox>
 							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{platform>data}" maxValue="100">
 								<micro:data>
-									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" color="{platform>color}"/>
+									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
+									color="{path:'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
 							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{platform>RSCS}">
 								<micro:data>
-									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" color="{platform>color}"/>
+									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
+									color="{path: 'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
 					</cells>
 				</ColumnListItem>
 			</Table>
-		</content>
-	</Panel>
+		<!--</content>-->
+		</Panel>
 </mvc:View>
