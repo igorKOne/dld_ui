@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout"  xmlns:chart="sap.chart" xmlns:data="sap.chart.data">
 	<chart:Chart id="chartRowColumnStore" width='100%'
-		vizProperties="{title: {text: 'Store Type', visible:true }, plotArea: {dataLabel: { visible: true, type: 'value', hideWhenOverlap: true, formatString:'0.000 GB'  } } }"
+		vizProperties="{title: {text: 'Store Type', visible:true }, plotArea: {dataLabel: { visible: true, type: 'value', hideWhenOverlap: true, formatString:'0.00 GB'  } } }"
 		visibleDimensions="id" visibleMeasures="value" chartType="donut" selectionMode="Single" uiConfig="{applicationSet:'fiori'}">
 		<chart:dimensions>
 			<data:Dimension name="id" label="Purpose" role="category" textProperty="title"/>
