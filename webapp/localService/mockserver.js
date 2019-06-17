@@ -113,9 +113,30 @@ sap.ui.define([
 
 						}
 
-						function fnResponseBusiness(oXHR) {
+						function fnResponseBusiness(oXHR, sParams) {
 							Log.debug("Incoming requests to Business XSJS service");
-							oXHR.respondJSON(200, {}, JSON.stringify(oBusinessModel.getData()));
+							
+							const regex = /(\?|\&)([^=]+)\=([^&]+)/;
+							const str = sParams;
+							let m, sFuncArea;
+							
+							// if ((m = regex.exec(str)) !== null) {
+							//     // The result can be accessed through the `m`-variable.
+							//     m.forEach((match, groupIndex) => {
+							//         console.log(`Found match, group ${groupIndex}: ${match}`);
+							//     });
+							// }
+							m = regex.exec(str);
+							if(m && Array.isArray(m) && m.length > 0){
+								sFuncArea = m[m.length-1];
+							}
+							
+							let oData = Object.assign({},oBusinessModel.getData()); //clone
+							if (sFuncArea && oData.results && Array.isArray(oData.results)){
+								oData.results = oData.results.filter( oElem => oElem.func_area === sFuncArea );
+							}
+							
+							oXHR.respondJSON(200, {}, JSON.stringify(oData));
 
 						}
 
