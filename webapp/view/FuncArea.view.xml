@@ -17,6 +17,11 @@
 							<Label id="funcAreaTable_col2_label" text="{i18n>funcAreaTableCol2}"/>
 						</header>
 					</Column>
+					<Column id="funcAreaTable_col_wp" demandPopin="true" minScreenWidth="Tablet">
+						<header id="funcAreaTable_col_wp_header">
+							<Label id="funcAreaTable_col_wp_label" text="{i18n>funcAreaTableColWp}"/>
+						</header>
+					</Column>
 					<Column id="funcAreaTable_col6" demandPopin="true" minScreenWidth="Tablet">
 						<header id="funcAreaTable_col6_header">
 							<Label id="funcAreaTable_col6_label" text="{i18n>funcAraeTableCol3}"/>
@@ -38,7 +43,18 @@
 						<ObjectIdentifier title="{funcArea>func_area}"/>
 						<!--<Text id="funcAreaColumnListItem_cell_1" text="{funcArea>func_area}" maxLines="2"></Text>-->
 						<!--<Text id="funcAreaColumnListItem_cell_2" text="{funcArea>func_size_per_tb}" maxLines="2"></Text>-->
-						<ObjectNumber unit="GB" number="{funcArea>func_size_per_tb}"/>
+						<ObjectNumber unit="GB" emphasized="false" number="{funcArea>func_size_per_tb}"/>
+						<VBox renderType="Bare" alignItems="Left" >
+							<ObjectNumber 
+	                        	number="{path:'funcArea>WarmPotential/0/value', 
+	                        			 type: 'sap.ui.model.type.Float', 
+	                        			 formatOptions: { maxFractionDigits: 2, groupingSeparator:',', decimalSeparator:'.', showMeasure: false}
+	                        			}"
+	                        	unit="{i18n>memorySizeGB}"
+	                        	emphasized="false"
+	                        />
+						</VBox>	
+						
 						<VBox height="100px" renderType="Bare" justifyContent="Center">
 							<micro:ColumnMicroChart size="Responsive" columns="{funcArea>years}" allowColumnLabels="true"
 							visible="{path:'funcArea>years', formatter:'.formatter.agingDataVisible'}">

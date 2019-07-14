@@ -12,6 +12,11 @@
 							<Label id="datasetTable_col8_label" text="{i18n>platformTableCol1}"/>
 						</header>
 					</Column>
+					<Column id="datasetTable_col_wp" demandPopin="true" minScreenWidth="Tablet">
+						<header id="datasetTable_col_wp_header">
+							<Label id="datasetTable_col_wp_label" text="{i18n>platformTableColWp}"/>
+						</header>
+					</Column>
 					<Column id="datasetTable_col4" demandPopin="true" minScreenWidth="Tablet">
 						<header id="datasetTable_col4_header">
 							<Label id="datasetTable_col4_label" text="{i18n>platformTableCol2}"/>
@@ -36,6 +41,17 @@
 									color="{path:'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
+							
+						<VBox renderType="Bare" alignItems="Center" >
+							<ObjectNumber 
+	                        	number="{path:'platform>WarmPotential/0/value', 
+	                        			 type: 'sap.ui.model.type.Float', 
+	                        			 formatOptions: { maxFractionDigits: 2, groupingSeparator:',', decimalSeparator:'.', showMeasure: false}
+	                        			}"
+	                        	unit="{i18n>memorySizeGB}"
+	                        	emphasized="false"
+	                        />
+						</VBox>	
 						<VBox height="100px" renderType="Bare" >
 							<micro:ColumnMicroChart isResponsive="true" columns="{platform>years}"  allowColumnLabels="true"
 							visible="{path:'platform>years', formatter: '.formatter.agingDataVisible'}" >

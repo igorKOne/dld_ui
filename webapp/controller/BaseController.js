@@ -116,6 +116,11 @@ sap.ui.define([
 							{
 								name: 'ColumnStore Data',
 								value: '{CS_SIZE}'
+							},
+
+							{
+								name: 'Warm Potential',
+								value: '{WARM_POTENTIAL_PER_GB}'
 							}
 
 						],

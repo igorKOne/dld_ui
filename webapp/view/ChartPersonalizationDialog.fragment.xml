@@ -11,6 +11,7 @@
 			<CheckBox id="checkbox3" text="ColumnStore Data" selected="{chartPersonalization>/showColumnStoreData}" select="onSelectMeasure"/>
 			<CheckBox id="checkbox4" text="RowStore Data" selected="{chartPersonalization>/showRowStoreData}" select="onSelectMeasure"/>
 			<CheckBox id="checkbox5" text="Peak Memory Usage" selected="{chartPersonalization>/showPeakMemoryUsage}" select="onSelectMeasure"/>
+			<CheckBox id="checkbox6" text="Warm Potential" selected="{chartPersonalization>/showWarmPotential}" select="onSelectMeasure"/>
 		</VBox>
 		<buttons>
 			<Button text="Close" press="onPressCloseChartPersonalizationDialog"></Button>
