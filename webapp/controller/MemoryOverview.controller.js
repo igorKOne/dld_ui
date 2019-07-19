@@ -68,7 +68,8 @@ sap.ui.define([
         		showColumnStoreData: false,
         		showRowStoreData: false,
         		showPeakMemoryUsage: false,
-        		showWarmPotential: true
+        		showWarmPotential: true,
+        		showTotalMemory: true
         	});
         	this.getView().setModel(PersModel,"chartPersonalization");
         },
@@ -144,6 +145,7 @@ sap.ui.define([
             let showRowStoreData = oChartPersModel.getProperty("/showRowStoreData");
             let showPeakMemoryUsage = oChartPersModel.getProperty("/showPeakMemoryUsage");
             let showWarmPotential = oChartPersModel.getProperty("/showWarmPotential");
+            let showTotalMemory = oChartPersModel.getProperty("/showTotalMemory");
             
             let aMeasures = [
             	{
@@ -172,6 +174,10 @@ sap.ui.define([
             	},{
             		name: "Warm Potential",
             		selected: showWarmPotential,
+            		axis: "bar"
+            	},{
+            		name: "Total Memory",
+            		selected: showTotalMemory,
             		axis: "bar"
             	}];
             
@@ -218,32 +224,39 @@ sap.ui.define([
             });
 
 
-            oVizFrame.setVizType('stacked_combination'); //('stacked_combination');
+            oVizFrame.setVizType('combination'); //('stacked_combination');
             if ((!showAllocationLimit &&
-                !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && showPeakMemoryUsage)
+                !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && !showTotalMemory && showPeakMemoryUsage)
                 ||
                 (showAllocationLimit &&
-                    !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && !showPeakMemoryUsage)
+                    !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
                 ||
-                (!showAllocationLimit && showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && !showPeakMemoryUsage)) {
+                (!showAllocationLimit && showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)) {
                 oVizFrame.setVizType('line'); //('stacked_combination');   
             }
-            if ((!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && showRowStoreData && !showWarmPotential && !showPeakMemoryUsage)
-                || (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && !showRowStoreData && !showWarmPotential && !showPeakMemoryUsage)
-                || (!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && !showRowStoreData && showWarmPotential && !showPeakMemoryUsage)) {
+            if ((!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
+                || (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && !showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
+                || (!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && !showRowStoreData && showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
+                || (!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && showTotalMemory && !showPeakMemoryUsage)) {
                 oVizFrame.setVizType('column');
             }
-            if ((!showAllocationLimit && !showLicensedSpace && showColumnStoreData && showRowStoreData && showWarmPotential && !showPeakMemoryUsage)
-            	|| (!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && showRowStoreData && showWarmPotential && !showPeakMemoryUsage)
-            	|| (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && !showRowStoreData && showWarmPotential && !showPeakMemoryUsage)
-            	|| (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && showRowStoreData && !showWarmPotential && !showPeakMemoryUsage)
+            if ((!showAllocationLimit && !showLicensedSpace && showColumnStoreData && showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
             ) {
-                
-                oVizFrame.setVizType('stacked_column');
+            	oVizFrame.setVizType('stacked_column');
+            }
+            if ((!showAllocationLimit && !showLicensedSpace && showColumnStoreData && showRowStoreData && showWarmPotential && showTotalMemory && !showPeakMemoryUsage)
+            	|| (!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && showRowStoreData && showWarmPotential && showTotalMemory && !showPeakMemoryUsage)
+            	|| (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && !showRowStoreData && showWarmPotential && showTotalMemory && !showPeakMemoryUsage)
+            	|| (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && showRowStoreData && !showWarmPotential && showTotalMemory && !showPeakMemoryUsage)
+            	|| (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && showRowStoreData && showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
+            	|| (!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && showRowStoreData && showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
+            	|| (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && !showRowStoreData && showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
+            ) {
+                oVizFrame.setVizType('column');
             }
             oVizFrame.setVisible(true);
             if (!showAllocationLimit &&
-                !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && !showPeakMemoryUsage) {
+                !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage) {
                 oVizFrame.destroyDataset();
                 oVizFrame.removeAllFeeds();
                 oVizFrame.destroyFeeds();
@@ -269,6 +282,7 @@ sap.ui.define([
             let showRowStoreData = oChartPersModel.getProperty("/showRowStoreData");
             let showPeakMemoryUsage = oChartPersModel.getProperty("/showPeakMemoryUsage");
             let showWarmPotential = oChartPersModel.getProperty("/showWarmPotential");
+            let showTotalMemory = oChartPersModel.getProperty("/showTotalMemory");
             
             let aMeasures = [
             	{
@@ -298,7 +312,12 @@ sap.ui.define([
             		name: "Warm Potential",
             		selected: showWarmPotential,
             		axis: "bar"
-            	}];
+            	},{
+            		name: "Total Memory",
+            		selected: showTotalMemory,
+            		axis: "bar"
+            	}
+            	];
             
             let aSelectedMeasures = aMeasures.filter(elem=>{return elem.selected;}); // get selected measures
             
@@ -337,7 +356,7 @@ sap.ui.define([
                 }));
             
             //oVizFrame.setVizType(oVizFrameConf.type);
-            oVizFrame.setVizType('stacked_combination'); //('stacked_combination'); 
+            oVizFrame.setVizType('combination'); //('stacked_combination'); 
         },
       
         _initViewPropertiesModel: function () {
