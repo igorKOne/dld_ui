@@ -19,14 +19,14 @@
 				</ux:snappedHeading>
 			</ux:ObjectPageDynamicHeaderTitle>
 		</ux:headerTitle>
-		<!--<ux:headerContent>-->
-		<!--	<layout:HorizontalLayout allowWrapping="true">-->
-		<!--		<layout:VerticalLayout>-->
-		<!--			<ObjectAttribute title="Size"/>-->
-		<!--			<ObjectNumber number="{platform>size}" unit="GB"/>-->
-		<!--		</layout:VerticalLayout>-->
-		<!--	</layout:HorizontalLayout>-->
-		<!--</ux:headerContent>-->
+		<ux:headerContent>
+			<!--<layout:HorizontalLayout allowWrapping="true">-->
+			<!--	<layout:VerticalLayout class="sapUiMediumMarginEnd">-->
+			<!--		<Label text="Size"/>-->
+			<!--		<ObjectNumber number="{platform>size}" unit="GB"/>-->
+			<!--	</layout:VerticalLayout>-->
+			<!--</layout:HorizontalLayout>-->
+		</ux:headerContent>
 		<ux:sections>
 			<ux:ObjectPageSection title=" ">
 				<ux:subSections>

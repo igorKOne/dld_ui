@@ -1,5 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:chart="sap.chart"
 	xmlns:data="sap.chart.data">
+	<layout:VerticalLayout width='100%'>
 	<chart:Chart id="chartDataAging" width='100%'
 		vizProperties="{title: {text: 'Distribution by years', visible:true }, 
 		plotArea: {dataLabel: { visible: true, type: 'percentage', hideWhenOverlap: true} } }"
@@ -11,4 +12,10 @@
 			<data:Measure name="value" label="Size, %" role="axis2"/>
 		</chart:measures>
 	</chart:Chart>
+	<!--<layout:HorizontalLayout width='100%'>-->
+	<!--<Label text="Estimated Warm Potential" design="Bold" class="sapUiTinyMarginEnd"/>-->
+	<!--<ObjectNumber number="{object>warm_potential}" unit="GB" emphasized="false"/>-->
+	<!--</layout:HorizontalLayout>-->
+	</layout:VerticalLayout>
+
 </core:FragmentDefinition>

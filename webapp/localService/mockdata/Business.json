@@ -7,6 +7,7 @@
             "aging_avg_volume": "100556146927",
             "rep_volume": "97881003314",
             "stg_volume": "1332139805",
+            "warm_potential": "21",
             "years": [
                 {
                     "id": 1,
@@ -79,6 +80,7 @@
             "aging_avg_volume": null,
             "rep_volume": "0",
             "stg_volume": "82752993087",
+            "warm_potential": 11,
             "years": [],
             "current_min_2_vol_perc": null,
             "current_min_1_vol_perc": null,
@@ -126,6 +128,7 @@
             "aging_avg_volume": null,
             "rep_volume": "5657062305",
             "stg_volume": "3109561438",
+            "warm_potential": 5,
             "years": [],
             "current_min_2_vol_perc": null,
             "current_min_1_vol_perc": null,
@@ -173,6 +176,7 @@
             "aging_avg_volume": "16897019",
             "rep_volume": "0",
             "stg_volume": "355998531",
+            "warm_potential": "0",
             "years": [
                 {
                     "id": 1,
@@ -245,6 +249,7 @@
             "aging_avg_volume": "163613951",
             "rep_volume": "159742610",
             "stg_volume": "3871764",
+            "warm_potential": 0,
             "years": [
                 {
                     "id": 1,
@@ -317,6 +322,7 @@
             "aging_avg_volume": "4417329",
             "rep_volume": "0",
             "stg_volume": "4417329",
+            "warm_potential": 0,
             "years": [
                 {
                     "id": 1,
@@ -389,6 +395,7 @@
             "aging_avg_volume": null,
             "rep_volume": "0",
             "stg_volume": "2178743",
+            "warm_potential": "0",
             "years": [],
             "current_min_2_vol_perc": null,
             "current_min_1_vol_perc": null,
@@ -436,6 +443,7 @@
             "aging_avg_volume": "12069",
             "rep_volume": "0",
             "stg_volume": "12069",
+            "warm_potential": "0",
             "years": [
                 {
                     "id": 1,

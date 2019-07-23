@@ -9,27 +9,27 @@
 				<columns id="datasetTable_columns">
 					<Column id="datasetTable_col8" demandPopin="true" minScreenWidth="Tablet">
 						<header id="datasetTable_col8_header">
-							<Label id="datasetTable_col8_label" text="{i18n>platformTableCol1}"/>
+							<Label id="datasetTable_col8_label" text="{i18n>platformTableCol1}"  wrapping="true" />
 						</header>
 					</Column>
-					<Column id="datasetTable_col_wp" demandPopin="true" minScreenWidth="Tablet">
+					<Column id="datasetTable_col_wp" demandPopin="true" minScreenWidth="Tablet" width="10%">
 						<header id="datasetTable_col_wp_header">
-							<Label id="datasetTable_col_wp_label" text="{i18n>platformTableColWp}"/>
+							<Label id="datasetTable_col_wp_label" text="{i18n>platformTableColWp}"  wrapping="true"/>
 						</header>
 					</Column>
 					<Column id="datasetTable_col4" demandPopin="true" minScreenWidth="Tablet">
 						<header id="datasetTable_col4_header">
-							<Label id="datasetTable_col4_label" text="{i18n>platformTableCol2}"/>
+							<Label id="datasetTable_col4_label" text="{i18n>platformTableCol2}"  wrapping="true"/>
 						</header>
 					</Column>
 					<Column id="datasetTable_col7" demandPopin="true" minScreenWidth="Tablet">
 						<header id="datasetTable_col7_header">
-							<Label id="datasetTable_col7_label" text="{i18n>platformTableCol3}"/>
+							<Label id="datasetTable_col7_label" text="{i18n>platformTableCol3}"  wrapping="true"/>
 						</header>
 					</Column>
 					<Column id="datasetTable_col6" demandPopin="true" minScreenWidth="Tablet">
 						<header id="datasetTable_col6_header">
-							<Label id="datasetTable_col6_label" text="{i18n>platformTableCol4}"/>
+							<Label id="datasetTable_col6_label" text="{i18n>platformTableCol4}"  wrapping="true"/>
 						</header>
 					</Column>
 				</columns>
@@ -42,9 +42,9 @@
 								</micro:data>
 							</micro:ComparisonMicroChart>
 							
-						<VBox renderType="Bare" alignItems="Center" >
+						<VBox renderType="Bare" alignItems="Center" justifyContent="Center">
 							<ObjectNumber 
-	                        	number="{path:'platform>WarmPotential/0/value', 
+	                        	number="{path:'platform>warm_potential', 
 	                        			 type: 'sap.ui.model.type.Float', 
 	                        			 formatOptions: { maxFractionDigits: 2, groupingSeparator:',', decimalSeparator:'.', showMeasure: false}
 	                        			}"

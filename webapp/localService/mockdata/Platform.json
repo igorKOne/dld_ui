@@ -88,7 +88,13 @@
                     "value": 217.332,
                     "color": "Good"
                 }
-            ]
+            ],
+            "WarmPotential": [
+            	{ "id":1,
+            	"value": 47
+            	}
+            ],
+            "warm_potential": 47
         }
     ]
 }
