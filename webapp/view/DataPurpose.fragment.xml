@@ -2,13 +2,14 @@
 	<chart:Chart id="chartDataPurpose" width='100%'
 		vizProperties="{title: {text: 'Purpose of data', visible:true }, 
 		plotArea: {dataLabel: { visible: true, type: 'percentage', hideWhenOverlap: true} } }"
+		isAnalytical = "false"
 		visibleDimensions="id" visibleMeasures="value" chartType="donut" selectionMode="Single" uiConfig="{applicationSet:'fiori'}">
 		<chart:dimensions>
-			<data:Dimension name="id" label="Purpose" role="category" textProperty="title"/>
+			<data:Dimension name="id" label="{i18n>labelPurpose}" role="category" textProperty="title"/>
 		</chart:dimensions>
 		<chart:measures>
 			<!--<data:Measure name="jobs_count" label="Number Of Jobs" role="axis2"/>-->
-			<data:Measure name="value" label="Size, %" role="axis2"/>
+			<data:Measure name="value" label="{i18n>labelSizePercentage}" role="axis2"/>
 		</chart:measures>
 	</chart:Chart>
 </core:FragmentDefinition>

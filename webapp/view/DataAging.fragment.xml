@@ -4,18 +4,19 @@
 	<chart:Chart id="chartDataAging" width='100%'
 		vizProperties="{title: {text: 'Distribution by years', visible:true }, 
 		plotArea: {dataLabel: { visible: true, type: 'percentage', hideWhenOverlap: true} } }"
+		isAnalytical = "false"
 		visibleDimensions="id" visibleMeasures="value" chartType="column" selectionMode="Single" uiConfig="{applicationSet:'fiori'}">
 		<chart:dimensions>
-			<data:Dimension name="id" label="Year" role="category" textProperty="title"/>
+			<data:Dimension name="id" label="{i18n>labelYear}" role="category" textProperty="title"/>
 		</chart:dimensions>
 		<chart:measures>
-			<data:Measure name="value" label="Size, %" role="axis2"/>
+			<data:Measure name="value" label="{i18n>labelSizePercentage}" role="axis2"/>
 		</chart:measures>
 	</chart:Chart>
-	<!--<layout:HorizontalLayout width='100%'>-->
-	<!--<Label text="Estimated Warm Potential" design="Bold" class="sapUiTinyMarginEnd"/>-->
-	<!--<ObjectNumber number="{object>warm_potential}" unit="GB" emphasized="false"/>-->
-	<!--</layout:HorizontalLayout>-->
+	<layout:HorizontalLayout>
+	<Label text="{i18n>labelWarmPotential}" design="Bold" class="sapUiTinyMarginEnd"/>
+	<ObjectNumber number="{object>warm_potential}" unit="{i18n>textUnitGB}" emphasized="false"/>
+	</layout:HorizontalLayout>
 	</layout:VerticalLayout>
 
 </core:FragmentDefinition>

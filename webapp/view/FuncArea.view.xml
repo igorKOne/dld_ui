@@ -56,7 +56,7 @@
 						</VBox>	
 						
 						<VBox height="100px" renderType="Bare" justifyContent="Center">
-							<micro:ColumnMicroChart size="Responsive" columns="{funcArea>years}" allowColumnLabels="true"
+							<micro:ColumnMicroChart size="Responsive" columns="{path:'funcArea>years', templateShareable:false}" allowColumnLabels="true"
 							visible="{path:'funcArea>years', formatter:'.formatter.agingDataVisible'}">
 								<!--<micro:leftTopLabel>-->
 								<!--	<micro:ColumnMicroChartLabel label="{funcArea>years/0/title}"/>-->
@@ -88,12 +88,12 @@
 	      <!--                  			} {i18n>memorySizeGB}"-->
 	      <!--                  />-->
 						</VBox>
-							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{funcArea>data}" maxValue="100">
+							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{path:'funcArea>data', templateShareable:false}" maxValue="100">
 								<micro:data>
 									<micro:ComparisonMicroChartData title="{funcArea>title}" value="{funcArea>value}" color="{path:'funcArea>color', formatter: '.formatter.fourSeriesColour'}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
-							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{funcArea>RSCS}">
+							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{path:'funcArea>RSCS', templateShareable:false}">
 								<micro:data>
 									<micro:ComparisonMicroChartData title="{funcArea>title}" value="{funcArea>value}" color="{path:'funcArea>color', formatter: '.formatter.fourSeriesColour'}"/>
 								</micro:data>

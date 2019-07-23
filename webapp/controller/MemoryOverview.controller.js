@@ -52,11 +52,11 @@ sap.ui.define([
             this._initChartPersonalizationModel();
 
 			// update the VizFrame control
-            var oVizFrame = this.getView().byId("vizFrame");
+            var oVizFrame = this.getView().byId("vizFrameOverview");
             this._updateVizFrame(oVizFrame);
             
             //connect the popover
-            var oPopOver = this.getView().byId("idPopOver");
+            var oPopOver = this.getView().byId("popoverOverview");
             oPopOver.connect(oVizFrame.getVizUid());
 		},
 
@@ -77,7 +77,7 @@ sap.ui.define([
         onSelectMeasure: function (oEvent) {
             
             //this._state.chartContainer.removeContent();
-            var oVizFrame = this.getView().byId("vizFrame");
+            var oVizFrame = this.getView().byId("vizFrameOverview");
             this._updateVizFrame2(oVizFrame);
 
         },

@@ -91,10 +91,10 @@
             ],
             "WarmPotential": [
             	{ "id":1,
-            	"value": 47
+            	"value": 59
             	}
             ],
-            "warm_potential": 47
+            "warm_potential": 59
         }
     ]
 }

@@ -1,8 +1,9 @@
 sap.ui.define([
 	"./BaseController",
 	"sap/ui/model/json/JSONModel",
-	"sap/m/MessageBox"
-], function (Controller, JSONModel, MessageBox) {
+	"sap/m/MessageBox",
+	"sap/viz/ui5/controls/Popover"
+], function (Controller, JSONModel, MessageBox, vizPopover) {
 	"use strict";
 
 	return Controller.extend("one.labs.mem_profiler.controller.FuncAreaObject", {
@@ -17,13 +18,22 @@ sap.ui.define([
 
 			this._oModel = new JSONModel();
 			this._oView = this.getView();
-			this._oView.setModel(this._oModel, "funcArea");
+			this._oView.setModel(this._oModel, "object");
 
 			this._dataAgingChart = this.byId("chartDataAging");
 			this._dataPurposeChart = this.byId("chartDataPurpose");
 			this._rowColumStoreChart = this.byId("chartRowColumnStore");
 			
 			this._tableOverviewTable = this.byId("smartTableTableOverview");
+			
+			// Create and attach Viz Control Popovers to the charts
+			let aCharts = ["chartDataAging", "chartDataPurpose", "chartRowColumnStore"];
+			
+			aCharts.forEach(elem => { 
+				let oChart = this.byId(elem);
+				let oPopover = new vizPopover({});
+				oPopover.connect(oChart.getVizUid());
+			},this)
 		},
 
 		_onPatternMatched: function (oEvent) {
@@ -55,7 +65,7 @@ sap.ui.define([
 			oLoadPromise.then(() => {
 				oView.bindElement({
 					path: "/results/0",
-					model: "funcArea",
+					model: "object",
 					events: {
 						change: _onBindingChange
 					}
@@ -64,18 +74,18 @@ sap.ui.define([
 					
 				oDataAgingChart.bindData({
 					path: "/results/0/years/", 
-					model: "funcArea"
+					model: "object"
 					
 				});
 				
 				oDataPurposeChart.bindData({
 					path: "/results/0/data/", 
-					model: "funcArea"					
+					model: "object"					
 				});
 				
 				oRowColumStoreChart.bindData({
 					path: "/results/0/RSCS/", 
-					model: "funcArea"					
+					model: "object"					
 				});
 				
 				

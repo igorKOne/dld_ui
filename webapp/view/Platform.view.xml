@@ -35,7 +35,7 @@
 				</columns>
 				<ColumnListItem id="datasetColumnListItem" vAlign="Middle" type="Navigation" press=".onColumnListItemPress">
 					<cells id="datasetColumnListItem_cells">
-							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{platform>business}">
+							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{path:'platform>business', templateShareable:false}">
 								<micro:data>
 									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
 									color="{path:'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
@@ -53,7 +53,7 @@
 	                        />
 						</VBox>	
 						<VBox height="100px" renderType="Bare" >
-							<micro:ColumnMicroChart isResponsive="true" columns="{platform>years}"  allowColumnLabels="true"
+							<micro:ColumnMicroChart isResponsive="true" columns="{path:'platform>years', templateShareable:false}"  allowColumnLabels="true"
 							visible="{path:'platform>years', formatter: '.formatter.agingDataVisible'}" >
 								<!--<micro:rightBottomLabel>-->
 								<!--	<micro:ColumnMicroChartLabel label="{i18n>platformColumnMicrochartLabel}"/>-->
@@ -66,13 +66,13 @@
 								</micro:columns>
 							</micro:ColumnMicroChart>
 						</VBox>
-							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{platform>data}" maxValue="100">
+							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{path:'platform>data', templateShareable:false}" maxValue="100">
 								<micro:data>
 									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
 									color="{path:'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
-							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{platform>RSCS}">
+							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{path:'platform>RSCS', templateShareable:false}">
 								<micro:data>
 									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
 									color="{path: 'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
