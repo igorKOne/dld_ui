@@ -16,6 +16,7 @@
 		"dataSources": {
 			"mainService": {
 				"uri": "/one/one/labs/mem_prof/app/service/MEM_PROFILER.xsodata/",
+				"_uri": "../../service/MEM_PROFILER.xsodata/",
 				"type": "OData",
 				"settings": {
 					"localUri": "localService/metadata.xml"
@@ -23,18 +24,22 @@
 			},
 			"xsServicesRoot": {
 				"uri": "/one/one/labs/mem_prof/app/service/",
+				"_uri": "../../service/",
 				"type": "JSON"
 			},
 			"Platform": {
 				"uri": "/one/one/labs/mem_prof/app/service/Platform.xsjs",
+				"_uri": "../../service/Platform.xsjs",
 				"type": "JSON"
 			},
 			"Business3": {
 				"uri": "/one/one/labs/mem_prof/app/service/Business3.xsjs",
+				"_uri": "../../service/Business3.xsjs",
 				"type": "JSON"
 			},
 			"Overview": {
 				"uri": "/one/one/labs/mem_prof/app/service/Overview.xsjs",
+				"_uri": "../../service/Overview.xsjs",
 				"type": "JSON"
 			}
 		}
