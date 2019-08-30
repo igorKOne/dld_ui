@@ -1,0 +1,44 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm config set @sap:registry https://npm.sap.com
+    npm install
+    grunt
+  displayName: 'npm install, Grunt build'
+
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: '$(System.DefaultWorkingDirectory)'
+    contents: |
+     dist/**
+     !dist/di.code-validation.core_issues.json
+     !dist/neo-app.json
+     !dist/serviceBinding*.js
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
+  displayName: 'Copy /dist from $(System.DefaultWorkingDirectory) to $(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: 'UI5App'
+  displayName: 'Publish build artifacts from $(Build.ArtifactStagingDirectory)'
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+    includeRootFolder: false
