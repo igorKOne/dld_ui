@@ -18,6 +18,7 @@ steps:
 - script: |
     npm config set @sap:registry https://npm.sap.com
     npm install
+    npm run adjustURIs
     grunt
   displayName: 'npm install, Grunt build'
 
