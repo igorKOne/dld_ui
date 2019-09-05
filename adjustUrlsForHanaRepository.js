@@ -39,7 +39,7 @@ function substituteSrcIndexHtml(data) {
 }
 
 function substituteURIManifestJson(data) {
-    const regex = /("uri")\s*:\s*"([\/\w]*)(\/services\/.*)"/gm;
+    const regex = /("uri")\s*:\s*"([\/\w]*)(\/service.*)"/gm;
 
     let str = data.toString();
     const subst = `$1: "../..$3"`;
