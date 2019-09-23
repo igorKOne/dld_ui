@@ -7,29 +7,34 @@
 		<!--<content>-->
 			<Table id="funcAreaTable" ariaLabelledBy="title" items="{funcArea>/results}" growing="true" visible="true">
 				<columns id="funcAreaTable_columns">
-					<Column id="funcAreaTable_col1" demandPopin="true" minScreenWidth="Tablet">
+					<Column id="funcAreaTable_col1" demandPopin="true" minScreenWidth="Tablet" width="15%">
 						<header id="funcAreaTable_col1_header">
-							<Label id="funcAreaTable_col1_label" text="{i18n>funcAreaTableCol1}"/>
+							<Label id="funcAreaTable_col1_label" text="{i18n>funcAreaTableCol1}" wrapping="true"/>
 						</header>
 					</Column>
-					<Column id="funcAreaTable_col2" demandPopin="true" minScreenWidth="Tablet">
+					<Column id="funcAreaTable_col2" demandPopin="true" minScreenWidth="Tablet" width="10%">
 						<header id="funcAreaTable_col2_header">
-							<Label id="funcAreaTable_col2_label" text="{i18n>funcAreaTableCol2}"/>
+							<Label id="funcAreaTable_col2_label" text="{i18n>funcAreaTableCol2}" wrapping="true"/>
+						</header>
+					</Column>
+					<Column id="funcAreaTable_col_wp" demandPopin="true" minScreenWidth="Tablet" width="10%">
+						<header id="funcAreaTable_col_wp_header">
+							<Label id="funcAreaTable_col_wp_label" text="{i18n>funcAreaTableColWp}" wrapping="true"/>
 						</header>
 					</Column>
 					<Column id="funcAreaTable_col6" demandPopin="true" minScreenWidth="Tablet">
 						<header id="funcAreaTable_col6_header">
-							<Label id="funcAreaTable_col6_label" text="{i18n>funcAraeTableCol3}"/>
+							<Label id="funcAreaTable_col6_label" text="{i18n>funcAraeTableCol3}" wrapping="true"/>
 						</header>
 					</Column>
 					<Column id="funcAreaTable_col8" demandPopin="true" minScreenWidth="Tablet">
 						<header id="funcAreaTable_col8header">
-							<Label id="funcAreaTable_col8_label" text="{i18n>funcAreaTableCol4}"/>
+							<Label id="funcAreaTable_col8_label" text="{i18n>funcAreaTableCol4}" wrapping="true"/>
 						</header>
 					</Column>
 					<Column id="funcAreaTable_col9" demandPopin="true" minScreenWidth="Tablet">
 						<header id="funcAreaTable_col9header">
-							<Label id="funcAreaTable_col9_label" text="{i18n>funcAreaTableCol5}"/>
+							<Label id="funcAreaTable_col9_label" text="{i18n>funcAreaTableCol5}" wrapping="true"/>
 						</header>
 					</Column>
 				</columns>
@@ -38,9 +43,20 @@
 						<ObjectIdentifier title="{funcArea>func_area}"/>
 						<!--<Text id="funcAreaColumnListItem_cell_1" text="{funcArea>func_area}" maxLines="2"></Text>-->
 						<!--<Text id="funcAreaColumnListItem_cell_2" text="{funcArea>func_size_per_tb}" maxLines="2"></Text>-->
-						<ObjectNumber unit="GB" number="{funcArea>func_size_per_tb}"/>
+						<ObjectNumber unit="GB" emphasized="false" number="{funcArea>func_size_per_tb}"/>
+						<VBox renderType="Bare" alignItems="Center" justifyContent="Center" >
+							<ObjectNumber 
+	                        	number="{path:'funcArea>warm_potential', 
+	                        			 type: 'sap.ui.model.type.Float', 
+	                        			 formatOptions: { maxFractionDigits: 2, groupingSeparator:',', decimalSeparator:'.', showMeasure: false}
+	                        			}"
+	                        	unit="{i18n>memorySizeGB}"
+	                        	emphasized="false"
+	                        />
+						</VBox>	
+						
 						<VBox height="100px" renderType="Bare" justifyContent="Center">
-							<micro:ColumnMicroChart size="Responsive" columns="{funcArea>years}" allowColumnLabels="true"
+							<micro:ColumnMicroChart size="Responsive" columns="{path:'funcArea>years', templateShareable:false}" allowColumnLabels="true"
 							visible="{path:'funcArea>years', formatter:'.formatter.agingDataVisible'}">
 								<!--<micro:leftTopLabel>-->
 								<!--	<micro:ColumnMicroChartLabel label="{funcArea>years/0/title}"/>-->
@@ -62,13 +78,22 @@
 							</micro:ColumnMicroChart>
 							<Text textAlign="Center" text="{i18n>commonColumnMicrochartNoData}" 
 							visible="{path:'funcArea>years', formatter:'.formatter.noAgingDataVisible'}"/>
+							
+
+							<!--<ObjectAttribute -->
+							<!--title="Warm potential"-->
+	      <!--                  	text="{path:'funcArea>warm_potential', -->
+	      <!--                  			 type: 'sap.ui.model.type.Float', -->
+	      <!--                  			 formatOptions: { maxFractionDigits: 2, groupingSeparator:',', decimalSeparator:'.', showMeasure: false}-->
+	      <!--                  			} {i18n>memorySizeGB}"-->
+	      <!--                  />-->
 						</VBox>
-							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{funcArea>data}" maxValue="100">
+							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{path:'funcArea>data', templateShareable:false}" maxValue="100">
 								<micro:data>
 									<micro:ComparisonMicroChartData title="{funcArea>title}" value="{funcArea>value}" color="{path:'funcArea>color', formatter: '.formatter.fourSeriesColour'}"/>
 								</micro:data>
 							</micro:ComparisonMicroChart>
-							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{funcArea>RSCS}">
+							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{path:'funcArea>RSCS', templateShareable:false}">
 								<micro:data>
 									<micro:ComparisonMicroChartData title="{funcArea>title}" value="{funcArea>value}" color="{path:'funcArea>color', formatter: '.formatter.fourSeriesColour'}"/>
 								</micro:data>

@@ -1,6 +1,6 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:ux="sap.uxap" xmlns:layout="sap.ui.layout"
 	controllerName="one.labs.mem_profiler.controller.PlatformObject" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page id="pagePlatformObject" showNavButton="true" navButtonPress="onNavBack" title="Platform Overview">
+	<Page id="pagePlatformObject" showNavButton="true" navButtonPress="onNavBack" title="{i18n>titlePlatformOverview}">
 	<ux:ObjectPageLayout
 		showTitleInHeaderContent="true"
 		alwaysShowContentHeader="false"
@@ -9,49 +9,49 @@
 		isChildPage="true"
 		enableLazyLoading="true">
 		<ux:headerTitle>
-			<!--<ux:ObjectPageHeader objectTitle="{platform>platform}" objectSubtitle="Platform"/>-->
+			<!--<ux:ObjectPageHeader objectTitle="{object>platform}" objectSubtitle="Platform"/>-->
 			<ux:ObjectPageDynamicHeaderTitle>
 				<ux:expandedHeading>
-				<Title text="{platform>platform}"/>
+				<Title text="{object>platform}"/>
 				</ux:expandedHeading>
 				<ux:snappedHeading>
-				<Title text="{platform>platform}"/>
+				<Title text="{object>platform}"/>
 				</ux:snappedHeading>
 			</ux:ObjectPageDynamicHeaderTitle>
 		</ux:headerTitle>
-		<!--<ux:headerContent>-->
-		<!--	<layout:HorizontalLayout allowWrapping="true">-->
-		<!--		<layout:VerticalLayout>-->
-		<!--			<ObjectAttribute title="Size"/>-->
-		<!--			<ObjectNumber number="{platform>size}" unit="GB"/>-->
-		<!--		</layout:VerticalLayout>-->
-		<!--	</layout:HorizontalLayout>-->
-		<!--</ux:headerContent>-->
+		<ux:headerContent>
+			<!--<layout:HorizontalLayout allowWrapping="true">-->
+			<!--	<layout:VerticalLayout class="sapUiMediumMarginEnd">-->
+			<!--		<Label text="Size"/>-->
+			<!--		<ObjectNumber number="{object>size}" unit="GB"/>-->
+			<!--	</layout:VerticalLayout>-->
+			<!--</layout:HorizontalLayout>-->
+		</ux:headerContent>
 		<ux:sections>
 			<ux:ObjectPageSection title=" ">
 				<ux:subSections>
-					<ux:ObjectPageSubSection title="Largest Business Areas">
+					<ux:ObjectPageSubSection title="{i18n>titleLargestBusinessAreas}">
 						<core:Fragment fragmentName="one.labs.mem_profiler.view.LargestFuncAreas" type="XML"/>
 					</ux:ObjectPageSubSection>
 				</ux:subSections>
 			</ux:ObjectPageSection>
 			<ux:ObjectPageSection title=" ">
 				<ux:subSections>
-					<ux:ObjectPageSubSection title="Data Aging">
+					<ux:ObjectPageSubSection title="{i18n>titleDataAging}">
 						<core:Fragment fragmentName="one.labs.mem_profiler.view.DataAging" type="XML"/>
 					</ux:ObjectPageSubSection>
 				</ux:subSections>
 			</ux:ObjectPageSection>
 			<ux:ObjectPageSection title=" ">
 				<ux:subSections>
-					<ux:ObjectPageSubSection title="Data Purpose">
+					<ux:ObjectPageSubSection title="{i18n>titleDataPurpose}">
 						<core:Fragment fragmentName="one.labs.mem_profiler.view.DataPurpose" type="XML"/>
 					</ux:ObjectPageSubSection>
 				</ux:subSections>
 			</ux:ObjectPageSection>
 			<ux:ObjectPageSection title=" ">
 				<ux:subSections>
-					<ux:ObjectPageSubSection title="Row vs. Column Storage">
+					<ux:ObjectPageSubSection title="{i18n>titleRowvsColumnStorage}">
 						<core:Fragment fragmentName="one.labs.mem_profiler.view.RowColumnStore" type="XML"/>
 					</ux:ObjectPageSubSection>
 				</ux:subSections>

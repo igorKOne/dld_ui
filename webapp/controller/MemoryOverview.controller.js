@@ -52,11 +52,11 @@ sap.ui.define([
             this._initChartPersonalizationModel();
 
 			// update the VizFrame control
-            var oVizFrame = this.getView().byId("vizFrame");
+            var oVizFrame = this.getView().byId("vizFrameOverview");
             this._updateVizFrame(oVizFrame);
             
             //connect the popover
-            var oPopOver = this.getView().byId("idPopOver");
+            var oPopOver = this.getView().byId("popoverOverview");
             oPopOver.connect(oVizFrame.getVizUid());
 		},
 
@@ -64,10 +64,12 @@ sap.ui.define([
         _initChartPersonalizationModel: function() {
         	let PersModel = new JSONModel({
         		showAllocationLimit: true,
-        		showLicensedSpace: true,
-        		showColumnStoreData: true,
-        		showRowStoreData: true,
-        		showPeakMemoryUsage: true
+        		showLicensedSpace: false,
+        		showColumnStoreData: false,
+        		showRowStoreData: false,
+        		showPeakMemoryUsage: false,
+        		showWarmPotential: true,
+        		showTotalMemory: true
         	});
         	this.getView().setModel(PersModel,"chartPersonalization");
         },
@@ -75,7 +77,7 @@ sap.ui.define([
         onSelectMeasure: function (oEvent) {
             
             //this._state.chartContainer.removeContent();
-            var oVizFrame = this.getView().byId("vizFrame");
+            var oVizFrame = this.getView().byId("vizFrameOverview");
             this._updateVizFrame2(oVizFrame);
 
         },
@@ -142,7 +144,8 @@ sap.ui.define([
             let showColumnStoreData = oChartPersModel.getProperty("/showColumnStoreData");
             let showRowStoreData = oChartPersModel.getProperty("/showRowStoreData");
             let showPeakMemoryUsage = oChartPersModel.getProperty("/showPeakMemoryUsage");
-            
+            let showWarmPotential = oChartPersModel.getProperty("/showWarmPotential");
+            let showTotalMemory = oChartPersModel.getProperty("/showTotalMemory");
             
             let aMeasures = [
             	{
@@ -168,7 +171,14 @@ sap.ui.define([
             		name: "Peak Memory Usage",
             		selected: showPeakMemoryUsage,
             		axis: "line"
-            		
+            	},{
+            		name: "Warm Potential",
+            		selected: showWarmPotential,
+            		axis: "bar"
+            	},{
+            		name: "Total Memory",
+            		selected: showTotalMemory,
+            		axis: "bar"
             	}];
             
             let aSelectedMeasures = aMeasures.filter(elem=>{return elem.selected;}); // get selected measures
@@ -200,7 +210,8 @@ sap.ui.define([
 
 
             var oDataset = new sap.viz.ui5.data.FlattenedDataset(oVizFrameConf.dataset);
-            
+            //console.log('dataset : ', oVizFrameConf.dataset);
+            //console.log('feeds : ', aFeeds);
     
             oVizFrame.destroyDataset();
             oVizFrame.removeAllFeeds();
@@ -213,28 +224,39 @@ sap.ui.define([
             });
 
 
-            oVizFrame.setVizType('stacked_combination'); //('stacked_combination');
+            oVizFrame.setVizType('combination'); //('stacked_combination');
             if ((!showAllocationLimit &&
-                !showLicensedSpace && !showColumnStoreData && !showRowStoreData && showPeakMemoryUsage)
+                !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && !showTotalMemory && showPeakMemoryUsage)
                 ||
                 (showAllocationLimit &&
-                    !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showPeakMemoryUsage)
+                    !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
                 ||
-                (!showAllocationLimit && showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showPeakMemoryUsage)) {
+                (!showAllocationLimit && showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)) {
                 oVizFrame.setVizType('line'); //('stacked_combination');   
             }
-            if ((!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && showRowStoreData && !showPeakMemoryUsage)
-                || (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && !showRowStoreData && !showPeakMemoryUsage)) {
+            if ((!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
+                || (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && !showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
+                || (!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && !showRowStoreData && showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
+                || (!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && showTotalMemory && !showPeakMemoryUsage)) {
                 oVizFrame.setVizType('column');
             }
-            if ((!showAllocationLimit && !showLicensedSpace && showColumnStoreData && showRowStoreData && !showPeakMemoryUsage)
+            if ((!showAllocationLimit && !showLicensedSpace && showColumnStoreData && showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
             ) {
-                
-                oVizFrame.setVizType('stacked_column');
+            	oVizFrame.setVizType('stacked_column');
+            }
+            if ((!showAllocationLimit && !showLicensedSpace && showColumnStoreData && showRowStoreData && showWarmPotential && showTotalMemory && !showPeakMemoryUsage)
+            	|| (!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && showRowStoreData && showWarmPotential && showTotalMemory && !showPeakMemoryUsage)
+            	|| (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && !showRowStoreData && showWarmPotential && showTotalMemory && !showPeakMemoryUsage)
+            	|| (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && showRowStoreData && !showWarmPotential && showTotalMemory && !showPeakMemoryUsage)
+            	|| (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && showRowStoreData && showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
+            	|| (!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && showRowStoreData && showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
+            	|| (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && !showRowStoreData && showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
+            ) {
+                oVizFrame.setVizType('column');
             }
             oVizFrame.setVisible(true);
             if (!showAllocationLimit &&
-                !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showPeakMemoryUsage) {
+                !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage) {
                 oVizFrame.destroyDataset();
                 oVizFrame.removeAllFeeds();
                 oVizFrame.destroyFeeds();
@@ -252,34 +274,89 @@ sap.ui.define([
         _updateVizFrame: function (oVizFrame) {
             
             let oVizFrameConf = this._constants.vizFrame;
-
+            
+            let oChartPersModel = this.getView().getModel("chartPersonalization");
+            let showAllocationLimit = oChartPersModel.getProperty("/showAllocationLimit");
+            let showLicensedSpace = oChartPersModel.getProperty("/showLicensedSpace");
+            let showColumnStoreData = oChartPersModel.getProperty("/showColumnStoreData");
+            let showRowStoreData = oChartPersModel.getProperty("/showRowStoreData");
+            let showPeakMemoryUsage = oChartPersModel.getProperty("/showPeakMemoryUsage");
+            let showWarmPotential = oChartPersModel.getProperty("/showWarmPotential");
+            let showTotalMemory = oChartPersModel.getProperty("/showTotalMemory");
+            
+            let aMeasures = [
+            	{
+            		name: "Allocation Limit",
+            		selected: showAllocationLimit,
+            		axis: "line"
+            	}, {
+            		name: "Licensed Space",
+            		selected: showLicensedSpace,
+            		axis: "line"
+            		
+            	} ,{
+            		name:"RowStore Data",
+            		selected: showRowStoreData,
+            		axis: "bar"
+            		
+            	}, {
+            		name: "ColumnStore Data",
+            		selected: showColumnStoreData,
+            		axis: "bar"
+            		
+            	},{
+            		name: "Peak Memory Usage",
+            		selected: showPeakMemoryUsage,
+            		axis: "line"
+            	},{
+            		name: "Warm Potential",
+            		selected: showWarmPotential,
+            		axis: "bar"
+            	},{
+            		name: "Total Memory",
+            		selected: showTotalMemory,
+            		axis: "bar"
+            	}
+            	];
+            
+            let aSelectedMeasures = aMeasures.filter(elem=>{return elem.selected;}); // get selected measures
+            
             oVizFrame.setVizProperties(Object.assign({
                 plotArea: {
 
                     dataShape: {
-                        primaryAxis: ["line", "line", "bar", "bar"],
+                        primaryAxis: aSelectedMeasures.map((elem)=>{return elem.axis;}), // all filtered axises
                         secondaryAxis: ["bar"]
                     }
                 }
-            },this._oCommonVizProperties));
 
+            }, this._oCommonVizProperties));
 
+			
             var oDataset = new sap.viz.ui5.data.FlattenedDataset(oVizFrameConf.dataset);
-            //console.log
+            //console.log(oDataset);
             // var oVizFramePath = oVizFrameConf.modulePath;
             
             //var oModel = new sap.ui.model.odata.ODataModel(oVizFramePath);
             let oModel = this.getOwnerComponent().getModel();                                   
-            
+            //console.log(oModel);
             oVizFrame.setDataset(oDataset);
 
             oVizFrame.setModel(oModel);
             
-            oVizFrameConf.feedItems.forEach( oItem => {
-                oVizFrame.addFeed(new FeedItem(oItem));
-            });
+            oVizFrame.addFeed( new FeedItem({
+                    'uid': "primaryValues",
+                    'type': "Measure",
+                    'values': aSelectedMeasures.map((elem)=>{return elem.name;}) //all filtered names
+                }));
+            oVizFrame.addFeed(new FeedItem({
+                        'uid': "axisLabels",
+                        'type': "Dimension",
+                        'values': ["MONTH_STRING"]
+                }));
+            
             //oVizFrame.setVizType(oVizFrameConf.type);
-            oVizFrame.setVizType('stacked_combination'); //('stacked_combination'); 
+            oVizFrame.setVizType('combination'); //('stacked_combination'); 
         },
       
         _initViewPropertiesModel: function () {

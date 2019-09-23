@@ -2,15 +2,17 @@
    xmlns="sap.m"
    xmlns:core="sap.ui.core" 
    xmlns:l="sap.ui.layout">
-	<Dialog id="chartPersonalizationDialog" title="Chart Personalization">
+	<Dialog id="chartPersonalizationDialog" title="{i18n>labelChartPersonalization}">
 
 		<VBox class="sapUiSmallMargin">
-			<Label text='Include/exclude from chart' design="Bold" class='settingsLabel'></Label>
-			<CheckBox id="checkbox1" text="Allocation Limit" selected="{chartPersonalization>/showAllocationLimit}" select="onSelectMeasure"/>
-			<CheckBox id="checkbox2" text="Licensed Space" selected="{chartPersonalization>/showLicensedSpace}" select="onSelectMeasure"/>
-			<CheckBox id="checkbox3" text="ColumnStore Data" selected="{chartPersonalization>/showColumnStoreData}" select="onSelectMeasure"/>
-			<CheckBox id="checkbox4" text="RowStore Data" selected="{chartPersonalization>/showRowStoreData}" select="onSelectMeasure"/>
-			<CheckBox id="checkbox5" text="Peak Memory Usage" selected="{chartPersonalization>/showPeakMemoryUsage}" select="onSelectMeasure"/>
+			<Label text='{i18n>labelIncludeexcludefromchart}' design="Bold" class='settingsLabel'></Label>
+			<CheckBox id="checkbox1" text="{i18n>textAllocationLimit}" selected="{chartPersonalization>/showAllocationLimit}" select="onSelectMeasure"/>
+			<CheckBox id="checkbox2" text="{i18n>textLicensedSpace}" selected="{chartPersonalization>/showLicensedSpace}" select="onSelectMeasure"/>
+			<CheckBox id="checkbox3" text="{i18n>textColumnStoreData}" selected="{chartPersonalization>/showColumnStoreData}" select="onSelectMeasure"/>
+			<CheckBox id="checkbox4" text="{i18n>textRowStoreData}" selected="{chartPersonalization>/showRowStoreData}" select="onSelectMeasure"/>
+			<CheckBox id="checkbox5" text="{i18n>textPeakMemoryUsage}" selected="{chartPersonalization>/showPeakMemoryUsage}" select="onSelectMeasure"/>
+			<CheckBox id="checkbox6" text="{i18n>textWarmPotential}" selected="{chartPersonalization>/showWarmPotential}" select="onSelectMeasure"/>
+			<CheckBox id="checkbox7" text="{i18n>textTotalMemory}" selected="{chartPersonalization>/showTotalMemory}" select="onSelectMeasure"/>
 		</VBox>
 		<buttons>
 			<Button text="Close" press="onPressCloseChartPersonalizationDialog"></Button>

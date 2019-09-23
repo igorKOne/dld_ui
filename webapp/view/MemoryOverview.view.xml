@@ -7,20 +7,18 @@
 		<!--<Title text="{i18n>pageMemoryOverviewTitle}"/>-->
 		<!--<content>-->
 			<layout:FixFlex>
-				<!--<layout:fixContent>-->
-					<!--<Text text="Fixed Content"></m:Text>-->
-				<!--</layout:fixContent>-->
+				<layout:fixContent>
+					<viz:Popover id="popoverOverview"/>	
+				</layout:fixContent>
 				<layout:flexContent>			
 			<commons:ChartContainer id="chartContainer" 
 			class="sapUiResponsiveContentPadding"
 			showFullScreen="true" autoAdjustHeight="true" showLegend="true" showPersonalization="true"
 				contentChange="attachContentChange" personalizationPress="onChartPersonalizationPress" >
 				<commons:content>
-					<commons:ChartContainerContent icon="sap-icon://vertical-bar-chart" title="Memory Usage by Month">
+					<commons:ChartContainerContent icon="sap-icon://vertical-bar-chart" title="{i18n>titleMemoryUsagebyMonth}">
 						<commons:content>
-							<viz:Popover id="idPopOver"></viz:Popover>
-							<viz:VizFrame id="vizFrame" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%">
-							</viz:VizFrame>
+							<viz:VizFrame id="vizFrameOverview" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%"/>
 						</commons:content>
 					</commons:ChartContainerContent>
 				</commons:content>

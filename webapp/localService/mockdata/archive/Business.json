@@ -1,0 +1,513 @@
+{
+    "results": [
+        {
+            "id": 1,
+            "func_area": "Shared",
+            "avg_volume": "99213143119",
+            "aging_avg_volume": "100556146927",
+            "rep_volume": "97881003314",
+            "stg_volume": "1332139805",
+            "warm_potential": 59,
+            "years": [
+                {
+                    "id": 1,
+                    "title": "<2017",
+                    "value": 11,
+                    "color": "Error"
+                },
+                {
+                    "id": 2,
+                    "title": 2017,
+                    "value": 48,
+                    "color": "Critical"
+                },
+                {
+                    "id": 3,
+                    "title": 2018,
+                    "value": 30,
+                    "color": "Neutral"
+                },
+                {
+                    "id": 4,
+                    "title": 2019,
+                    "value": 11,
+                    "color": "Good"
+                }
+            ],
+            "current_min_2_vol_perc": 48,
+            "current_min_1_vol_perc": 30,
+            "current_year_vol_perc": 11,
+            "old_year_vol_perc": 11,
+            "data": [
+                {
+                    "id": 1,
+                    "title": "Staging",
+                    "value": 98.66,
+                    "color": "Error"
+                },
+                {
+                    "id": 2,
+                    "title": "Reporting",
+                    "value": 1.34,
+                    "color": "Good"
+                }
+            ],
+            "stg_perc": 98.66,
+            "rep_perc": 1.34,
+            "volume": 6234.333,
+            "func_size": 92.399,
+            "volume_per_tb": 6234.333,
+            "func_size_per_tb": 92.399,
+            "RSCS": [
+                {
+                    "id": 1,
+                    "title": "ColumnStore",
+                    "value": 91.159,
+                    "color": "Good"
+                },
+                {
+                    "id": 2,
+                    "title": "RowStore",
+                    "value": 1.241,
+                    "color": "Error"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "func_area": "BW",
+            "avg_volume": "82752993090",
+            "aging_avg_volume": null,
+            "rep_volume": "0",
+            "stg_volume": "82752993087",
+            "warm_potential": 0,
+            "years": [],
+            "current_min_2_vol_perc": null,
+            "current_min_1_vol_perc": null,
+            "current_year_vol_perc": null,
+            "old_year_vol_perc": null,
+            "data": [
+                {
+                    "id": 1,
+                    "title": "Staging",
+                    "value": 0,
+                    "color": "Error"
+                },
+                {
+                    "id": 2,
+                    "title": "Reporting",
+                    "value": 100,
+                    "color": "Good"
+                }
+            ],
+            "stg_perc": 0,
+            "rep_perc": 100,
+            "volume": 22265.476,
+            "func_size": 77.07,
+            "volume_per_tb": 22265.476,
+            "func_size_per_tb": 77.07,
+            "RSCS": [
+                {
+                    "id": 1,
+                    "title": "ColumnStore",
+                    "value": 76.629,
+                    "color": "Good"
+                },
+                {
+                    "id": 2,
+                    "title": "RowStore",
+                    "value": 0.441,
+                    "color": "Error"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "func_area": "System",
+            "avg_volume": "8766624181",
+            "aging_avg_volume": null,
+            "rep_volume": "5657062305",
+            "stg_volume": "3109561438",
+            "warm_potential": 0,
+            "years": [],
+            "current_min_2_vol_perc": null,
+            "current_min_1_vol_perc": null,
+            "current_year_vol_perc": null,
+            "old_year_vol_perc": null,
+            "data": [
+                {
+                    "id": 1,
+                    "title": "Staging",
+                    "value": 64.53,
+                    "color": "Error"
+                },
+                {
+                    "id": 2,
+                    "title": "Reporting",
+                    "value": 35.47,
+                    "color": "Good"
+                }
+            ],
+            "stg_perc": 64.53,
+            "rep_perc": 35.47,
+            "volume": 24937.333,
+            "func_size": 8.165,
+            "volume_per_tb": 24937.333,
+            "func_size_per_tb": 8.165,
+            "RSCS": [
+                {
+                    "id": 1,
+                    "title": "ColumnStore",
+                    "value": 0,
+                    "color": "Good"
+                },
+                {
+                    "id": 2,
+                    "title": "RowStore",
+                    "value": 8.164,
+                    "color": "Error"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "func_area": null,
+            "avg_volume": "355998531",
+            "aging_avg_volume": "16897019",
+            "rep_volume": "0",
+            "stg_volume": "355998531",
+            "warm_potential": "0.33",
+            "years": [
+                {
+                    "id": 1,
+                    "title": "<2017",
+                    "value": 8,
+                    "color": "Error"
+                },
+                {
+                    "id": 2,
+                    "title": 2017,
+                    "value": 90,
+                    "color": "Critical"
+                },
+                {
+                    "id": 3,
+                    "title": 2018,
+                    "value": 0,
+                    "color": "Neutral"
+                },
+                {
+                    "id": 4,
+                    "title": 2019,
+                    "value": 2,
+                    "color": "Good"
+                }
+            ],
+            "current_min_2_vol_perc": 90,
+            "current_min_1_vol_perc": 0,
+            "current_year_vol_perc": 2,
+            "old_year_vol_perc": 8,
+            "data": [
+                {
+                    "id": 1,
+                    "title": "Staging",
+                    "value": 0,
+                    "color": "Error"
+                },
+                {
+                    "id": 2,
+                    "title": "Reporting",
+                    "value": 100,
+                    "color": "Good"
+                }
+            ],
+            "stg_perc": 0,
+            "rep_perc": 100,
+            "volume": 3562.476,
+            "func_size": 0.332,
+            "volume_per_tb": 3562.476,
+            "func_size_per_tb": 0.332,
+            "RSCS": [
+                {
+                    "id": 1,
+                    "title": "ColumnStore",
+                    "value": 0,
+                    "color": "Good"
+                },
+                {
+                    "id": 2,
+                    "title": "RowStore",
+                    "value": 0.332,
+                    "color": "Error"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "func_area": "Retail",
+            "avg_volume": "163614374",
+            "aging_avg_volume": "163613951",
+            "rep_volume": "159742610",
+            "stg_volume": "3871764",
+            "warm_potential": 0.150,
+            "years": [
+                {
+                    "id": 1,
+                    "title": "<2017",
+                    "value": 98,
+                    "color": "Error"
+                },
+                {
+                    "id": 2,
+                    "title": 2017,
+                    "value": 0,
+                    "color": "Critical"
+                },
+                {
+                    "id": 3,
+                    "title": 2018,
+                    "value": 0,
+                    "color": "Neutral"
+                },
+                {
+                    "id": 4,
+                    "title": 2019,
+                    "value": 2,
+                    "color": "Good"
+                }
+            ],
+            "current_min_2_vol_perc": 0,
+            "current_min_1_vol_perc": 0,
+            "current_year_vol_perc": 2,
+            "old_year_vol_perc": 98,
+            "data": [
+                {
+                    "id": 1,
+                    "title": "Staging",
+                    "value": 97.63,
+                    "color": "Error"
+                },
+                {
+                    "id": 2,
+                    "title": "Reporting",
+                    "value": 2.37,
+                    "color": "Good"
+                }
+            ],
+            "stg_perc": 97.63,
+            "rep_perc": 2.37,
+            "volume": 890.619,
+            "func_size": 0.152,
+            "volume_per_tb": 890.619,
+            "func_size_per_tb": 0.152,
+            "RSCS": [
+                {
+                    "id": 1,
+                    "title": "ColumnStore",
+                    "value": 0,
+                    "color": "Good"
+                },
+                {
+                    "id": 2,
+                    "title": "RowStore",
+                    "value": 0.151,
+                    "color": "Error"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "func_area": "Finance",
+            "avg_volume": "4417329",
+            "aging_avg_volume": "4417329",
+            "rep_volume": "0",
+            "stg_volume": "4417329",
+            "warm_potential": "0.004",
+            "years": [
+                {
+                    "id": 1,
+                    "title": "<2017",
+                    "value": 100,
+                    "color": "Error"
+                },
+                {
+                    "id": 2,
+                    "title": 2017,
+                    "value": 0,
+                    "color": "Critical"
+                },
+                {
+                    "id": 3,
+                    "title": 2018,
+                    "value": 0,
+                    "color": "Neutral"
+                },
+                {
+                    "id": 4,
+                    "title": 2019,
+                    "value": 0,
+                    "color": "Good"
+                }
+            ],
+            "current_min_2_vol_perc": 0,
+            "current_min_1_vol_perc": 0,
+            "current_year_vol_perc": 0,
+            "old_year_vol_perc": 100,
+            "data": [
+                {
+                    "id": 1,
+                    "title": "Staging",
+                    "value": 0,
+                    "color": "Error"
+                },
+                {
+                    "id": 2,
+                    "title": "Reporting",
+                    "value": 100,
+                    "color": "Good"
+                }
+            ],
+            "stg_perc": 0,
+            "rep_perc": 100,
+            "volume": 178.124,
+            "func_size": 0.004,
+            "volume_per_tb": 178.124,
+            "func_size_per_tb": 0.004,
+            "RSCS": [
+                {
+                    "id": 1,
+                    "title": "ColumnStore",
+                    "value": 0,
+                    "color": "Good"
+                },
+                {
+                    "id": 2,
+                    "title": "RowStore",
+                    "value": 0.004,
+                    "color": "Error"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "func_area": "Local",
+            "avg_volume": "2178743",
+            "aging_avg_volume": null,
+            "rep_volume": "0",
+            "stg_volume": "2178743",
+            "warm_potential": "0",
+            "years": [],
+            "current_min_2_vol_perc": null,
+            "current_min_1_vol_perc": null,
+            "current_year_vol_perc": null,
+            "old_year_vol_perc": null,
+            "data": [
+                {
+                    "id": 1,
+                    "title": "Staging",
+                    "value": 0,
+                    "color": "Error"
+                },
+                {
+                    "id": 2,
+                    "title": "Reporting",
+                    "value": 100,
+                    "color": "Good"
+                }
+            ],
+            "stg_perc": 0,
+            "rep_perc": 100,
+            "volume": 178.124,
+            "func_size": 0.002,
+            "volume_per_tb": 178.124,
+            "func_size_per_tb": 0.002,
+            "RSCS": [
+                {
+                    "id": 1,
+                    "title": "ColumnStore",
+                    "value": 0,
+                    "color": "Good"
+                },
+                {
+                    "id": 2,
+                    "title": "RowStore",
+                    "value": 0.002,
+                    "color": "Error"
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "func_area": "EBOSS",
+            "avg_volume": "12069",
+            "aging_avg_volume": "12069",
+            "rep_volume": "0",
+            "stg_volume": "12069",
+            "warm_potential": "0",
+            "years": [
+                {
+                    "id": 1,
+                    "title": "<2017",
+                    "value": 100,
+                    "color": "Error"
+                },
+                {
+                    "id": 2,
+                    "title": 2017,
+                    "value": 0,
+                    "color": "Critical"
+                },
+                {
+                    "id": 3,
+                    "title": 2018,
+                    "value": 0,
+                    "color": "Neutral"
+                },
+                {
+                    "id": 4,
+                    "title": 2019,
+                    "value": 0,
+                    "color": "Good"
+                }
+            ],
+            "current_min_2_vol_perc": 0,
+            "current_min_1_vol_perc": 0,
+            "current_year_vol_perc": 0,
+            "old_year_vol_perc": 100,
+            "data": [
+                {
+                    "id": 1,
+                    "title": "Staging",
+                    "value": 0,
+                    "color": "Error"
+                },
+                {
+                    "id": 2,
+                    "title": "Reporting",
+                    "value": 100,
+                    "color": "Good"
+                }
+            ],
+            "stg_perc": 0,
+            "rep_perc": 100,
+            "volume": 178.124,
+            "func_size": 0,
+            "volume_per_tb": 178.124,
+            "func_size_per_tb": 0,
+            "RSCS": [
+                {
+                    "id": 1,
+                    "title": "ColumnStore",
+                    "value": 0,
+                    "color": "Good"
+                },
+                {
+                    "id": 2,
+                    "title": "RowStore",
+                    "value": 0,
+                    "color": "Error"
+                }
+            ]
+        }
+    ]
+}
