@@ -5,86 +5,56 @@
                 {
                     "id": 1,
                     "period": 1,
-                    "title": "Oct'18",
-                    "value": 650.134
+                    "title": "Apr'19",
+                    "value": 766.842
                 },
                 {
                     "id": 2,
                     "period": 2,
-                    "title": "Nov'18",
-                    "value": 496.735
+                    "title": "Jun'19",
+                    "value": 952.389
                 },
                 {
                     "id": 3,
                     "period": 3,
-                    "title": "Jan'19",
-                    "value": 388.595
-                },
-                {
-                    "id": 4,
-                    "period": 4,
-                    "title": "Feb'19",
-                    "value": 431.156
-                },
-                {
-                    "id": 5,
-                    "period": 5,
-                    "title": "Mar'19",
-                    "value": 475.281
-                },
-                {
-                    "id": 6,
-                    "period": 6,
-                    "title": "Apr'19",
-                    "value": 454.11
-                },
-                {
-                    "id": 7,
-                    "period": 7,
-                    "title": "May'19",
-                    "value": 508.336
-                },
-                {
-                    "id": 8,
-                    "period": 8,
-                    "title": "Jun'19",
-                    "value": 488.867
+                    "title": "Jul'19",
+                    "value": 1031.148
                 }
             ],
-            "threshold": 966.83,
-            "leftBottomLabel": "Oct'18",
-            "rightBottomLabel": "Jun'19"
+            "threshold": 1450.241,
+            "leftBottomLabel": "Apr'19",
+            "rightBottomLabel": "Jul'19"
         }
     ],
     "funcAreas": [
         {
             "id": 1,
             "title": "Shared",
-            "value": 92.399,
+            "value": 306.06,
             "color": "Good"
         },
         {
             "id": 2,
-            "title": "BW",
-            "value": 77.07,
+            "title": "Local",
+            "value": 133.77,
             "color": "Good"
         },
         {
             "id": 3,
-            "title": "System",
-            "value": 8.165,
+            "title": "SAP BW",
+            "value": 54.06,
             "color": "Good"
         },
         {
             "id": 4,
-            "title": null,
-            "value": 0.332,
+            "title": "Info Steward",
+            "value": 19.03,
             "color": "Good"
         },
         {
             "id": 5,
-            "title": "Retail",
-            "value": 0.152,
+            "title": "System",
+            "value": 9.64,
             "color": "Good"
         }
     ],
@@ -92,25 +62,25 @@
         {
             "id": 1,
             "title": "<2017",
-            "value": 11,
+            "value": 52.91,
             "color": "Error"
         },
         {
             "id": 2,
             "title": "2017",
-            "value": 48,
+            "value": 13.51,
             "color": "Critical"
         },
         {
             "id": 3,
             "title": "2018",
-            "value": 30,
+            "value": 27.26,
             "color": "Neutral"
         },
         {
             "id": 4,
             "title": "2019",
-            "value": 11,
+            "value": 6.33,
             "color": "Good"
         }
     ]

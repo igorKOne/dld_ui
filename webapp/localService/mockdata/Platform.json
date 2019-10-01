@@ -1,107 +1,76 @@
 {
-    "results": [
-        {
+    "results": [{
+        "id": 1,
+        "platform": "Main",
+        "years": [{
             "id": 1,
-            "platform": "Main",
-            "years": [
-                {
-                    "id": 1,
-                    "title": "<2017",
-                    "value": 52.91,
-                    "valueB": 270547913828,
-                    "color": "Error"
-                },
-                {
-                    "id": 2,
-                    "title": 2017,
-                    "value": 13.51,
-                    "valueB": 69064039353,
-                    "color": "Critical"
-                },
-                {
-                    "id": 3,
-                    "title": 2018,
-                    "value": 27.26,
-                    "valueB": 139370526650,
-                    "color": "Neutral"
-                },
-                {
-                    "id": 4,
-                    "title": 2019,
-                    "value": 6.33,
-                    "valueB": 27079378154,
-                    "color": "Good"
-                }
-            ],
-            "data": [
-                {
-                    "id": 1,
-                    "title": "Staging",
-                    "value": 5.17,
-                    "color": "Error"
-                },
-                {
-                    "id": 2,
-                    "title": "Reporting",
-                    "value": 94.83,
-                    "color": "Good"
-                }
-            ],
-            "business": [
-                {
-                    "id": 1,
-                    "title": "Shared",
-                    "value": 306.06,
-                    "color": "Good"
-                },
-                {
-                    "id": 2,
-                    "title": "Local",
-                    "value": 133.77,
-                    "color": "Good"
-                },
-                {
-                    "id": 3,
-                    "title": "SAP BW",
-                    "value": 54.06,
-                    "color": "Good"
-                },
-                {
-                    "id": 4,
-                    "title": "Info Steward",
-                    "value": 19.03,
-                    "color": "Good"
-                },
-                {
-                    "id": 5,
-                    "title": "System",
-                    "value": 9.64,
-                    "color": "Good"
-                }
-            ],
-            "RSCS": [
-                {
-                    "id": 1,
-                    "title": "Row Store",
-                    "value": 9.05,
-                    "color": "Error"
-                },
-                {
-                    "id": 2,
-                    "title": "Column Store",
-                    "value": 521.79,
-                    "color": "Good"
-                }
-            ],
-            "WarmPotential": [
-                {
-                    "id": 3,
-                    "title": "Warm Potential",
-                    "value": 251.96,
-                    "color": "Neutral"
-                }
-            ],
-            "warm_potential": 251.96
-        }
-    ]
+            "title": "<2017",
+            "value": 30.04,
+            "valueB": 152840000000,
+            "color": "Error"
+        }, {
+            "id": 2,
+            "title": 2017,
+            "value": 39.07,
+            "valueB": 198780000000,
+            "color": "Critical"
+        }, {
+            "id": 3,
+            "title": 2018,
+            "value": 25.97,
+            "valueB": 132110000000,
+            "color": "Neutral"
+        }, {
+            "id": 4,
+            "title": 2019,
+            "value": 4.92,
+            "valueB": 25020000000,
+            "color": "Good"
+        }],
+        "data": [{
+            "id": 1,
+            "title": "Staging",
+            "value": 23.21,
+            "color": "Error"
+        }, {
+            "id": 2,
+            "title": "Reporting",
+            "value": 76.79,
+            "color": "Good"
+        }],
+        "business": [{
+            "id": 1,
+            "title": "Retail",
+            "value": 259.65,
+            "color": "Good"
+        }, {
+            "id": 2,
+            "title": "ONE ERP",
+            "value": 170.90,
+            "color": "Good"
+        }, {
+            "id": 3,
+            "title": "Production",
+            "value": 78.20,
+            "color": "Good"
+        }],
+        "RSCS": [{
+            "id": 1,
+            "title": "Row Store",
+            "value": 60.31,
+            "color": "Error"
+        }, {
+            "id": 2,
+            "title": "Column Store",
+            "value": 448.44,
+            "color": "Good"
+        }],
+        "WarmPotential": [{
+            "id": 3,
+            "title": "Warm Potential",
+            "value": 152.84,
+            "color": "Neutral"
+        }],
+        "warm_potential": 152.84
+    }]
 }
