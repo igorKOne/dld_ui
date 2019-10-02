@@ -18,3 +18,5 @@ APIExternalProducer.js
 node_modules
 /dist/
 /package-lock.json
+lib/odata.json
+odata.json
