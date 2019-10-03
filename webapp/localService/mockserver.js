@@ -129,7 +129,9 @@ sap.ui.define([
 							m = regex.exec(str);
 							if(m && Array.isArray(m) && m.length > 0){
 								sFuncArea = m[m.length-1];
+								sFuncArea = sFuncArea.replace(/\+/g," ")
 							}
+
 							
 							let oData = Object.assign({},oBusinessModel.getData()); //clone
 							if (sFuncArea && oData.results && Array.isArray(oData.results)){
