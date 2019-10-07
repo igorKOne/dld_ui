@@ -59,7 +59,9 @@
             "value": 4.44,
             "color": "Error"
         }],
+        "total": 259.65,
         "warm_potential": 94.91,
+        "warm_potential_perc": 36.55,
         "WarmPotential": [{
             "id": 1,
             "title": "Warm Potential",
@@ -126,7 +128,9 @@
             "value": 0,
             "color": "Error"
         }],
+        "total": 170.90,
         "warm_potential": 1.68,
+        "warm_potential_perc": 0.98,
         "WarmPotential": [{
             "id": 1,
             "title": "Warm Potential",
@@ -193,7 +197,9 @@
             "value": 55.87,
             "color": "Error"
         }],
+        "total": 78.20,
         "warm_potential": 56.25,
+        "warm_potential_perc": 71.92,
         "WarmPotential": [{
             "id": 1,
             "title": "Warm Potential",

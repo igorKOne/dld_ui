@@ -1,7 +1,7 @@
 <mvc:View controllerName="one.labs.mem_profiler.controller.Platform" displayBlock="true" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:commons="sap.suite.ui.commons" xmlns:semantic="sap.m.semantic" xmlns:table="sap.ui.table"
 	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:tnt="sap.tnt" xmlns:core="sap.ui.core"
-	xmlns:l="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls" xmlns:micro="sap.suite.ui.microchart">
+	xmlns:l="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls" xmlns:mc="sap.suite.ui.microchart">
 		<Panel width="auto" class="sapUiResponsiveMargin" headerText="{= ${appData>/nestedViewMode} ? ${i18n>pagePlatformTitle} : ''}">
 		<!--<Title text="{i18n>pagePlatformTitle}"/>-->
 		<!--<content>-->
@@ -35,49 +35,66 @@
 				</columns>
 				<ColumnListItem id="datasetColumnListItem" vAlign="Middle" type="Navigation" press=".onColumnListItemPress">
 					<cells id="datasetColumnListItem_cells">
-							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{path:'platform>business', templateShareable:false}">
-								<micro:data>
-									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
+							<mc:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{path:'platform>business', templateShareable:false}">
+								<mc:data>
+									<mc:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
 									color="{path:'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
-								</micro:data>
-							</micro:ComparisonMicroChart>
+								</mc:data>
+							</mc:ComparisonMicroChart>
 							
-						<VBox renderType="Bare" alignItems="Center" justifyContent="Center">
-							<ObjectNumber 
-	                        	number="{path:'platform>warm_potential', 
-	                        			 type: 'sap.ui.model.type.Float', 
-	                        			 formatOptions: { maxFractionDigits: 2, groupingSeparator:',', decimalSeparator:'.', showMeasure: false}
-	                        			}"
-	                        	unit="{i18n>memorySizeGB}"
-	                        	emphasized="false"
-	                        />
-						</VBox>	
+							<VBox height="70px" renderType="Bare">
+							<!-- <ObjectNumber 
+							number="{path:'platform>warm_potential', 
+									 type: 'sap.ui.model.type.Float', 
+									 formatOptions: { maxFractionDigits: 2, groupingSeparator:',', decimalSeparator:'.', showMeasure: false}
+									}"
+							unit="{i18n>memorySizeGB}"
+							emphasized="false"
+							/> -->
+							<ObjectAttribute text="{platform>warm_potential}GB / {platform>total}GB"/>
+							<!-- <ObjectAttribute text="{platform>warm_potential_perc}%"/>
+							<mc:StackedBarMicroChart size="Responsive" press="press" showLabels="false" precision="0">
+								<mc:bars>
+									<mc:StackedBarMicroChartBar value="{platform>warm_potential}" 
+										valueColor="sapUiChartPaletteSequentialHue1Dark1"/>
+									<mc:StackedBarMicroChartBar value="{= Number(${platform>total}) - Number(${platform>warm_potential})}"
+										valueColor="sapUiChartPaletteSequentialNeutralLight3"/>
+								</mc:bars>
+							</mc:StackedBarMicroChart> -->
+							<!-- <mc:RadialMicroChart size="Responsive" percentage="{platform>warm_potential_perc}" /> -->
+								<mc:ComparisonMicroChart scale="%" press="press" isResponsive="true"  maxValue="100">
+									<mc:data>
+										<mc:ComparisonMicroChartData title="" value="{platform>warm_potential_perc}" 
+										color="sapUiChartPaletteSequentialHue1Dark1"/>
+									</mc:data>
+								</mc:ComparisonMicroChart>
+							</VBox>	
 						<VBox height="100px" renderType="Bare" >
-							<micro:ColumnMicroChart isResponsive="true" columns="{path:'platform>years', templateShareable:false}"  allowColumnLabels="true"
+							<mc:ColumnMicroChart isResponsive="true" columns="{path:'platform>years', templateShareable:false}"  allowColumnLabels="true"
 							visible="{path:'platform>years', formatter: '.formatter.agingDataVisible'}" >
-								<!--<micro:rightBottomLabel>-->
-								<!--	<micro:ColumnMicroChartLabel label="{i18n>platformColumnMicrochartLabel}"/>-->
-								<!--</micro:rightBottomLabel>-->
-								<micro:columns>
-									<micro:ColumnMicroChartData label="{platform>title}" 
+								<!--<mc:rightBottomLabel>-->
+								<!--	<mc:ColumnMicroChartLabel label="{i18n>platformColumnMicrochartLabel}"/>-->
+								<!--</mc:rightBottomLabel>-->
+								<mc:columns>
+									<mc:ColumnMicroChartData label="{platform>title}" 
 									value="{platform>value}" 
 									displayValue="{path: 'platform>value', formatter: '.formatter.percentage'}"
 									color="Neutral"/>
-								</micro:columns>
-							</micro:ColumnMicroChart>
+								</mc:columns>
+							</mc:ColumnMicroChart>
 						</VBox>
-							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{path:'platform>data', templateShareable:false}" maxValue="100">
-								<micro:data>
-									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
+							<mc:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{path:'platform>data', templateShareable:false}" maxValue="100">
+								<mc:data>
+									<mc:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
 									color="{path:'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
-								</micro:data>
-							</micro:ComparisonMicroChart>
-							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{path:'platform>RSCS', templateShareable:false}">
-								<micro:data>
-									<micro:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
+								</mc:data>
+							</mc:ComparisonMicroChart>
+							<mc:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{path:'platform>RSCS', templateShareable:false}" maxValue="{platform>total}">
+								<mc:data>
+									<mc:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
 									color="{path: 'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
-								</micro:data>
-							</micro:ComparisonMicroChart>
+								</mc:data>
+							</mc:ComparisonMicroChart>
 					</cells>
 				</ColumnListItem>
 			</Table>

@@ -15,7 +15,8 @@
 	</chart:Chart>
 	<layout:HorizontalLayout>
 	<Label text="{i18n>labelWarmPotential}" design="Bold" class="sapUiTinyMarginEnd"/>
-	<ObjectNumber number="{object>warm_potential}" unit="{i18n>textUnitGB}" emphasized="false"/>
+	<ObjectAttribute text="{object>warm_potential}GB / {object>total}GB  ({object>warm_potential_perc} %)"/>
+	<!-- <ObjectNumber number="{object>warm_potential_perc}" unit="{i18n>textUnitGB}" emphasized="false"/> -->
 	</layout:HorizontalLayout>
 	</layout:VerticalLayout>
 

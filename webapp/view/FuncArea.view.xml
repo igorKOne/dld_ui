@@ -1,7 +1,7 @@
 <mvc:View controllerName="one.labs.mem_profiler.controller.FuncArea" displayBlock="true" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:commons="sap.suite.ui.commons" xmlns:semantic="sap.m.semantic" xmlns:table="sap.ui.table"
 	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:tnt="sap.tnt" xmlns:core="sap.ui.core"
-	xmlns:l="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls" xmlns="sap.m" xmlns:micro="sap.suite.ui.microchart">
+	xmlns:l="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls" xmlns="sap.m" xmlns:mc="sap.suite.ui.microchart">
 		<Panel width="auto" class="sapUiResponsiveMargin" headerText="{= ${appData>/nestedViewMode} ? ${i18n>pageFuncAreaTitle} : ''}">
 		<!--<Title text="{i18n>pageFuncAreaTitle}"/>-->
 		<!--<content>-->
@@ -44,7 +44,7 @@
 						<!--<Text id="funcAreaColumnListItem_cell_1" text="{funcArea>func_area}" maxLines="2"></Text>-->
 						<!--<Text id="funcAreaColumnListItem_cell_2" text="{funcArea>func_size_per_tb}" maxLines="2"></Text>-->
 						<ObjectNumber unit="GB" emphasized="false" number="{funcArea>func_size_per_tb}"/>
-						<VBox renderType="Bare" alignItems="Center" justifyContent="Center" >
+						<VBox renderType="Bare" >
 							<ObjectNumber 
 	                        	number="{path:'funcArea>warm_potential', 
 	                        			 type: 'sap.ui.model.type.Float', 
@@ -53,29 +53,36 @@
 	                        	unit="{i18n>memorySizeGB}"
 	                        	emphasized="false"
 	                        />
+							<!-- <ObjectAttribute text="{funcArea>warm_potential}GB"/> -->
+							<mc:ComparisonMicroChart scale="%" press="press" isResponsive="true"  maxValue="100">
+								<mc:data>
+									<mc:ComparisonMicroChartData title="" value="{funcArea>warm_potential_perc}" 
+									color="sapUiChartPaletteSequentialHue1Dark1"/>
+								</mc:data>
+							</mc:ComparisonMicroChart>
 						</VBox>	
 						
 						<VBox height="100px" renderType="Bare" justifyContent="Center">
-							<micro:ColumnMicroChart size="Responsive" columns="{path:'funcArea>years', templateShareable:false}" allowColumnLabels="true"
+							<mc:ColumnMicroChart size="Responsive" columns="{path:'funcArea>years', templateShareable:false}" allowColumnLabels="true"
 							visible="{path:'funcArea>years', formatter:'.formatter.agingDataVisible'}">
-								<!--<micro:leftTopLabel>-->
-								<!--	<micro:ColumnMicroChartLabel label="{funcArea>years/0/title}"/>-->
-								<!--</micro:leftTopLabel>-->
-								<!--<micro:rightTopLabel>-->
-								<!--	<micro:ColumnMicroChartLabel label="{funcArea>years/3/title}"/>-->
-								<!--</micro:rightTopLabel>-->
-								<!--<micro:leftBottomLabel>-->
-								<!--</micro:leftBottomLabel>-->
-								<!--<micro:rightBottomLabel>-->
-								<!--	<micro:ColumnMicroChartLabel label="{i18n>funcAreaColumnMicrochartLabel}"/>-->
-								<!--</micro:rightBottomLabel>-->
-								<micro:columns>
-									<micro:ColumnMicroChartData label="{funcArea>title}" 
+								<!--<mc:leftTopLabel>-->
+								<!--	<mc:ColumnMicroChartLabel label="{funcArea>years/0/title}"/>-->
+								<!--</mc:leftTopLabel>-->
+								<!--<mc:rightTopLabel>-->
+								<!--	<mc:ColumnMicroChartLabel label="{funcArea>years/3/title}"/>-->
+								<!--</mc:rightTopLabel>-->
+								<!--<mc:leftBottomLabel>-->
+								<!--</mc:leftBottomLabel>-->
+								<!--<mc:rightBottomLabel>-->
+								<!--	<mc:ColumnMicroChartLabel label="{i18n>funcAreaColumnMicrochartLabel}"/>-->
+								<!--</mc:rightBottomLabel>-->
+								<mc:columns>
+									<mc:ColumnMicroChartData label="{funcArea>title}" 
 									value="{path: 'funcArea>value', formatter: '.formatter.numberValue'}" 
 									displayValue="{path: 'funcArea>value', formatter: '.formatter.percentage'}"
 									color="Neutral"/>
-								</micro:columns>
-							</micro:ColumnMicroChart>
+								</mc:columns>
+							</mc:ColumnMicroChart>
 							<Text textAlign="Center" text="{i18n>commonColumnMicrochartNoData}" 
 							visible="{path:'funcArea>years', formatter:'.formatter.noAgingDataVisible'}"/>
 							
@@ -88,16 +95,16 @@
 	      <!--                  			} {i18n>memorySizeGB}"-->
 	      <!--                  />-->
 						</VBox>
-							<micro:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{path:'funcArea>data', templateShareable:false}" maxValue="100">
-								<micro:data>
-									<micro:ComparisonMicroChartData title="{funcArea>title}" value="{funcArea>value}" color="{path:'funcArea>color', formatter: '.formatter.fourSeriesColour'}"/>
-								</micro:data>
-							</micro:ComparisonMicroChart>
-							<micro:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{path:'funcArea>RSCS', templateShareable:false}">
-								<micro:data>
-									<micro:ComparisonMicroChartData title="{funcArea>title}" value="{funcArea>value}" color="{path:'funcArea>color', formatter: '.formatter.fourSeriesColour'}"/>
-								</micro:data>
-							</micro:ComparisonMicroChart>
+							<mc:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{path:'funcArea>data', templateShareable:false}" maxValue="100">
+								<mc:data>
+									<mc:ComparisonMicroChartData title="{funcArea>title}" value="{funcArea>value}" color="{path:'funcArea>color', formatter: '.formatter.fourSeriesColour'}"/>
+								</mc:data>
+							</mc:ComparisonMicroChart>
+							<mc:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{path:'funcArea>RSCS', templateShareable:false}" maxValue="{funcArea>total}">
+								<mc:data>
+									<mc:ComparisonMicroChartData title="{funcArea>title}" value="{funcArea>value}" color="{path:'funcArea>color', formatter: '.formatter.fourSeriesColour'}"/>
+								</mc:data>
+							</mc:ComparisonMicroChart>
 					</cells>
 				</ColumnListItem>
 			</Table>
