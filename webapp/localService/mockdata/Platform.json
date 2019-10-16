@@ -5,37 +5,37 @@
         "years": [{
             "id": 1,
             "title": "<2017",
-            "value": 30.04,
-            "valueB": 152840000000,
+            "value": 34.23,
+            "valueB": 163416615911,
             "color": "Error"
         }, {
             "id": 2,
             "title": 2017,
-            "value": 39.07,
-            "valueB": 198780000000,
+            "value": 34.34,
+            "valueB": 163916933851,
             "color": "Critical"
         }, {
             "id": 3,
             "title": 2018,
-            "value": 25.97,
-            "valueB": 132110000000,
+            "value": 25.88,
+            "valueB": 123554041263,
             "color": "Neutral"
         }, {
             "id": 4,
             "title": 2019,
-            "value": 4.92,
-            "valueB": 25020000000,
+            "value": 5.55,
+            "valueB": 26508761341,
             "color": "Good"
         }],
         "data": [{
             "id": 1,
             "title": "Staging",
-            "value": 23.21,
+            "value": 24.39,
             "color": "Error"
         }, {
             "id": 2,
             "title": "Reporting",
-            "value": 76.79,
+            "value": 75.61,
             "color": "Good"
         }],
         "business": [{
@@ -46,33 +46,33 @@
         }, {
             "id": 2,
             "title": "ONE ERP",
-            "value": 170.90,
+            "value": 106.78,
             "color": "Good"
         }, {
             "id": 3,
-            "title": "Production",
-            "value": 78.20,
+            "title": "Manufacturing",
+            "value": 78.18,
             "color": "Good"
         }],
         "RSCS": [{
             "id": 1,
             "title": "Row Store",
-            "value": 60.31,
+            "value": 60.29,
             "color": "Error"
         }, {
             "id": 2,
             "title": "Column Store",
-            "value": 448.44,
+            "value": 348.32,
             "color": "Good"
         }],
         "WarmPotential": [{
             "id": 3,
             "title": "Warm Potential",
-            "value": 152.84,
-            "color": "Good"
+            "value": 152.19,
+            "color": "Neutral"
         }],
-        "warm_potential": 152.84,
+        "warm_potential": 152.19,
         "warm_potential_perc": 30.04,
-        "total": 508.75
+        "total": 408.61
     }]
 }

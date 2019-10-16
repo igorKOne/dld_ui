@@ -1,87 +1,70 @@
 {
-    "history": [
-        {
-            "points": [
-                {
-                    "id": 1,
-                    "period": 1,
-                    "title": "Apr'19",
-                    "value": 766.842
-                },
-                {
-                    "id": 2,
-                    "period": 2,
-                    "title": "Jun'19",
-                    "value": 952.389
-                },
-                {
-                    "id": 3,
-                    "period": 3,
-                    "title": "Jul'19",
-                    "value": 1031.148
-                }
-            ],
-            "threshold": 1450.241,
-            "leftBottomLabel": "Apr'19",
-            "rightBottomLabel": "Jul'19"
-        }
-    ],
-    "funcAreas": [
-        {
+    "history": [{
+        "points": [{
             "id": 1,
-            "title": "Shared",
-            "value": 306.06,
-            "color": "Good"
-        },
-        {
+            "period": 1,
+            "title": "Jan'19",
+            "value": 650.134
+        }, {
             "id": 2,
-            "title": "Local",
-            "value": 133.77,
-            "color": "Good"
-        },
-        {
+            "period": 2,
+            "title": "Feb'19",
+            "value": 496.735
+        }, {
             "id": 3,
-            "title": "SAP BW",
-            "value": 54.06,
-            "color": "Good"
-        },
-        {
+            "period": 3,
+            "title": "Mar'19",
+            "value": 388.595
+        }, {
             "id": 4,
-            "title": "Info Steward",
-            "value": 19.03,
-            "color": "Good"
-        },
-        {
+            "period": 4,
+            "title": "Apr'19",
+            "value": 431.156
+        }, {
             "id": 5,
-            "title": "System",
-            "value": 9.64,
-            "color": "Good"
-        }
-    ],
-    "dataAges": [
-        {
-            "id": 1,
-            "title": "<2017",
-            "value": 52.91,
-            "color": "Error"
-        },
-        {
-            "id": 2,
-            "title": "2017",
-            "value": 13.51,
-            "color": "Critical"
-        },
-        {
-            "id": 3,
-            "title": "2018",
-            "value": 27.26,
-            "color": "Neutral"
-        },
-        {
-            "id": 4,
-            "title": "2019",
-            "value": 6.33,
-            "color": "Good"
-        }
-    ]
+            "period": 5,
+            "title": "May'19",
+            "value": 475.281
+        }],
+        "threshold": 1536,
+        "leftBottomLabel": "Jan'19",
+        "rightBottomLabel": "May'19"
+    }],
+    "funcAreas": [{
+        "id": 1,
+        "title": "Retail",
+        "value": 259.65,
+        "color": "Good"
+    }, {
+        "id": 2,
+        "title": "ONE ERP",
+        "value": 170.90,
+        "color": "Good"
+    }, {
+        "id": 3,
+        "title": "Production",
+        "value": 78.20,
+        "color": "Good"
+    }],
+    "dataAges": [{
+        "id": 1,
+        "title": "<2017",
+        "value": 30,
+        "color": "Error"
+    }, {
+        "id": 2,
+        "title": "2017",
+        "value": 39,
+        "color": "Critical"
+    }, {
+        "id": 3,
+        "title": "2018",
+        "value": 26,
+        "color": "Neutral"
+    }, {
+        "id": 4,
+        "title": "2019",
+        "value": 5,
+        "color": "Good"
+    }]
 }
