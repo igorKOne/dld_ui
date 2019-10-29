@@ -91,13 +91,16 @@ sap.ui.define([
 								//value : "{INDEX}"  
 						}],
 						measures: [{
-								name: 'Allocation Limit',
+								name: 'Global Allocation Limit',
 								value: '{ALLOCATION_LIMIT}',
 								tooltip: {
 									visible: true
 								}
 							},
-
+							{
+								name: 'Max Memory Footprint',
+								value: '{MAX_STORAGE}'
+							},
 							{
 								name: 'Licensed Space',
 								value: '{PRODUCT_LIMIT}'
@@ -140,7 +143,7 @@ sap.ui.define([
 					feedItems: [{
 							'uid': "primaryValues",
 							'type': "Measure",
-							'values': ["Allocation Limit",
+							'values': ["Global Allocation Limit",
 								"Licensed Space",
 								"RowStore Data",
 								"ColumnStore Data",

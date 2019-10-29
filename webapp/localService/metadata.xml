@@ -21,6 +21,7 @@
 				<Property Name="CS_SIZE_NC" Type="Edm.Decimal" Precision="34" Scale="0" sap:label="CS_SIZE_NC" />
 				<Property Name="WARM_POTENTIAL_PER_GB" Type="Edm.Decimal" Precision="34" Scale="2" sap:label="WARM_POTENTIAL_PER_GB" />
 				<Property Name="ALLOCATION_LIMIT" Type="Edm.Decimal" Precision="37" Scale="3" sap:label="Allocation Limit, GB" />
+				<Property Name="MAX_STORAGE" Type="Edm.Decimal" Precision="37" Scale="3" sap:label="Max Memory Footprint, GB" />
 				<Property Name="TOTAL_MEMORY_USED_SIZE" Type="Edm.Decimal" Precision="23" Scale="3" sap:label="Total Used Memory, GB" />
 				<Property Name="RS_SIZE" Type="Edm.Decimal" Precision="23" Scale="2" sap:label="RS Size in GB" />
 				<Property Name="CS_SIZE" Type="Edm.Decimal" Precision="23" Scale="2" sap:label="CS Size in GB" />

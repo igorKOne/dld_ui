@@ -63,7 +63,8 @@ sap.ui.define([
         
         _initChartPersonalizationModel: function() {
         	let PersModel = new JSONModel({
-        		showAllocationLimit: true,
+                showAllocationLimit: true,
+                showMaxStorage: true,
         		showLicensedSpace: false,
         		showColumnStoreData: false,
         		showRowStoreData: false,
@@ -140,6 +141,7 @@ sap.ui.define([
             
             let oChartPersModel = this.getView().getModel("chartPersonalization");
             let showAllocationLimit = oChartPersModel.getProperty("/showAllocationLimit");
+            let showMaxStorage = oChartPersModel.getProperty("/showMaxStorage");
             let showLicensedSpace = oChartPersModel.getProperty("/showLicensedSpace");
             let showColumnStoreData = oChartPersModel.getProperty("/showColumnStoreData");
             let showRowStoreData = oChartPersModel.getProperty("/showRowStoreData");
@@ -149,10 +151,14 @@ sap.ui.define([
             
             let aMeasures = [
             	{
-            		name: "Allocation Limit",
+            		name: "Global Allocation Limit",
             		selected: showAllocationLimit,
             		axis: "line"
-            	}, {
+                }, {
+            		name: "Max Memory Footprint",
+            		selected: showMaxStorage,
+            		axis: "line"
+                },{
             		name: "Licensed Space",
             		selected: showLicensedSpace,
             		axis: "line"
@@ -256,7 +262,13 @@ sap.ui.define([
             }
             oVizFrame.setVisible(true);
             if (!showAllocationLimit &&
-                !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage) {
+                ! showMaxStorage &&
+                !showLicensedSpace && 
+                !showColumnStoreData && 
+                !showRowStoreData && 
+                !showWarmPotential && 
+                !showTotalMemory && 
+                !showPeakMemoryUsage) {
                 oVizFrame.destroyDataset();
                 oVizFrame.removeAllFeeds();
                 oVizFrame.destroyFeeds();
@@ -277,6 +289,7 @@ sap.ui.define([
             
             let oChartPersModel = this.getView().getModel("chartPersonalization");
             let showAllocationLimit = oChartPersModel.getProperty("/showAllocationLimit");
+            let showMaxStorage = oChartPersModel.getProperty("/showMaxStorage");
             let showLicensedSpace = oChartPersModel.getProperty("/showLicensedSpace");
             let showColumnStoreData = oChartPersModel.getProperty("/showColumnStoreData");
             let showRowStoreData = oChartPersModel.getProperty("/showRowStoreData");
@@ -286,8 +299,12 @@ sap.ui.define([
             
             let aMeasures = [
             	{
-            		name: "Allocation Limit",
+            		name: "Global Allocation Limit",
             		selected: showAllocationLimit,
+            		axis: "line"
+            	}, {
+            		name: "Max Memory Footprint",
+            		selected: showMaxStorage,
             		axis: "line"
             	}, {
             		name: "Licensed Space",

@@ -7,6 +7,7 @@
 		<VBox class="sapUiSmallMargin">
 			<Label text='{i18n>labelIncludeexcludefromchart}' design="Bold" class='settingsLabel'></Label>
 			<CheckBox id="checkbox1" text="{i18n>textAllocationLimit}" selected="{chartPersonalization>/showAllocationLimit}" select="onSelectMeasure"/>
+			<CheckBox id="checkbox8" text="{i18n>textMaxStorage}" selected="{chartPersonalization>/showMaxStorage}" select="onSelectMeasure"/>
 			<CheckBox id="checkbox2" text="{i18n>textLicensedSpace}" selected="{chartPersonalization>/showLicensedSpace}" select="onSelectMeasure"/>
 			<CheckBox id="checkbox3" text="{i18n>textColumnStoreData}" selected="{chartPersonalization>/showColumnStoreData}" select="onSelectMeasure"/>
 			<CheckBox id="checkbox4" text="{i18n>textRowStoreData}" selected="{chartPersonalization>/showRowStoreData}" select="onSelectMeasure"/>

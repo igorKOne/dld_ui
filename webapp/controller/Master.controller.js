@@ -41,7 +41,7 @@ sap.ui.define([
         // //             }],
         // //             measures: [
         // //                 {
-        // //                     name: 'Allocation Limit',
+        // //                     name: 'Global Allocation Limit',
         // //                     value: '{ALLOCATION_LIMIT}',
         // //                     tooltip: {
         // //                         visible: true
@@ -83,7 +83,7 @@ sap.ui.define([
         // //         feedItems: [{
         // //             'uid': "primaryValues",
         // //             'type': "Measure",
-        // //             'values': ["Allocation Limit",
+        // //             'values': ["Global Allocation Limit",
         // //                 "Licensed Space",
         // //                 "RowStore Data",
         // //                 "ColumnStore Data",
@@ -1237,7 +1237,7 @@ sap.ui.define([
             
     //         let aMeasures = [
     //         	{
-    //         		name: "Allocation Limit",
+    //         		name: "Global Allocation Limit",
     //         		selected: checkbox1,
     //         		axis: "line"
     //         	}, {
