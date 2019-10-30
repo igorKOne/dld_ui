@@ -231,38 +231,31 @@ sap.ui.define([
 
 
             oVizFrame.setVizType('combination'); //('stacked_combination');
-            if ((!showAllocationLimit &&
-                !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && !showTotalMemory && showPeakMemoryUsage)
-                ||
-                (showAllocationLimit &&
-                    !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
-                ||
-                (!showAllocationLimit && showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)) {
-                oVizFrame.setVizType('line'); //('stacked_combination');   
-            }
-            if ((!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
-                || (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && !showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
-                || (!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && !showRowStoreData && showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
-                || (!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && !showRowStoreData && !showWarmPotential && showTotalMemory && !showPeakMemoryUsage)) {
-                oVizFrame.setVizType('column');
-            }
-            if ((!showAllocationLimit && !showLicensedSpace && showColumnStoreData && showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
-            ) {
-            	oVizFrame.setVizType('stacked_column');
-            }
-            if ((!showAllocationLimit && !showLicensedSpace && showColumnStoreData && showRowStoreData && showWarmPotential && showTotalMemory && !showPeakMemoryUsage)
-            	|| (!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && showRowStoreData && showWarmPotential && showTotalMemory && !showPeakMemoryUsage)
-            	|| (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && !showRowStoreData && showWarmPotential && showTotalMemory && !showPeakMemoryUsage)
-            	|| (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && showRowStoreData && !showWarmPotential && showTotalMemory && !showPeakMemoryUsage)
-            	|| (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && showRowStoreData && showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
-            	|| (!showAllocationLimit && !showLicensedSpace && !showColumnStoreData && showRowStoreData && showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
-            	|| (!showAllocationLimit && !showLicensedSpace && showColumnStoreData && !showRowStoreData && showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
-            ) {
-                oVizFrame.setVizType('column');
+            if (showAllocationLimit || showLicensedSpace || showMaxStorage){
+                if (!showColumnStoreData && !showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage) {
+                    oVizFrame.setVizType('line');
+                }
+            } else {
+                if ((!showColumnStoreData && showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
+                || (showColumnStoreData && !showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
+                || (!showColumnStoreData && !showRowStoreData && showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
+                || (!showColumnStoreData && !showRowStoreData && !showWarmPotential && showTotalMemory && !showPeakMemoryUsage)) {
+                    oVizFrame.setVizType('column');
+                } else if (showColumnStoreData && showRowStoreData && !showWarmPotential && !showTotalMemory && !showPeakMemoryUsage){
+                    oVizFrame.setVizType('stacked_column');
+                } else if ((showColumnStoreData && showRowStoreData && showWarmPotential && showTotalMemory && !showPeakMemoryUsage)
+                || (!showColumnStoreData && showRowStoreData && showWarmPotential && showTotalMemory && !showPeakMemoryUsage)
+                || (showColumnStoreData && !showRowStoreData && showWarmPotential && showTotalMemory && !showPeakMemoryUsage)
+                || (showColumnStoreData && showRowStoreData && !showWarmPotential && showTotalMemory && !showPeakMemoryUsage)
+                || (showColumnStoreData && showRowStoreData && showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
+                || (!showColumnStoreData && showRowStoreData && showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)
+                || (showColumnStoreData && !showRowStoreData && showWarmPotential && !showTotalMemory && !showPeakMemoryUsage)) {
+                    oVizFrame.setVizType('column');
+                }
             }
             oVizFrame.setVisible(true);
             if (!showAllocationLimit &&
-                ! showMaxStorage &&
+                !showMaxStorage &&
                 !showLicensedSpace && 
                 !showColumnStoreData && 
                 !showRowStoreData && 

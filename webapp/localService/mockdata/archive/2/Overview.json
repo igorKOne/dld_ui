@@ -3,32 +3,32 @@
         "points": [{
             "id": 1,
             "period": 1,
-            "title": "Jan'19",
-            "value": 202
+            "title": "Jan'18",
+            "value": 271.32
         }, {
             "id": 2,
             "period": 2,
-            "title": "Feb'19",
-            "value": 213.55
+            "title": "Feb'18",
+            "value": 363.74
         }, {
             "id": 3,
             "period": 3,
-            "title": "Mar'19",
-            "value": 255.11
+            "title": "Mar'18",
+            "value": 421.50
         }, {
             "id": 4,
             "period": 4,
-            "title": "Apr'19",
-            "value": 269.37
+            "title": "Apr'18",
+            "value": 433.06
         }, {
             "id": 5,
             "period": 5,
-            "title": "May'19",
-            "value": 313.63
+            "title": "May'18",
+            "value": 444.61
         }],
         "threshold": 1536,
-        "leftBottomLabel": "Jan'19",
-        "rightBottomLabel": "Oct'19"
+        "leftBottomLabel": "Jan'18",
+        "rightBottomLabel": "May'18"
     }],
     "funcAreas": [{
         "id": 1,
@@ -38,33 +38,33 @@
     }, {
         "id": 2,
         "title": "ONE ERP",
-        "value": 240.78,
+        "value": 106.78,
         "color": "Good"
     }, {
         "id": 3,
         "title": "Manufacturing",
-        "value": 144.18,
+        "value": 78.18,
         "color": "Good"
     }],
     "dataAges": [{
         "id": 1,
         "title": "<2017",
-        "value": 39,
+        "value": 34,
         "color": "Error"
     }, {
         "id": 2,
         "title": "2017",
-        "value": 30,
+        "value": 34,
         "color": "Critical"
     }, {
         "id": 3,
         "title": "2018",
-        "value": 21,
+        "value": 26,
         "color": "Neutral"
     }, {
         "id": 4,
         "title": "2019",
-        "value": 10,
+        "value": 6,
         "color": "Good"
     }]
 }

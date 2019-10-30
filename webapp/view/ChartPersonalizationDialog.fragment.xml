@@ -4,8 +4,8 @@
    xmlns:l="sap.ui.layout">
 	<Dialog id="chartPersonalizationDialog" title="{i18n>labelChartPersonalization}">
 
-		<VBox class="sapUiSmallMargin">
-			<Label text='{i18n>labelIncludeexcludefromchart}' design="Bold" class='settingsLabel'></Label>
+		<VBox class="sapUiTinyMargin">
+				<!-- <Title text='{i18n>labelIncludeexcludefromchart}'/> -->
 			<CheckBox id="checkbox1" text="{i18n>textAllocationLimit}" selected="{chartPersonalization>/showAllocationLimit}" select="onSelectMeasure"/>
 			<CheckBox id="checkbox8" text="{i18n>textMaxStorage}" selected="{chartPersonalization>/showMaxStorage}" select="onSelectMeasure"/>
 			<CheckBox id="checkbox2" text="{i18n>textLicensedSpace}" selected="{chartPersonalization>/showLicensedSpace}" select="onSelectMeasure"/>

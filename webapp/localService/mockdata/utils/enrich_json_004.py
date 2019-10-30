@@ -2,7 +2,7 @@ import json
 import sys
 import functools, operator
 
-file_name = 'Business.json'
+file_name = 'Platform.json'
 new_file_name = 'new_' + file_name
 folder = '../'
 
@@ -12,7 +12,7 @@ def main():
     def convert(obj):
         #print(obj)
         # calculate total of "RSCS"
-        obj["total"] = round(functools.reduce(lambda x,y: x + y["value"], obj["RSCS"], 0),2)
+        obj["total"] = functools.reduce(lambda x,y: x + y["value"], obj["RSCS"], 0)
         # calculate "warm_potential_perc"
         obj["warm_potential_perc"] = round(obj["warm_potential"] * 100 / obj["total"],2)
         return obj

@@ -1,0 +1,78 @@
+{
+    "results": [{
+        "id": 1,
+        "platform": "Main",
+        "years": [{
+            "id": 1,
+            "title": "<2017",
+            "value": 34.23,
+            "valueB": 163416615911,
+            "color": "Error"
+        }, {
+            "id": 2,
+            "title": 2017,
+            "value": 34.34,
+            "valueB": 163916933851,
+            "color": "Critical"
+        }, {
+            "id": 3,
+            "title": 2018,
+            "value": 25.88,
+            "valueB": 123554041263,
+            "color": "Neutral"
+        }, {
+            "id": 4,
+            "title": 2019,
+            "value": 5.55,
+            "valueB": 26508761341,
+            "color": "Good"
+        }],
+        "data": [{
+            "id": 1,
+            "title": "Staging",
+            "value": 24.39,
+            "color": "Error"
+        }, {
+            "id": 2,
+            "title": "Reporting",
+            "value": 75.61,
+            "color": "Good"
+        }],
+        "business": [{
+            "id": 1,
+            "title": "Retail",
+            "value": 259.65,
+            "color": "Good"
+        }, {
+            "id": 2,
+            "title": "ONE ERP",
+            "value": 106.78,
+            "color": "Good"
+        }, {
+            "id": 3,
+            "title": "Manufacturing",
+            "value": 78.18,
+            "color": "Good"
+        }],
+        "RSCS": [{
+            "id": 1,
+            "title": "Row Store",
+            "value": 60.29,
+            "color": "Error"
+        }, {
+            "id": 2,
+            "title": "Column Store",
+            "value": 348.32,
+            "color": "Good"
+        }],
+        "WarmPotential": [{
+            "id": 3,
+            "title": "Warm Potential",
+            "value": 152.19,
+            "color": "Neutral"
+        }],
+        "warm_potential": 152.19,
+        "warm_potential_perc": 30.04,
+        "total": 408.61
+    }]
+}
