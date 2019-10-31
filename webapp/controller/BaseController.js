@@ -76,6 +76,7 @@ sap.ui.define([
 			return this.getOwnerComponent().getServiceURLfromManifest("Business3");
 		},
 		getOverviewChartConstant: function () {
+			let bundle = this.getResourceBundle();
 			return {
 				sampleName: "one.labs.mem_profiler",
 				chartContainerId: "chartContainer",
@@ -91,43 +92,43 @@ sap.ui.define([
 								//value : "{INDEX}"  
 						}],
 						measures: [{
-								name: 'Global Allocation Limit',
+								name: bundle.getText("textAllocationLimit"),//'Global Allocation Limit',
 								value: '{ALLOCATION_LIMIT}',
 								tooltip: {
 									visible: true
 								}
 							},
 							{
-								name: 'Max Memory Footprint',
+								name: bundle.getText("textMaxStorage"),//'Max Memory Footprint',
 								value: '{MAX_STORAGE}'
 							},
 							{
-								name: 'Licensed Space',
+								name: bundle.getText("textLicensedSpace"),//'Licensed Space',
 								value: '{PRODUCT_LIMIT}'
 							},
 
 							{
-								name: 'Peak Memory Usage',
+								name: bundle.getText("textPeakMemoryUsage"),//'Peak Memory Usage',
 								value: '{TOTAL_MEMORY_USED_SIZE}'
 							},
 
 							{
-								name: 'RowStore Data',
+								name: bundle.getText("textRowStoreData"),//'RowStore Data',
 								value: '{RS_SIZE}'
 							},
 
 							{
-								name: 'ColumnStore Data',
+								name: bundle.getText("textColumnStoreData"),//'ColumnStore Data',
 								value: '{CS_SIZE}'
 							},
 
 							{
-								name: 'Warm Potential',
+								name: bundle.getText("textWarmPotential"),//'Warm Potential',
 								value: '{WARM_POTENTIAL_PER_GB}'
 							},
 							
 							{
-								name: 'Total Memory',
+								name: bundle.getText("textTotalMemory"),//'Total Memory',
 								value: '{FUNCATIONAL_MEMORY_SIZE}'
 							}
 							
@@ -143,11 +144,11 @@ sap.ui.define([
 					feedItems: [{
 							'uid': "primaryValues",
 							'type': "Measure",
-							'values': ["Global Allocation Limit",
-								"Licensed Space",
-								"RowStore Data",
-								"ColumnStore Data",
-								"Peak Memory Usage"
+							'values': [bundle.getText("textAllocationLimit"), //"Global Allocation Limit",
+								bundle.getText("textLicensedSpace"), //"Licensed Space",
+								bundle.getText("textRowStoreData"),//"RowStore Data",
+								bundle.getText("textColumnStoreData"),//"ColumnStore Data",
+								bundle.getText("textPeakMemoryUsage")//"Peak Memory Usage"
 							]
 						},
 						//                     {
@@ -166,10 +167,10 @@ sap.ui.define([
 							'uid': "primaryValues",
 							'type': "Measure",
 							'values': [
-								"Licensed Space",
-								"RowStore Data",
-								"ColumnStore Data",
-								"Peak Memory Usage"
+								bundle.getText("textLicensedSpace"),//"Licensed Space",
+								bundle.getText("textRowStoreData"),//"RowStore Data",
+								bundle.getText("textColumnStoreData"),//"ColumnStore Data",
+								bundle.getText("textPeakMemoryUsage")//"Peak Memory Usage"
 							]
 						},
 						//                   {

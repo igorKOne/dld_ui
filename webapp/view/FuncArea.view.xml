@@ -12,12 +12,12 @@
 							<Label id="funcAreaTable_col1_label" text="{i18n>funcAreaTableCol1}" wrapping="true"/>
 						</header>
 					</Column>
-					<Column id="funcAreaTable_col2" demandPopin="true" minScreenWidth="Tablet" width="10%">
+					<!-- <Column id="funcAreaTable_col2" demandPopin="true" minScreenWidth="Tablet" width="10%">
 						<header id="funcAreaTable_col2_header">
 							<Label id="funcAreaTable_col2_label" text="{i18n>funcAreaTableCol2}" wrapping="true"/>
 						</header>
-					</Column>
-					<Column id="funcAreaTable_col_wp" demandPopin="true" minScreenWidth="Tablet" width="10%">
+					</Column> -->
+					<Column id="funcAreaTable_col_wp" demandPopin="true" minScreenWidth="Tablet" width="15%">
 						<header id="funcAreaTable_col_wp_header">
 							<Label id="funcAreaTable_col_wp_label" text="{i18n>funcAreaTableColWp}" wrapping="true"/>
 						</header>
@@ -43,7 +43,16 @@
 						<ObjectIdentifier title="{funcArea>func_area}"/>
 						<!--<Text id="funcAreaColumnListItem_cell_1" text="{funcArea>func_area}" maxLines="2"></Text>-->
 						<!--<Text id="funcAreaColumnListItem_cell_2" text="{funcArea>func_size_per_tb}" maxLines="2"></Text>-->
-						<ObjectNumber unit="GB" emphasized="false" number="{funcArea>func_size_per_tb}"/>
+						<!-- <ObjectNumber unit="GB" emphasized="false" number="{funcArea>func_size_per_tb}"/> -->
+						<VBox>
+							<ObjectAttribute text="{funcArea>warm_potential}GB / {funcArea>func_size_per_tb}GB"/>
+								<mc:ComparisonMicroChart scale="%" press="press" isResponsive="true"  maxValue="100">
+									<mc:data>
+										<mc:ComparisonMicroChartData title="" value="{funcArea>warm_potential_perc}" 
+										color="sapUiChartPaletteSequentialHue1Dark1"/>
+									</mc:data>
+								</mc:ComparisonMicroChart>
+						</VBox>
 						<VBox renderType="Bare" >
 							<ObjectNumber 
 	                        	number="{path:'funcArea>warm_potential', 

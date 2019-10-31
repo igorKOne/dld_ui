@@ -60,12 +60,12 @@ sap.ui.define([
             oPopOver.connect(oVizFrame.getVizUid());
 		},
 
-        
+        // initial visibility of measures
         _initChartPersonalizationModel: function() {
         	let PersModel = new JSONModel({
                 showAllocationLimit: true,
                 showMaxStorage: true,
-        		showLicensedSpace: false,
+        		showLicensedSpace: true,
         		showColumnStoreData: false,
         		showRowStoreData: false,
         		showPeakMemoryUsage: false,
@@ -148,41 +148,43 @@ sap.ui.define([
             let showPeakMemoryUsage = oChartPersModel.getProperty("/showPeakMemoryUsage");
             let showWarmPotential = oChartPersModel.getProperty("/showWarmPotential");
             let showTotalMemory = oChartPersModel.getProperty("/showTotalMemory");
-            
+
+            let bundle = this.getResourceBundle();
+
             let aMeasures = [
             	{
-            		name: "Global Allocation Limit",
+            		name: bundle.getText("textAllocationLimit"),//"Global Allocation Limit",
             		selected: showAllocationLimit,
             		axis: "line"
                 }, {
-            		name: "Max Memory Footprint",
+            		name: bundle.getText("textMaxStorage"),//"Max Memory Footprint",
             		selected: showMaxStorage,
             		axis: "line"
                 },{
-            		name: "Licensed Space",
+            		name: bundle.getText("textLicensedSpace"),//"Licensed Space",
             		selected: showLicensedSpace,
             		axis: "line"
             		
             	} ,{
-            		name:"RowStore Data",
+            		name: bundle.getText("textRowStoreData"),//"RowStore Data",
             		selected: showRowStoreData,
             		axis: "bar"
             		
             	}, {
-            		name: "ColumnStore Data",
+            		name: bundle.getText("textColumnStoreData"),//"ColumnStore Data",
             		selected: showColumnStoreData,
             		axis: "bar"
             		
             	},{
-            		name: "Peak Memory Usage",
+            		name: bundle.getText("textPeakMemoryUsage"),//"Peak Memory Usage",
             		selected: showPeakMemoryUsage,
             		axis: "line"
             	},{
-            		name: "Warm Potential",
+            		name: bundle.getText("textWarmPotential"),//"Warm Potential",
             		selected: showWarmPotential,
             		axis: "bar"
             	},{
-            		name: "Total Memory",
+            		name: bundle.getText("textTotalMemory"),//"Total Memory",
             		selected: showTotalMemory,
             		axis: "bar"
             	}];
@@ -289,41 +291,42 @@ sap.ui.define([
             let showPeakMemoryUsage = oChartPersModel.getProperty("/showPeakMemoryUsage");
             let showWarmPotential = oChartPersModel.getProperty("/showWarmPotential");
             let showTotalMemory = oChartPersModel.getProperty("/showTotalMemory");
+			let bundle = this.getResourceBundle();
             
             let aMeasures = [
             	{
-            		name: "Global Allocation Limit",
+            		name: bundle.getText("textAllocationLimit"),//"Global Allocation Limit",
             		selected: showAllocationLimit,
             		axis: "line"
             	}, {
-            		name: "Max Memory Footprint",
+            		name: bundle.getText("textMaxStorage"),//"Max Memory Footprint",
             		selected: showMaxStorage,
             		axis: "line"
             	}, {
-            		name: "Licensed Space",
+            		name: bundle.getText("textLicensedSpace"),//"Licensed Space",
             		selected: showLicensedSpace,
             		axis: "line"
             		
             	} ,{
-            		name:"RowStore Data",
+            		name: bundle.getText("textRowStoreData"),//"RowStore Data",
             		selected: showRowStoreData,
             		axis: "bar"
             		
             	}, {
-            		name: "ColumnStore Data",
+            		name: bundle.getText("textColumnStoreData"),//"ColumnStore Data",
             		selected: showColumnStoreData,
             		axis: "bar"
             		
             	},{
-            		name: "Peak Memory Usage",
+            		name: bundle.getText("textPeakMemoryUsage"),//"Peak Memory Usage",
             		selected: showPeakMemoryUsage,
             		axis: "line"
             	},{
-            		name: "Warm Potential",
+            		name: bundle.getText("textWarmPotential"),//"Warm Potential",
             		selected: showWarmPotential,
             		axis: "bar"
             	},{
-            		name: "Total Memory",
+            		name: bundle.getText("textTotalMemory"),//"Total Memory",
             		selected: showTotalMemory,
             		axis: "bar"
             	}
