@@ -17,8 +17,13 @@ def main():
 
     # Add the following 
     def convert(obj):
+        # calculate _GB values
         for s,t in zip(source_fields, target_fields):
             obj[t] = str(int(obj[s]) / 1073741824)
+
+        # Add 'WARM_POTENTIAL' columns
+        obj['WARM_POTENTIAL_PERC'] = obj['OLD_YEAR_VOLUME_PERC']
+        obj['WARM_POTENTIAL_GB'] = obj['OLD_YEAR_VOL_GB']
         return obj
 
     with open(folder+file_name,'r') as f:

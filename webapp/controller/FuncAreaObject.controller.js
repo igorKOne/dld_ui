@@ -103,7 +103,7 @@ sap.ui.define([
 		    var binding = oSource.getParameter("bindingParams");
 		    var oFilter = new sap.ui.model.Filter("FUNC_AREA", sap.ui.model.FilterOperator.EQ, this._currentAreaId);
 		    binding.filters.push(oFilter);
-		    binding.sorter=[new sap.ui.model.Sorter("AVG_VOLUME", true)];
+		    binding.sorter=[new sap.ui.model.Sorter("WARM_POTENTIAL_GB", true)];
 		},
 		
 		onNavBack: function() {

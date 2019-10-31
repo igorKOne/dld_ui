@@ -55,7 +55,7 @@
 				<Property Name="CURRENT_YEAR_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year, GB" />
 				<Property Name="CURRENT_MIN_1_YEAR_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year - 1, GB" />
 				<Property Name="CURRENT_MIN_2_YEAR_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year - 2, GB" />
-				<Property Name="OLD_YEAR_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year - 3 and older,GB" />
+				<Property Name="OLD_YEAR_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year - 3 and older, GB" />
 				<!-- <Property Name="FUTURE_YEAR_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year + 1, GB" /> -->
 				<Property Name="PREV_YEARS_VOL" Type="Edm.Decimal" Precision="37" Scale="0" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year - 1 and older, Bytes" />
 				<!-- <Property Name="PREV_YEARS_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year - 1 and older, GB" /> -->
@@ -66,6 +66,8 @@
 				<Property Name="CS_SIZE_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="CS Size, GB" />
 				<Property Name="RS_SIZE_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="RS Size, GB" />
 				<Property Name="SUM_ALL_PERC_YEAR" Type="Edm.Decimal" Precision="37" Scale="3" sap:aggregation-role="measure" sap:filterable="false" sap:label="SUM_ALL_PERC_YEAR" />
+				<Property Name="WARM_POTENTIAL_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Warm Potential, %" />
+				<Property Name="WARM_POTENTIAL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Warm Potential, GB" />
 			</EntityType>
 			<EntityContainer Name="MEM_PROFILER" m:IsDefaultEntityContainer="true">
 				<EntitySet Name="MEM_OVERVIEW" EntityType="one.labs.mem_prof.app.service.MEM_PROFILER.MEM_OVERVIEWType" sap:creatable="false" sap:updatable="false" sap:deletable="false" />

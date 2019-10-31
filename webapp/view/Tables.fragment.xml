@@ -12,6 +12,6 @@
 		enableAutoBinding="true"
 		beforeRebindTable=".onBeforeRebindTable"
 		entitySet="TableMemoryOverview"
-		initiallyVisibleFields="TABLE_NAME,SCHEMA_NAME,CURRENT_YEAR_VOL_GB,CURRENT_MIN_1_YEAR_VOL_GB,CURRENT_MIN_2_YEAR_VOL_GB,OLD_YEAR_VOL_GB">
+		initiallyVisibleFields="TABLE_NAME,SCHEMA_NAME,WARM_POTENTIAL_GB,CURRENT_YEAR_VOL_GB,CURRENT_MIN_1_YEAR_VOL_GB,CURRENT_MIN_2_YEAR_VOL_GB,OLD_YEAR_VOL_GB">
 	</smartTable:SmartTable>
 </core:FragmentDefinition>
