@@ -12,12 +12,12 @@
 							<Label id="datasetTable_col8_label" text="{i18n>platformTableCol1}"  wrapping="true" />
 						</header>
 					</Column>
-					<Column id="datasetTable_col_wp" demandPopin="true" minScreenWidth="Tablet" width="10%">
+					<Column id="datasetTable_col_wp" demandPopin="true" minScreenWidth="Tablet" >
 						<header id="datasetTable_col_wp_header">
 							<Label id="datasetTable_col_wp_label" text="{i18n>platformTableColWp}"  wrapping="true"/>
 						</header>
 					</Column>
-					<Column id="datasetTable_col4" demandPopin="true" minScreenWidth="Tablet">
+					<Column id="datasetTable_col4" demandPopin="true" minScreenWidth="Tablet" width="20%">
 						<header id="datasetTable_col4_header">
 							<Label id="datasetTable_col4_label" text="{i18n>platformTableCol2}"  wrapping="true"/>
 						</header>
