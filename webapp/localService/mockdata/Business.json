@@ -84,89 +84,6 @@
             "warm_potential_perc": 36.55
         },
         {
-            "id": 2,
-            "func_area": "ONE ERP",
-            "avg_volume": "86637849835.000",
-            "aging_avg_volume": "99968448690",
-            "rep_volume": "219755222925",
-            "stg_volume": "38780333457",
-            "years": [
-                {
-                    "id": 1,
-                    "title": "<2017",
-                    "value": 27.5,
-                    "color": "Error"
-                },
-                {
-                    "id": 2,
-                    "title": 2017,
-                    "value": 43.5,
-                    "color": "Critical"
-                },
-                {
-                    "id": 3,
-                    "title": 2018,
-                    "value": 18.14,
-                    "color": "Neutral"
-                },
-                {
-                    "id": 4,
-                    "title": 2019,
-                    "value": 11.28,
-                    "color": "Good"
-                }
-            ],
-            "current_min_2_vol_perc": 43.5,
-            "current_min_1_vol_perc": 18.14,
-            "current_year_vol_perc": 11.28,
-            "old_year_vol_perc": 27.5,
-            "data": [
-                {
-                    "id": 1,
-                    "title": "Reporting",
-                    "value": 85,
-                    "color": "Good"
-                },
-                {
-                    "id": 2,
-                    "title": "Staging",
-                    "value": 15,
-                    "color": "Error"
-                }
-            ],
-            "rep_perc": 85,
-            "stg_perc": 15,
-            "volume": 13454.12,
-            "func_size": 240.78,
-            "volume_per_tb": 13454.12,
-            "func_size_per_tb": 240.78,
-            "RSCS": [
-                {
-                    "id": 1,
-                    "title": "ColumnStore",
-                    "value": 240.78,
-                    "color": "Good"
-                },
-                {
-                    "id": 2,
-                    "title": "RowStore",
-                    "value": 0,
-                    "color": "Error"
-                }
-            ],
-            "warm_potential": 66.21,
-            "WarmPotential": [
-                {
-                    "id": 1,
-                    "title": "Warm Potential",
-                    "value": 66.21,
-                    "color": "Neutral"
-                }
-            ],
-            "total": 240.78,
-            "warm_potential_perc": 27.5
-        },
-        {
             "id": 3,
             "func_area": "Manufacturing",
             "avg_volume": "5883179368.000",
@@ -248,6 +165,89 @@
             ],
             "total": 144.18,
             "warm_potential_perc": 61.43
+        },
+        {
+            "id": 2,
+            "func_area": "ONE ERP",
+            "avg_volume": "86637849835.000",
+            "aging_avg_volume": "99968448690",
+            "rep_volume": "219755222925",
+            "stg_volume": "38780333457",
+            "years": [
+                {
+                    "id": 1,
+                    "title": "<2017",
+                    "value": 27.5,
+                    "color": "Error"
+                },
+                {
+                    "id": 2,
+                    "title": 2017,
+                    "value": 43.5,
+                    "color": "Critical"
+                },
+                {
+                    "id": 3,
+                    "title": 2018,
+                    "value": 18.14,
+                    "color": "Neutral"
+                },
+                {
+                    "id": 4,
+                    "title": 2019,
+                    "value": 11.28,
+                    "color": "Good"
+                }
+            ],
+            "current_min_2_vol_perc": 43.5,
+            "current_min_1_vol_perc": 18.14,
+            "current_year_vol_perc": 11.28,
+            "old_year_vol_perc": 27.5,
+            "data": [
+                {
+                    "id": 1,
+                    "title": "Reporting",
+                    "value": 85,
+                    "color": "Good"
+                },
+                {
+                    "id": 2,
+                    "title": "Staging",
+                    "value": 15,
+                    "color": "Error"
+                }
+            ],
+            "rep_perc": 85,
+            "stg_perc": 15,
+            "volume": 13454.12,
+            "func_size": 240.78,
+            "volume_per_tb": 13454.12,
+            "func_size_per_tb": 240.78,
+            "RSCS": [
+                {
+                    "id": 1,
+                    "title": "ColumnStore",
+                    "value": 240.78,
+                    "color": "Good"
+                },
+                {
+                    "id": 2,
+                    "title": "RowStore",
+                    "value": 0,
+                    "color": "Error"
+                }
+            ],
+            "warm_potential": 66.21,
+            "WarmPotential": [
+                {
+                    "id": 1,
+                    "title": "Warm Potential",
+                    "value": 66.21,
+                    "color": "Neutral"
+                }
+            ],
+            "total": 240.78,
+            "warm_potential_perc": 27.5
         }
     ]
 }

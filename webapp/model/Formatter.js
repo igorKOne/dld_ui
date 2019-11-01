@@ -36,7 +36,21 @@ sap.ui.define(function() {
 				return "sapUiChartPaletteSequentialHue1Dark1";
 			}
 		},
-		
+
+		fourSeriesColourDark2Light: function(sVal){
+			
+			switch(sVal) {
+			case "Good":
+				return "sapUiChartPaletteSequentialHue1Light2";
+			case "Neutral":
+				return "sapUiChartPaletteSequentialHue1Light1";
+			case "Critical":
+				return "sapUiChartPaletteSequentialHue1";
+			case "Error":
+				return "sapUiChartPaletteSequentialHue1Dark1";
+			}
+		},
+
 		percentage: function(Val){
 			return '' + parseFloat(Val) + '%';
 		},

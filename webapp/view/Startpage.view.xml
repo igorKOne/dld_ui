@@ -54,7 +54,7 @@
 								</mc:rightBottomLabel>
 								<mc:columns>
 									<mc:ColumnMicroChartData label="{overview>title}" value="{overview>value}" 
-									color="{path:'overview>color', formatter: '.formatter.fourSeriesColour'}"/>
+									color="{path:'overview>color', formatter: '.formatter.fourSeriesColourDark2Light'}"/>
 								</mc:columns>
 							</mc:ColumnMicroChart>
 							</content>
