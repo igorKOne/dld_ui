@@ -1,15 +1,17 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:chart="sap.chart"
 	xmlns:data="sap.chart.data">
 	<chart:Chart id="chartFuncAreas" width='100%'
-		vizProperties="{title: {text: 'Business Areas', visible:true }, plotArea: {dataLabel: { visible: true, type: 'value', hideWhenOverlap: true } } }"
+		vizProperties="{title: {text: 'Business Areas', visible:true }, plotArea: {dataLabel: { showTotal: true, visible: true, type: 'value', hideWhenOverlap: true } } }"
 		isAnalytical = "false"
-		visibleDimensions="id" visibleMeasures="value" chartType="column" selectionMode="Single" uiConfig="{applicationSet:'fiori'}">
+		visibleDimensions="id" visibleMeasures="valueH,valueW" chartType="stacked_column" selectionMode="Single" uiConfig="{applicationSet:'fiori'}">
 		<chart:dimensions>
 			<data:Dimension name="id" label="{i18n>labelArea}" role="category" textProperty="title"/>
 		</chart:dimensions>
 		<chart:measures>
-			<!--<data:Measure name="jobs_count" label="Number Of Jobs" role="axis2"/>-->
-			<data:Measure name="value" label="{i18n>labelSizeGB}" role="axis2"/>
+			<data:Measure name="valueH" label="{i18n>labelHotSizeGB}" role="axis2"/>
+		</chart:measures>
+		<chart:measures>
+			<data:Measure name="valueW" label="{i18n>labelWPSizeGB}" role="axis2"/>
 		</chart:measures>
 	</chart:Chart>
 </core:FragmentDefinition>

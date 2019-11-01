@@ -19,7 +19,7 @@
         "RS_SIZE": "0",
         "CS_SIZE": "0",
         "FUNCATIONAL_MEMORY_SIZE": "202.01",
-        "MAX_STORAGE": "950.0"
+        "MAX_STORAGE": "485"
     },
     {
         "ID": "205256013619475962",
@@ -41,7 +41,7 @@
         "RS_SIZE": "0",
         "CS_SIZE": "0",
         "FUNCATIONAL_MEMORY_SIZE": "213.55",
-        "MAX_STORAGE": "950.0"
+        "MAX_STORAGE": "485"
     },
     {
         "ID": "205256013619475963",
@@ -63,7 +63,7 @@
         "RS_SIZE": "0",
         "CS_SIZE": "0",
         "FUNCATIONAL_MEMORY_SIZE": "225.11",
-        "MAX_STORAGE": "950.0"
+        "MAX_STORAGE": "485"
     },
     {
         "ID": "205256013619475964",
@@ -85,7 +85,7 @@
         "RS_SIZE": "0",
         "CS_SIZE": "0",
         "FUNCATIONAL_MEMORY_SIZE": "269.37",
-        "MAX_STORAGE": "950.0"
+        "MAX_STORAGE": "485"
     },
     {
         "ID": "205256013619475965",
@@ -107,7 +107,7 @@
         "RS_SIZE": "0",
         "CS_SIZE": "0",
         "FUNCATIONAL_MEMORY_SIZE": "313.63",
-        "MAX_STORAGE": "950.0"
+        "MAX_STORAGE": "485"
     },
     {
         "ID": "205256013619475966",
@@ -129,7 +129,7 @@
         "RS_SIZE": "0",
         "CS_SIZE": "0",
         "FUNCATIONAL_MEMORY_SIZE": "357.89",
-        "MAX_STORAGE": "950.0"
+        "MAX_STORAGE": "485"
     },
     {
         "ID": "205256013619475967",
@@ -151,7 +151,7 @@
         "RS_SIZE": "0",
         "CS_SIZE": "0",
         "FUNCATIONAL_MEMORY_SIZE": "402.15",
-        "MAX_STORAGE": "950.0"
+        "MAX_STORAGE": "485"
     },
     {
         "ID": "205256013619475968",
@@ -173,7 +173,7 @@
         "RS_SIZE": "0",
         "CS_SIZE": "0",
         "FUNCATIONAL_MEMORY_SIZE": "446.41",
-        "MAX_STORAGE": "950.0"
+        "MAX_STORAGE": "485"
     },
     {
         "ID": "205256013619475969",
@@ -195,7 +195,7 @@
         "RS_SIZE": "0",
         "CS_SIZE": "0",
         "FUNCATIONAL_MEMORY_SIZE": "490.67",
-        "MAX_STORAGE": "950.0"
+        "MAX_STORAGE": "485"
     },
     {
         "ID": "205256013619475970",
@@ -217,6 +217,6 @@
         "RS_SIZE": "0",
         "CS_SIZE": "0",
         "FUNCATIONAL_MEMORY_SIZE": "644.61",
-        "MAX_STORAGE": "950.0"
+        "MAX_STORAGE": "485"
     }
 ]
