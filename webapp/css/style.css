@@ -1,1 +1,7 @@
 /* Enter your custom styles here */
+
+/* this one removes the background color from the top label of the column micro chart 
+-A bug in the sap.suite.ui.microchart.ColumnMicroChart?*/
+.sapSuiteClMCLabel.sapSuiteClMCLabelColumn.sapSuiteClMCLabelColumnTop {
+    background-color: transparent !important;
+}

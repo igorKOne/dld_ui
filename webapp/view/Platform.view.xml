@@ -7,96 +7,98 @@
 		<!--<content>-->
 			<Table id="platformTable" items="{platform>/results}" visible="true">
 				<columns id="datasetTable_columns">
-					<Column id="datasetTable_col8" demandPopin="true" minScreenWidth="Tablet">
-						<header id="datasetTable_col8_header">
-							<Label id="datasetTable_col8_label" text="{i18n>platformTableCol1}"  wrapping="true" />
-						</header>
-					</Column>
-					<Column id="datasetTable_col_wp" demandPopin="true" minScreenWidth="Tablet" >
+
+					<Column id="datasetTable_col_wp" demandPopin="true" minScreenWidth="Tablet" width="15%">
 						<header id="datasetTable_col_wp_header">
-							<Label id="datasetTable_col_wp_label" text="{i18n>platformTableColWp}"  wrapping="true"/>
+							<Label id="datasetTable_col_wp_label" text="{i18n>labelWarmPotential}"  wrapping="true"/>
 						</header>
 					</Column>
-					<Column id="datasetTable_col4" demandPopin="true" minScreenWidth="Tablet" width="20%">
+
+					<Column id="datasetTable_col8" demandPopin="true" minScreenWidth="Tablet" >
+						<header id="datasetTable_col8_header">
+							<Label id="datasetTable_col8_label" text="{i18n>labelLargestBusinessArea}"  wrapping="true" />
+						</header>
+					</Column>
+
+					<Column id="datasetTable_col4" demandPopin="true" minScreenWidth="Tablet" >
 						<header id="datasetTable_col4_header">
-							<Label id="datasetTable_col4_label" text="{i18n>platformTableCol2}"  wrapping="true"/>
+							<Label id="datasetTable_col4_label" text="{i18n>labelDataAging}"  wrapping="true"/>
 						</header>
 					</Column>
+
 					<Column id="datasetTable_col7" demandPopin="true" minScreenWidth="Tablet">
 						<header id="datasetTable_col7_header">
-							<Label id="datasetTable_col7_label" text="{i18n>platformTableCol3}"  wrapping="true"/>
+							<Label id="datasetTable_col7_label" text="{i18n>labelDataPurpose}"  wrapping="true"/>
 						</header>
 					</Column>
+
 					<Column id="datasetTable_col6" demandPopin="true" minScreenWidth="Tablet">
 						<header id="datasetTable_col6_header">
-							<Label id="datasetTable_col6_label" text="{i18n>platformTableCol4}"  wrapping="true"/>
+							<Label id="datasetTable_col6_label" text="{i18n>labelRowColStore}"  wrapping="true"/>
 						</header>
 					</Column>
+
 				</columns>
-				<ColumnListItem id="datasetColumnListItem" vAlign="Middle" type="Navigation" press=".onColumnListItemPress">
-					<cells id="datasetColumnListItem_cells">
-							<mc:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{path:'platform>business', templateShareable:false}">
-								<mc:data>
-									<mc:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
-									color="{path:'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
-								</mc:data>
-							</mc:ComparisonMicroChart>
-							
+				<items>
+					<ColumnListItem id="datasetColumnListItem" vAlign="Middle" type="Navigation" press=".onColumnListItemPress">
+						<cells id="datasetColumnListItem_cells">
+
 							<VBox height="70px" renderType="Bare">
-							<!-- <ObjectNumber 
-							number="{path:'platform>warm_potential', 
-									 type: 'sap.ui.model.type.Float', 
-									 formatOptions: { maxFractionDigits: 2, groupingSeparator:',', decimalSeparator:'.', showMeasure: false}
-									}"
-							unit="{i18n>memorySizeGB}"
-							emphasized="false"
-							/> -->
-							<ObjectAttribute text="{platform>warm_potential}GB / {platform>total}GB"/>
-							<!-- <ObjectAttribute text="{platform>warm_potential_perc}%"/>
-							<mc:StackedBarMicroChart size="Responsive" press="press" showLabels="false" precision="0">
-								<mc:bars>
-									<mc:StackedBarMicroChartBar value="{platform>warm_potential}" 
-										valueColor="sapUiChartPaletteSequentialHue1Dark1"/>
-									<mc:StackedBarMicroChartBar value="{= Number(${platform>total}) - Number(${platform>warm_potential})}"
-										valueColor="sapUiChartPaletteSequentialNeutralLight3"/>
-								</mc:bars>
-							</mc:StackedBarMicroChart> -->
-							<!-- <mc:RadialMicroChart size="Responsive" percentage="{platform>warm_potential_perc}" /> -->
-								<mc:ComparisonMicroChart scale="%" press="press" isResponsive="true"  maxValue="100">
+								<ObjectAttribute text="{platform>warm_potential}GB / {platform>total}GB"/>
+								<!-- <ObjectAttribute text="{platform>warm_potential_perc}%"/> -->
+								<mc:StackedBarMicroChart size="Responsive" press="press" showLabels="true" precision="0">
+									<mc:bars>
+										<mc:StackedBarMicroChartBar value="{platform>warm_potential}" 
+											valueColor="sapUiChartPaletteSequentialHue1Dark1"/>
+										<mc:StackedBarMicroChartBar value="{= Number(${platform>total}) - Number(${platform>warm_potential})}"
+											valueColor="sapUiChartPaletteSequentialHue1Light2"/>
+									</mc:bars>
+								</mc:StackedBarMicroChart>
+								<!-- <mc:RadialMicroChart size="Responsive" percentage="{platform>warm_potential_perc}" /> -->
+								<!-- <mc:ComparisonMicroChart scale="%" press="press" isResponsive="true"  maxValue="100">
 									<mc:data>
 										<mc:ComparisonMicroChartData title="" value="{platform>warm_potential_perc}" 
 										color="sapUiChartPaletteSequentialHue1Dark1"/>
 									</mc:data>
-								</mc:ComparisonMicroChart>
+								</mc:ComparisonMicroChart> -->
 							</VBox>	
-						<VBox height="100px" renderType="Bare" >
-							<mc:ColumnMicroChart isResponsive="true" columns="{path:'platform>years', templateShareable:false}"  allowColumnLabels="true"
-							visible="{path:'platform>years', formatter: '.formatter.agingDataVisible'}" >
-								<!--<mc:rightBottomLabel>-->
-								<!--	<mc:ColumnMicroChartLabel label="{i18n>platformColumnMicrochartLabel}"/>-->
-								<!--</mc:rightBottomLabel>-->
-								<mc:columns>
-									<mc:ColumnMicroChartData label="{platform>title}" 
-									value="{platform>value}" 
-									displayValue="{path: 'platform>value', formatter: '.formatter.percentage'}"
-									color="Neutral"/>
-								</mc:columns>
-							</mc:ColumnMicroChart>
-						</VBox>
-							<mc:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{path:'platform>data', templateShareable:false}" maxValue="100">
+
+							<mc:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{path:'platform>business', templateShareable:false}">
 								<mc:data>
-									<mc:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
+									<mc:ComparisonMicroChartData title="{platform>title}" value="{platform>valueW}" 
 									color="{path:'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
 								</mc:data>
 							</mc:ComparisonMicroChart>
-							<mc:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{path:'platform>RSCS', templateShareable:false}" maxValue="{platform>total}">
-								<mc:data>
-									<mc:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
-									color="{path: 'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
-								</mc:data>
-							</mc:ComparisonMicroChart>
-					</cells>
-				</ColumnListItem>
+							
+							<VBox height="100px" renderType="Bare" >
+								<mc:ColumnMicroChart isResponsive="true" columns="{path:'platform>years', templateShareable:false}"  allowColumnLabels="true"
+								visible="{path:'platform>years', formatter: '.formatter.agingDataVisible'}" >
+									<!--<mc:rightBottomLabel>-->
+									<!--	<mc:ColumnMicroChartLabel label="{i18n>platformColumnMicrochartLabel}"/>-->
+									<!--</mc:rightBottomLabel>-->
+									<mc:columns>
+										<mc:ColumnMicroChartData label="{platform>title}" 
+										value="{platform>value}" 
+										displayValue="{path: 'platform>value', formatter: '.formatter.percentage'}"
+										color="{path:'platform>color', formatter: '.formatter.fourSeriesColourDark2Light'}"/>
+									</mc:columns>
+								</mc:ColumnMicroChart>
+							</VBox>
+								<mc:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{path:'platform>data', templateShareable:false}" maxValue="100">
+									<mc:data>
+										<mc:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
+										color="{path:'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
+									</mc:data>
+								</mc:ComparisonMicroChart>
+								<mc:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{path:'platform>RSCS', templateShareable:false}" maxValue="{platform>total}">
+									<mc:data>
+										<mc:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
+										color="{path: 'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
+									</mc:data>
+								</mc:ComparisonMicroChart>
+						</cells>
+					</ColumnListItem>
+				</items>
 			</Table>
 		<!--</content>-->
 		</Panel>

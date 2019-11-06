@@ -9,7 +9,7 @@
 				<columns id="funcAreaTable_columns">
 					<Column id="funcAreaTable_col1" demandPopin="true" minScreenWidth="Tablet" width="15%">
 						<header id="funcAreaTable_col1_header">
-							<Label id="funcAreaTable_col1_label" text="{i18n>funcAreaTableCol1}" wrapping="true"/>
+							<Label id="funcAreaTable_col1_label" text="{i18n>labelBusinessArea}" wrapping="true"/>
 						</header>
 					</Column>
 					<!-- <Column id="funcAreaTable_col2" demandPopin="true" minScreenWidth="Tablet" width="10%">
@@ -19,22 +19,22 @@
 					</Column> -->
 					<Column id="funcAreaTable_col_wp" demandPopin="true" minScreenWidth="Tablet" width="15%">
 						<header id="funcAreaTable_col_wp_header">
-							<Label id="funcAreaTable_col_wp_label" text="{i18n>funcAreaTableColWp}" wrapping="true"/>
+							<Label id="funcAreaTable_col_wp_label" text="{i18n>labelWarmPotential}" wrapping="true"/>
 						</header>
 					</Column>
 					<Column id="funcAreaTable_col6" demandPopin="true" minScreenWidth="Tablet">
 						<header id="funcAreaTable_col6_header">
-							<Label id="funcAreaTable_col6_label" text="{i18n>funcAraeTableCol3}" wrapping="true"/>
+							<Label id="funcAreaTable_col6_label" text="{i18n>labelDataAging}" wrapping="true"/>
 						</header>
 					</Column>
 					<Column id="funcAreaTable_col8" demandPopin="true" minScreenWidth="Tablet">
 						<header id="funcAreaTable_col8header">
-							<Label id="funcAreaTable_col8_label" text="{i18n>funcAreaTableCol4}" wrapping="true"/>
+							<Label id="funcAreaTable_col8_label" text="{i18n>labelDataPurpose}" wrapping="true"/>
 						</header>
 					</Column>
 					<Column id="funcAreaTable_col9" demandPopin="true" minScreenWidth="Tablet">
 						<header id="funcAreaTable_col9header">
-							<Label id="funcAreaTable_col9_label" text="{i18n>funcAreaTableCol5}" wrapping="true"/>
+							<Label id="funcAreaTable_col9_label" text="{i18n>labelRowColStore}" wrapping="true"/>
 						</header>
 					</Column>
 				</columns>
@@ -46,12 +46,20 @@
 						<!-- <ObjectNumber unit="GB" emphasized="false" number="{funcArea>func_size_per_tb}"/> -->
 						<VBox renderType="Bare">
 							<ObjectAttribute text="{funcArea>warm_potential}GB / {funcArea>func_size_per_tb}GB"/>
-								<mc:ComparisonMicroChart scale="%" press="press" isResponsive="true"  maxValue="100">
-									<mc:data>
-										<mc:ComparisonMicroChartData title="" value="{funcArea>warm_potential_perc}" 
-										color="sapUiChartPaletteSequentialHue1Dark1"/>
-									</mc:data>
-								</mc:ComparisonMicroChart>
+							<!-- <mc:ComparisonMicroChart scale="%" press="press" isResponsive="true"  maxValue="100">
+								<mc:data>
+									<mc:ComparisonMicroChartData title="" value="{funcArea>warm_potential_perc}" 
+									color="sapUiChartPaletteSequentialHue1Dark1"/>
+								</mc:data>
+							</mc:ComparisonMicroChart> -->
+							<mc:StackedBarMicroChart size="Responsive" press="press" showLabels="true" precision="0">
+									<mc:bars>
+										<mc:StackedBarMicroChartBar value="{funcArea>warm_potential}" 
+											valueColor="sapUiChartPaletteSequentialHue1Dark1"/>
+										<mc:StackedBarMicroChartBar value="{= Number(${funcArea>total}) - Number(${funcArea>warm_potential})}"
+											valueColor="sapUiChartPaletteSequentialHue1Light2"/>
+									</mc:bars>
+							</mc:StackedBarMicroChart>
 						</VBox>
 						<!-- <VBox renderType="Bare" >
 							<ObjectNumber 
@@ -77,7 +85,7 @@
 									<mc:ColumnMicroChartData label="{funcArea>title}" 
 									value="{path: 'funcArea>value', formatter: '.formatter.numberValue'}" 
 									displayValue="{path: 'funcArea>value', formatter: '.formatter.percentage'}"
-									color="Neutral"/>
+									color="{path:'funcArea>color', formatter: '.formatter.fourSeriesColourDark2Light'}"/>
 								</mc:columns>
 							</mc:ColumnMicroChart>
 							<Text textAlign="Center" text="{i18n>commonColumnMicrochartNoData}" 

@@ -57,19 +57,19 @@
                     "color": "Good"
                 },
                 {
-                    "id": 2,
-                    "title": "ONE ERP",
-                    "value": 240.78,
-                    "valueW": 66.21,
-                    "valueH": 174.57,
-                    "color": "Good"
-                },
-                {
                     "id": 3,
                     "title": "Manufacturing",
                     "value": 144.18,
                     "valueH": 55.61,
                     "valueW": 88.57,
+                    "color": "Good"
+                },
+                {
+                    "id": 2,
+                    "title": "ONE ERP",
+                    "value": 240.78,
+                    "valueW": 66.21,
+                    "valueH": 174.57,
                     "color": "Good"
                 }
             ],
