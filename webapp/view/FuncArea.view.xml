@@ -41,10 +41,8 @@
 				<ColumnListItem id="funcAreaColumnListItem" vAlign="Middle" type="Navigation" press=".onFuncAreaColumnListItemPress">
 					<cells id="funcAreaColumnListItem_cells">
 						<ObjectIdentifier title="{funcArea>func_area}"/>
-						<!--<Text id="funcAreaColumnListItem_cell_1" text="{funcArea>func_area}" maxLines="2"></Text>-->
-						<!--<Text id="funcAreaColumnListItem_cell_2" text="{funcArea>func_size_per_tb}" maxLines="2"></Text>-->
 						<!-- <ObjectNumber unit="GB" emphasized="false" number="{funcArea>func_size_per_tb}"/> -->
-						<VBox renderType="Bare">
+						<VBox height="70px" renderType="Bare">
 							<ObjectAttribute text="{funcArea>warm_potential}GB / {funcArea>func_size_per_tb}GB"/>
 							<!-- <mc:ComparisonMicroChart scale="%" press="press" isResponsive="true"  maxValue="100">
 								<mc:data>
