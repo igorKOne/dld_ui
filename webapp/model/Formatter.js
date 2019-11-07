@@ -52,7 +52,7 @@ sap.ui.define(function() {
 		},
 
 		percentage: function(Val){
-			return '' + parseFloat(Val) + '%';
+			return '' + Math.round(parseFloat(Val)) + '%';
 		},
 		
 		noAgingDataVisible: function(aYears) {
