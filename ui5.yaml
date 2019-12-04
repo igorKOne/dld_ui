@@ -3,10 +3,10 @@ metadata:
   name: mem_profiler
 type: application
 server:
-  customMiddleware:
-    - name: odataProxy
-      beforeMiddleware: serveResources
-      mountPath: /
+  #customMiddleware:
+  #  - name: odataProxy
+  #    beforeMiddleware: serveResources
+  #    mountPath: /
 ---
 specVersion: '1.0'
 kind: extension
