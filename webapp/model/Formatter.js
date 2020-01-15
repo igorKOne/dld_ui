@@ -73,7 +73,18 @@ sap.ui.define(function() {
 			} else {
 				return false;
 			}			
-		}
+		},
+		
+		usageDataVisible: function(aYearsExecutions) {
+			
+			if(aYearsExecutions && Array.isArray(aYearsExecutions) && aYearsExecutions.length){
+				//let TotVal = aYears.reduce( (total, oElem) => total + oElem.value);
+				return true;	
+			} else {
+				return false;
+			}			
+		},
+		
 	};
  
 	return Formatter;

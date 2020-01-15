@@ -1,7 +1,19 @@
-<mvc:View controllerName="one.labs.mem_profiler.controller.Platform" displayBlock="true" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:commons="sap.suite.ui.commons" xmlns:semantic="sap.m.semantic" xmlns:table="sap.ui.table"
-	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:tnt="sap.tnt" xmlns:core="sap.ui.core"
-	xmlns:l="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls" xmlns:mc="sap.suite.ui.microchart">
+<mvc:View controllerName="one.labs.mem_profiler.controller.Platform" displayBlock="true" 
+	xmlns="sap.m" 
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:commons="sap.suite.ui.commons" 
+	xmlns:semantic="sap.m.semantic" 
+	xmlns:table="sap.ui.table"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" 
+	xmlns:smartTable="sap.ui.comp.smarttable" 
+	xmlns:tnt="sap.tnt" 
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout" 
+	xmlns:viz="sap.viz.ui5.controls" 
+	xmlns:mc="sap.suite.ui.microchart"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+	>
 		<Panel width="auto" class="sapUiResponsiveMargin" headerText="{= ${appData>/nestedViewMode} ? ${i18n>pagePlatformTitle} : ''}">
 		<!--<Title text="{i18n>pagePlatformTitle}"/>-->
 		<!--<content>-->
@@ -25,16 +37,16 @@
 							<Label id="datasetTable_col4_label" text="{i18n>labelDataAging}"  wrapping="true"/>
 						</header>
 					</Column>
+					
+					<Column id="datasetTable_col6" demandPopin="true" minScreenWidth="Tablet">
+						<header id="datasetTable_col6_header">
+							<Label id="datasetTable_col6_label" text="{i18n>labelDataUsage}"  wrapping="true"/>
+						</header>
+					</Column>
 
 					<Column id="datasetTable_col7" demandPopin="true" minScreenWidth="Tablet">
 						<header id="datasetTable_col7_header">
 							<Label id="datasetTable_col7_label" text="{i18n>labelDataPurpose}"  wrapping="true"/>
-						</header>
-					</Column>
-
-					<Column id="datasetTable_col6" demandPopin="true" minScreenWidth="Tablet">
-						<header id="datasetTable_col6_header">
-							<Label id="datasetTable_col6_label" text="{i18n>labelRowColStore}"  wrapping="true"/>
 						</header>
 					</Column>
 
@@ -70,7 +82,7 @@
 								</mc:data>
 							</mc:ComparisonMicroChart>
 							
-							<VBox height="100px" renderType="Bare" >
+							<VBox height="175px" renderType="Bare" >
 								<mc:ColumnMicroChart isResponsive="true" columns="{path:'platform>years', templateShareable:false}"  allowColumnLabels="true"
 								visible="{path:'platform>years', formatter: '.formatter.agingDataVisible'}" >
 									<!--<mc:rightBottomLabel>-->
@@ -84,18 +96,42 @@
 									</mc:columns>
 								</mc:ColumnMicroChart>
 							</VBox>
-								<mc:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{path:'platform>data', templateShareable:false}" maxValue="100">
-									<mc:data>
-										<mc:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
-										color="{path:'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
-									</mc:data>
-								</mc:ComparisonMicroChart>
-								<mc:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{path:'platform>RSCS', templateShareable:false}" maxValue="{platform>total}">
+							
+							<VBox height="175px" renderType="Bare">
+								<VBox height="15px" ></VBox>
+								<viz:Popover id="idPopOver"></viz:Popover>
+								<viz:VizFrame id="idVizFrameDataUsage" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%" 
+											  vizType='line' legendVisible="false">
+					                <viz:dataset>
+					                    <viz.data:FlattenedDataset data="{path:'platform>years'}">
+					                        <viz.data:dimensions>
+					                            <viz.data:DimensionDefinition name="Year" value="{platform>title}" /> 
+					                        </viz.data:dimensions>
+					                        <viz.data:measures>
+					                            <viz.data:MeasureDefinition name="Execution" value="{path:'platform>execution'}" />
+					                        </viz.data:measures>
+					                    </viz.data:FlattenedDataset>
+					                </viz:dataset>
+					
+					                <viz:feeds>
+					                    <viz.feeds:FeedItem id='categoryAxisFeed' uid="categoryAxis" type="Dimension" values="Year" />
+					                    <viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure" values="Execution" />
+					                </viz:feeds>
+					            </viz:VizFrame>
+							</VBox>
+							
+							<mc:ComparisonMicroChart scale="%" press="press" isResponsive="true" data="{path:'platform>data', templateShareable:false}" maxValue="100">
+								<mc:data>
+									<mc:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
+									color="{path:'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
+								</mc:data>
+							</mc:ComparisonMicroChart>
+								<!--<mc:ComparisonMicroChart scale="GB" press="press" isResponsive="true" data="{path:'platform>RSCS', templateShareable:false}" maxValue="{platform>total}">
 									<mc:data>
 										<mc:ComparisonMicroChartData title="{platform>title}" value="{platform>value}" 
 										color="{path: 'platform>color', formatter: '.formatter.fourSeriesColour'}"/>
 									</mc:data>
-								</mc:ComparisonMicroChart>
+								</mc:ComparisonMicroChart>-->
 						</cells>
 					</ColumnListItem>
 				</items>

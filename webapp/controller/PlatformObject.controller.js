@@ -68,7 +68,7 @@ sap.ui.define([
 					}
 				});
 				
-					
+				
 				oDataAgingChart.bindData({
 					path: "/results/0/years/", 
 					model: "object"

@@ -6,8 +6,9 @@ sap.ui.define([
 	'sap/ui/model/Filter',
 	'sap/ui/model/Sorter',
 	'sap/ui/model/json/JSONModel',
-	'../model/Formatter'
-], function (jQuery, Fragment, Controller, Filter, Sorter, JSONModel, Formatter) {
+	'../model/Formatter',
+	'sap/viz/ui5/format/ChartFormatter'
+], function (jQuery, Fragment, Controller, Filter, Sorter, JSONModel, Formatter, ChartFormatter) {
 	"use strict";
 
 	return Controller.extend("one.labs.mem_profiler.controller.Platform", {
@@ -82,7 +83,7 @@ sap.ui.define([
 			this._oRouter = this._oComponent.getRouter();
 
 			this._initViewPropertiesModel();
-
+			
 		},
 
 		// Navigates to the object view for the given Functional area
@@ -96,6 +97,69 @@ sap.ui.define([
 			});
 
 		},
+		
+		_initViewPropertiesModel: function () {
+
+			var oViewElemProperties = {};
+			if (sap.ui.Device.system.phone) {
+				oViewElemProperties.availabilityColumnWidth = "80%";
+				oViewElemProperties.pictureColumnWidth = "5rem";
+				oViewElemProperties.btnColHeaderVisible = true;
+				oViewElemProperties.searchFieldWidth = "100%";
+				oViewElemProperties.catalogTitleVisible = false;
+				// in phone mode the spacer is removed in order to increase the size of the search field
+//				this.byId("tableToolbar").removeContent(this.byId("toolbarSpacer"));
+			} else {
+				oViewElemProperties.availabilityColumnWidth = "18%";
+				oViewElemProperties.pictureColumnWidth = "9%";
+				oViewElemProperties.btnColHeaderVisible = false;
+				oViewElemProperties.searchFieldWidth = "30%";
+				oViewElemProperties.catalogTitleVisible = true;
+			}
+			this._oViewProperties = new sap.ui.model.json.JSONModel(oViewElemProperties);
+			this._oView.setModel(this._oViewProperties, "viewProperties");
+			
+			// add percentage formatter
+			var CUSTOM_PERCENTAGE_FORMAT_2 = "__UI5__PercentageMaxFraction2";
+            var chartFormatter = ChartFormatter.getInstance();
+            chartFormatter.registerCustomFormatter(CUSTOM_PERCENTAGE_FORMAT_2, function(value) {
+                return Formatter.percentage(value);
+            });
+            sap.viz.api.env.Format.numericFormatter(chartFormatter);
+            
+            // set properties for line chart
+			var oVizFrame = this.oVizFrame = this._oView.byId("idVizFrameDataUsage");
+			
+            oVizFrame.setVizProperties({
+                plotArea: {
+                    dataLabel: {
+                    	formatString:CUSTOM_PERCENTAGE_FORMAT_2,
+                        //formatString: this.formatter.percentage,
+                        visible: true
+                    }
+                },
+                valueAxis: {
+                	visible: false,
+                    title: {
+                        visible: false
+                    }
+                },
+                categoryAxis: {
+                    title: {
+                        visible: false
+                    }
+                },
+                title: {
+                    visible: false,
+                    text: 'Data Usage'
+                }
+            });
+			
+            var oPopOver = this.getView().byId("idPopOver");
+            oPopOver.connect(oVizFrame.getVizUid());
+            oPopOver.setFormatString(CUSTOM_PERCENTAGE_FORMAT_2);
+			
+		}
 
 		//new
 		/* ============================================================ */
@@ -354,27 +418,6 @@ sap.ui.define([
 		// directly to the OData service. Setting view element attributes by binding them to a model is preferable to the
 		// alternative of getting each view element by its ID and setting the values directly because a JSon model is more
 		// robust if the customer removes view elements (see extensibility).
-		_initViewPropertiesModel: function () {
-
-			var oViewElemProperties = {};
-			if (sap.ui.Device.system.phone) {
-				oViewElemProperties.availabilityColumnWidth = "80%";
-				oViewElemProperties.pictureColumnWidth = "5rem";
-				oViewElemProperties.btnColHeaderVisible = true;
-				oViewElemProperties.searchFieldWidth = "100%";
-				oViewElemProperties.catalogTitleVisible = false;
-				// in phone mode the spacer is removed in order to increase the size of the search field
-//				this.byId("tableToolbar").removeContent(this.byId("toolbarSpacer"));
-			} else {
-				oViewElemProperties.availabilityColumnWidth = "18%";
-				oViewElemProperties.pictureColumnWidth = "9%";
-				oViewElemProperties.btnColHeaderVisible = false;
-				oViewElemProperties.searchFieldWidth = "30%";
-				oViewElemProperties.catalogTitleVisible = true;
-			}
-			this._oViewProperties = new sap.ui.model.json.JSONModel(oViewElemProperties);
-			this._oView.setModel(this._oViewProperties, "viewProperties");
-		}
 
 		//onNavBack: function () {
 		//       window.history.go(-1);

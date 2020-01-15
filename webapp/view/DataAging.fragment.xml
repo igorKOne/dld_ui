@@ -3,14 +3,17 @@
 	<layout:VerticalLayout width='100%'>
 	<chart:Chart id="chartDataAging" width='100%'
 		vizProperties="{title: {text: 'Distribution by years', visible:true }, 
-		plotArea: {dataLabel: { visible: true, type: 'percentage', hideWhenOverlap: true} } }"
+		plotArea: {dataLabel: { visible: false, type: 'percentage', hideWhenOverlap: true} },
+		valueAxis: { title: { visible: false } },
+        categoryAxis: { title: { visible: false } } }"
 		isAnalytical = "false"
-		visibleDimensions="id" visibleMeasures="value" chartType="column" selectionMode="Single" uiConfig="{applicationSet:'fiori'}">
+		visibleDimensions="id" visibleMeasures="value,execution" chartType="combination" selectionMode="Single" uiConfig="{applicationSet:'fiori'}">
 		<chart:dimensions>
 			<data:Dimension name="id" label="{i18n>labelYear}" role="category" textProperty="title"/>
 		</chart:dimensions>
 		<chart:measures>
-			<data:Measure name="value" label="{i18n>labelSizePercentage}" role="axis2"/>
+			<data:Measure name="value" label="{i18n>labelMemUsagePercentage}" role="axis2"/>
+			<data:Measure name="execution" label="{i18n>labelExecPercentage}" role="axis2"/>
 		</chart:measures>
 	</chart:Chart>
 	<layout:HorizontalLayout>
