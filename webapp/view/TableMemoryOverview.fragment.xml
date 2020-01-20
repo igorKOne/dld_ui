@@ -1,0 +1,81 @@
+<core:FragmentDefinition 
+	xmlns="sap.m" 
+	xmlns:core="sap.ui.core" 
+	xmlns:layout="sap.ui.layout"
+	xmlns:table="sap.ui.table"
+	xmlns:mc="sap.suite.ui.microchart">
+	<Table id="tableMemoryOverviewTable" items="{tableMemoryOverview>/results}" visible="true" 
+		   growing="true" growingThreshold="20" >
+		<columns id="datasetTable_columns">
+			<Column id="datasetTableOverview_col_1" demandPopin="true" minScreenWidth="Tablet" >
+				<header id="datasetTableOverview_col_1_header">
+					<Label id="datasetTableOverview_col_1_label" text="{i18n>labelTableName}" wrapping="true"/>
+				</header>
+			</Column>
+			<Column id="datasetTableOverview_col_2" demandPopin="true" minScreenWidth="Tablet" >
+				<header id="datasetTableOverview_col_2_header">
+					<Label id="datasetTableOverview_col_2_label" text="{i18n>labelSchemaName}" wrapping="true"/>
+				</header>
+			</Column>
+			<Column id="datasetTableOverview_col_3" demandPopin="true" minScreenWidth="Tablet" >
+				<header id="datasetTableOverview_col_3_header">
+					<Label id="datasetTableOverview_col_3_label" text="{i18n>labelWarmPotentialGB}" wrapping="true"/>
+				</header>
+			</Column>
+			<Column id="datasetTableOverview_col_4" demandPopin="true" minScreenWidth="Tablet" >
+				<header id="datasetTableOverview_col_4_header">
+					<Label id="datasetTableOverview_col_4_label" text="{i18n>labelDataAgingPerc}" wrapping="true"/>
+				</header>
+			</Column>
+			<Column id="datasetTableOverview_col_5" demandPopin="true" minScreenWidth="Tablet" >
+				<header id="datasetTableOverview_col_5_header">
+					<Label id="datasetTableOverview_col_5_label" text="{i18n>labelDataPurposePerc}" wrapping="true"/>
+				</header>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem id="datasetColumnListItem" vAlign="Middle" type="Navigation">
+				<cells id="datasetColumnListItem_cells">
+					<VBox renderType="Bare">
+					  <ObjectAttribute text="{tableMemoryOverview>table_name}" />
+					</VBox>
+					<VBox renderType="Bare">
+					  <ObjectAttribute text="{tableMemoryOverview>schema_name}" />
+					</VBox>
+					<VBox renderType="Bare">
+					  <ObjectAttribute text="{tableMemoryOverview>warm_potential_gb}" />
+					</VBox>
+					<VBox height="50px" renderType="Bare" >
+						<mc:ColumnMicroChart isResponsive="true" 
+											 columns="{path:'tableMemoryOverview>years', templateShareable:false}"  
+										     allowColumnLabels="false"
+											 visible="{path:'tableMemoryOverview>years', formatter: '.formatter.agingDataVisible'}" >
+							<mc:columns>
+								<mc:ColumnMicroChartData label="{tableMemoryOverview>title}" 
+								value="{tableMemoryOverview>volume}" 
+								displayValue="{path: 'tableMemoryOverview>volume', formatter: '.formatter.percentage'}"
+								color="{path:'tableMemoryOverview>color', formatter: '.formatter.fourSeriesColourDark2Light'}"/>
+							</mc:columns>
+						</mc:ColumnMicroChart>
+					</VBox>
+					<VBox height="50px" renderType="Bare" >
+						<mc:LineMicroChart lines="{path:'tableMemoryOverview>usage_lines', templateShareable:false}"
+										   threshold="0"
+										   showPoints="false"
+										   showThresholdValue="false"
+										   showThresholdLine="false"
+										   thresholdDisplayValue=""
+										   visible="{path:'tableMemoryOverview>years', formatter: '.formatter.agingDataVisible'}"
+										   showBottomLabels="false"
+										   size="Responsive"
+										   class="sapUiTinyMarginTop">
+							<mc:lines>
+								<mc:LineMicroChartLine points="{path:'tableMemoryOverview>points', templateShareable:false}" />
+							</mc:lines>
+						</mc:LineMicroChart>
+					</VBox>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

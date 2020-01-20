@@ -38,7 +38,6 @@ sap.ui.define(function() {
 		},
 
 		fourSeriesColourDark2Light: function(sVal){
-			
 			switch(sVal) {
 			case "Good":
 				return "sapUiChartPaletteSequentialHue1Light2";

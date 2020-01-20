@@ -37,6 +37,11 @@
 				"_uri": "../../service/Business3.xsjs",
 				"type": "JSON"
 			},
+			"TableMemoryOverview": {
+				"uri": "/one/one/labs/mem_prof/app/service/TableMemoryOverview.xsjs",
+				"_uri": "../../service/TableMemoryOverview.xsjs",
+				"type": "JSON"
+			},
 			"Overview": {
 				"uri": "/one/one/labs/mem_prof/app/service/Overview.xsjs",
 				"_uri": "../../service/Overview.xsjs",

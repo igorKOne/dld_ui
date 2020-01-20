@@ -29,46 +29,61 @@
 			</EntityType>
 			<EntityType Name="TableMemoryOverviewType" sap:semantics="aggregate">
 				<Key>
-					<PropertyRef Name="ID" />
+					<PropertyRef Name="FUNC_AREA"/>
+					<PropertyRef Name="SCHEMA_NAME"/>
+					<PropertyRef Name="TABLE_NAME"/>
 				</Key>
-				<Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="40" sap:filterable="false" />
-				<Property Name="FUNC_AREA" Type="Edm.String" MaxLength="256" sap:aggregation-role="dimension" sap:label="Func.Area" />
-				<Property Name="SCHEMA_NAME" Type="Edm.String" MaxLength="256" sap:aggregation-role="dimension" sap:label="Schema" />
-				<Property Name="TABLE_NAME" Type="Edm.String" MaxLength="256" sap:aggregation-role="dimension" sap:label="Table" />
-				<Property Name="PART_ID" Type="Edm.Int32" sap:aggregation-role="dimension" sap:label="Partition" />
-				<Property Name="YEAR_BUCKET" Type="Edm.Int32" sap:aggregation-role="dimension" sap:label="YEAR_BUCKET" />
-				<Property Name="CURRENT_YEAR_VOL" Type="Edm.Decimal" Precision="34" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year, Bytes" />
-				<Property Name="CURRENT_MIN_1_YEAR_VOL" Type="Edm.Decimal" Precision="37" Scale="3" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year - 1, Bytes" />
-				<Property Name="CURRENT_MIN_2_YEAR_VOL" Type="Edm.Decimal" Precision="37" Scale="3" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year - 2, Bytes" />
-				<Property Name="OLD_YEAR_VOL" Type="Edm.Decimal" Precision="37" Scale="3" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year - 3 and older, Bytes" />
-				<Property Name="FUTURE_YEAR_VOL" Type="Edm.Decimal" Precision="34" Scale="0" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year + 1, Bytes" />
-				<Property Name="STG_VOLUME" Type="Edm.Decimal" Precision="37" Scale="0" sap:aggregation-role="measure" sap:filterable="false" sap:label="Staging, Bytes" />
-				<Property Name="REP_VOLUME" Type="Edm.Decimal" Precision="37" Scale="0" sap:aggregation-role="measure" sap:filterable="false" sap:label="Reporting, Bytes" />
-				<Property Name="CS_SIZE" Type="Edm.Decimal" Precision="34" Scale="0" sap:aggregation-role="measure" sap:filterable="false" sap:label="CS Size, Bytes" />
-				<Property Name="RS_SIZE" Type="Edm.Decimal" Precision="34" Scale="0" sap:aggregation-role="measure" sap:filterable="false" sap:label="RS Size, Bytes" />
-				<Property Name="AVG_VOLUME" Type="Edm.Decimal" Precision="37" Scale="3" sap:aggregation-role="measure" sap:filterable="false" sap:label="Avg Vol., Bytes" />
-				<Property Name="CURRENT_YEAR_VOLUME_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year, %" />
-				<Property Name="CURRENT_MIN_1_YEAR_VOLUME_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year - 1, %" />
-				<Property Name="CURRENT_MIN_2_YEAR_VOLUME_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year - 2, %" />
-				<Property Name="OLD_YEAR_VOLUME_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year - 3 and older, %" />
-				<Property Name="FUTURE_YEAR_VOLUME_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year + 1, %" />
-				<Property Name="CURRENT_YEAR_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year, GB" />
-				<Property Name="CURRENT_MIN_1_YEAR_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year - 1, GB" />
-				<Property Name="CURRENT_MIN_2_YEAR_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year - 2, GB" />
-				<Property Name="OLD_YEAR_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year - 3 and older, GB" />
-				<!-- <Property Name="FUTURE_YEAR_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year + 1, GB" /> -->
-				<Property Name="PREV_YEARS_VOL" Type="Edm.Decimal" Precision="37" Scale="0" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year - 1 and older, Bytes" />
-				<!-- <Property Name="PREV_YEARS_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Current Year - 1 and older, GB" /> -->
-				<Property Name="REP_PERC" Type="Edm.Decimal" Precision="36" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Reporting %" />
-				<Property Name="STG_PERC" Type="Edm.Decimal" Precision="36" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Staging %" />
-				<Property Name="STG_VOLUME_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Staging, GB" />
-				<Property Name="REP_VOLUME_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Reporting, GB" />
-				<Property Name="CS_SIZE_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="CS Size, GB" />
-				<Property Name="RS_SIZE_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="RS Size, GB" />
-				<Property Name="SUM_ALL_PERC_YEAR" Type="Edm.Decimal" Precision="37" Scale="3" sap:aggregation-role="measure" sap:filterable="false" sap:label="SUM_ALL_PERC_YEAR" />
-				<Property Name="WARM_POTENTIAL_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Warm Potential, %" />
-				<Property Name="WARM_POTENTIAL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:label="Warm Potential, GB" />
-			</EntityType>
+				<Property Name="FUNC_AREA" Type="Edm.String" Nullable="false" MaxLength="256" sap:label="Func.Area" sap:aggregation-role="dimension"/>
+				<Property Name="SCHEMA_NAME" Type="Edm.String" Nullable="false" MaxLength="256" sap:label="Schema" sap:aggregation-role="dimension"/>
+				<Property Name="TABLE_NAME" Type="Edm.String" Nullable="false" MaxLength="256" sap:label="Table" sap:aggregation-role="dimension"/>
+				<Property Name="CURRENT_YEAR_VOL" Type="Edm.Decimal" Precision="34" Scale="2" sap:label="Current Year, Bytes" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="CURRENT_MIN_1_YEAR_VOL" Type="Edm.Decimal" Precision="37" Scale="3" sap:label="Current Year - 1, Bytes" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="CURRENT_MIN_2_YEAR_VOL" Type="Edm.Decimal" Precision="37" Scale="3" sap:label="Current Year - 2, Bytes" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="OLD_YEAR_VOL" Type="Edm.Decimal" Precision="37" Scale="3" sap:label="Current Year - 3 and older, Bytes" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="FUTURE_YEAR_VOL" Type="Edm.Decimal" Precision="34" Scale="0" sap:label="Current Year + 1, Bytes" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="CURRENT_YEAR_VOLUME_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:label="Current Year, %" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="CURRENT_MIN_1_YEAR_VOLUME_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:label="Current Year - 1, %" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="CURRENT_MIN_2_YEAR_VOLUME_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:label="Current Year - 2, %" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="OLD_YEAR_VOLUME_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:label="Current Year - 3 and older, %" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="FUTURE_YEAR_VOLUME_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:label="Current Year + 1, %" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="CURRENT_YEAR_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:label="Current Year, GB" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="CURRENT_MIN_1_YEAR_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:label="Current Year - 1, GB" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="CURRENT_MIN_2_YEAR_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:label="Current Year - 2, GB" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="OLD_YEAR_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:label="Current Year - 3 and older,GB" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="FUTURE_YEAR_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:label="Current Year + 1, GB" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="PREV_YEARS_VOL" Type="Edm.Decimal" Precision="37" Scale="0" sap:label="Current Year - 1 and older, Bytes" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="REP_PERC" Type="Edm.Decimal" Precision="36" Scale="2" sap:label="Reporting %" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="PREV_YEARS_VOL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:label="Current Year - 1 and older, GB" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="STG_PERC" Type="Edm.Decimal" Precision="36" Scale="2" sap:label="Staging %" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="STG_VOLUME" Type="Edm.Decimal" Precision="37" Scale="0" sap:label="Staging, Bytes" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="REP_VOLUME" Type="Edm.Decimal" Precision="37" Scale="0" sap:label="Reporting, Bytes" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="STG_VOLUME_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:label="Staging, GB" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="REP_VOLUME_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:label="Reporting, GB" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="CS_SIZE" Type="Edm.Decimal" Precision="34" Scale="0" sap:label="CS Size, Bytes" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="RS_SIZE" Type="Edm.Decimal" Precision="34" Scale="0" sap:label="RS Size, Bytes" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="CS_SIZE_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:label="CS Size, GB" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="RS_SIZE_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:label="RS Size, GB" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="AVG_VOLUME" Type="Edm.Decimal" Precision="37" Scale="3" sap:label="Avg Vol., Bytes" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="SUM_ALL_PERC_YEAR" Type="Edm.Decimal" Precision="37" Scale="3" sap:label="SUM_ALL_PERC_YEAR" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="WARM_POTENTIAL_GB" Type="Edm.Decimal" Precision="37" Scale="2" sap:label="Warm Potential" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="WARM_POTENTIAL_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:label="Warm Potential, %" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="FUTURE_YEAR_SELECTS_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:label="Future Year Selects, %" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="CURRENT_YEAR_SELECTS_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:label="Current Year Selects, %" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="SUM_OF_MAX" Type="Edm.Decimal" Precision="37" Scale="2" sap:label="SUM_OF_MAX" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="CURRENT_YEAR_SELECTS" Type="Edm.Decimal" Precision="34" Scale="0" sap:label="CURRENT_YEAR_SELECTS" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="TOTAL_YEAR_SELECTS" Type="Edm.Int64" sap:label="TOTAL_YEAR_SELECTS" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="OLD_YEAR_SELECTS" Type="Edm.Decimal" Precision="34" Scale="0" sap:label="OLD_YEAR_SELECTS" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="COMP_CS_RS_WITH_AVG_VOLUME" Type="Edm.Decimal" Precision="37" Scale="3" sap:label="COMP_CS_RS_WITH_AVG_VOLUME" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="CURRENT_MINUS_1_YEAR_SELECTS" Type="Edm.Decimal" Precision="34" Scale="0" sap:label="CURRENT_MINUS_1_YEAR_SELECTS" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="YEAR_SELECTS" Type="Edm.Int64" sap:label="YEAR_SELECTS" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="ALL_SELECTS" Type="Edm.Int64" sap:label="ALL_SELECTS" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="CURRENT_MINUS_1_YEAR_SELECTS_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:label="Current Year -1 Selects, %" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="CURRENT_MINUS_2_YEAR_SELECTS_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:label="Current Year -2 Selects, %" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="OLD_YEAR_SELECTS_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:label="Old Year Selects, %" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="FUTURE_YEAR_SELECTS" Type="Edm.Decimal" Precision="34" Scale="0" sap:label="FUTURE_YEAR_SELECTS" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="CURRENT_MINUS_2_YEAR_SELECTS" Type="Edm.Decimal" Precision="34" Scale="0" sap:label="CURRENT_MINUS_2_YEAR_SELECTS" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="VOLUME_YEAR_BUCKET_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:label="Volume Year Bucket Percentage" sap:filterable="false" sap:aggregation-role="measure"/>
+				<Property Name="USAGE_YEAR_BUCKET_PERC" Type="Edm.Decimal" Precision="34" Scale="2" sap:label="Usage Year Bucket Percent" sap:filterable="false" sap:aggregation-role="measure"/></EntityType>
 			<EntityContainer Name="MEM_PROFILER" m:IsDefaultEntityContainer="true">
 				<EntitySet Name="MEM_OVERVIEW" EntityType="one.labs.mem_prof.app.service.MEM_PROFILER.MEM_OVERVIEWType" sap:creatable="false" sap:updatable="false" sap:deletable="false" />
 				<EntitySet Name="TableMemoryOverview" EntityType="one.labs.mem_prof.app.service.MEM_PROFILER.TableMemoryOverviewType" />

@@ -75,6 +75,9 @@ sap.ui.define([
 		getBusiness3ServiceURL: function () {
 			return this.getOwnerComponent().getServiceURLfromManifest("Business3");
 		},
+		getTableMemoryOverviewServiceURL: function () {
+			return this.getOwnerComponent().getServiceURLfromManifest("TableMemoryOverview");
+		},
 		getOverviewChartConstant: function () {
 			let bundle = this.getResourceBundle();
 			return {

@@ -55,6 +55,13 @@
 			</ux:ObjectPageSection>
 			<ux:ObjectPageSection title=" ">
 				<ux:subSections>
+					<ux:ObjectPageSubSection title="{i18n>titleTableOverview}">
+						<core:Fragment fragmentName="one.labs.mem_profiler.view.TableMemoryOverview" type="XML"/>
+					</ux:ObjectPageSubSection>
+				</ux:subSections>
+			</ux:ObjectPageSection>
+			<ux:ObjectPageSection title=" ">
+				<ux:subSections>
 					<ux:ObjectPageSubSection title="{i18n>titleTables}">
 						<core:Fragment fragmentName="one.labs.mem_profiler.view.Tables" type="XML"/>
 					</ux:ObjectPageSubSection>
