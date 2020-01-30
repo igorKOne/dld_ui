@@ -1,0 +1,1042 @@
+{
+    "results": [
+        {
+            
+            "id": "205256195479065191",
+            "func_area": "Retail",
+            "schema_name": "ONE_RETAIL",
+            "table_name": "CT_SALES_HEADER",
+            "PART_ID": 15,
+            "HAS_NO_DEPENDENCIES": "",
+            "CONSTANT_GB": "1073741824",
+            "CURRENT_YEAR_VOL": "9395240960",
+            "FUTURE_YEAR_VOL": "0",
+            "CURRENT_MIN_1_YEAR_VOL": "26102663741",
+            "CURRENT_MIN_2_YEAR_VOL": "29731911107",
+            "OLD_YEAR_VOL": "37580963840",
+            "SYSTEM_AVG_VOLUME": null,
+            "AVG_VOLUME": null,
+            "CS_SIZE": "102810779648",
+            "RS_SIZE": "0",
+            "SAP_TABLES": null,
+            "CUSTOMER_TABLES": null,
+            "STG_VOLUME": "0",
+            "REP_VOLUME": "102810779648",
+            "CALC_AVG_VOLUME_NOT_NULL": null,
+            "AGING_AVG_VOLUME": "0",
+            "CURRENT_YEAR_VOLUME_PERC": "9.13",
+            "CURRENT_MIN_1_YEAR_VOLUME_PERC": "25.38",
+            "CURRENT_MIN_2_YEAR_VOLUME_PERC": "28.91",
+            "OLD_YEAR_VOLUME_PERC": "36.55",
+            "REP_PERC": "100",
+            "STG_PERC": "0",
+            "VOLUME_PER_GB": null,
+            "FUNC_SIZE_PER_GB": "95.75",
+            "FUTURE_YEAR_VOLUME_PERC": "0",
+            "CS_SIZE_IN_GB": "95.75",
+            "RS_SIZE_IN_GB": "0",
+            "CURRENT_YEAR_VOL_GB": "8.75",
+            "CURRENT_MIN_1_YEAR_VOL_GB": "24.309999999590218",
+            "CURRENT_MIN_2_YEAR_VOL_GB": "27.690000000409782",
+            "OLD_YEAR_VOL_GB": "35.0",
+            "WARM_POTENTIAL_PERC": "36.55",
+            "warm_potential_gb": "35.0",
+            "years": [
+                {
+                  "id": 1,
+                  "title": "<2018",
+                  "volume": 36.55,
+                  "color": "Error"
+                },
+                {
+                  "id": 2,
+                  "title": "2018",
+                  "volume": 28.91,
+                  "color": "Critical"
+                },
+                {
+                  "id": 3,
+                  "title": "2019",
+                  "volume": 25.38,
+                  "color": "Neutral"
+                },
+                {
+                  "id": 4,
+                  "title": "2020",
+                  "volume": 9.13,
+                  "color": "Good"
+                }
+              ],
+              "usage_lines": [
+                {
+                  "points": [
+                    {
+                      "x": 1,
+                      "y": 17
+                    },
+                    {
+                      "x": 2,
+                      "y": 25
+                    },
+                    {
+                      "x": 3,
+                      "y": 20
+                    },
+                    {
+                      "x": 4,
+                      "y": 32
+                    }
+                  ]
+                }
+              ]
+        },
+        {
+            
+            "id": "20525619547906519201",
+            "func_area": "Retail",
+            "schema_name": "ONE_RETAIL_ACQ",
+            "table_name": "CT_SALES_TRANSACTION_FACT",
+            "PART_ID": 2,
+            "HAS_NO_DEPENDENCIES": "",
+            "CONSTANT_GB": "1073741824",
+            "CURRENT_YEAR_VOL": "7904758347",
+            "FUTURE_YEAR_VOL": "0",
+            "CURRENT_MIN_1_YEAR_VOL": "21961677191",
+            "CURRENT_MIN_2_YEAR_VOL": "25015172415",
+            "OLD_YEAR_VOL": "31619033389",
+            "SYSTEM_AVG_VOLUME": null,
+            "AVG_VOLUME": null,
+            "CS_SIZE": "0",
+            "RS_SIZE": "86500641341",
+            "SAP_TABLES": null,
+            "CUSTOMER_TABLES": null,
+            "STG_VOLUME": "0",
+            "REP_VOLUME": "86500641341",
+            "CALC_AVG_VOLUME_NOT_NULL": null,
+            "AGING_AVG_VOLUME": "0",
+            "CURRENT_YEAR_VOLUME_PERC": "9.13",
+            "CURRENT_MIN_1_YEAR_VOLUME_PERC": "25.38",
+            "CURRENT_MIN_2_YEAR_VOLUME_PERC": "28.91",
+            "OLD_YEAR_VOLUME_PERC": "36.55",
+            "REP_PERC": "100",
+            "STG_PERC": "0",
+            "VOLUME_PER_GB": null,
+            "FUNC_SIZE_PER_GB": "80.56",
+            "FUTURE_YEAR_VOLUME_PERC": "0",
+            "CS_SIZE_IN_GB": "0",
+            "RS_SIZE_IN_GB": "80.56",
+            "CURRENT_YEAR_VOL_GB": "7.361879895441234",
+            "CURRENT_MIN_1_YEAR_VOL_GB": "20.45340574439615",
+            "CURRENT_MIN_2_YEAR_VOL_GB": "23.297194777987897",
+            "OLD_YEAR_VOL_GB": "29.44751958269626",
+            "WARM_POTENTIAL_PERC": "36.55",
+            "warm_potential_gb": "29.45",
+            "years": [
+                {
+                  "id": 1,
+                  "title": "<2018",
+                  "volume": 36.55,
+                  "color": "Error"
+                },
+                {
+                  "id": 2,
+                  "title": "2018",
+                  "volume": 28.91,
+                  "color": "Critical"
+                },
+                {
+                  "id": 3,
+                  "title": "2019",
+                  "volume": 25.38,
+                  "color": "Neutral"
+                },
+                {
+                  "id": 4,
+                  "title": "2020",
+                  "volume": 9.13,
+                  "color": "Good"
+                }
+              ],
+              "usage_lines": [
+                {
+                  "points": [
+                    {
+                      "x": 1,
+                      "y": 1.79
+                    },
+                    {
+                      "x": 2,
+                      "y": 0
+                    },
+                    {
+                      "x": 3,
+                      "y": 46.43
+                    },
+                    {
+                      "x": 4,
+                      "y": 51.79
+                    }
+                  ]
+                }
+              ]
+        },
+        {
+            
+            "id": "20525619547906519200",
+            "func_area": "Retail",
+            "schema_name": "ONE_RETAIL_ACQ",
+            "table_name": "CT_PROMOTION_FACT",
+            "PART_ID": 0,
+            "HAS_NO_DEPENDENCIES": "",
+            "CONSTANT_GB": "1073741824",
+            "CURRENT_YEAR_VOL": "6302415946",
+            "FUTURE_YEAR_VOL": "0",
+            "CURRENT_MIN_1_YEAR_VOL": "17509912189",
+            "CURRENT_MIN_2_YEAR_VOL": "19944445435",
+            "OLD_YEAR_VOL": "25209663785",
+            "SYSTEM_AVG_VOLUME": null,
+            "AVG_VOLUME": null,
+            "CS_SIZE": "68966437356",
+            "RS_SIZE": "0",
+            "SAP_TABLES": null,
+            "CUSTOMER_TABLES": null,
+            "STG_VOLUME": "0",
+            "REP_VOLUME": "68966437356",
+            "CALC_AVG_VOLUME_NOT_NULL": null,
+            "AGING_AVG_VOLUME": "0",
+            "CURRENT_YEAR_VOLUME_PERC": "9.13",
+            "CURRENT_MIN_1_YEAR_VOLUME_PERC": "25.38",
+            "CURRENT_MIN_2_YEAR_VOLUME_PERC": "28.91",
+            "OLD_YEAR_VOLUME_PERC": "36.55",
+            "REP_PERC": "100",
+            "STG_PERC": "0",
+            "VOLUME_PER_GB": null,
+            "FUNC_SIZE_PER_GB": "64.23",
+            "FUTURE_YEAR_VOLUME_PERC": "0",
+            "CS_SIZE_IN_GB": "64.23",
+            "RS_SIZE_IN_GB": "0",
+            "CURRENT_YEAR_VOL_GB": "5.869582245126367",
+            "CURRENT_MIN_1_YEAR_VOL_GB": "16.30737650115043",
+            "CURRENT_MIN_2_YEAR_VOL_GB": "18.574712271802127",
+            "OLD_YEAR_VOL_GB": "23.47832898143679",
+            "WARM_POTENTIAL_PERC": "36.55",
+            "warm_potential_gb": "23.48",
+            "years": [
+                {
+                  "id": 1,
+                  "title": "<2018",
+                  "volume": 36.55,
+                  "color": "Error"
+                },
+                {
+                  "id": 2,
+                  "title": "2018",
+                  "volume": 28.91,
+                  "color": "Critical"
+                },
+                {
+                  "id": 3,
+                  "title": "2019",
+                  "volume": 25.38,
+                  "color": "Neutral"
+                },
+                {
+                  "id": 4,
+                  "title": "2020",
+                  "volume": 9.13,
+                  "color": "Good"
+                }
+              ],
+              "usage_lines": [
+                {
+                  "points": [
+                    {
+                      "x": 1,
+                      "y": 1.79
+                    },
+                    {
+                      "x": 2,
+                      "y": 10
+                    },
+                    {
+                      "x": 3,
+                      "y": 46.43
+                    },
+                    {
+                      "x": 4,
+                      "y": 41.79
+                    }
+                  ]
+                }
+              ]
+        },
+        {
+            
+            "id": "20525619547906519202",
+            "func_area": "Retail",
+            "schema_name": "ONE_RETAIL_ACQ",
+            "table_name": "CT_CONSOLIDATED_PRODUCT_DIM",
+            "PART_ID": 2,
+            "HAS_NO_DEPENDENCIES": "",
+            "CONSTANT_GB": "1073741824",
+            "CURRENT_YEAR_VOL": "1242232382",
+            "FUTURE_YEAR_VOL": "0",
+            "CURRENT_MIN_1_YEAR_VOL": "3451276480",
+            "CURRENT_MIN_2_YEAR_VOL": "3931133103",
+            "OLD_YEAR_VOL": "4968929527",
+            "SYSTEM_AVG_VOLUME": null,
+            "AVG_VOLUME": null,
+            "CS_SIZE": "13593571492",
+            "RS_SIZE": "0",
+            "SAP_TABLES": null,
+            "CUSTOMER_TABLES": null,
+            "STG_VOLUME": "0",
+            "REP_VOLUME": "13593571492",
+            "CALC_AVG_VOLUME_NOT_NULL": null,
+            "AGING_AVG_VOLUME": "0",
+            "CURRENT_YEAR_VOLUME_PERC": "9.13",
+            "CURRENT_MIN_1_YEAR_VOLUME_PERC": "25.38",
+            "CURRENT_MIN_2_YEAR_VOLUME_PERC": "28.91",
+            "OLD_YEAR_VOLUME_PERC": "36.55",
+            "REP_PERC": "0",
+            "STG_PERC": "100.00",
+            "VOLUME_PER_GB": null,
+            "FUNC_SIZE_PER_GB": "12.66",
+            "FUTURE_YEAR_VOLUME_PERC": "0",
+            "CS_SIZE_IN_GB": "0",
+            "RS_SIZE_IN_GB": "12.66",
+            "CURRENT_YEAR_VOL_GB": "1.1569190602749586",
+            "CURRENT_MIN_1_YEAR_VOL_GB": "3.214251697063446",
+            "CURRENT_MIN_2_YEAR_VOL_GB": "3.661153002642095",
+            "OLD_YEAR_VOL_GB": "4.627676240168512",
+            "WARM_POTENTIAL_PERC": "36.55",
+            "warm_potential_gb": "4.63",
+            "years": [
+                {
+                  "id": 1,
+                  "title": "<2018",
+                  "volume": 36.55,
+                  "color": "Error"
+                },
+                {
+                  "id": 2,
+                  "title": "2018",
+                  "volume": 28.91,
+                  "color": "Critical"
+                },
+                {
+                  "id": 3,
+                  "title": "2019",
+                  "volume": 25.38,
+                  "color": "Neutral"
+                },
+                {
+                  "id": 4,
+                  "title": "2020",
+                  "volume": 9.13,
+                  "color": "Good"
+                }
+              ],
+              "usage_lines": [
+                {
+                  "points": [
+                    {
+                      "x": 1,
+                      "y": 1.79
+                    },
+                    {
+                      "x": 2,
+                      "y": 10
+                    },
+                    {
+                      "x": 3,
+                      "y": 46.43
+                    },
+                    {
+                      "x": 4,
+                      "y": 41.79
+                    }
+                  ]
+                }
+              ]
+        },
+        {
+            
+            "id": "20525619547906519203",
+            "func_area": "Retail",
+            "schema_name": "ONE_RETAIL",
+            "table_name": "CT_POS_DIM",
+            "PART_ID": 0,
+            "HAS_NO_DEPENDENCIES": "",
+            "CONSTANT_GB": "1073741824",
+            "CURRENT_YEAR_VOL": "435664437",
+            "FUTURE_YEAR_VOL": "0",
+            "CURRENT_MIN_1_YEAR_VOL": "1210400282",
+            "CURRENT_MIN_2_YEAR_VOL": "1378691230",
+            "OLD_YEAR_VOL": "1742657749",
+            "SYSTEM_AVG_VOLUME": null,
+            "AVG_VOLUME": null,
+            "CS_SIZE": "0",
+            "RS_SIZE": "4767413699",
+            "SAP_TABLES": null,
+            "CUSTOMER_TABLES": null,
+            "STG_VOLUME": "4767413699",
+            "REP_VOLUME": "0",
+            "CALC_AVG_VOLUME_NOT_NULL": null,
+            "AGING_AVG_VOLUME": "0",
+            "CURRENT_YEAR_VOLUME_PERC": "9.13",
+            "CURRENT_MIN_1_YEAR_VOLUME_PERC": "25.38",
+            "CURRENT_MIN_2_YEAR_VOLUME_PERC": "28.91",
+            "OLD_YEAR_VOLUME_PERC": "36.55",
+            "REP_PERC": "0",
+            "STG_PERC": "100.00",
+            "VOLUME_PER_GB": null,
+            "FUNC_SIZE_PER_GB": "4.44",
+            "FUTURE_YEAR_VOLUME_PERC": "0",
+            "CS_SIZE_IN_GB": "0",
+            "RS_SIZE_IN_GB": "4.44",
+            "CURRENT_YEAR_VOL_GB": "0.40574412513524294",
+            "CURRENT_MIN_1_YEAR_VOL_GB": "1.1272731069475412",
+            "CURRENT_MIN_2_YEAR_VOL_GB": "1.2840062659233809",
+            "OLD_YEAR_VOL_GB": "1.6229765014722943",
+            "WARM_POTENTIAL_PERC": "36.55",
+            "warm_potential_gb": "1.62",
+            "years": [
+                {
+                  "id": 1,
+                  "title": "<2018",
+                  "volume": 36.55,
+                  "color": "Error"
+                },
+                {
+                  "id": 2,
+                  "title": "2018",
+                  "volume": 28.91,
+                  "color": "Critical"
+                },
+                {
+                  "id": 3,
+                  "title": "2019",
+                  "volume": 25.38,
+                  "color": "Neutral"
+                },
+                {
+                  "id": 4,
+                  "title": "2020",
+                  "volume": 9.13,
+                  "color": "Good"
+                }
+              ],
+              "usage_lines": [
+                {
+                  "points": [
+                    {
+                      "x": 1,
+                      "y": 1.79
+                    },
+                    {
+                      "x": 2,
+                      "y": 10
+                    },
+                    {
+                      "x": 3,
+                      "y": 46.43
+                    },
+                    {
+                      "x": 4,
+                      "y": 41.79
+                    }
+                  ]
+                }
+              ]
+        },
+        {
+            
+            "id": "20525619547906519204",
+            "func_area": "Retail",
+            "schema_name": "ONE_RETAIL",
+            "table_name": "CT_RETAIL_HIERARCHY_DIM",
+            "PART_ID": 0,
+            "HAS_NO_DEPENDENCIES": "",
+            "CONSTANT_GB": "1073741824",
+            "CURRENT_YEAR_VOL": "197226468",
+            "FUTURE_YEAR_VOL": "0",
+            "CURRENT_MIN_1_YEAR_VOL": "547951479",
+            "CURRENT_MIN_2_YEAR_VOL": "624137246",
+            "OLD_YEAR_VOL": "788905872",
+            "SYSTEM_AVG_VOLUME": null,
+            "AVG_VOLUME": null,
+            "CS_SIZE": "2158221066",
+            "RS_SIZE": "0",
+            "SAP_TABLES": null,
+            "CUSTOMER_TABLES": null,
+            "STG_VOLUME": "0",
+            "REP_VOLUME": "2158221066",
+            "CALC_AVG_VOLUME_NOT_NULL": null,
+            "AGING_AVG_VOLUME": "0",
+            "CURRENT_YEAR_VOLUME_PERC": "9.13",
+            "CURRENT_MIN_1_YEAR_VOLUME_PERC": "25.38",
+            "CURRENT_MIN_2_YEAR_VOLUME_PERC": "28.91",
+            "OLD_YEAR_VOLUME_PERC": "36.55",
+            "REP_PERC": "100.00",
+            "STG_PERC": "0",
+            "VOLUME_PER_GB": null,
+            "FUNC_SIZE_PER_GB": "2.01",
+            "FUTURE_YEAR_VOLUME_PERC": "0",
+            "CS_SIZE_IN_GB": "0",
+            "RS_SIZE_IN_GB": "2.01",
+            "CURRENT_YEAR_VOL_GB": "0.18368146196007729",
+            "CURRENT_MIN_1_YEAR_VOL_GB": "0.5103195821866393",
+            "CURRENT_MIN_2_YEAR_VOL_GB": "0.5812731068581343",
+            "OLD_YEAR_VOL_GB": "0.7347258478403091",
+            "WARM_POTENTIAL_PERC": "36.55",
+            "warm_potential_gb": "0.73",
+            "years": [
+                {
+                  "id": 1,
+                  "title": "<2018",
+                  "volume": 36.55,
+                  "color": "Error"
+                },
+                {
+                  "id": 2,
+                  "title": "2018",
+                  "volume": 28.91,
+                  "color": "Critical"
+                },
+                {
+                  "id": 3,
+                  "title": "2019",
+                  "volume": 25.38,
+                  "color": "Neutral"
+                },
+                {
+                  "id": 4,
+                  "title": "2020",
+                  "volume": 9.13,
+                  "color": "Good"
+                }
+              ],
+              "usage_lines": [
+                {
+                  "points": [
+                    {
+                      "x": 1,
+                      "y": 1.79
+                    },
+                    {
+                      "x": 2,
+                      "y": 10
+                    },
+                    {
+                      "x": 3,
+                      "y": 46.43
+                    },
+                    {
+                      "x": 4,
+                      "y": 41.79
+                    }
+                  ]
+                }
+              ]
+        },
+        {
+            
+            "id": "20525619547906519206",
+            "func_area": "ONE ERP",
+            "schema_name": "SAPECC_ACQUISITION",
+            "table_name": "BSEG",
+            "PART_ID": 0,
+            "HAS_NO_DEPENDENCIES": "",
+            "CONSTANT_GB": "1073741824",
+            "CURRENT_YEAR_VOL": "311385129",
+            "FUTURE_YEAR_VOL": "0",
+            "CURRENT_MIN_1_YEAR_VOL": "15934328668",
+            "CURRENT_MIN_2_YEAR_VOL": "43132209070",
+            "OLD_YEAR_VOL": "590558003",
+            "SYSTEM_AVG_VOLUME": null,
+            "AVG_VOLUME": null,
+            "CS_SIZE": "0",
+            "RS_SIZE": "59968480870",
+            "SAP_TABLES": null,
+            "CUSTOMER_TABLES": null,
+            "STG_VOLUME": "0",
+            "REP_VOLUME": "59968480870",
+            "CALC_AVG_VOLUME_NOT_NULL": null,
+            "AGING_AVG_VOLUME": "0",
+            "CURRENT_YEAR_VOLUME_PERC": "0.51",
+            "CURRENT_MIN_1_YEAR_VOLUME_PERC": "26.57",
+            "CURRENT_MIN_2_YEAR_VOLUME_PERC": "71.92",
+            "OLD_YEAR_VOLUME_PERC": "0.98",
+            "REP_PERC": "100",
+            "STG_PERC": "0",
+            "VOLUME_PER_GB": null,
+            "FUNC_SIZE_PER_GB": "55.85",
+            "FUTURE_YEAR_VOLUME_PERC": "0",
+            "CS_SIZE_IN_GB": "0",
+            "RS_SIZE_IN_GB": "55.85",
+            "CURRENT_YEAR_VOL_GB": "0.2900000000372529",
+            "CURRENT_MIN_1_YEAR_VOL_GB": "14.839999999850988",
+            "CURRENT_MIN_2_YEAR_VOL_GB": "40.169999999925494",
+            "OLD_YEAR_VOL_GB": "0.5499999998137355",
+            "WARM_POTENTIAL_PERC": "0.98",
+            "warm_potential_gb": "0.55",
+            "years": [
+                {
+                  "id": 1,
+                  "title": "<2018",
+                  "volume": 36.55,
+                  "color": "Error"
+                },
+                {
+                  "id": 2,
+                  "title": "2018",
+                  "volume": 28.91,
+                  "color": "Critical"
+                },
+                {
+                  "id": 3,
+                  "title": "2019",
+                  "volume": 25.38,
+                  "color": "Neutral"
+                },
+                {
+                  "id": 4,
+                  "title": "2020",
+                  "volume": 9.13,
+                  "color": "Good"
+                }
+              ],
+              "usage_lines": [
+                {
+                  "points": [
+                    {
+                      "x": 1,
+                      "y": 1.79
+                    },
+                    {
+                      "x": 2,
+                      "y": 10
+                    },
+                    {
+                      "x": 3,
+                      "y": 46.43
+                    },
+                    {
+                      "x": 4,
+                      "y": 41.79
+                    }
+                  ]
+                }
+              ]
+        },
+        {
+            
+            "id": "20525619547906519207",
+            "func_area": "ONE ERP",
+            "schema_name": "SAPECC_ACQUISITION",
+            "table_name": "COEP",
+            "PART_ID": 0,
+            "HAS_NO_DEPENDENCIES": "",
+            "CONSTANT_GB": "1073741824",
+            "CURRENT_YEAR_VOL": "229148232",
+            "FUTURE_YEAR_VOL": "0",
+            "CURRENT_MIN_1_YEAR_VOL": "11726068187",
+            "CURRENT_MIN_2_YEAR_VOL": "31740981070",
+            "OLD_YEAR_VOL": "434591475",
+            "SYSTEM_AVG_VOLUME": null,
+            "AVG_VOLUME": null,
+            "CS_SIZE": "0",
+            "RS_SIZE": "44130788966",
+            "SAP_TABLES": null,
+            "CUSTOMER_TABLES": null,
+            "STG_VOLUME": "0",
+            "REP_VOLUME": "44130788966",
+            "CALC_AVG_VOLUME_NOT_NULL": null,
+            "AGING_AVG_VOLUME": "0",
+            "CURRENT_YEAR_VOLUME_PERC": "0.51",
+            "CURRENT_MIN_1_YEAR_VOLUME_PERC": "26.57",
+            "CURRENT_MIN_2_YEAR_VOLUME_PERC": "71.92",
+            "OLD_YEAR_VOLUME_PERC": "0.98",
+            "REP_PERC": "100",
+            "STG_PERC": "0",
+            "VOLUME_PER_GB": null,
+            "FUNC_SIZE_PER_GB": "41.10",
+            "FUTURE_YEAR_VOLUME_PERC": "0",
+            "CS_SIZE_IN_GB": "0",
+            "RS_SIZE_IN_GB": "41.10",
+            "CURRENT_YEAR_VOL_GB": "0.21341092139482498",
+            "CURRENT_MIN_1_YEAR_VOL_GB": "10.920752014033496",
+            "CURRENT_MIN_2_YEAR_VOL_GB": "29.561092210933566",
+            "OLD_YEAR_VOL_GB": "0.40474485140293837",
+            "WARM_POTENTIAL_PERC": "0.98",
+            "warm_potential_gb": "0.40",
+            "years": [
+                {
+                  "id": 1,
+                  "title": "<2018",
+                  "volume": 36.55,
+                  "color": "Error"
+                },
+                {
+                  "id": 2,
+                  "title": "2018",
+                  "volume": 28.91,
+                  "color": "Critical"
+                },
+                {
+                  "id": 3,
+                  "title": "2019",
+                  "volume": 25.38,
+                  "color": "Neutral"
+                },
+                {
+                  "id": 4,
+                  "title": "2020",
+                  "volume": 9.13,
+                  "color": "Good"
+                }
+              ]
+        },
+        {
+            
+            "id": "20525619547906519208",
+            "func_area": "ONE ERP",
+            "schema_name": "SAPECC_ACQUISITION",
+            "table_name": "JCDS",
+            "PART_ID": 0,
+            "HAS_NO_DEPENDENCIES": "",
+            "CONSTANT_GB": "1073741824",
+            "CURRENT_YEAR_VOL": "54806012",
+            "FUTURE_YEAR_VOL": "0",
+            "CURRENT_MIN_1_YEAR_VOL": "2804555968",
+            "CURRENT_MIN_2_YEAR_VOL": "7591577711",
+            "OLD_YEAR_VOL": "103942438",
+            "SYSTEM_AVG_VOLUME": null,
+            "AVG_VOLUME": null,
+            "CS_SIZE": "0",
+            "RS_SIZE": "10554882130",
+            "SAP_TABLES": null,
+            "CUSTOMER_TABLES": null,
+            "STG_VOLUME": "0",
+            "REP_VOLUME": "10554882130",
+            "CALC_AVG_VOLUME_NOT_NULL": null,
+            "AGING_AVG_VOLUME": "0",
+            "CURRENT_YEAR_VOLUME_PERC": "0.51",
+            "CURRENT_MIN_1_YEAR_VOLUME_PERC": "26.57",
+            "CURRENT_MIN_2_YEAR_VOLUME_PERC": "71.92",
+            "OLD_YEAR_VOLUME_PERC": "0.98",
+            "REP_PERC": "100",
+            "STG_PERC": "0",
+            "VOLUME_PER_GB": null,
+            "FUNC_SIZE_PER_GB": "9.83",
+            "FUTURE_YEAR_VOLUME_PERC": "0",
+            "CS_SIZE_IN_GB": "0",
+            "RS_SIZE_IN_GB": "9.83",
+            "CURRENT_YEAR_VOL_GB": "0.05104207620024681",
+            "CURRENT_MIN_1_YEAR_VOL_GB": "2.6119462847709656",
+            "CURRENT_MIN_2_YEAR_VOL_GB": "7.070207699202001",
+            "OLD_YEAR_VOL_GB": "0.09680393896996975",
+            "WARM_POTENTIAL_PERC": "0.98",
+            "warm_potential_gb": "0.10",
+            "years": [
+                {
+                  "id": 1,
+                  "title": "<2018",
+                  "volume": 36.55,
+                  "color": "Error"
+                },
+                {
+                  "id": 2,
+                  "title": "2018",
+                  "volume": 28.91,
+                  "color": "Critical"
+                },
+                {
+                  "id": 3,
+                  "title": "2019",
+                  "volume": 25.38,
+                  "color": "Neutral"
+                },
+                {
+                  "id": 4,
+                  "title": "2020",
+                  "volume": 9.13,
+                  "color": "Good"
+                }
+              ]
+        },
+        {
+            
+            "id": "20525619547906519298",
+            "func_area": "ONE ERP",
+            "schema_name": "SAPECC_ACQUISITION",
+            "table_name": "MSEG",
+            "PART_ID": 0,
+            "HAS_NO_DEPENDENCIES": "",
+            "CONSTANT_GB": "1073741824",
+            "CURRENT_YEAR_VOL": "28346784153",
+            "FUTURE_YEAR_VOL": "0",
+            "CURRENT_MIN_1_YEAR_VOL": "16320875724",
+            "CURRENT_MIN_2_YEAR_VOL": "29764123361",
+            "OLD_YEAR_VOL": "69449621176",
+            "SYSTEM_AVG_VOLUME": null,
+            "AVG_VOLUME": null,
+            "CS_SIZE": "143881404416",
+            "RS_SIZE": "0",
+            "SAP_TABLES": null,
+            "CUSTOMER_TABLES": null,
+            "STG_VOLUME": "0",
+            "REP_VOLUME": "143881404416",
+            "CALC_AVG_VOLUME_NOT_NULL": null,
+            "AGING_AVG_VOLUME": "0",
+            "CURRENT_YEAR_VOLUME_PERC": "19.70",
+            "CURRENT_MIN_1_YEAR_VOLUME_PERC": "11.34",
+            "CURRENT_MIN_2_YEAR_VOLUME_PERC": "20.69",
+            "OLD_YEAR_VOLUME_PERC": "48.27",
+            "REP_PERC": "100",
+            "STG_PERC": "0",
+            "VOLUME_PER_GB": null,
+            "FUNC_SIZE_PER_GB": "134.00",
+            "FUTURE_YEAR_VOLUME_PERC": "0",
+            "CS_SIZE_IN_GB": "134.00",
+            "RS_SIZE_IN_GB": "0",
+            "CURRENT_YEAR_VOL_GB": "26.399999999441206",
+            "CURRENT_MIN_1_YEAR_VOL_GB": "15.199999999254942",
+            "CURRENT_MIN_2_YEAR_VOL_GB": "27.71999999973923",
+            "OLD_YEAR_VOL_GB": "64.67999999970198",
+            "WARM_POTENTIAL_PERC": "48.27",
+            "warm_potential_gb": "64.68",
+            "years": [
+                {
+                  "id": 1,
+                  "title": "<2018",
+                  "volume": 97.51,
+                  "color": "Error"
+                },
+                {
+                  "id": 2,
+                  "title": "2018",
+                  "volume": 2.49,
+                  "color": "Critical"
+                },
+                {
+                  "id": 3,
+                  "title": "2019",
+                  "volume": 0,
+                  "color": "Neutral"
+                },
+                {
+                  "id": 4,
+                  "title": "2020",
+                  "volume": 0,
+                  "color": "Good"
+                }
+              ]
+        },
+        {
+            
+            "id": "20525619547906519209",
+            "func_area": "Manufacturing",
+            "schema_name": "PRODUCTION_ACQ",
+            "table_name": "PRODUCTION_ORDER_DET",
+            "PART_ID": 0,
+            "HAS_NO_DEPENDENCIES": "",
+            "CONSTANT_GB": "1073741824",
+            "CURRENT_YEAR_VOL": "311385129",
+            "FUTURE_YEAR_VOL": "0",
+            "CURRENT_MIN_1_YEAR_VOL": "15934328668",
+            "CURRENT_MIN_2_YEAR_VOL": "590558003",
+            "OLD_YEAR_VOL": "43132209070",
+            "SYSTEM_AVG_VOLUME": null,
+            "AVG_VOLUME": null,
+            "CS_SIZE": "0",
+            "RS_SIZE": "59968480870",
+            "SAP_TABLES": null,
+            "CUSTOMER_TABLES": null,
+            "STG_VOLUME": "0",
+            "REP_VOLUME": "59968480870",
+            "CALC_AVG_VOLUME_NOT_NULL": null,
+            "AGING_AVG_VOLUME": "0",
+            "CURRENT_YEAR_VOLUME_PERC": "0.51",
+            "CURRENT_MIN_1_YEAR_VOLUME_PERC": "26.57",
+            "CURRENT_MIN_2_YEAR_VOLUME_PERC": "71.92",
+            "OLD_YEAR_VOLUME_PERC": "0.98",
+            "REP_PERC": "100",
+            "STG_PERC": "0",
+            "VOLUME_PER_GB": null,
+            "FUNC_SIZE_PER_GB": "55.85",
+            "FUTURE_YEAR_VOLUME_PERC": "0",
+            "CS_SIZE_IN_GB": "0",
+            "RS_SIZE_IN_GB": "55.85",
+            "CURRENT_YEAR_VOL_GB": "0.2900000000372529",
+            "CURRENT_MIN_1_YEAR_VOL_GB": "14.839999999850988",
+            "CURRENT_MIN_2_YEAR_VOL_GB": "0.5499999998137355",
+            "OLD_YEAR_VOL_GB": "40.169999999925494",
+            "WARM_POTENTIAL_PERC": "0.98",
+            "warm_potential_gb": "40.17",
+            "years": [
+                {
+                  "id": 1,
+                  "title": "<2018",
+                  "volume": 97.51,
+                  "color": "Error"
+                },
+                {
+                  "id": 2,
+                  "title": "2018",
+                  "volume": 2.49,
+                  "color": "Critical"
+                },
+                {
+                  "id": 3,
+                  "title": "2019",
+                  "volume": 0,
+                  "color": "Neutral"
+                },
+                {
+                  "id": 4,
+                  "title": "2020",
+                  "volume": 0,
+                  "color": "Good"
+                }
+              ]
+        },
+        {
+            
+            "id": "20525619547906519210",
+            "func_area": "Manufacturing",
+            "schema_name": "PRODUCTION_ACQ",
+            "table_name": "PRODUCTION_INSPECTION_RESULTS",
+            "PART_ID": 0,
+            "HAS_NO_DEPENDENCIES": "",
+            "CONSTANT_GB": "1073741824",
+            "CURRENT_YEAR_VOL": "124498297",
+            "FUTURE_YEAR_VOL": "0",
+            "CURRENT_MIN_1_YEAR_VOL": "6370878409",
+            "CURRENT_MIN_2_YEAR_VOL": "236117461",
+            "OLD_YEAR_VOL": "17245160762",
+            "SYSTEM_AVG_VOLUME": null,
+            "AVG_VOLUME": null,
+            "CS_SIZE": "23976654930",
+            "RS_SIZE": "0",
+            "SAP_TABLES": null,
+            "CUSTOMER_TABLES": null,
+            "STG_VOLUME": "0",
+            "REP_VOLUME": "23976654930",
+            "CALC_AVG_VOLUME_NOT_NULL": null,
+            "AGING_AVG_VOLUME": "0",
+            "CURRENT_YEAR_VOLUME_PERC": "0.51",
+            "CURRENT_MIN_1_YEAR_VOLUME_PERC": "26.57",
+            "CURRENT_MIN_2_YEAR_VOLUME_PERC": "71.92",
+            "OLD_YEAR_VOLUME_PERC": "0.98",
+            "REP_PERC": "100",
+            "STG_PERC": "0",
+            "VOLUME_PER_GB": null,
+            "FUNC_SIZE_PER_GB": "22.33",
+            "FUTURE_YEAR_VOLUME_PERC": "0",
+            "CS_SIZE_IN_GB": "0",
+            "RS_SIZE_IN_GB": "22.33",
+            "CURRENT_YEAR_VOL_GB": "0.1159480744972825",
+            "CURRENT_MIN_1_YEAR_VOL_GB": "5.9333428824320436",
+            "CURRENT_MIN_2_YEAR_VOL_GB": "0.21990152169018984",
+            "OLD_YEAR_VOL_GB": "16.060807520523667",
+            "WARM_POTENTIAL_PERC": "0.98",
+            "warm_potential_gb": "16.06",
+            "years": [
+                {
+                  "id": 1,
+                  "title": "<2018",
+                  "volume": 97.51,
+                  "color": "Error"
+                },
+                {
+                  "id": 2,
+                  "title": "2018",
+                  "volume": 2.49,
+                  "color": "Critical"
+                },
+                {
+                  "id": 3,
+                  "title": "2019",
+                  "volume": 0,
+                  "color": "Neutral"
+                },
+                {
+                  "id": 4,
+                  "title": "2020",
+                  "volume": 0,
+                  "color": "Good"
+                }
+              ]
+        },
+        {
+            
+            "id": "20525619547906519299",
+            "func_area": "Manufacturing",
+            "schema_name": "PRODUCTION_ACQ",
+            "table_name": "PRODUCTION_DEFECT_NOTIFICATIONS",
+            "PART_ID": 0,
+            "HAS_NO_DEPENDENCIES": "",
+            "CONSTANT_GB": "1073741824",
+            "CURRENT_YEAR_VOL": "14173392076",
+            "FUTURE_YEAR_VOL": "0",
+            "CURRENT_MIN_1_YEAR_VOL": "7086696038",
+            "CURRENT_MIN_2_YEAR_VOL": "14882061680",
+            "OLD_YEAR_VOL": "34724810588",
+            "SYSTEM_AVG_VOLUME": null,
+            "AVG_VOLUME": null,
+            "CS_SIZE": "70866960384",
+            "RS_SIZE": "0",
+            "SAP_TABLES": null,
+            "CUSTOMER_TABLES": null,
+            "STG_VOLUME": "0",
+            "REP_VOLUME": "70866960384",
+            "CALC_AVG_VOLUME_NOT_NULL": null,
+            "AGING_AVG_VOLUME": "0",
+            "CURRENT_YEAR_VOLUME_PERC": "20.00",
+            "CURRENT_MIN_1_YEAR_VOLUME_PERC": "10.00",
+            "CURRENT_MIN_2_YEAR_VOLUME_PERC": "21.00",
+            "OLD_YEAR_VOLUME_PERC": "49.00",
+            "REP_PERC": "100",
+            "STG_PERC": "0",
+            "VOLUME_PER_GB": null,
+            "FUNC_SIZE_PER_GB": "66.00",
+            "FUTURE_YEAR_VOLUME_PERC": "0",
+            "CS_SIZE_IN_GB": "66.00",
+            "RS_SIZE_IN_GB": "0",
+            "CURRENT_YEAR_VOL_GB": "13.199999999254942",
+            "CURRENT_MIN_1_YEAR_VOL_GB": "6.599999999627471",
+            "CURRENT_MIN_2_YEAR_VOL_GB": "13.859999999403954",
+            "OLD_YEAR_VOL_GB": "32.33999999985099",
+            "WARM_POTENTIAL_PERC": "49.00",
+            "warm_potential_gb": "32.34",
+            "years": [
+                {
+                  "id": 1,
+                  "title": "<2018",
+                  "volume": 97.51,
+                  "color": "Error"
+                },
+                {
+                  "id": 2,
+                  "title": "2018",
+                  "volume": 2.49,
+                  "color": "Critical"
+                },
+                {
+                  "id": 3,
+                  "title": "2019",
+                  "volume": 0,
+                  "color": "Neutral"
+                },
+                {
+                  "id": 4,
+                  "title": "2020",
+                  "volume": 0,
+                  "color": "Good"
+                }
+              ]
+        }
+    ]
+}

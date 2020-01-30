@@ -106,6 +106,34 @@ sap.ui.define([
 						let oPlatformModel = new JSONModel(sJsonFilesUrl + "/Platform.json");
 						let oBusinessModel = new JSONModel(sJsonFilesUrl + "/Business.json");
 						let oOverviewModel = new JSONModel(sJsonFilesUrl + "/Overview.json");
+						let oTableMemOvwModel = new JSONModel(sJsonFilesUrl + "/TableMemoryOverviewXSJS.json");
+
+						function getFuncAreaFilter(sParams){
+							const regex = /(\?|\&)([^=]+)\=([^&]+)/;
+							const str = sParams;
+							let sFuncArea;
+							
+							// if ((m = regex.exec(str)) !== null) {
+							//     // The result can be accessed through the `m`-variable.
+							//     m.forEach((match, groupIndex) => {
+							//         console.log(`Found match, group ${groupIndex}: ${match}`);
+							//     });
+							// }
+							let m = regex.exec(str);
+							if(m && Array.isArray(m) && m.length > 0){
+								sFuncArea = m[m.length-1];
+								sFuncArea = sFuncArea.replace(/\+/g," ")
+							}
+							return sFuncArea;
+						}
+
+						function filterDataBy(attr, val, data){
+							let oData = Object.assign({}, data); //clone
+							if (val && oData.results && Array.isArray(oData.results)){
+								oData.results = oData.results.filter( oElem => oElem[attr] === val );
+							}
+							return oData;							
+						}
 
 						function fnResponsePlatform(oXHR) {
 							Log.debug("Incoming requests to Platform XSJS service");
@@ -115,29 +143,8 @@ sap.ui.define([
 
 						function fnResponseBusiness(oXHR, sParams) {
 							Log.debug("Incoming requests to Business XSJS service");
-							
-							const regex = /(\?|\&)([^=]+)\=([^&]+)/;
-							const str = sParams;
-							let m, sFuncArea;
-							
-							// if ((m = regex.exec(str)) !== null) {
-							//     // The result can be accessed through the `m`-variable.
-							//     m.forEach((match, groupIndex) => {
-							//         console.log(`Found match, group ${groupIndex}: ${match}`);
-							//     });
-							// }
-							m = regex.exec(str);
-							if(m && Array.isArray(m) && m.length > 0){
-								sFuncArea = m[m.length-1];
-								sFuncArea = sFuncArea.replace(/\+/g," ")
-							}
-
-							
-							let oData = Object.assign({},oBusinessModel.getData()); //clone
-							if (sFuncArea && oData.results && Array.isArray(oData.results)){
-								oData.results = oData.results.filter( oElem => oElem.func_area === sFuncArea );
-							}
-							
+							let sFuncArea = getFuncAreaFilter(sParams);
+							let oData = filterDataBy("func_area", sFuncArea, oBusinessModel.getData())							
 							oXHR.respondJSON(200, {}, JSON.stringify(oData));
 
 						}
@@ -146,6 +153,13 @@ sap.ui.define([
 							Log.debug("Incoming requests to Overview XSJS service");
 							oXHR.respondJSON(200, {}, JSON.stringify(oOverviewModel.getData()));
 
+						}
+
+						function fnResponseTableMemoryOverview(oXHR, sParams){
+							Log.debug("Incoming requests to Overview XSJS service");
+							let sFuncArea = getFuncAreaFilter(sParams);
+							let oData = filterDataBy("func_area", sFuncArea, oTableMemOvwModel.getData())
+							oXHR.respondJSON(200, {}, JSON.stringify(oData));							
 						}
 
 						let aRequests = [{
@@ -160,6 +174,10 @@ sap.ui.define([
 							method: "GET",
 							path: new RegExp("Overview(.*)"),
 							response: fnResponseOverview							
+						},{
+							method: "GET",
+							path: new RegExp("TableMemoryOverview\.xsjs(.*)"),
+							response: fnResponseTableMemoryOverview
 						}];
 
 						// create a mock server instance or stop the existing one to reinitialize
