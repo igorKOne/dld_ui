@@ -1,0 +1,6 @@
+{
+    "one": {
+        "target": "one-backend-xs-target",
+        "auth": "one-backend-xs-auth"
+    }
+}

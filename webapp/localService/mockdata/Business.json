@@ -12,24 +12,28 @@
                     "id": 1,
                     "title": "<2017",
                     "value": 36.55,
+                    "execution": 10,
                     "color": "Error"
                 },
                 {
                     "id": 2,
                     "title": 2017,
                     "value": 28.92,
+                    "execution": 10,
                     "color": "Critical"
                 },
                 {
                     "id": 3,
                     "title": 2018,
                     "value": 25.39,
+                    "execution": 35,
                     "color": "Neutral"
                 },
                 {
                     "id": 4,
                     "title": 2019,
                     "value": 9.14,
+                    "execution": 45,
                     "color": "Good"
                 }
             ],
@@ -95,24 +99,28 @@
                     "id": 1,
                     "title": "<2017",
                     "value": 61.43,
+                    "execution": 20,
                     "color": "Error"
                 },
                 {
                     "id": 2,
                     "title": 2017,
                     "value": 10.15,
+                    "execution": 10,
                     "color": "Critical"
                 },
                 {
                     "id": 3,
                     "title": 2018,
                     "value": 18.99,
+                    "execution": 30,
                     "color": "Neutral"
                 },
                 {
                     "id": 4,
                     "title": 2019,
                     "value": 9.44,
+                    "execution": 40,
                     "color": "Good"
                 }
             ],
@@ -178,24 +186,28 @@
                     "id": 1,
                     "title": "<2017",
                     "value": 27.5,
+                    "execution": 5,
                     "color": "Error"
                 },
                 {
                     "id": 2,
                     "title": 2017,
                     "value": 43.5,
+                    "execution": 25,
                     "color": "Critical"
                 },
                 {
                     "id": 3,
                     "title": 2018,
                     "value": 18.14,
+                    "execution": 20,
                     "color": "Neutral"
                 },
                 {
                     "id": 4,
                     "title": 2019,
                     "value": 11.28,
+                    "execution": 55,
                     "color": "Good"
                 }
             ],
