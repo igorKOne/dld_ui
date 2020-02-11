@@ -8,7 +8,7 @@
 		</chart:dimensions>
 		<chart:measures>
 			<!--<data:Measure name="jobs_count" label="Number Of Jobs" role="axis2"/>-->
-			<data:Measure name="value" label="%" role="axis2"/>
+			<data:Measure name="value" label="{i18n>labelSizeGB}" role="axis2"/>
 		</chart:measures>
 	</chart:Chart>
 </core:FragmentDefinition>

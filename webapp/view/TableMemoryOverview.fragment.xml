@@ -34,7 +34,7 @@
 			</Column>
 		</columns>
 		<items>
-			<ColumnListItem id="datasetColumnListItem" vAlign="Middle" type="Navigation">
+			<ColumnListItem id="datasetColumnListItem" vAlign="Middle">
 				<cells id="datasetColumnListItem_cells">
 					<VBox renderType="Bare">
 					  <ObjectAttribute text="{tableMemoryOverview>table_name}" />
@@ -45,7 +45,7 @@
 					<VBox renderType="Bare">
 					  <ObjectAttribute text="{tableMemoryOverview>warm_potential_gb}" />
 					</VBox>
-					<VBox height="60px" renderType="Bare" >
+					<VBox height="65px" renderType="Bare" >
 						<mc:ColumnMicroChart isResponsive="true" 
 											 columns="{path:'tableMemoryOverview>years', templateShareable:false}"  
 										     allowColumnLabels="false"
@@ -64,17 +64,23 @@
 							</mc:rightBottomLabel>							
 						</mc:ColumnMicroChart>
 					</VBox>
-					<VBox height="50px" renderType="Bare" >
+					<VBox height="65px" renderType="Bare" >
 						<mc:LineMicroChart lines="{path:'tableMemoryOverview>usage_lines', templateShareable:false}"
 										   threshold="0"
 										   showPoints="false"
 										   showThresholdValue="false"
 										   showThresholdLine="false"
+										   showTopLabels="false"
+										   showBottomLabels="true"
 										   thresholdDisplayValue=""
 										   visible="{path:'tableMemoryOverview>years', formatter: '.formatter.agingDataVisible'}"
-										   showBottomLabels="false"
 										   size="Responsive"
-										   class="sapUiTinyMarginTop">
+										   class="sapUiTinyMarginTop"
+										   leftBottomLabel="{tableMemoryOverview>usage_lines/0/points/0/title}"
+										   rightBottomLabel="{tableMemoryOverview>usage_lines/0/points/3/title}"
+										   leftTopLabel="{path:'tableMemoryOverview>usage_lines/0/points/0/y', formatter: '.formatter.percentage'}"
+										   rightTopLabel="{path:'tableMemoryOverview>usage_lines/0/points/3/y', formatter: '.formatter.percentage'}"										   
+										   >
 							<mc:lines>
 								<mc:LineMicroChartLine points="{path:'tableMemoryOverview>points', templateShareable:false}" />
 							</mc:lines>
