@@ -45,7 +45,7 @@
 					<VBox renderType="Bare">
 					  <ObjectAttribute text="{tableMemoryOverview>warm_potential_gb}" />
 					</VBox>
-					<VBox height="50px" renderType="Bare" >
+					<VBox height="60px" renderType="Bare" >
 						<mc:ColumnMicroChart isResponsive="true" 
 											 columns="{path:'tableMemoryOverview>years', templateShareable:false}"  
 										     allowColumnLabels="false"
@@ -56,6 +56,12 @@
 								displayValue="{path: 'tableMemoryOverview>volume', formatter: '.formatter.percentage'}"
 								color="{path:'tableMemoryOverview>color', formatter: '.formatter.fourSeriesColourDark2Light'}"/>
 							</mc:columns>
+							<mc:leftBottomLabel>
+								<mc:ColumnMicroChartLabel label="{path:'tableMemoryOverview>years/0/title'}"/>
+							</mc:leftBottomLabel>
+							<mc:rightBottomLabel>
+								<mc:ColumnMicroChartLabel label="{path:'tableMemoryOverview>years/3/title'}"/>
+							</mc:rightBottomLabel>							
 						</mc:ColumnMicroChart>
 					</VBox>
 					<VBox height="50px" renderType="Bare" >
