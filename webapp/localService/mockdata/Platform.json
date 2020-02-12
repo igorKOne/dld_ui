@@ -6,34 +6,38 @@
             "years": [
                 {
                     "id": 1,
-                    "title": "<2017",
-                    "value": 38.74,
-                    "valueB": 268109328430,
-                    "execution": 10,
+                    "title": "<2018",
+                    "value": 55.85,
+                    "valueB": 152229574442,
+                    "execution": 15.48,
+                    "executionB": 2487,
                     "color": "Error"
                 },
                 {
                     "id": 2,
-                    "title": 2017,
-                    "value": 30.16,
-                    "valueB": 208785239217,
-                    "execution": 30,
+                    "title": 2018,
+                    "value": 16.31,
+                    "valueB": 44440636095,
+                    "execution": 24.57,
+                    "executionB": 3947,
                     "color": "Critical"
                 },
                 {
                     "id": 3,
-                    "title": 2018,
-                    "value": 21.25,
-                    "valueB": 147083410606,
-                    "execution": 20,
+                    "title": 2019,
+                    "value": 22.62,
+                    "valueB": 61648090059,
+                    "execution": 48.38,
+                    "executionB": 7774,
                     "color": "Neutral"
                 },
                 {
                     "id": 4,
-                    "title": 2019,
-                    "value": 10.0,
-                    "valueB": 69240480737,
-                    "execution": 40,
+                    "title": 2020,
+                    "value": 5.22,
+                    "valueB": 8539839181,
+                    "execution": 11.57,
+                    "executionB": 1859,
                     "color": "Good"
                 }
             ],
@@ -41,39 +45,55 @@
                 {
                     "id": 1,
                     "title": "Staging",
-                    "value": 20.15,
+                    "value": 100,
                     "color": "Error"
                 },
                 {
                     "id": 2,
                     "title": "Reporting",
-                    "value": 79.85,
+                    "value": 0,
                     "color": "Good"
                 }
             ],
             "business": [
                 {
                     "id": 1,
-                    "title": "Retail",
-                    "value": 259.65,
-                    "valueH": 164.74,
-                    "valueW": 94.91,
-                    "color": "Good"
-                },
-                {
-                    "id": 3,
-                    "title": "Manufacturing",
-                    "value": 144.18,
-                    "valueH": 55.61,
-                    "valueW": 88.57,
+                    "title": "Shared",
+                    "value": 235.32,
+                    "valueW": 122.36,
+                    "valueH": 55.633511208333076,
                     "color": "Good"
                 },
                 {
                     "id": 2,
-                    "title": "ONE ERP",
-                    "value": 240.78,
-                    "valueW": 66.21,
-                    "valueH": 174.57,
+                    "title": "Info Steward",
+                    "value": 26.55,
+                    "valueW": 7.06,
+                    "valueH": 1.888269366286695,
+                    "color": "Good"
+                },
+                {
+                    "id": 3,
+                    "title": "SAP BW",
+                    "value": 143.24,
+                    "valueW": 6.94,
+                    "valueH": 1.8076820144802332,
+                    "color": "Good"
+                },
+                {
+                    "id": 4,
+                    "title": "Retail",
+                    "value": 40.19,
+                    "valueW": 2.65,
+                    "valueH": 44.685386419668795,
+                    "color": "Good"
+                },
+                {
+                    "id": 5,
+                    "title": "Procurement",
+                    "value": 6.37,
+                    "valueW": 1.82,
+                    "valueH": 2.3185277304798366,
                     "color": "Good"
                 }
             ],
@@ -81,13 +101,13 @@
                 {
                     "id": 1,
                     "title": "Row Store",
-                    "value": 60.29,
+                    "value": 9.94,
                     "color": "Error"
                 },
                 {
                     "id": 2,
                     "title": "Column Store",
-                    "value": 584.32,
+                    "value": 459.88,
                     "color": "Good"
                 }
             ],
@@ -95,13 +115,12 @@
                 {
                     "id": 3,
                     "title": "Warm Potential",
-                    "value": 249.7,
+                    "value": 141.77,
                     "color": "Neutral"
                 }
             ],
-            "warm_potential": 249.7,
-            "total": 644.61,
-            "warm_potential_perc": 38.74
+            "warm_potential": 141.77,
+            "total": 253.84
         }
     ]
 }

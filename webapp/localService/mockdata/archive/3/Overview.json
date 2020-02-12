@@ -1,0 +1,70 @@
+{
+    "history": [{
+        "points": [{
+            "id": 1,
+            "period": 1,
+            "title": "Jan'19",
+            "value": 202
+        }, {
+            "id": 2,
+            "period": 2,
+            "title": "Feb'19",
+            "value": 213.55
+        }, {
+            "id": 3,
+            "period": 3,
+            "title": "Mar'19",
+            "value": 255.11
+        }, {
+            "id": 4,
+            "period": 4,
+            "title": "Apr'19",
+            "value": 269.37
+        }, {
+            "id": 5,
+            "period": 5,
+            "title": "May'19",
+            "value": 313.63
+        }],
+        "threshold": 1536,
+        "leftBottomLabel": "Jan'19",
+        "rightBottomLabel": "Oct'19"
+    }],
+    "funcAreas": [{
+        "id": 1,
+        "title": "Retail",
+        "value": 259.65,
+        "color": "Good"
+    }, {
+        "id": 2,
+        "title": "ONE ERP",
+        "value": 240.78,
+        "color": "Good"
+    }, {
+        "id": 3,
+        "title": "Manufacturing",
+        "value": 144.18,
+        "color": "Good"
+    }],
+    "dataAges": [{
+        "id": 1,
+        "title": "<2017",
+        "value": 39,
+        "color": "Error"
+    }, {
+        "id": 2,
+        "title": "2017",
+        "value": 30,
+        "color": "Critical"
+    }, {
+        "id": 3,
+        "title": "2018",
+        "value": 21,
+        "color": "Neutral"
+    }, {
+        "id": 4,
+        "title": "2019",
+        "value": 10,
+        "color": "Good"
+    }]
+}

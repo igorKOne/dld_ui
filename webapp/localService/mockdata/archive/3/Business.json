@@ -1,0 +1,265 @@
+{
+    "results": [
+        {
+            "id": 1,
+            "func_area": "Retail",
+            "avg_volume": "207467350666.000",
+            "aging_avg_volume": "302965795929",
+            "rep_volume": "181218091991",
+            "stg_volume": "97578972610",
+            "years": [
+                {
+                    "id": 1,
+                    "title": "<2017",
+                    "value": 36.55,
+                    "execution": 10,
+                    "color": "Error"
+                },
+                {
+                    "id": 2,
+                    "title": 2017,
+                    "value": 28.92,
+                    "execution": 10,
+                    "color": "Critical"
+                },
+                {
+                    "id": 3,
+                    "title": 2018,
+                    "value": 25.39,
+                    "execution": 35,
+                    "color": "Neutral"
+                },
+                {
+                    "id": 4,
+                    "title": 2019,
+                    "value": 9.14,
+                    "execution": 45,
+                    "color": "Good"
+                }
+            ],
+            "current_min_2_vol_perc": 28.92,
+            "current_min_1_vol_perc": 25.39,
+            "current_year_vol_perc": 9.14,
+            "old_year_vol_perc": 36.55,
+            "data": [
+                {
+                    "id": 1,
+                    "title": "Reporting",
+                    "value": 65,
+                    "color": "Good"
+                },
+                {
+                    "id": 2,
+                    "title": "Staging",
+                    "value": 35,
+                    "color": "Error"
+                }
+            ],
+            "rep_perc": 65,
+            "stg_perc": 35,
+            "volume": 57852.7,
+            "func_size": 259.65,
+            "volume_per_tb": 57852.7,
+            "func_size_per_tb": 259.65,
+            "RSCS": [
+                {
+                    "id": 1,
+                    "title": "ColumnStore",
+                    "value": 255.21,
+                    "color": "Good"
+                },
+                {
+                    "id": 2,
+                    "title": "RowStore",
+                    "value": 4.44,
+                    "color": "Error"
+                }
+            ],
+            "warm_potential": 94.91,
+            "WarmPotential": [
+                {
+                    "id": 1,
+                    "title": "Warm Potential",
+                    "value": 94.91,
+                    "color": "Neutral"
+                }
+            ],
+            "total": 259.65,
+            "warm_potential_perc": 36.55
+        },
+        {
+            "id": 3,
+            "func_area": "Manufacturing",
+            "avg_volume": "5883179368.000",
+            "aging_avg_volume": "6068287684",
+            "rep_volume": "151715854260",
+            "stg_volume": "3096241923",
+            "years": [
+                {
+                    "id": 1,
+                    "title": "<2017",
+                    "value": 61.43,
+                    "execution": 20,
+                    "color": "Error"
+                },
+                {
+                    "id": 2,
+                    "title": 2017,
+                    "value": 10.15,
+                    "execution": 10,
+                    "color": "Critical"
+                },
+                {
+                    "id": 3,
+                    "title": 2018,
+                    "value": 18.99,
+                    "execution": 30,
+                    "color": "Neutral"
+                },
+                {
+                    "id": 4,
+                    "title": 2019,
+                    "value": 9.44,
+                    "execution": 40,
+                    "color": "Good"
+                }
+            ],
+            "current_min_2_vol_perc": 10.15,
+            "current_min_1_vol_perc": 18.99,
+            "current_year_vol_perc": 9.44,
+            "old_year_vol_perc": 61.43,
+            "data": [
+                {
+                    "id": 1,
+                    "title": "Reporting",
+                    "value": 98,
+                    "color": "Good"
+                },
+                {
+                    "id": 2,
+                    "title": "Staging",
+                    "value": 2,
+                    "color": "Error"
+                }
+            ],
+            "rep_perc": 98,
+            "stg_perc": 2,
+            "volume": 3139.28,
+            "func_size": 144.18,
+            "volume_per_tb": 3139.28,
+            "func_size_per_tb": 144.18,
+            "RSCS": [
+                {
+                    "id": 1,
+                    "title": "ColumnStore",
+                    "value": 88.33,
+                    "color": "Good"
+                },
+                {
+                    "id": 2,
+                    "title": "RowStore",
+                    "value": 55.85,
+                    "color": "Error"
+                }
+            ],
+            "warm_potential": 88.57,
+            "WarmPotential": [
+                {
+                    "id": 1,
+                    "title": "Warm Potential",
+                    "value": 88.57,
+                    "color": "Neutral"
+                }
+            ],
+            "total": 144.18,
+            "warm_potential_perc": 61.43
+        },
+        {
+            "id": 2,
+            "func_area": "ONE ERP",
+            "avg_volume": "86637849835.000",
+            "aging_avg_volume": "99968448690",
+            "rep_volume": "219755222925",
+            "stg_volume": "38780333457",
+            "years": [
+                {
+                    "id": 1,
+                    "title": "<2017",
+                    "value": 27.5,
+                    "execution": 5,
+                    "color": "Error"
+                },
+                {
+                    "id": 2,
+                    "title": 2017,
+                    "value": 43.5,
+                    "execution": 25,
+                    "color": "Critical"
+                },
+                {
+                    "id": 3,
+                    "title": 2018,
+                    "value": 18.14,
+                    "execution": 20,
+                    "color": "Neutral"
+                },
+                {
+                    "id": 4,
+                    "title": 2019,
+                    "value": 11.28,
+                    "execution": 55,
+                    "color": "Good"
+                }
+            ],
+            "current_min_2_vol_perc": 43.5,
+            "current_min_1_vol_perc": 18.14,
+            "current_year_vol_perc": 11.28,
+            "old_year_vol_perc": 27.5,
+            "data": [
+                {
+                    "id": 1,
+                    "title": "Reporting",
+                    "value": 85,
+                    "color": "Good"
+                },
+                {
+                    "id": 2,
+                    "title": "Staging",
+                    "value": 15,
+                    "color": "Error"
+                }
+            ],
+            "rep_perc": 85,
+            "stg_perc": 15,
+            "volume": 13454.12,
+            "func_size": 240.78,
+            "volume_per_tb": 13454.12,
+            "func_size_per_tb": 240.78,
+            "RSCS": [
+                {
+                    "id": 1,
+                    "title": "ColumnStore",
+                    "value": 240.78,
+                    "color": "Good"
+                },
+                {
+                    "id": 2,
+                    "title": "RowStore",
+                    "value": 0,
+                    "color": "Error"
+                }
+            ],
+            "warm_potential": 66.21,
+            "WarmPotential": [
+                {
+                    "id": 1,
+                    "title": "Warm Potential",
+                    "value": 66.21,
+                    "color": "Neutral"
+                }
+            ],
+            "total": 240.78,
+            "warm_potential_perc": 27.5
+        }
+    ]
+}
